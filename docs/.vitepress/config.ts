@@ -77,7 +77,7 @@ const config = defineConfig({
         collapsable: false,
         children: [
           {
-            text: 'Getting Started',
+            text: '시작하기',
             link: '/guide/',
           },
           {
