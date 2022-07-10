@@ -83,7 +83,7 @@ const config = defineConfig({
             link: '/guide/',
           },
           {
-            text: 'Dynamic Route Matching',
+            text: '동적 경로 매칭',
             link: '/guide/essentials/dynamic-matching.html',
           },
           {
