@@ -1,16 +1,19 @@
-# Introduction
+# 소개 {#introduction}
 
-Vue Router is the official router for [Vue.js](https://vuejs.org). It deeply integrates with Vue.js core to make building Single Page Applications with Vue.js a breeze. Features include:
+Vue Router는 [Vue.js](https://vuejs.org)의 공식 라우터입니다.
+Vue.js 코어와 긴밀하게 통합되어 싱글 페이지 앱을 쉽게 만들 수 있습니다.
 
-- Nested routes mapping
-- Dynamic Routing
-- Modular, component-based router configuration
-- Route params, query, wildcards
-- View transition effects powered by Vue.js' transition system
-- Fine-grained navigation control
-- Links with automatic active CSS classes
-- HTML5 history mode or hash mode
-- Customizable Scroll Behavior
-- Proper encoding for URLs
+기능은 다음과 같습니다:
 
-[Get started](/guide/) or play with the [playground](https://github.com/vuejs/router/tree/main/playground) (see [`README.md`](https://github.com/vuejs/router) to run them).
+- 중첩된 경로 매핑
+- 동적 라우팅
+- 모듈식 컴포넌트 기반의 라우터 설정
+- 경로에 파라미터, 쿼리, 와일드카드 적용
+- Vue.js의 트렌지션 시스템을 사용한 트렌지션 효과
+- 세밀한 네비게이션 컨트롤
+- 링크에 자동으로 엑티브 CSS 클래스 적용
+- HTML5 히스토리 모드 또는 해시 모드
+- 커스텀 스크롤 동작
+- URL에 대한 적절한 인코딩
+
+[시작하기](/guide/) 또는 브라우저에서 [CodeSandbox](https://codesandbox.io/s/vue-router-4-reproduction-hb9lh)로 연습하기.
