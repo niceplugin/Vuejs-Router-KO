@@ -23,9 +23,11 @@ const config = defineConfig({
   // serviceWorker: true,
 
   themeConfig: {
+    repo: 'niceplugin/Vuejs-Router-KO',
     docsRepo: 'niceplugin/Vuejs-Router-KO',
+    dir: 'docs',
     docsDir: 'docs',
-    docsBranch: 'main',
+    docsBranch: 'main-korean',
     editLinks: true,
     editLinkText: '이 페이지 편집 제안하기',
 

@@ -2,10 +2,8 @@
 home: true
 
 heroImage: /logo.png
-actionText: 시작하기 →
-actionLink: /installation.html
-altActionLink: https://vueschool.io/courses/vue-router-4-for-everyone?friend=vuerouter&utm_source=vuerouter&utm_medium=link&utm_campaign=homepage
-altActionText: Free Video Course
+actionText: 시작하기
+actionLink: /guide/
 
 features:
   - title: 🛣 경로를 표현하는 문법
