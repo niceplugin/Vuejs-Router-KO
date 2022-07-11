@@ -32,6 +32,8 @@ const config = defineConfig({
       text: '이 페이지 편집 제안하기'
     },
 
+    lastUpdatedText: '마지막 수정일',
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/niceplugin/Vuejs-Router-KO' }
     ],
@@ -103,7 +105,7 @@ const config = defineConfig({
               link: '/guide/essentials/dynamic-matching.html',
             },
             {
-              text: "Routes' Matching Syntax",
+              text: "경로 매칭 문법",
               link: '/guide/essentials/route-matching-syntax.html',
             },
             {
