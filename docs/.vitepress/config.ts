@@ -113,7 +113,7 @@ const config = defineConfig({
               link: '/guide/essentials/nested-routes.html',
             },
             {
-              text: 'Programmatic Navigation',
+              text: '프로그래밍 방식 탐색',
               link: '/guide/essentials/navigation.html',
             },
             {
