@@ -1,103 +1,117 @@
----
-sidebarDepth: 0
----
+# 프로그래밍 방식 탐색 {#programmatic-navigation}
 
-# Programmatic Navigation
+`<router-link>`로 생성된 앵커 태그로 탐색하는 방법 외에도,
+라우터의 인스턴스 메서드를 사용하여 프로그래밍 방식으로 탐색을 할 수 있습니다.
 
-Aside from using `<router-link>` to create anchor tags for declarative navigation, we can do this programmatically using the router's instance methods.
+## 다른 위치로 이동 {#navigate-to-a-different-location}
 
-## Navigate to a different location
+**참고: Vue 인스턴스 내부에서 `$router`로 라우터 인스턴스에 접근할 수 있습니다.
+따라서 `this.$router.push`를 호출할 수 있습니다.**
 
-**Note: Inside of a Vue instance, you have access to the router instance as `$router`. You can therefore call `this.$router.push`.**
+다른 URL로 이동하려면 `router.push`를 사용해야 합니다.
+이 메서드는 새 항목을 히스토리 스택으로 푸시하므로,
+사용자가 브라우저의 뒤로가기 버튼을 클릭하면 이전 URL로 이동합니다.
 
-To navigate to a different URL, use `router.push`. This method pushes a new entry into the history stack, so when the user clicks the browser back button they will be taken to the previous URL.
+이것은 `<router-link>`를 클릭할 때 내부적으로 호출되는 메소드이므로,
+`<router-link :to="...">`를 클릭하는 것은 `router.push(...)`를 호출하는 것과 같습니다.
 
-This is the method called internally when you click a `<router-link>`, so clicking `<router-link :to="...">` is the equivalent of calling `router.push(...)`.
-
-| Declarative               | Programmatic       |
+| 선언 방식                   | 프로그래밍 방식       |
 | ------------------------- | ------------------ |
 | `<router-link :to="...">` | `router.push(...)` |
 
-The argument can be a string path, or a location descriptor object. Examples:
+이 메서드의 인자는 "문자열 경로" 또는 "위치를 나타내는 객체"일 수 있습니다.
+예제:
 
 ```js
-// literal string path
+// 문자열 경로
 router.push('/users/eduardo')
 
-// object with path
+// 경로(path)를 나타낸 객체
 router.push({ path: '/users/eduardo' })
 
-// named route with params to let the router build the url
+// 파라미터 값이 있는 이름을 가진 경로
 router.push({ name: 'user', params: { username: 'eduardo' } })
 
-// with query, resulting in /register?plan=private
+// 쿼리(query) 사용
+// 이동할 경로: /register?plan=private
 router.push({ path: '/register', query: { plan: 'private' } })
 
-// with hash, resulting in /about#team
+// 해시(hash) 사용
+// 이동할 경로: /about#team
 router.push({ path: '/about', hash: '#team' })
 ```
 
-**Note**: `params` are ignored if a `path` is provided, which is not the case for `query`, as shown in the example above. Instead, you need to provide the `name` of the route or manually specify the whole `path` with any parameter:
+**참고**: `path`가 제공되면 `params`가 무시됩니다.
+대신 경로에 `name`을 제공하거나,
+수동으로 파라미터를 포함한 전체 `path`를 지정해줘야 합니다.
+`query`의 경우, 위의 예제처럼 이러한 주의사항에 해당되지 않습니다.
 
 ```js
 const username = 'eduardo'
-// we can manually build the url but we will have to handle the encoding ourselves
+// URL을 직접 만들 수 있지만, 인코딩을 직접 처리해야 함.
 router.push(`/user/${username}`) // -> /user/eduardo
-// same as
+// 위와 동일함.
 router.push({ path: `/user/${username}` }) // -> /user/eduardo
-// if possible use `name` and `params` to benefit from automatic URL encoding
+// 가급적 `name` 및 `params` 사용을 추천, 자동으로 URL을 인코딩.
 router.push({ name: 'user', params: { username } }) // -> /user/eduardo
-// `params` cannot be used alongside `path`
+// `params`는 `path`와 함께 사용할 수 없음.
 router.push({ path: '/user', params: { username } }) // -> /user
 ```
 
-When specifying `params`, make sure to either provide a `string` or `number` (or an array of these for [repeatable params](route-matching-syntax.md#repeatable-params)). **Any other type (like `undefined`, `false`, etc) will be automatically stringified**. For [optional params](route-matching-syntax.md#repeatable-params), you can provide an empty string (`""`) as the value to skip it.
+`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#repeatable-params)일 경우)를 제공해야 합니다.
+**다른 모든 유형(예: `false`)은 자동으로 문자열로 변환됩니다**.
+[선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우,
+건너뛸 값으로 빈 문자열(`""`)을 제공할 수 있습니다.
 
-Since the prop `to` accepts the same kind of object as `router.push`, the exact same rules apply to both of them.
+`<router-link>`의 `to`는 `router.push`와 동일한 객체를 허용하므로 두 객체 모두 똑같은 규칙이 적용됩니다.
 
-`router.push` and all the other navigation methods return a _Promise_ that allows us to wait till the navigation is finished and to know if it succeeded or failed. We will talk more about that in [Navigation Handling](../advanced/navigation-failures.md).
+`router.push`를 포함한 모든 탐색 메서드는 탐색이 완료될 때까지 기다렸다가 성공했는지 실패했는지 알 수 있도록 하는 `Promise`를 반환합니다.
+[탐색 결과 대기하기](../advanced/navigation-failures.md)에서 더 자세히 이야기하겠습니다.
 
-## Replace current location
+## 현재 위치 바꾸기 {#replace-current-location}
 
-It acts like `router.push`, the only difference is that it navigates without pushing a new history entry, as its name suggests - it replaces the current entry.
+이것은 `router.push`처럼 작동합니다.
+유일한 차이점은 이름에서 알 수 있듯이,
+새 히스토리 항목을 푸시하지 않고 탐색하는 것으로 현재 항목을 대체합니다.
 
-| Declarative                       | Programmatic          |
-| --------------------------------- | --------------------- |
+| 선언 방식                           | 프로그래밍 방식          |
+|-----------------------------------| --------------------- |
 | `<router-link :to="..." replace>` | `router.replace(...)` |
 
-It's also possible to directly add a property `replace: true` to the `routeLocation` that is passed to `router.push`:
+또는 `router.push`에 전달하는 `routeLocation`(경로 위치 객체)에 `replace: true` 속성을 직접 추가할 수도 있습니다:
 
 ```js
 router.push({ path: '/home', replace: true })
-// equivalent to
+// 이 둘은 동일함.
 router.replace({ path: '/home' })
 ```
 
-## Traverse history
+## 히스토리 이동 {#traverse-history}
 
-This method takes a single integer as parameter that indicates by how many steps to go forward or go backward in the history stack, similar to `window.history.go(n)`.
+이 메서드는 `window.history.go(n)`과 유사하게,
+히스토리 스택에서 앞 또는 뒤로 이동할 단계를 나타내는 정수를 단일 인자로 사용합니다.
 
-Examples
+예제:
 
 ```js
-// go forward by one record, the same as router.forward()
+// `router.forward()`와 동일하게 앞으로 한 번 이동함.
 router.go(1)
 
-// go back by one record, the same as router.back()
+// `router.back()`과 동일하게 뒤로 한 번 이동함.
 router.go(-1)
 
-// go forward by 3 records
+// 앞으로 3 번 이동함.
 router.go(3)
 
-// fails silently if there aren't that many records
+// 이동 가능한 값을 초과하는 경우, 작동하지 않음(애러가 발생하진 않음).
 router.go(-100)
 router.go(100)
 ```
 
-## History Manipulation
+## 히스토리 조작 {#history-manipulation}
 
-You may have noticed that `router.push`, `router.replace` and `router.go` are counterparts of [`window.history.pushState`, `window.history.replaceState` and `window.history.go`](https://developer.mozilla.org/en-US/docs/Web/API/History), and they do imitate the `window.history` APIs.
+`router.push`, `router.replace`, `router.go`는 `window.history` API의 [`window.history.pushState`, `window.history.replaceState`, `window.history.go`](https://developer.mozilla.org/en-US/docs/Web/API/History)처럼 작동합니다.
 
-Therefore, if you are already familiar with [Browser History APIs](https://developer.mozilla.org/en-US/docs/Web/API/History_API), manipulating history will feel familiar when using Vue Router.
+따라서 이미 [브라우저 히스토리 API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)에 익숙하다면, Vue Router를 사용할 때 히스토리 조작이 익숙할 것입니다.
 
-It is worth mentioning that Vue Router navigation methods (`push`, `replace`, `go`) work consistently no matter the kind of [`history` option](../../api/#history) is passed when creating the router instance.
+Vue Router의 탐색 메소드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달되는 [`history` 옵션](/api/#history) 값에 상관없이 일관되게 작동합니다.
