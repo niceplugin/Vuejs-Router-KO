@@ -109,7 +109,7 @@ const config = defineConfig({
               link: '/guide/essentials/route-matching-syntax.html',
             },
             {
-              text: 'Nested Routes',
+              text: '중첩된 경로',
               link: '/guide/essentials/nested-routes.html',
             },
             {
