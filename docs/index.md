@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 시작하기
-      link: /installation.html
+      link: /guide/
 
 features:
   - icon: 🛣
