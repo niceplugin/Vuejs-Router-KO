@@ -1,6 +1,8 @@
-# Nested Routes
+# 중첩된 경로 {#nested-routes}
 
-Some application's UIs are composed of components that are nested multiple levels deep. In this case, it is very common that the segments of a URL corresponds to a certain structure of nested components, for example:
+일부 앱의 UI는 여러 단계로 중첩된 컴포넌트로 구성됩니다.
+이 경우, URL 세그먼트가 중첩된 컴포넌트 중 특정 구조와 일치되어야 하는 것은 매우 일반적입니다.
+예를 들면 다음과 같습니다:
 
 ```
 /user/johnny/profile                     /user/johnny/posts
@@ -13,9 +15,10 @@ Some application's UIs are composed of components that are nested multiple level
 +------------------+                  +-----------------+
 ```
 
-With Vue Router, you can express this relationship using nested route configurations.
+Vue Router를 사용하는 경우,
+중첩된 경로 구성을 통해 이러한 구조적 관계를 구현할 수 있습니다.
 
-Given the app we created in the last chapter:
+지난 장에서 만든 앱을 예로들면:
 
 ```html
 <div id="app">
@@ -25,27 +28,31 @@ Given the app we created in the last chapter:
 
 ```js
 const User = {
-  template: '<div>User {{ $route.params.id }}</div>',
+  template: '<div>유저 {{ $route.params.id }}</div>',
 }
 
-// these are passed to `createRouter`
+// 이것은 `createRouter`로 전달됨
 const routes = [{ path: '/user/:id', component: User }]
 ```
 
-The `<router-view>` here is a top-level `router-view`. It renders the component matched by a top level route. Similarly, a rendered component can also contain its own, nested `<router-view>`. For example, if we add one inside the `User` component's template:
+여기서 `<router-view>`는 최상위 `router-view`입니다.
+최상위 경로와 일치하는 컴포넌트를 렌더링합니다.
+마찬가지로 렌더링된 컴포넌트는 자체 중첩된 `<router-view>`를 포함할 수도 있습니다.
+예를 들어 `User` 컴포넌트의 템플릿 내부에 `<router-view>`를 하나 추가하면:
 
 ```js
 const User = {
   template: `
     <div class="user">
-      <h2>User {{ $route.params.id }}</h2>
+      <h2>유저 {{ $route.params.id }}</h2>
       <router-view></router-view>
     </div>
   `,
 }
 ```
 
-To render components into this nested `router-view`, we need to use the `children` option in any of the routes:
+이 중첩된 `router-view`에 컴포넌트를 렌더링하려면,
+`/user/:id` 경로 내부의 모든 경로에 `children` 옵션을 사용해야 합니다:
 
 ```js
 const routes = [
@@ -54,14 +61,14 @@ const routes = [
     component: User,
     children: [
       {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
+        // /user/:id/profile 와 매치된 경우,
+        // User 컴포넌트 내부의 <router-view>에서 렌더링됨: UserProfile
         path: 'profile',
         component: UserProfile,
       },
       {
-        // UserPosts will be rendered inside User's <router-view>
-        // when /user/:id/posts is matched
+        // /user/:id/posts 와 매치된 경우,
+        // User 컴포넌트 내부의 <router-view>에서 렌더링됨: UserPosts
         path: 'posts',
         component: UserPosts,
       },
@@ -70,11 +77,16 @@ const routes = [
 ]
 ```
 
-**Note that nested paths that start with `/` will be treated as a root path. This allows you to leverage the component nesting without having to use a nested URL.**
+**`/`로 시작하는 중첩 경로는 루트 경로로 처리됩니다.
+이를 통해 중첩 URL을 사용하지 않고도 컴포넌트 중첩을 활용할 수 있습니다.**
 
-As you can see the `children` option is just another Array of routes like `routes` itself. Therefore, you can keep nesting views as much as you need.
+보시다시피 `children` 옵션은 `routes`처럼 경로를 나타내는 배열입니다.
+따라서 필요한 만큼 중첩된 `router-view`를 사용할 수 있습니다.
 
-At this point, with the above configuration, when you visit `/user/eduardo`, nothing will be rendered inside `User`'s `router-view`, because no nested route is matched. Maybe you do want to render something there. In such case you can provide an empty nested path:
+위의 구성 상태로 `/user/eduardo`를 방문하면 일치하는 중첩 경로가 없으므로,
+`User`의 `router-view` 내부에 아무것도 렌더링 되지 않습니다.
+이럴 때, 그곳에 무언가를 렌더링하고 싶을 수 있습니다.
+이 경우, 빈 중첩 경로를 제공할 수 있습니다.
 
 ```js
 const routes = [
@@ -82,14 +94,14 @@ const routes = [
     path: '/user/:id',
     component: User,
     children: [
-      // UserHome will be rendered inside User's <router-view>
-      // when /user/:id is matched
+      // /user/:id 와 매치된 경우,
+      // User 컴포넌트 내부의 <router-view>에서 렌더링됨: UserHome
       { path: '', component: UserHome },
 
-      // ...other sub routes
+      // ...다른 하위 경로
     ],
   },
 ]
 ```
 
-A working demo of this example can be found [here](https://codesandbox.io/s/nested-views-vue-router-4-examples-hl326?initialpath=%2Fusers%2Feduardo).
+참고: [예제](https://codesandbox.io/s/nested-views-vue-router-4-examples-hl326?initialpath=%2Fusers%2Feduardo)
