@@ -117,7 +117,7 @@ const config = defineConfig({
               link: '/guide/essentials/navigation.html',
             },
             {
-              text: 'Named Routes',
+              text: '이름이 있는 경로',
               link: '/guide/essentials/named-routes.html',
             },
             {
