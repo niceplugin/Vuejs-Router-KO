@@ -1,20 +1,21 @@
-# Redirect and Alias
+# 리디렉션과 별칭 {#redirect-and-alias}
 
-## Redirect
+## 리디렉션 {#redirect}
 
-Redirecting is also done in the `routes` configuration. To redirect from `/home` to `/`:
+리디렉션은 `routes` 설정 시 정의할 수도 있습니다.
+`/home`에서 `/`로 리디렉션하려면:
 
 ```js
 const routes = [{ path: '/home', redirect: '/' }]
 ```
 
-The redirect can also be targeting a named route:
+리디렉션은 이름이 있는 경로로 설정할 수도 있습니다:
 
 ```js
 const routes = [{ path: '/home', redirect: { name: 'homepage' } }]
 ```
 
-Or even use a function for dynamic redirecting:
+또는 함수를 사용하여 동적 리디렉션을 구현할 수도 있습니다:
 
 ```js
 const routes = [
@@ -22,8 +23,9 @@ const routes = [
     // /search/screens -> /search?q=screens
     path: '/search/:searchText',
     redirect: to => {
-      // the function receives the target route as the argument
-      // we return a redirect path/location here.
+      // 함수는 이동할 경로를 인자로 받음.
+      
+      // 반환 값: 리디렉션 될 경로 문자열 또는 위치 정보 객체.
       return { path: '/search', query: { q: to.params.searchText } }
     },
   },
@@ -34,21 +36,27 @@ const routes = [
 ]
 ```
 
-Note that **[Navigation Guards](../advanced/navigation-guards.md) are not applied on the route that redirects, only on its target**. e.g. In the above example, adding a `beforeEnter` guard to the `/home` route would not have any effect.
+**[네비게이션 가드](../advanced/navigation-guards.md)는 리디렉션이 정의된 경로에는 적용되지 않습니다**.
+예를 들어 위의 예에서 `/home` 경로에 `beforeEnter` 가드를 추가해도 아무런 효과가 없습니다.
 
-When writing a `redirect`, you can omit the `component` option because it is never directly reached so there is no component to render. The only exception are [nested routes](nested-routes.md): if a route record has `children` and a `redirect` property, it should also have a `component` property.
+`redirect`를 정의한 경우, `component` 옵션을 생략할 수 있습니다.
+이는 해당 경로에는 도달할 수 없으므로 렌더링할 컴포넌트가 없기 때문입니다.
+단, [중첩된 경로](nested-routes.md)를 사용하는 경우에는 예외입니다.
+경로에 `children`과 `redirect` 속성이 있으면 `component` 속성도 있어야 합니다.
 
-### Relative redirecting
+### 상대적인 리디렉션 {#relative-redirecting}
 
-It's also possible to redirect to a relative location:
+상대적인 위치로 리디렉션할 수도 있습니다:
+
+상대 경로 오작동 이슈 있음 =============================================
 
 ```js
 const routes = [
   {
-    // will always redirect /users/123/posts to /users/123/profile
+    // 항상 리디렉션 됨: /users/123/posts -> /users/123/profile
     path: '/users/:id/posts',
     redirect: to => {
-      // the function receives the target route as the argument
+      // 함수는 이동할 경로를 인자로 받음.
       // a relative location doesn't start with `/`
       // or { path: 'profile'}
       return 'profile'
@@ -57,7 +65,7 @@ const routes = [
 ]
 ```
 
-## Alias
+## 별칭 {#alias}
 
 A redirect means when the user visits `/home`, the URL will be replaced by `/`, and then matched as `/`. But what is an alias?
 

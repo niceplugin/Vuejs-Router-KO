@@ -125,7 +125,7 @@ const config = defineConfig({
               link: '/guide/essentials/named-views.html',
             },
             {
-              text: 'Redirect and Alias',
+              text: '리디렉션과 별칭',
               link: '/guide/essentials/redirect-and-alias.html',
             },
             {
