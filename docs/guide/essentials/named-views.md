@@ -1,6 +1,11 @@
-# Named Views
+# 이름이 있는 뷰 {#named-views}
 
-Sometimes you need to display multiple views at the same time instead of nesting them, e.g. creating a layout with a `sidebar` view and a `main` view. This is where named views come in handy. Instead of having one single outlet in your view, you can have multiple and give each of them a name. A `router-view` without a name will be given `default` as its name.
+때로는 여러 뷰(view)를 중첩하지 않고,
+동시에 표시해야 합니다(예: 사이드바와 메인 뷰가 있는 레이아웃).
+이럴 때는 이름이 있는 뷰를 사용하면 유용합니다.
+"결과를 노출할 수단"(이하 아울렛)으로 하나의 뷰를 사용하는 것보다,
+여러 개의 아울렛 뷰 각각에 이름을 지정해 사용하는 것입니다.
+이름이 지정되지 않은 `<router-view>`는 기본 값으로 `default`라는 이름을 가집니다.
 
 ```html
 <router-view class="view left-sidebar" name="LeftSidebar"></router-view>
@@ -8,21 +13,26 @@ Sometimes you need to display multiple views at the same time instead of nesting
 <router-view class="view right-sidebar" name="RightSidebar"></router-view>
 ```
 
-A view is rendered by using a component, therefore multiple views require
-multiple components for the same route. Make sure to use the `components` (with
-an **s**) option:
+뷰는 사용할 컴포넌트로 렌더링되므로,
+한 경로에 여러 뷰를 사용하는 경우에는 여러 컴포넌트가 필요합니다.
+따라서 이러한 경로에는 `components` 옵션을 사용해야 합니다:
 
 ```js
+import Home from './Home.vue'
+import LeftSidebar from './LeftSidebar.vue'
+import RightSidebar from './RightSidebar.vue'
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
       path: '/',
+      // component 뒤에 s가 붙은 복수형 단어를 속성명으로 사용함.
+      // 오타에 의한 애러 주의!
       components: {
         default: Home,
-        // short for LeftSidebar: LeftSidebar
-        LeftSidebar,
-        // they match the `name` attribute on `<router-view>`
+        // 아래 두 컴포넌트는 `<router-view>`의 `name` 속성에 매치됨.
+        LeftSidebar, // 짧은 문법: `LeftSidebar: LeftSidebar`와 같음.
         RightSidebar,
       },
     },
@@ -30,60 +40,64 @@ const router = createRouter({
 })
 ```
 
-A working demo of this example can be found [here](https://codesandbox.io/s/named-views-vue-router-4-examples-rd20l).
+참고: [예제](https://codesandbox.io/s/named-views-vue-router-4-examples-rd20l)
 
-## Nested Named Views
+## 중첩된 이름이 있는 뷰 {#nested-named-views}
 
-It is possible to create complex layouts using named views with nested views. When doing so, you will also need to give nested `router-view` a name. Let's take a Settings panel example:
+중첩된 뷰와 명명된 뷰를 사용하여 복잡한 레이아웃을 만들 수 있습니다.
+이 때 중첩된 `router-view`에 이름도 지정해야 합니다.
+유저 세팅 패널을 예로 들어 보겠습니다:
 
 ```
-/settings/emails                                       /settings/profile
-+-----------------------------------+                  +------------------------------+
-| UserSettings                      |                  | UserSettings                 |
-| +-----+-------------------------+ |                  | +-----+--------------------+ |
-| | Nav | UserEmailsSubscriptions | |  +------------>  | | Nav | UserProfile        | |
-| |     +-------------------------+ |                  | |     +--------------------+ |
-| |     |                         | |                  | |     | UserProfilePreview | |
-| +-----+-------------------------+ |                  | +-----+--------------------+ |
-+-----------------------------------+                  +------------------------------+
+/settings/emails                                /settings/profile
++-----------------------------------+           +------------------------------+
+| UserSettings                      |           | UserSettings                 |
+| +-----+-------------------------+ |           | +-----+--------------------+ |
+| | Nav | UserEmailsSubscriptions | |  +----->  | | Nav | UserProfile        | |
+| |     +-------------------------+ |           | |     +--------------------+ |
+| |     |                         | |           | |     | UserProfilePreview | |
+| +-----+-------------------------+ |           | +-----+--------------------+ |
++-----------------------------------+           +------------------------------+
 ```
 
-- `Nav` is just a regular component
-- `UserSettings` is the parent view component
-- `UserEmailsSubscriptions`, `UserProfile`, `UserProfilePreview` are nested view components
+- `UserSettings`는 부모 뷰로 렌더링된 컴포넌트.
+- `Nav`는 일반 컴포넌트.
+- `UserEmailsSubscriptions`, `UserProfile`, `UserProfilePreview`는 `UserSettings` 내에 중첩된 뷰 컴포넌트.
 
-**Note**: _Let's forget about how the HTML/CSS should look like to represent such layout and focus on the components used._
+**참고**: _HTML/CSS로 이러한 레이아웃을 표현하는 방법은 잠시 잊어버리고, 사용된 컴포넌트에 집중합시다._
 
-The `<template>` section for `UserSettings` component in the above layout would look something like this:
+위 레이아웃의 `<UserSettings />` 컴포넌트 템플릿은 다음과 같습니다:
 
 ```html
 <!-- UserSettings.vue -->
 <div>
-  <h1>User Settings</h1>
+  <h1>사용자 설정</h1>
   <NavBar />
   <router-view />
-  <router-view name="helper" />
+  <router-view name="subView" />
 </div>
 ```
 
-Then you can achieve the layout above with this route configuration:
+이제 아래와 같이 경로를 구성하여 위 레이아웃을 구현할 수 있습니다:
 
 ```js
 {
   path: '/settings',
-  // You could also have named views at the top
   component: UserSettings,
-  children: [{
-    path: 'emails',
-    component: UserEmailsSubscriptions
-  }, {
-    path: 'profile',
-    components: {
-      default: UserProfile,
-      helper: UserProfilePreview
+  children: [
+    {
+      path: 'emails',
+      component: UserEmailsSubscriptions
+    },
+    {
+      path: 'profile',
+      components: {
+        default: UserProfile,
+        subView: UserProfilePreview
+      }
     }
-  }]
+  ]
 }
 ```
 
-A working demo of this example can be found [here](https://codesandbox.io/s/nested-named-views-vue-router-4-examples-re9yl?&initialpath=%2Fsettings%2Femails).
+참고: [예제](https://codesandbox.io/s/nested-named-views-vue-router-4-examples-re9yl?&initialpath=%2Fsettings%2Femails)
