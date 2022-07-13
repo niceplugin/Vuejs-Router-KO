@@ -121,7 +121,7 @@ const config = defineConfig({
               link: '/guide/essentials/named-routes.html',
             },
             {
-              text: 'Named Views',
+              text: '이름이 있는 뷰',
               link: '/guide/essentials/named-views.html',
             },
             {
