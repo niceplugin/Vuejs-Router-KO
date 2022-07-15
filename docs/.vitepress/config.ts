@@ -129,7 +129,7 @@ const config = defineConfig({
               link: '/guide/essentials/redirect-and-alias.html',
             },
             {
-              text: 'Passing Props to Route Components',
+              text: '경로 컴포넌트에 props 전달하기',
               link: '/guide/essentials/passing-props.html',
             },
             {
