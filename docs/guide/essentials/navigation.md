@@ -12,7 +12,7 @@
 이 메서드는 새 항목을 히스토리 스택으로 푸시하므로,
 사용자가 브라우저의 뒤로가기 버튼을 클릭하면 이전 URL로 이동합니다.
 
-이것은 `<router-link>`를 클릭할 때 내부적으로 호출되는 메소드이므로,
+이것은 `<router-link>`를 클릭할 때 내부적으로 호출되는 메서드이므로,
 `<router-link :to="...">`를 클릭하는 것은 `router.push(...)`를 호출하는 것과 같습니다.
 
 | 선언 방식                   | 프로그래밍 방식       |
@@ -114,4 +114,4 @@ router.go(100)
 
 따라서 이미 [브라우저 히스토리 API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)에 익숙하다면, Vue Router를 사용할 때 히스토리 조작이 익숙할 것입니다.
 
-Vue Router의 탐색 메소드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달되는 [`history` 옵션](/api/#history) 값에 상관없이 일관되게 작동합니다.
+Vue Router의 탐색 메서드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달되는 [`history` 옵션](/api/#history) 값에 상관없이 일관되게 작동합니다.
