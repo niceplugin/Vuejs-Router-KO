@@ -143,7 +143,7 @@ const config = defineConfig({
           collapsible: true,
           items: [
             {
-              text: 'Navigation guards',
+              text: '네비게이션 가드',
               link: '/guide/advanced/navigation-guards.html',
             },
             {
