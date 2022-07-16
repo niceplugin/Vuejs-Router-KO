@@ -75,7 +75,7 @@ const User = {
 }
 ```
 
-또는 [네비게이션 가드](../advanced/navigation-guards.md) `beforeRouteUpdate`를 사용하여 네비게이션을 취소할 수도 있습니다:
+또는 [네비게이션 가드](../advanced/navigation-guards.md) `beforeRouteUpdate`를 사용하여 탐색을 취소할 수도 있습니다:
 
 ```js
 const User = {
