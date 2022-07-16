@@ -133,7 +133,7 @@ const config = defineConfig({
               link: '/guide/essentials/passing-props.html',
             },
             {
-              text: 'Different History modes',
+              text: '다양한 히스토리 모드',
               link: '/guide/essentials/history-mode.html',
             },
           ],
