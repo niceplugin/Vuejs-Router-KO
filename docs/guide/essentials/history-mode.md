@@ -1,10 +1,11 @@
-# Different History modes
+# 다양한 히스토리 모드 {#different-history-modes}
 
-The `history` option when creating the router instance allows us to choose among different history modes.
+라우터 인스턴스를 생성할 때 `history` 옵션을 사용하여,
+다양한 히스토리 모드 중에서 하나를 적용할 수 있습니다.
 
-## Hash Mode
+## 해시 모드 {#hash-mode}
 
-The hash history mode is created with `createWebHashHistory()`:
+해시 모드는 `createWebHashHistory()`를 사용하여 적용합니다:
 
 ```js
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -17,11 +18,15 @@ const router = createRouter({
 })
 ```
 
-It uses a hash character (`#`) before the actual URL that is internally passed. Because this section of the URL is never sent to the server, it doesn't require any special treatment on the server level. **It does however have a bad impact in SEO**. If that's a concern for you, use the HTML5 history mode.
+내부적으로 전달되는 실제 URL 앞에 해시 문자(`#`)를 사용합니다.
+URL의 이 섹션은 서버로 전송되지 않으므로 서버의 특별한 조치가 필요하지 않습니다.
+**그러나 그것은 SEO에 나쁜 영향을 미치므로**,
+이것이 문제가 된다면 HTML5 모드를 사용해야 합니다.
 
-## HTML5 Mode
+## HTML5 모드 {#html5-mode}
 
-The HTML5 mode is created with `createWebHistory()` and is the recommended mode:
+HTML5 모드는 `createWebHashHistory()`를 사용하여 적용하며,
+권장하는 모드입니다:
 
 ```js
 import { createRouter, createWebHistory } from 'vue-router'
@@ -34,15 +39,24 @@ const router = createRouter({
 })
 ```
 
-When using `createWebHistory()`, the URL will look "normal," e.g. `https://example.com/user/id`. Beautiful!
+`createWebHistory()`를 사용할 때 URL은 `https://example.com/user/id`와 같이 "정상"으로 보입니다.
 
-Here comes a problem, though: Since our app is a single page client side app, without a proper server configuration, the users will get a 404 error if they access `https://example.com/user/id` directly in their browser. Now that's ugly.
+하지만 여기에 문제가 있습니다.
+우리 앱은 적절한 서버 구성이 없는 클라이언트 사이드 SPA이므로,
+사용자가 브라우저에서 바로 `https://example.com/user/id`에 접근하면 404 오류가 발생합니다.
 
-Not to worry: To fix the issue, all you need to do is add a simple catch-all fallback route to your server. If the URL doesn't match any static assets, it should serve the same `index.html` page that your app lives in. Beautiful, again!
+문제를 해결하려면 서버에 간단한 포괄 대체 경로를 추가하기만 하면 됩니다.
+URL 접근이 배포된 정적 자산과 일치하지 않으면,
+앱의 `index.html` 페이지를 제공해야 합니다.
 
-## Memory mode
+## 메모리 모드 {#memory-mode}
 
-The memory history mode doesn't assume a browser environment and therefore doesn't interact with the URL **nor automatically triggers the initial navigation**. This makes it perfect for Node environment and SSR. It is created with `createMemoryHistory()` and **requires you to push the initial navigation** after calling `app.use(router)`.
+메모리 모드는 브라우저 환경을 고려하지 않습니다.
+따라서 URL과 상호작용하지 않으며,
+**자동 네비게이션 초기화를 트리거하지 않습니다**.
+이것은 Node.js 환경의 SSR에 완벽합니다.
+`createMemoryHistory()`를 사용하여 적용하며,
+`app.use(router)`를 호출한 후 **반드시 네비게이션 초기화를 해야 합니다**.
 
 ```js
 import { createRouter, createMemoryHistory } from 'vue-router'
@@ -55,11 +69,18 @@ const router = createRouter({
 })
 ```
 
-While it's not recommended, you can use this mode inside Browser applications but note **there will be no history**, meaning you won't be able to go _back_ or _forward_.
+브라우저에서 이 모드를 사용할 수 있지만 **히스토리가 없으므로**,
+권장되지 않으니 유의해야 합니다.
+다시말해 "뒤로" 또는 "앞으로" 이동할 수 없습니다.
 
-## Example Server Configurations
+## 서버 구성 예제 {#example-server-configurations}
 
-**Note**: The following examples assume you are serving your app from the root folder. If you deploy to a subfolder, you should use [the `publicPath` option of Vue CLI](https://cli.vuejs.org/config/#publicpath) and the related [`base` property of the router](../../api/#createwebhistory). You also need to adjust the examples below to use the subfolder instead of the root folder (e.g. replacing `RewriteBase /` with `RewriteBase /name-of-your-subfolder/`).
+::: warning 참고
+아래 예제들은 루트 폴더에서 앱을 제공한다고 가정합니다.
+루트 폴더 대신 하위 폴더에 배포하는 경우,
+[Vue CLI의 `publicPath` 옵션](https://cli.vuejs.org/config/#publicpath)과 [라우터의 `base` 속성](/api/#createwebhistory)을 설정해야 합니다.
+또한 예제를 조정해야 합니다(예: `RewriteBase /`를 `RewriteBase /name-of-your-subfolder/`로 교체).
+:::
 
 ### Apache
 
@@ -78,7 +99,7 @@ While it's not recommended, you can use this mode inside Browser applications bu
 </IfModule>
 ```
 
-Instead of `mod_rewrite`, you could also use [`FallbackResource`](https://httpd.apache.org/docs/2.2/mod/mod_dir.html#fallbackresource).
+`mod_rewrite` 대신 [`FallbackResource`](https://httpd.apache.org/docs/2.2/mod/mod_dir.html#fallbackresource)를 사용할 수도 있습니다.
 
 ### nginx
 
@@ -88,7 +109,7 @@ location / {
 }
 ```
 
-### Native Node.js
+### 네이티브 Node.js {#native-node-js}
 
 ```js
 const http = require('http')
@@ -99,7 +120,7 @@ http
   .createServer((req, res) => {
     fs.readFile('index.html', 'utf-8', (err, content) => {
       if (err) {
-        console.log('We cannot open "index.html" file.')
+        console.log('"index.html" 파일을 열 수 없습니다.')
       }
 
       res.writeHead(200, {
@@ -110,18 +131,19 @@ http
     })
   })
   .listen(httpPort, () => {
-    console.log('Server listening on: http://localhost:%s', httpPort)
+    console.log('서버 수신 대기 중: http://localhost:%s', httpPort)
   })
 ```
 
-### Express with Node.js
+### Node.js에서 Express {#express-with-node-js}
 
-For Node.js/Express, consider using [connect-history-api-fallback middleware](https://github.com/bripkens/connect-history-api-fallback).
+Node.js의 Express 경우,
+[connect-history-api-fallback 미들웨어](https://github.com/bripkens/connect-history-api-fallback) 사용을 고려하십시오.
 
 ### Internet Information Services (IIS)
 
-1. Install [IIS UrlRewrite](https://www.iis.net/downloads/microsoft/url-rewrite)
-2. Create a `web.config` file in the root directory of your site with the following:
+1. [IIS UrlRewrite](https://www.iis.net/downloads/microsoft/url-rewrite) 설치
+3. 다음을 사용하여 사이트의 루트 디렉터리에 `web.config` 파일을 만듭니다:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -160,7 +182,7 @@ rewrite {
 
 ### Firebase hosting
 
-Add this to your `firebase.json`:
+`firebase.json`의 호스팅 부분을 다음과 같이 수정:
 
 ```json
 {
@@ -178,19 +200,20 @@ Add this to your `firebase.json`:
 
 ### Netlify
 
-Create a `_redirects` file that is included with your deployed files:
+`_redirects` 파일을 만들어 배포될 파일에 포함:
 
 ```
 /* /index.html 200
 ```
 
-In vue-cli, nuxt, and vite projects, this file usually goes under a folder named `static` or `public`.
+vue-cli, nuxt 및 vite 프로젝트에서 이 파일은 일반적으로 `static` 또는 `public`이라는 폴더에 있습니다.
 
-You can more about the syntax on [Netlify documentation](https://docs.netlify.com/routing/redirects/rewrites-proxies/#history-pushstate-and-single-page-apps). You can also [create a `netlify.toml`](https://docs.netlify.com/configure-builds/file-based-configuration/) to combine _redirections_ with other Netlify features.
+다른 Netlify 기능과 리디렉션을 결합하기 위해 [`netlify.toml`을 생성](https://docs.netlify.com/configure-builds/file-based-configuration/)할 수도 있습니다.
+문법에 대한 자세한 내용 참고: [Netlify 문서](https://docs.netlify.com/routing/redirects/rewrites-proxies/#history-pushstate-and-single-page-apps)
 
 ### Vercel
 
-Create a `vercel.json` file under the root directory of your project with the following:
+프로젝트의 루트 디렉터리에 다음과 같은 `vercel.json` 파일을 만듭니다:
 
 ```json
 {
@@ -198,9 +221,13 @@ Create a `vercel.json` file under the root directory of your project with the fo
 }
 ```
 
-## Caveat
+## 경고 {#caveat}
 
-There is a caveat to this: Your server will no longer report 404 errors as all not-found paths now serve up your `index.html` file. To get around the issue, you should implement a catch-all route within your Vue app to show a 404 page:
+Vue Router를 사용하여 만든 클라이언트 사이드 SPA는 모든 경로에 `index.html`을 제공하므로,
+서버는 더 이상 찾을 수 없는 페이지에 대해서 404 오류를 반환하지 않습니다.
+이 문제를 해결하려면,
+정의되지 않은 모든 경로르 포괄할 수 있는 "포괄 경로"를 구현하여,
+404 페이지를 표시해야 합니다.
 
 ```js
 const router = createRouter({
@@ -209,4 +236,7 @@ const router = createRouter({
 })
 ```
 
-Alternatively, if you are using a Node.js server, you can implement the fallback by using the router on the server side to match the incoming URL and respond with 404 if no route is matched. Check out the [Vue server side rendering documentation](https://v3.vuejs.org/guide/ssr/introduction.html#what-is-server-side-rendering-ssr) for more information.
+또는 Node.js 서버를 사용하는 경우,
+서버 측 라우터를 사용하여 수신되는 URL을 매칭하고,
+매칭되는 경로가 없으면 404로 응답하는 폴백을 구현할 수 있습니다.
+자세한 내용 참고: [Vue SSR 문서](https://v3-docs.vuejs-korea.org/guide/scaling-up/ssr.html)
