@@ -1,8 +1,12 @@
-# Vue Router and the Composition API
+# Vue Router와 컴포지션 API {#vue-router-and-the-composition-api}
 
 The introduction of `setup` and Vue's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html), open up new possibilities but to be able to get the full potential out of Vue Router, we will need to use a few new functions to replace access to `this` and in-component navigation guards.
 
-## Accessing the Router and current Route inside `setup`
+`setup`과 Vue의 [컴포지션 API](https://v3-docs.vuejs-korea.org/guide/introduction.html#composition-api)의 도입되었습니다.
+Vue Router의 잠재력을 최대한 활용하려면,
+`this` 및 컴포넌트 내부의 탐색 가드에서 라우터에 접근하는 방식을 대체하기 위해 몇 가지 새로운 함수를 사용해야 합니다.
+
+## `setup` 내부에서 라우터 및 현재 경로에 접근하기 {#accessing-the-router-and-current-route-inside-setup}
 
 Because we don't have access to `this` inside of `setup`, we cannot directly access `this.$router` or `this.$route` anymore. Instead we use the `useRouter` function:
 
@@ -50,7 +54,7 @@ export default {
 
 Note we still have access to `$router` and `$route` in templates, so there is no need to return `router` or `route` inside of `setup`.
 
-## Navigation Guards
+## 탐색 가드 {#navigation-guards}
 
 While you can still use in-component navigation guards with a `setup` function, Vue Router exposes update and leave guards as Composition API functions:
 
