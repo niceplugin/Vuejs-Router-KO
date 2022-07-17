@@ -147,7 +147,7 @@ const config = defineConfig({
               link: '/guide/advanced/navigation-guards.html',
             },
             {
-              text: 'Route Meta Fields',
+              text: '경로 메타 필드',
               link: '/guide/advanced/meta.html',
             },
             {
