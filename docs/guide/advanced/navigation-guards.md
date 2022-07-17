@@ -151,7 +151,7 @@ router.afterEach((to, from, failure) => {
 
 ## 경로 별 가드 {#per-route-guard}
 
-You can define `beforeEnter` guards directly on a route's configuration object:
+경로를 구성하는 객체에서 직접 `beforeEnter` 가드를 정의할 수 있습니다:
 
 ```js
 const routes = [
@@ -159,16 +159,19 @@ const routes = [
     path: '/users/:id',
     component: UserDetails,
     beforeEnter: (to, from) => {
-      // reject the navigation
+      // 경로 진입 거부
       return false
     },
   },
 ]
 ```
 
-`beforeEnter` guards **only trigger when entering the route**, they don't trigger when the `params`, `query` or `hash` change e.g. going from `/users/2` to `/users/3` or going from `/users/2#info` to `/users/2#projects`. They are only triggered when navigating **from a different** route.
+경로 별 `beforeEnter`는 **경로에 진입할 때만 가드를 실행**하며,
+`params`, `query` 또는 `hash`가 변경될 때 트리거하지 않습니다(예: `/users/2`에서 `/users/3`으로 이동 또는 `/users/2#info`에서 `/users/2#projects`로 이동).
+**다른** 경로에서 탐색된 경우에만 실행됩니다.
 
-You can also pass an array of functions to `beforeEnter`, this is useful when reusing guards for different routes:
+함수로 이루어진 배열을 `beforeEnter`에 전달할 수도 있습니다.
+이는 다른 경로의 가드를 재사용할 때 유용합니다:
 
 ```js
 function removeQueryParams(to) {
@@ -194,15 +197,13 @@ const routes = [
 ]
 ```
 
-Note it is possible to achieve a similar behavior by using [route meta fields](meta.md) and [global navigation guards](#global-before-guards).
-
 ## 컴포넌트 내부 가드 {#in-component-guards}
 
-Finally, you can directly define route navigation guards inside route components (the ones passed to the router configuration)
+마지막으로 경로를 구성하는 객체에 전달되는 "경로 컴포넌트" 내에서 경로 탐색 가드를 직접 정의할 수 있습니다.
 
 ### 옵션 API 사용 {#using-the-options-api}
 
-You can add the following options to route components:
+경로 컴포넌트에 다음과 같은 가드 옵션을 추가할 수 있습니다:
 
 - `beforeRouteEnter`
 - `beforeRouteUpdate`
@@ -212,68 +213,79 @@ You can add the following options to route components:
 const UserDetails = {
   template: `...`,
   beforeRouteEnter(to, from) {
-    // called before the route that renders this component is confirmed.
-    // does NOT have access to `this` component instance,
-    // because it has not been created yet when this guard is called!
+    // 이 컴포넌트를 렌더링하는 경로가 결정되기 전에 호출됨.
+    // 이 가드가 호출되는 시점에 컴포넌트 인스턴스는 아직 생성되지 않았으므로,
+    // `this`로 컴포넌트 인스턴스에 접근할 수 없음.
   },
   beforeRouteUpdate(to, from) {
-    // called when the route that renders this component has changed, but this component is reused in the new route.
-    // For example, given a route with params `/users/:id`, when we navigate between `/users/1` and `/users/2`,
-    // the same `UserDetails` component instance will be reused, and this hook will be called when that happens.
-    // Because the component is mounted while this happens, the navigation guard has access to `this` component instance.
+    // 이 컴포넌트를 렌더링하는 경로의 세부 정보가 변경될 때 동일한 컴포넌트가 사용되는 경우 호출됨.
+    // 예를 들어 `/users/:id` 파라미터가 있는 경로가 `/users/1`과 `/users/2` 사이를 탐색할 때,
+    // `UserDetails` 컴포넌트 인스턴스가 유지되면 이 훅이 호출됨.
+    // 이 시점에서 컴포넌트 인스턴트는 마운트된 상태이므로,
+    // 훅 내부에서 `this`로 컴포넌트 인스턴스에 접근할 수 있음.
   },
   beforeRouteLeave(to, from) {
-    // called when the route that renders this component is about to be navigated away from.
-    // As with `beforeRouteUpdate`, it has access to `this` component instance.
+    // 이 컴포넌트를 렌더링한 경로에서 떠나려고 할 때 호출됨.
+    // `beforeRouteUpdate`처럼 `this`로 컴포넌트 인스턴스에 접근할 수 있음.
   },
 }
 ```
 
-The `beforeRouteEnter` guard does **NOT** have access to `this`, because the guard is called before the navigation is confirmed, thus the new entering component has not even been created yet.
+`beforeRouteEnter` 가드는 탐색이 결정되기 전에 호출되므로,
+진입할 새로운 컴포넌트가 아직 생성되지 않아 **`this`에 접근할 수 없습니다**.
 
-However, you can access the instance by passing a callback to `next`. The callback will be called when the navigation is confirmed, and the component instance will be passed to the callback as the argument:
+그러나 `next`에 콜백을 전달하여 인스턴스에 접근할 수 있습니다.
+탐색이 결정되면 콜백이 호출되고,
+컴포넌트 인스턴스가 콜백의 인자로 전달됩니다:
 
 ```js
 beforeRouteEnter (to, from, next) {
   next(vm => {
-    // access to component public instance via `vm`
+    // `vm`을 통해 컴포넌트 공개 인스턴스에 접근
   })
 }
 ```
 
-Note that `beforeRouteEnter` is the only guard that supports passing a callback to `next`. For `beforeRouteUpdate` and `beforeRouteLeave`, `this` is already available, so passing a callback is unnecessary and therefore _not supported_:
+`beforeRouteEnter`는 훅의 콜백 함수에 `next` 인자가 전달되는 유일한 가드입니다.
+`beforeRouteUpdate` 및 `beforeRouteLeave`는 `this`가 이미 사용 가능하므로,
+콜백을 전달할 필요가 없으므로 지원되지 않습니다:
 
 ```js
 beforeRouteUpdate (to, from) {
-  // just use `this`
+  // 컴포넌트 인스턴스에 접근하기 위해 `this`를 사용.
   this.name = to.params.name
 }
 ```
 
-The **leave guard** is usually used to prevent the user from accidentally leaving the route with unsaved edits. The navigation can be canceled by returning `false`.
+**리브(leave) 가드**는 일반적으로 유저가 작업한 무엇인가를 저장하지 않고,
+실수로 경로에서 떠나는 것을 방지하는 데 사용됩니다.
+`false`를 반환하여 탐색을 취소할 수 있습니다:
 
 ```js
 beforeRouteLeave (to, from) {
-  const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+  const answer = window.confirm('정말 떠나시겠습니까? 저장되지 않은 변경 사항이 있습니다!')
   if (!answer) return false
 }
 ```
 
 ### 컴포지션 API 사용 {#using-the-composition-api}
 
-If you are writing your component using the [composition API and a `setup` function](https://v3.vuejs.org/guide/composition-api-setup.html#setup), you can add update and leave guards through `onBeforeRouteUpdate` and `onBeforeRouteLeave` respectively. Please refer to the [Composition API section](composition-api.md#navigation-guards) for more details.
+[컴포지션 API 및 `setup` 함수](https://v3-docs.vuejs-korea.org/api/composition-api-setup.html#setup)를 사용하여 컴포넌트를 작성하는 경우,
+`onBeforeRouteUpdate` 및 `onBeforeRouteLeave` 가드를 추가할 수 있습니다.
+
+참고: [가이드 - 컴포지션 API](composition-api.md#navigation-guards)
 
 ## 전체적인 탐색 흐름 {#the-full-navigation-resolution-flow}
 
-1. Navigation triggered.
-2. Call `beforeRouteLeave` guards in deactivated components.
-3. Call global `beforeEach` guards.
-4. Call `beforeRouteUpdate` guards in reused components.
-5. Call `beforeEnter` in route configs.
-6. Resolve async route components.
-7. Call `beforeRouteEnter` in activated components.
-8. Call global `beforeResolve` guards.
-9. Navigation is confirmed.
-10. Call global `afterEach` hooks.
-11. DOM updates triggered.
-12. Call callbacks passed to `next` in `beforeRouteEnter` guards with instantiated instances.
+1. 탐색 시작.
+2. 비활성화되는 컴포넌트에서 `beforeRouteLeave` 호출.
+3. 전역 `beforeEach` 호출.
+4. 재사용된 컴포넌트에서 `beforeRouteUpdate` 호출.
+5. 경로 `beforeEnter` 호출.
+6. 비동기 경로 컴포넌트 해결.
+7. 활성화된 컴포넌트에서 `beforeRouteEnter` 호출.
+8. 전역 `beforeResolve` 호출.
+9. 탐색 결정됨.
+10. 전역 `afterEach` 호출.
+11. DOM 업데이트 트리거.
+12. `beforeRouteEnter`의 `next`로 전달된 콜백에 컴포넌트 인스턴스를 인자로 전달하여 실행.
