@@ -151,7 +151,7 @@ const config = defineConfig({
               link: '/guide/advanced/meta.html',
             },
             {
-              text: 'Data Fetching',
+              text: '데이터 가져오기',
               link: '/guide/advanced/data-fetching.html',
             },
             {
