@@ -1,23 +1,30 @@
-# Data Fetching
+# 데이터 가져오기 {#data-fetching}
 
-Sometimes you need to fetch data from the server when a route is activated. For example, before rendering a user profile, you need to fetch the user's data from the server. We can achieve this in two different ways:
+경로가 활성화될 때, 서버에서 데이터를 가져와야 하는 경우가 있습니다.
+예를 들어 사용자 프로필을 렌더링하기 전에 서버에서 사용자 데이터를 가져와야 합니다.
+이것을 구현하는 데는 두 가지 방법이 있습니다:
 
-- **Fetching After Navigation**: perform the navigation first, and fetch data in the incoming component's lifecycle hook. Display a loading state while data is being fetched.
+- **탐색 후 가져오기**:
+  먼저 탐색을 수행하고 진입한 곳의 컴포넌트 수명 주기 훅에서 데이터를 가져옵니다.
+  데이터를 가져오는 동안 로딩 상태를 표시하는 것이 좋습니다.
 
-- **Fetching Before Navigation**: Fetch data before navigation in the route enter guard, and perform the navigation after data has been fetched.
+- **탐색 전 가져오기**:
+  경로 진입 전 데이터를 가져오고, 이후 탐색을 수행합니다.
 
-Technically, both are valid choices - it ultimately depends on the user experience you are aiming for.
+기술적으로 둘 다 유효하므로,
+목표로 하는 UX에 따라 선택하면 됩니다.
 
-## Fetching After Navigation
+## 탐색 후 가져오기 {#fetching-after-navigation}
 
-When using this approach, we navigate and render the incoming component immediately, and fetch data in the component's `created` hook. It gives us the opportunity to display a loading state while the data is being fetched over the network, and we can also handle loading differently for each view.
+이 접근 방식은 컴포넌트의 `created` 훅에서 데이터를 가져오는 것입니다.
+네트워크를 통해 데이터를 가져오는 동안 로딩 상태를 표시할 수 있습니다.
 
-Let's assume we have a `Post` component that needs to fetch the data for a post based on `$route.params.id`:
+`$route.params.id`를 기반으로 게시물에 대한 데이터를 가져와야 하는 `Post` 컴포넌트가 있다고 가정해 보겠습니다:
 
 ```html
 <template>
   <div class="post">
-    <div v-if="loading" class="loading">Loading...</div>
+    <div v-if="loading" class="loading">로딩 중...</div>
 
     <div v-if="error" class="error">{{ error }}</div>
 
@@ -39,14 +46,13 @@ export default {
     }
   },
   created() {
-    // watch the params of the route to fetch the data again
+    // 파라미터가 변경될 경우, 데이터를 다시 가져오기
     this.$watch(
       () => this.$route.params,
       () => {
         this.fetchData()
       },
-      // fetch the data when the view is created and the data is
-      // already being observed
+      // 감시가 등록되는 즉시 최초 실행을 하는 옵션
       { immediate: true }
     )
   },
@@ -54,7 +60,7 @@ export default {
     fetchData() {
       this.error = this.post = null
       this.loading = true
-      // replace `getPost` with your data fetching util / API wrapper
+      // `getPost`는 데이터를 가져오는 API라고 가정.
       getPost(this.$route.params.id, (err, post) => {
         this.loading = false
         if (err) {
@@ -68,10 +74,11 @@ export default {
 }
 ```
 
-## Fetching Before Navigation
+## 탐색 전 가져오기 {#fetching-before-navigation}
 
-With this approach we fetch the data before actually navigating to the new
-route. We can perform the data fetching in the `beforeRouteEnter` guard in the incoming component, and only call `next` when the fetch is complete:
+이 접근 방식은 실제로 새 경로로 이동하기 전에 데이터를 가져옵니다.
+경로 컴포넌트의 `beforeRouteEnter` 가드에서 데이터 가져오기를 수행하며,
+가져오기가 완료되었을 때만 `next`를 호출합니다:
 
 ```js
 export default {
@@ -86,8 +93,8 @@ export default {
       next(vm => vm.setData(err, post))
     })
   },
-  // when route changes and this component is already rendered,
-  // the logic will be slightly different.
+  // 변경된 경로에서 컴포넌트를 재사용하는 경우,
+  // 로직에 약간의 차이가 있음.
   async beforeRouteUpdate(to, from) {
     this.post = null
     try {
@@ -99,7 +106,10 @@ export default {
 }
 ```
 
-The user will stay on the previous view while the resource is being fetched for the incoming view. It is therefore recommended to display a progress bar or some kind of indicator while the data is being fetched. If the data fetch fails, it's also necessary to display some kind of global warning message.
+진입하는 뷰의 리소스를 가져오는 동안에는 이전 뷰가 유지됩니다.
+따라서 데이터를 가져오는 동안 진행률을 나타내는 UI를 노출하는 것이 좋습니다.
+데이터 가져오기가 실패하는 경우,
+전역 경고 메시지 표시도 필요합니다.
 
 <!-- ### Using Composition API -->
 
