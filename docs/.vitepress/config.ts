@@ -155,7 +155,7 @@ const config = defineConfig({
               link: '/guide/advanced/data-fetching.html',
             },
             {
-              text: 'Composition API',
+              text: '컴포지션 API',
               link: '/guide/advanced/composition-api.html',
             },
             {
