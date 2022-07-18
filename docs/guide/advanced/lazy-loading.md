@@ -47,8 +47,6 @@ Babel이 문법을 제대로 파싱할 수 있도록 [syntax-dynamic-import](htt
 
 ### Webpack 사용 시 {#with-webpack}
 
-Sometimes we may want to group all the components nested under the same route into the same async chunk. To achieve that we need to use [named chunks](https://webpack.js.org/guides/code-splitting/#dynamic-imports) by providing a chunk name using a special comment syntax (requires webpack > 2.4):
-
 때로는 동일한 경로 내부에 중첩된 모든 컴포넌트를 하나의 비동기 청크로 그룹화할 수 있습니다.
 이를 구현하려면 특수 주석 문법으로 청크 이름을 제공하여 [명명된 청크](https://webpack.js.org/guides/code-splitting/#dynamic-imports)를 사용해야 합니다(webpack > 2.4 필요):
 
