@@ -65,7 +65,7 @@ const router = createRouter({
 })
 ```
 
-"앵커로 스크롤" 동작을 시뮬레이션하려면:
+"앵커로 스크롤" 동작을 구현하려면:
 
 ```js
 const router = createRouter({
