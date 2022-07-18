@@ -167,7 +167,7 @@ const config = defineConfig({
               link: '/guide/advanced/scroll-behavior.html',
             },
             {
-              text: 'Lazy Loading Routes',
+              text: '경로 지연 로딩',
               link: '/guide/advanced/lazy-loading.html',
             },
             {

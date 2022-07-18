@@ -1,13 +1,15 @@
-# Lazy Loading Routes
+# 경로 지연 로딩 {#lazy-loading-routes}
 
-When building apps with a bundler, the JavaScript bundle can become quite large, and thus affect the page load time. It would be more efficient if we can split each route's components into separate chunks, and only load them when the route is visited.
+번들러를 사용하여 앱을 빌드할 때 JavaScript 번들이 상당히 커질 수 있으며 페이지 로드 시간에 영향을 줍니다.
+각 경로의 컴포넌트를 별도의 청크로 분할하고,
+해당 경로를 방문할 때만 로드할 수 있다면 더 효율적일 것입니다.
 
-Vue Router supports [dynamic imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports) out of the box, meaning you can replace static imports with dynamic ones:
+Vue Router는 기본적으로 [동적 가져오기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports)를 지원하므로,
+정적 가져오기를 동적 가져오기로 바꿀 수 있습니다.
 
 ```js
-// replace
 // import UserDetails from './views/UserDetails'
-// with
+// 주석처리 된 위의 기존 코드를 아래처럼 변경
 const UserDetails = () => import('./views/UserDetails')
 
 const router = createRouter({
@@ -16,30 +18,39 @@ const router = createRouter({
 })
 ```
 
-The `component` (and `components`) option accepts a function that returns a Promise of a component and Vue Router **will only fetch it when entering the page for the first time**, then use the cached version. Which means you can also have more complex functions as long as they return a Promise:
+`component`(그리고 `components`) 옵션은 컴포넌트를 반환하는 Promise를 반환하는 함수를 허용하며,
+Vue Router는 **처음 페이지에 진입할 때만** 가져온 다음 캐시된 버전을 사용합니다.
+즉, Promise를 반환하는 복잡한 함수도 사용할 수 있습니다:
 
 ```js
 const UserDetails = () =>
   Promise.resolve({
-    /* component definition */
+    /* 컴포넌트 정의 */
   })
 ```
 
-In general, it's a good idea **to always use dynamic imports** for all your routes.
+일반적으로 모든 경로는 **항상 동적 가져오기**를 사용하는 것이 좋습니다.
 
-::: tip Note
-Do **not** use [Async components](https://v3.vuejs.org/guide/component-dynamic-async.html#async-components) for routes. Async components can still be used inside route components but route component themselves are just dynamic imports.
+::: tip 참고
+경로에 [비동기 컴포넌트](https://v3-docs.vuejs-korea.org/guide/components/async.html)를 **사용하지 마십시오**.
+비동기 컴포넌트는 여전히 경로 컴포넌트 내에서 사용할 수 있지만,
+경로 컴포넌트 자체는 동적 가져오기에 불과합니다.
 :::
 
-When using a bundler like webpack, this will automatically benefit from [code splitting](https://webpack.js.org/guides/code-splitting/)
+webpack과 같은 번들러를 사용하는 경우,
+자동으로 [코드 분할](https://webpack.js.org/guides/code-splitting/)이 됩니다.
 
-When using Babel, you will need to add the [syntax-dynamic-import](https://babeljs.io/docs/plugins/syntax-dynamic-import/) plugin so that Babel can properly parse the syntax.
+Babel을 사용하는 경우,
+Babel이 문법을 제대로 파싱할 수 있도록 [syntax-dynamic-import](https://babeljs.io/docs/plugins/syntax-dynamic-import/) 플러그인을 추가해야 합니다.
 
-## Grouping Components in the Same Chunk
+## 동일한 청크에서 컴포넌트 그룹화 {#grouping-components-in-the-same-chunk}
 
-### With webpack
+### Webpack 사용 시 {#with-webpack}
 
 Sometimes we may want to group all the components nested under the same route into the same async chunk. To achieve that we need to use [named chunks](https://webpack.js.org/guides/code-splitting/#dynamic-imports) by providing a chunk name using a special comment syntax (requires webpack > 2.4):
+
+때로는 동일한 경로 내부에 중첩된 모든 컴포넌트를 하나의 비동기 청크로 그룹화할 수 있습니다.
+이를 구현하려면 특수 주석 문법으로 청크 이름을 제공하여 [명명된 청크](https://webpack.js.org/guides/code-splitting/#dynamic-imports)를 사용해야 합니다(webpack > 2.4 필요):
 
 ```js
 const UserDetails = () =>
@@ -50,11 +61,11 @@ const UserProfileEdit = () =>
   import(/* webpackChunkName: "group-user" */ './UserProfileEdit.vue')
 ```
 
-webpack will group any async module with the same chunk name into the same async chunk.
+webpack은 동일한 청크 이름을 가진 모든 비동기 모듈을 하나의 비동기 청크로 그룹화합니다.
 
-### With Vite
+### Vite 사용 시 {#with-vite}
 
-In Vite you can define the chunks under the [`rollupOptions`](https://vitejs.dev/config/#build-rollupoptions):
+Vite에서는 [`rollupOptions`](https://vitejs.dev/config/#build-rollupoptions) 내부에서 청크를 정의할 수 있습니다:
 
 ```js
 // vite.config.js
@@ -70,6 +81,7 @@ export default defineConfig({
             './src/UserProfileEdit',
           ],
         },
+      },
     },
   },
 })
