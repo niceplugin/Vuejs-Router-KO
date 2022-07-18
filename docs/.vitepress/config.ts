@@ -91,7 +91,7 @@ const config = defineConfig({
               link: '/guide/',
             },
             {
-              text: 'Vue 2에서 마이그레이션',
+              text: '⚠️Vue 2에서 마이그레이션 (영문)',
               link: '/guide/migration.html',
             },
           ]
