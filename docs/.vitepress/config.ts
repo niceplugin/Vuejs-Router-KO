@@ -175,7 +175,7 @@ const config = defineConfig({
               link: '/guide/advanced/typed-routes.html',
             },
             {
-              text: 'Extending RouterLink',
+              text: 'RouterLink 확장하기',
               link: '/guide/advanced/extending-router-link.html',
             },
             {
