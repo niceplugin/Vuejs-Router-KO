@@ -159,7 +159,7 @@ const config = defineConfig({
               link: '/guide/advanced/composition-api.html',
             },
             {
-              text: 'Transitions',
+              text: '트랜지션',
               link: '/guide/advanced/transitions.html',
             },
             {
