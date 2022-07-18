@@ -1,6 +1,7 @@
-# Transitions
+# 트랜지션 {#transitions}
 
-In order to use transitions on your route components and animate navigations, you need to use the [v-slot API](../../api/#router-view-s-v-slot):
+경로 컴포넌트에서 트랜지션을 사용하고 탐색에 애니메이션을 적용하려면,
+[v-slot API](/api/#router-view-s-v-slot)를 사용해야 합니다:
 
 ```html
 <router-view v-slot="{ Component }">
@@ -10,11 +11,13 @@ In order to use transitions on your route components and animate navigations, yo
 </router-view>
 ```
 
-[All transition APIs](https://v3.vuejs.org/guide/transitions-enterleave.html) work the same here.
+모든 트랜지션 API 작동은 [이곳](https://v3-docs.vuejs-korea.org/guide/built-ins/transition.html)에서 설명하는 것과 같습니다.
 
-## Per-Route Transition
+## 라우트 별 트랜지션 {#per-route-transition}
 
-The above usage will apply the same transition for all routes. If you want each route's component to have different transitions, you can instead combine [meta fields](meta.md) and a dynamic `name` on `<transition>`:
+위 예제는 모든 경로에 동일한 트랜지션을 적용합니다.
+각 경로의 컴포넌트가 서로 다른 트랜지션을 갖도록 하려면,
+[메타 필드](meta.md)와 `<transition>`의 `name`을 동적으로 조합해 사용하면 됩니다:
 
 ```js
 const routes = [
@@ -33,19 +36,21 @@ const routes = [
 
 ```html
 <router-view v-slot="{ Component, route }">
-  <!-- Use any custom transition and fallback to `fade` -->
+  <!-- 커스텀 트랜지션 또는 `fade`를 사용 -->
   <transition :name="route.meta.transition || 'fade'">
     <component :is="Component" />
   </transition>
 </router-view>
 ```
 
-## Route-Based Dynamic Transition
+## 경로 기반 동적 트랜지션 {#route-based-dynamic-transition}
 
-It is also possible to determine the transition to use dynamically based on the relationship between the target route and current route. Using a very similar snippet to the one just before:
+대상 경로와 현재 경로 간의 관계를 기반으로,
+사용할 트랜지션을 동적으로 설정할 수도 있습니다.
+이전 예제 코드와 매우 유사합니다:
 
 ```html
-<!-- use a dynamic transition name -->
+<!-- 동적인 트랜지션의 name 사용 -->
 <router-view v-slot="{ Component, route }">
   <transition :name="route.meta.transitionName">
     <component :is="Component" />
@@ -53,7 +58,8 @@ It is also possible to determine the transition to use dynamically based on the 
 </router-view>
 ```
 
-We can add an [after navigation hook](navigation-guards.md#global-after-hooks) to dynamically add information to the `meta` field based on the depth of the route
+경로의 깊이에 따라 `meta` 필드에 정보를 동적으로 추가하기 위해,
+[탐색 후 훅](navigation-guards.md#global-after-hooks)을 추가할 수 있습니다:
 
 ```js
 router.afterEach((to, from) => {
@@ -63,9 +69,11 @@ router.afterEach((to, from) => {
 })
 ```
 
-## Forcing a transition between reused views
+## 재사용된 뷰에서 강제로 트랜지션 {#forcing-a-transition-between-reused-views}
 
-Vue might automatically reuse components that look alike, avoiding any transition. Fortunately, it is possible [to add a `key` attribute](https://v3.vuejs.org/api/special-attributes.html#key) to force transitions. This also allows you to trigger transitions while staying on the same route with different params:
+Vue는 동일한 컴포넌트를 자동으로 재사용하여 트랜지션이 작동하지 않을 수 있습니다.
+다행히도 [`key`](https://v3-docs.vuejs-korea.org/api/built-in-special-attributes.html#key) 속성을 추가해 강제로 트랜지션을 트리거 하는 것이 가능합니다.
+이렇게 하면 경로를 유지하면서 파라미터 변경에 의한 트랜지션을 구현할 수 있습니다:
 
 ```vue
 <router-view v-slot="{ Component, route }">
