@@ -163,7 +163,7 @@ const config = defineConfig({
               link: '/guide/advanced/transitions.html',
             },
             {
-              text: 'Scroll Behavior',
+              text: '스크롤 동작',
               link: '/guide/advanced/scroll-behavior.html',
             },
             {
