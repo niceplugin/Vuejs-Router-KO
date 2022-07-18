@@ -1,10 +1,12 @@
 # Typed Routes (v4.1.0+)
 
-::: danger ‼️ Experimental feature
+::: danger ‼️ 실험적 기능
 
-Starting from v4.1.0, we are introducing a new feature called Typed Routes. This **experimental** feature is enabled through a Vite/webpack/rollup plugin.
+v4.1.0부터 Typed Routes라는 새로운 기능을 도입합니다.
+이 **실험적 기능**은 Vite/webpack/rollup 플러그인을 통해 활성화됩니다.
 
-![RouterLink to autocomplete](https://user-images.githubusercontent.com/664177/176442066-c4e7fa31-4f06-4690-a49f-ed0fd880dfca.png)
+![RouterLink 자동완성](https://user-images.githubusercontent.com/664177/176442066-c4e7fa31-4f06-4690-a49f-ed0fd880dfca.png)
 
-[Check the v4.1 release notes](https://github.com/vuejs/router/releases/tag/v4.1.0) for more information about this feature.
-[Check out the plugin](https://github.com/posva/unplugin-vue-router) GitHub repository for installation instructions and documentation.
+이 기능에 대한 자세한 내용 참고: [v4.1 릴리스](https://github.com/vuejs/router/releases/tag/v4.1.0)
+ 
+이 플러그인에 대한 설치 지침 및 문서 참고: [GitHub](https://github.com/posva/unplugin-vue-router)
