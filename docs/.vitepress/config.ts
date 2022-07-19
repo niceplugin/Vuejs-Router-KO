@@ -183,7 +183,7 @@ const config = defineConfig({
               link: '/guide/advanced/navigation-failures.html',
             },
             {
-              text: 'Dynamic Routing',
+              text: '동적 라우팅',
               link: '/guide/advanced/dynamic-routing.html',
             },
           ],
