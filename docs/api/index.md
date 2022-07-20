@@ -38,7 +38,7 @@
 ### replace
 
 - **타입**: `boolean`
-- **기본 값**: `false`
+- **기본값**: `false`
 - **상세**:
 
   `replace` 속성은 클릭 시 `router.push()` 대신 `router.replace()`가 호출되므로,
@@ -51,17 +51,17 @@
 ### active-class
 
 - **타입**: `string`
-- **기본 값**: `"router-link-active"`
+- **기본값**: `"router-link-active"`
 - **상세**:
 
   링크가 활성화 되었을 때, 렌더링된 `<a>`에 적용할 클래스입니다.
   [`linkActiveClass`](#linkactiveclass)로 전역 구성을 한 경우,
-  기본 값은 전역 구성 값 입니다.
+  기본값은 전역 구성 값 입니다.
 
 ### aria-current-value
 
 - **타입**: `'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false'`(`string`)
-- **기본 값**: `"page"`
+- **기본값**: `"page"`
 - **상세**:
 
   링크가 정확히 활성화되면 [`aria-current`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) 속성에 값이 전달됩니다.
@@ -69,7 +69,7 @@
 ### custom
 
 - **타입**: `boolean`
-- **기본 값**: `false`
+- **기본값**: `false`
 - **상세**:
 
   `<router-link>`가 콘텐츠를 `<a>` 엘리먼트로 래핑하지 않아야 하는지 여부.
@@ -99,12 +99,12 @@
 ### exact-active-class
 
 - **타입**: `string`
-- **기본 값**: `"router-link-exact-active"`
+- **기본값**: `"router-link-exact-active"`
 - **상세**:
 
   링크가 정확히 활성화 되었을 때, 렌더링된 `<a>`에 적용할 클래스입니다.
   [`linkExactActiveClass`](#linkexactactiveclass)로 전역 구성을 한 경우,
-  기본 값은 전역 구성 값 입니다.
+  기본값은 전역 구성 값 입니다.
 
 ## `<router-link>`'s `v-slot`
 
@@ -169,7 +169,7 @@
 ### name
 
 - **타입**: `string`
-- **기본 값**: `"default"`
+- **기본값**: `"default"`
 - **상세**:
 
   `<router-view>`에 `name`이 있으면,
@@ -188,7 +188,7 @@
 
 ## `<router-view>`'s `v-slot`
 
-`<router-view>` exposes a `v-slot` API mainly to wrap your route components with `<transition>` and `<keep-alive>` components.
+`<router-view>`는 주로 `<transition>`와 `<keep-alive>` 컴포넌트로 경로 컴포넌트를 래핑하기 위해 `v-slot` API를 노출합니다.
 
 ```html
 <router-view v-slot="{ Component, route }">
@@ -201,17 +201,17 @@
             :key="route.meta.usePathKey ? route.path : undefined"
           />
         </template>
-        <template #fallback> Loading... </template>
+        <template #fallback> 로딩 중... </template>
       </suspense>
     </keep-alive>
   </transition>
 </router-view>
 ```
 
-- `Component`: VNodes to be passed to a `<component>`'s `is` prop.
-- `route`: resolved normalized [route location](#routelocationnormalized).
+- `Component`: `<component>`의 `is` prop에 전달할 VNode.
+- `route`: 처리된(resolved) [정규화된 경로 위치](#routelocationnormalized).
 
-Note you should be passing View components' props directly to the `<component>` rather than the `<router-view>`:
+뷰 컴포넌트의 props를 `<router-view>`가 아닌 `<component>`에 직접 전달해야 합니다:
 
 ```html
 <router-view v-slot="{ Component, route }">
@@ -221,7 +221,8 @@ Note you should be passing View components' props directly to the `<component>` 
 
 ## createRouter
 
-Creates a Router instance that can be used by a Vue app. Check the [`RouterOptions`](#routeroptions) for a list of all the properties that can be passed.
+Vue 앱에서 사용할 수 있는 라우터 인스턴스를 만듭니다.
+전달할 수 있는 모든 속성 목록은 [`RouterOptions`](#routeroptions)를 확인하십시오.
 
 **시그니처**:
 
@@ -231,13 +232,15 @@ export declare function createRouter(options: RouterOptions): Router
 
 ### 파라미터
 
-| Parameter | Type                            | Description                      |
-| --------- | ------------------------------- | -------------------------------- |
-| options   | [RouterOptions](#routeroptions) | Options to initialize the router |
+| 파라미터    | 타입                              | 설명         |
+|---------|---------------------------------|------------|
+| options | [RouterOptions](#routeroptions) | 라우터 초기화 옵션 |
 
 ## createWebHistory
 
-Creates an HTML5 history. Most common history for single page applications. The application must be served through the http protocol.
+HTML5 히스토리 모드를 생성합니다.
+SPA에서 가장 일반적인 히스토리입니다.
+앱은 http 프로토콜을 통해 제공되어야 합니다.
 
 **시그니처**:
 
@@ -247,20 +250,22 @@ export declare function createWebHistory(base?: string): RouterHistory
 
 ### 파라미터
 
-| Parameter | Type     | Description                                                                                                           |
-| --------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
-| base      | `string` | optional base to provide. Useful when the application is hosted inside of a folder like `https://example.com/folder/` |
+| 파라미터 | 타입       | 설명                                                              |
+|------|----------|-----------------------------------------------------------------|
+| base | `string` | 선택적. 앱이 `https://example.com/folder/`와 같은 폴더 내부에서 호스팅될 때 유용합니다. |
 
 ### 예제
 
 ```js
-createWebHistory() // No base, the app is hosted at the root of the domain `https://example.com`
-createWebHistory('/folder/') // gives a url of `https://example.com/folder/`
+createWebHistory() // 앱은 도메인의 루트인 `https://example.com`에서 호스팅됩니다.
+createWebHistory('/folder/') // `https://example.com/folder/`에서 호스팅됩니다.
 ```
 
 ## createWebHashHistory
 
-Creates a hash history. Useful for web applications with no host (e.g. `file://`) or when configuring a server to handle any URL isn't an option. **Note you should use [`createWebHistory`](#createwebhistory) if SEO matters to you**.
+해시 히스토리 모드를 생성합니다.
+호스트가 없는 웹 앱(예: `file://`)이나 URL을 처리하도록 서버를 구성할 필요가 없는 경우에 유용합니다.
+**SEO가 중요하다면 [`createWebHistory`](#createwebhistory)를 사용해야 합니다**.
 
 **시그니처**:
 
@@ -270,9 +275,9 @@ export declare function createWebHashHistory(base?: string): RouterHistory
 
 ### 파라미터
 
-| Parameter | Type     | Description                                                                                                                                                                                                                                                                                                                                                       |
-| --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| base      | `string` | optional base to provide. Defaults to `location.pathname + location.search`. If there is a `<base>` tag in the `head`, its value will be ignored in favor of this parameter **but note it affects all the history.pushState() calls**, meaning that if you use a `<base>` tag, its `href` value **has to match this parameter** (ignoring anything after the `#`) |
+| 파라미터 | 타입     | 설명                                                                                                                                                                                                                           |
+|------| -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| base | `string` | 선택적. 기본값은 `location.pathname + location.search`입니다. `head`에 `<base>` 태그가 있는 경우, 해당 값은 이 파라미터에 의해 무시되지만, **모든 history.pushState() 호출**에 영향을 미칩니다. 그러므로 `<base>` 태그를 사용하는 경우, `href` 값이 **이 파라미터와 일치해야 합니다**(`#` 뒤의 모든 항목 무시). |
 
 ### 예제
 
@@ -292,7 +297,10 @@ createWebHashHistory('/iAmIgnored') // gives a url of `file:///usr/etc/folder/in
 
 ## createMemoryHistory
 
-Creates a in-memory based history. The main purpose of this history is to handle SSR. It starts in a special location that is nowhere. If the user is not on a browser context, it's up to them to replace that location with the starter location by either calling `router.push()` or `router.replace()`.
+메모리 기반 히스토리 모드를 생성합니다.
+이 히스토리의 주요 목적은 SSR을 처리하는 것입니다.
+어디에도 없는 특별한 장소에서 시작됩니다.
+사용자가 브라우저 컨텍스트에 있지 않은 경우, `router.push()` 또는 `router.replace()`를 호출하여 해당 위치를 시작 위치로 바꾸는 것은 사용자에게 달려 있습니다.
 
 **시그니처**:
 
@@ -302,17 +310,15 @@ export declare function createMemoryHistory(base?: string): RouterHistory
 
 ### 파라미터
 
-| Parameter | Type     | Description                               |
-| --------- | -------- | ----------------------------------------- |
-| base      | `string` | Base applied to all urls, defaults to '/' |
-
-### 반환 값
-
-A history object that can be passed to the router constructor
+| 파라미터 | 타입     | 설명                        |
+| --------- | -------- |---------------------------|
+| base      | `string` | 모든 URL에 base 적용, 기본값은 '/' |
 
 ## NavigationFailureType
 
-Enumeration with all possible types for navigation failures. Can be passed to [isNavigationFailure](#isnavigationfailure) to check for specific failures. **Never use any of the numerical values**, always use the variables like `NavigationFailureType.aborted`.
+탐색 실패에 대해 가능한 모든 유형의 열거입니다.
+특정 실패를 확인하기 위해 [isNavigationFailure](#isnavigationfailure)에 전달할 수 있습니다.
+**숫자 값을 절대 사용하지 말고**, 항상 `NavigationFailureType.aborted`와 같은 변수를 사용해야 합니다.
 
 **시그니처**:
 
@@ -322,25 +328,25 @@ export declare enum NavigationFailureType
 
 ### Members
 
-| Member     | Value | Description                                                                                                                      |
-| ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------- |
-| aborted    | 4     | An aborted navigation is a navigation that failed because a navigation guard returned `false` or called `next(false)`            |
-| cancelled  | 8     | A cancelled navigation is a navigation that failed because a more recent navigation finished started (not necessarily finished). |
-| duplicated | 16    | A duplicated navigation is a navigation that failed because it was initiated while already being at the exact same location.     |
+| Member     | 값   | 설명                                                             |
+| ---------- |-----|----------------------------------------------------------------|
+| aborted    | 4   | 네비게이션 가드 내부에서 `false`가 반환되었거나, `next(false)`를 호출했기 때문에 실패한 탐색. |
+| cancelled  | 8   | 탐색이 완료되기 전에 새 탐색이 시작되어 취소된 탐색(반드시 완료되진 않음).                    |
+| duplicated | 16  | 이미 해당 위치에 있기 때문에, 중복되어 취소된 탐색.                                 |
 
 ## START_LOCATION
 
 - **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
 - **상세**:
 
-  Initial route location where the router is. Can be used in navigation guards to differentiate the initial navigation.
+  라우터의 최초 경로 위치입니다. 네비게이션 가드에서 최초 탐색을 구별하는 데 사용할 수 있습니다.
 
   ```js
   import { START_LOCATION } from 'vue-router'
 
   router.beforeEach((to, from) => {
     if (from === START_LOCATION) {
-      // initial navigation
+      // 최초 탐색일 경우 ...
     }
   })
   ```
@@ -359,7 +365,7 @@ export declare function onBeforeRouteLeave(leaveGuard: NavigationGuard): void
 
 #### 파라미터
 
-| Parameter  | Type                                  | Description             |
+| 파라미터  | 타입                                  | 설명             |
 | ---------- | ------------------------------------- | ----------------------- |
 | leaveGuard | [`NavigationGuard`](#navigationguard) | Navigation guard to add |
 
@@ -375,7 +381,7 @@ export declare function onBeforeRouteUpdate(updateGuard: NavigationGuard): void
 
 #### 파라미터
 
-| Parameter   | Type                                  | Description             |
+| 파라미터   | 타입                                  | 설명             |
 | ----------- | ------------------------------------- | ----------------------- |
 | updateGuard | [`NavigationGuard`](#navigationguard) | Navigation guard to add |
 
@@ -397,7 +403,7 @@ export declare function useLink(props: RouterLinkOptions): {
 
 #### 파라미터
 
-| Parameter | Type                | Description                                                                           |
+| 파라미터 | 타입                | 설명                                                                           |
 | --------- | ------------------- | ------------------------------------------------------------------------------------- |
 | props     | `RouterLinkOptions` | props object that can be passed to `<router-link>`. Accepts `Ref`s and `ComputedRef`s |
 
@@ -455,7 +461,7 @@ addRoute(parentName: string | symbol, route: RouteRecordRaw): () => void
 
 _파라미터_
 
-| Parameter  | Type                                | Description                                             |
+| 파라미터  | 타입                                | 설명                                             |
 | ---------- | ----------------------------------- | ------------------------------------------------------- |
 | parentName | `string \| symbol`                  | Parent Route Record where `route` should be appended at |
 | route      | [`RouteRecordRaw`](#routerecordraw) | Route Record to add                                     |
@@ -472,7 +478,7 @@ addRoute(route: RouteRecordRaw): () => void
 
 _파라미터_
 
-| Parameter | Type                                | Description         |
+| 파라미터 | 타입                                | 설명         |
 | --------- | ----------------------------------- | ------------------- |
 | route     | [`RouteRecordRaw`](#routerecordraw) | Route Record to add |
 
@@ -492,7 +498,7 @@ afterEach(guard: NavigationHookAfter): () => void
 
 _파라미터_
 
-| Parameter | Type                  | Description            |
+| 파라미터 | 타입                  | 설명            |
 | --------- | --------------------- | ---------------------- |
 | guard     | `NavigationHookAfter` | navigation hook to add |
 
@@ -528,7 +534,7 @@ beforeEach(guard: NavigationGuard): () => void
 
 _파라미터_
 
-| Parameter | Type                                  | Description             |
+| 파라미터 | 타입                                  | 설명             |
 | --------- | ------------------------------------- | ----------------------- |
 | guard     | [`NavigationGuard`](#navigationguard) | navigation guard to add |
 
@@ -544,7 +550,7 @@ beforeResolve(guard: NavigationGuard): () => void
 
 _파라미터_
 
-| Parameter | Type                                  | Description             |
+| 파라미터 | 타입                                  | 설명             |
 | --------- | ------------------------------------- | ----------------------- |
 | guard     | [`NavigationGuard`](#navigationguard) | navigation guard to add |
 
@@ -588,7 +594,7 @@ go(delta: number): void
 
 _파라미터_
 
-| Parameter | Type     | Description                                                                         |
+| 파라미터 | 타입     | 설명                                                                         |
 | --------- | -------- | ----------------------------------------------------------------------------------- |
 | delta     | `number` | The position in the history to which you want to move, relative to the current page |
 
@@ -604,7 +610,7 @@ hasRoute(name: string | symbol): boolean
 
 _파라미터_
 
-| Parameter | Type               | Description                |
+| 파라미터 | 타입               | 설명                |
 | --------- | ------------------ | -------------------------- |
 | name      | `string \| symbol` | Name of the route to check |
 
@@ -630,7 +636,7 @@ onError(handler: (error: any, to: RouteLocationNormalized, from: RouteLocationNo
 
 _파라미터_
 
-| Parameter | Type                                                                              | Description               |
+| 파라미터 | 타입                                                                              | 설명               |
 | --------- | --------------------------------------------------------------------------------- | ------------------------- |
 | handler   | `(error: any, to: RouteLocationNormalized, from: RouteLocationNormalized) => any` | error handler to register |
 
@@ -646,7 +652,7 @@ push(to: RouteLocationRaw): Promise<NavigationFailure | void | undefined>
 
 _파라미터_
 
-| Parameter | Type                                    | Description                   |
+| 파라미터 | 타입                                    | 설명                   |
 | --------- | --------------------------------------- | ----------------------------- |
 | to        | [`RouteLocationRaw`](#routelocationraw) | Route location to navigate to |
 
@@ -662,7 +668,7 @@ removeRoute(name: string | symbol): void
 
 _파라미터_
 
-| Parameter | Type               | Description                 |
+| 파라미터 | 타입               | 설명                 |
 | --------- | ------------------ | --------------------------- |
 | name      | `string \| symbol` | Name of the route to remove |
 
@@ -678,7 +684,7 @@ replace(to: RouteLocationRaw): Promise<NavigationFailure | void | undefined>
 
 _파라미터_
 
-| Parameter | Type                                    | Description                   |
+| 파라미터 | 타입                                    | 설명                   |
 | --------- | --------------------------------------- | ----------------------------- |
 | to        | [`RouteLocationRaw`](#routelocationraw) | Route location to navigate to |
 
@@ -696,7 +702,7 @@ resolve(to: RouteLocationRaw): RouteLocation & {
 
 _파라미터_
 
-| Parameter | Type                                    | Description                   |
+| 파라미터 | 타입                                    | 설명                   |
 | --------- | --------------------------------------- | ----------------------------- |
 | to        | [`RouteLocationRaw`](#routelocationraw) | Raw route location to resolve |
 
