@@ -1,76 +1,84 @@
----
-sidebar: auto
----
+# API 레퍼런스 {#api-reference}
 
-# API Reference
+::: danger
+번역 진행 중에 있습니다.
+:::
 
 ## `<router-link>` Props
 
 ### to
 
-- **Type**: [`RouteLocationRaw`](#routelocationraw)
-- **Details**:
+- **타입**: [`RouteLocationRaw`](#routelocationraw)
+- **상세**:
 
-  Denotes the target route of the link. When clicked, the value of the `to` prop will be passed to `router.push()` internally, so it can either be a `string` or a [route location object](#routelocationraw).
+  링크의 대상 경로를 나타내는 `string` 또는 [경로 위치 객체](#routelocationraw) 입니다.
+  클릭하면 `to` 속성 값이 내부적으로 `router.push()`로 전달됩니다.
 
 ```html
-<!-- literal string -->
-<router-link to="/home">Home</router-link>
-<!-- renders to -->
-<a href="/home">Home</a>
+<!-- 리터럴 문자열 -->
+<router-link to="/home">홈</router-link>
+<!-- 다음과 같이 랜더링 됨 -->
+<a href="/home">홈</a>
 
-<!-- javascript expression using `v-bind` -->
-<router-link :to="'/home'">Home</router-link>
+<!-- `v-bind`로 자바스크립 표현식을 사용 -->
+<router-link :to="'/home'">홈</router-link>
 
-<!-- same as above -->
-<router-link :to="{ path: '/home' }">Home</router-link>
+<!-- 위 코드와 같음 -->
+<router-link :to="{ path: '/home' }">홈</router-link>
 
-<!-- named route -->
-<router-link :to="{ name: 'user', params: { userId: '123' }}">User</router-link>
+<!-- 이름이 있는 경로 ->
+<router-link :to="{ name: 'user', params: { userId: '123' }}">유저</router-link>
 
-<!-- with query, resulting in `/register?plan=private` -->
+<!-- 쿼리 사용: `/register?plan=private` -->
 <router-link :to="{ path: '/register', query: { plan: 'private' }}">
-  Register
+  등록하기
 </router-link>
 ```
 
 ### replace
 
-- **Type**: `boolean`
-- **Default**: `false`
-- **Details**:
+- **타입**: `boolean`
+- **기본 값**: `false`
+- **상세**:
 
-  Setting `replace` prop will call `router.replace()` instead of `router.push()` when clicked, so the navigation will not leave a history record.
+  `replace` 속성은 클릭 시 `router.push()` 대신 `router.replace()`가 호출되므로,
+  탐색이 기록되지 않습니다.
 
 ```html
-<router-link to="/abc" replace></router-link>
+<router-link to="/abc" replace>ABC로 이동</router-link>
 ```
 
 ### active-class
 
-- **Type**: `string`
-- **Default**: `"router-link-active"` (or global [`linkActiveClass`](#linkactiveclass))
-- **Details**:
+- **타입**: `string`
+- **기본 값**: `"router-link-active"`
+- **상세**:
 
-  Class to apply on the rendered `<a>` when the link is active.
+  링크가 활성화 되었을 때, 렌더링된 `<a>`에 적용할 클래스입니다.
+  [`linkActiveClass`](#linkactiveclass)로 전역 구성을 한 경우,
+  기본 값은 전역 구성 값 입니다.
 
 ### aria-current-value
 
-- **Type**: `'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false'` (`string`)
-- **Default**: `"page"`
-- **Details**:
+- **타입**: `'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false'`(`string`)
+- **기본 값**: `"page"`
+- **상세**:
 
-  Value passed to the attribute `aria-current` when the link is exactly active.
+  링크가 정확히 활성화되면 [`aria-current`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current) 속성에 값이 전달됩니다.
 
 ### custom
 
-- **Type**: `boolean`
-- **Default**: `false`
-- **Details**:
+- **타입**: `boolean`
+- **기본 값**: `false`
+- **상세**:
 
-  Whether `<router-link>` should not wrap its content in an `<a>` element. Useful when using [`v-slot`](#router-link-s-v-slot) to create a custom RouterLink. By default, `<router-link>` will render its content wrapped in an `<a>` element, even when using `v-slot`. Passing the `custom` prop, removes that behavior.
+  `<router-link>`가 콘텐츠를 `<a>` 엘리먼트로 래핑하지 않아야 하는지 여부.
 
-- **Examples**:
+  커스텀 RouterLink를 생성하기 위해 [`v-slot`](#router-link-s-v-slot)을 사용할 때 유용합니다.
+  기본적으로 `<router-link>`는 `v-slot`을 사용하는 경우에도 `<a>` 엘리먼트로 래핑된 콘텐츠를 렌더링하지만,
+  `custom` 속성을 전달하면 래핑 기능이 비활성화됩니다.
+
+- **예제**:
 
   ```html
   <router-link to="/home" custom v-slot="{ navigate, href, route }">
@@ -78,7 +86,7 @@ sidebar: auto
   </router-link>
   ```
 
-  Renders `<a href="/home">/home</a>`.
+  `<a href="/home">/home</a>`로 랜더링 됩니다.
 
   ```html
   <router-link to="/home" v-slot="{ route }">
@@ -86,22 +94,27 @@ sidebar: auto
   </router-link>
   ```
 
-  Renders `<a href="/home"><span>/home</span></a>`.
+  `<a href="/home"><span>/home</span></a>`로 랜더링 됩니다.
 
 ### exact-active-class
 
-- **Type**: `string`
-- **Default**: `"router-link-exact-active"` (or global [`linkExactActiveClass`](#linkexactactiveclass))
-- **Details**:
+- **타입**: `string`
+- **기본 값**: `"router-link-exact-active"`
+- **상세**:
 
-  Class to apply on the rendered `<a>` when the link is exact active.
+  링크가 정확히 활성화 되었을 때, 렌더링된 `<a>`에 적용할 클래스입니다.
+  [`linkExactActiveClass`](#linkexactactiveclass)로 전역 구성을 한 경우,
+  기본 값은 전역 구성 값 입니다.
 
 ## `<router-link>`'s `v-slot`
 
-`<router-link>` exposes a low level customization through a [scoped slot](https://v3.vuejs.org/guide/component-slots.html#scoped-slots). This is a more advanced API that primarily targets library authors but can come in handy for developers as well, to build a custom component like a _NavLink_ or other.
+`<router-link>`는 [범위가 지정된 슬롯](https://v3-docs.vuejs-korea.org/guide/components/slots.html#scoped-slots)을 통해 저수준으로 커스텀된 것을 노출합니다.
+이것은 주로 라이브러리 작성자를 대상으로 하는 고급 API이지만,
+커스텀 컴포넌트로 경로 링크를 만들려는 개발자에게도 유용할 수 있습니다.
 
 :::tip
-Remember to pass the `custom` option to `<router-link>` to prevent it from wrapping its content inside of an `<a>` element.
+`<router-link>`에 `custom` 속성을 사용해,
+콘텐츠가 `<a>` 엘리먼트 내부에 래핑되지 않도록 하십시오.
 :::
 
 ```html
@@ -110,21 +123,27 @@ Remember to pass the `custom` option to `<router-link>` to prevent it from wrapp
   custom
   v-slot="{ href, route, navigate, isActive, isExactActive }"
 >
-  <NavLink :active="isActive" :href="href" @click="navigate">
+  <MyNavLink :active="isActive" :href="href" @click="navigate">
     {{ route.fullPath }}
-  </NavLink>
+  </MyNavLink>
 </router-link>
 ```
 
-- `href`: resolved url. This would be the `href` attribute of an `<a>` element. It contains the `base` if any was provided.
-- `route`: resolved normalized location.
-- `navigate`: function to trigger the navigation. **It will automatically prevent events when necessary**, the same way `router-link` does, e.g. `ctrl` or `cmd` + click will still be ignored by `navigate`.
-- `isActive`: `true` if the [active class](#active-class) should be applied. Allows to apply an arbitrary class.
-- `isExactActive`: `true` if the [exact active class](#exact-active-class) should be applied. Allows to apply an arbitrary class.
+- `href`: 이동할 URL이며, `<a>` 엘리먼트의 `href` 속성 값이 되야 합니다.
+  히스토리 모드를 구성할 때 `base`가 전달된 경우, 해당 값이 여기에 포함됩니다.
+- `route`: 이동해야 할 경로가 정규화된 위치 객체.
+- `navigate`: 탐색을 트리거하는 함수입니다.
+  `router-link`처럼 **이벤트를 자동으로 prevent**하며,
+  `ctrl` 또는 `cmd` + 클릭 시에도 이벤트를 prevent합니다.
+- `isActive`: [active-class](#active-class)를 적용해야 하는 경우 `true`입니다.
+- `isExactActive`: [exact-active-class](#exact-active-class)를 적용해야 하는 경우 `true`입니다.
 
-### Example: Applying Active Class to Outer Element
+### 예제: 외부 엘리먼트에 활성화된 클래스 적용하기
 
-Sometimes we may want the active class to be applied to an outer element rather than the `<a>` element itself, in that case, you can wrap that element inside a `router-link` and use the `v-slot` properties to create your link:
+때로는 활성화된 클래스가 `<a>` 엘리먼트가 아닌,
+외부 엘리먼트에게 적용되어야 할 수 있습니다.
+이 경우 해당 엘리먼트를 `router-link` 내부에 래핑한 후,
+`v-slot` 속성으로 링크를 생성하면 됩니다:
 
 ```html
 <router-link
@@ -141,25 +160,29 @@ Sometimes we may want the active class to be applied to an outer element rather 
 ```
 
 :::tip
-If you add a `target="_blank"` to your `a` element, you must omit the `@click="navigate"` handler.
+`a` 엘리먼트에 `target="_blank"`를 추가하는 경우,
+`@click="navigate"` 핸들러를 생략해야 합니다.
 :::
 
 ## `<router-view>` Props
 
 ### name
 
-- **Type**: `string`
-- **Default**: `"default"`
-- **Details**:
+- **타입**: `string`
+- **기본 값**: `"default"`
+- **상세**:
 
-  When a `<router-view>` has a `name`, it will render the component with the corresponding name in the matched route record's `components` option.
+  `<router-view>`에 `name`이 있으면,
+  일치하는 경로 레코드의 `components` 옵션 내 `name`에 해당하는 값의 컴포넌트를 렌더링합니다.
 
-- **See Also**: [Named Views](../guide/essentials/named-views.md)
+- **참고**: [가이드 - 이름이 있는 뷰](/guide/essentials/named-views.md)
 
 ### route
 
-- **Type**: [`RouteLocationNormalized`](#routelocationnormalized)
-- **Details**:
+- **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
+- **상세**:
+
+  ⚠️번역 보류
 
   A route location that has all of its component resolved (if any was lazy loaded) so it can be displayed.
 
@@ -200,13 +223,13 @@ Note you should be passing View components' props directly to the `<component>` 
 
 Creates a Router instance that can be used by a Vue app. Check the [`RouterOptions`](#routeroptions) for a list of all the properties that can be passed.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function createRouter(options: RouterOptions): Router
 ```
 
-### Parameters
+### 파라미터
 
 | Parameter | Type                            | Description                      |
 | --------- | ------------------------------- | -------------------------------- |
@@ -216,19 +239,19 @@ export declare function createRouter(options: RouterOptions): Router
 
 Creates an HTML5 history. Most common history for single page applications. The application must be served through the http protocol.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function createWebHistory(base?: string): RouterHistory
 ```
 
-### Parameters
+### 파라미터
 
 | Parameter | Type     | Description                                                                                                           |
 | --------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
 | base      | `string` | optional base to provide. Useful when the application is hosted inside of a folder like `https://example.com/folder/` |
 
-### Examples
+### 예제
 
 ```js
 createWebHistory() // No base, the app is hosted at the root of the domain `https://example.com`
@@ -239,19 +262,19 @@ createWebHistory('/folder/') // gives a url of `https://example.com/folder/`
 
 Creates a hash history. Useful for web applications with no host (e.g. `file://`) or when configuring a server to handle any URL isn't an option. **Note you should use [`createWebHistory`](#createwebhistory) if SEO matters to you**.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function createWebHashHistory(base?: string): RouterHistory
 ```
 
-### Parameters
+### 파라미터
 
 | Parameter | Type     | Description                                                                                                                                                                                                                                                                                                                                                       |
 | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | base      | `string` | optional base to provide. Defaults to `location.pathname + location.search`. If there is a `<base>` tag in the `head`, its value will be ignored in favor of this parameter **but note it affects all the history.pushState() calls**, meaning that if you use a `<base>` tag, its `href` value **has to match this parameter** (ignoring anything after the `#`) |
 
-### Examples
+### 예제
 
 ```js
 // at https://example.com/folder
@@ -271,19 +294,19 @@ createWebHashHistory('/iAmIgnored') // gives a url of `file:///usr/etc/folder/in
 
 Creates a in-memory based history. The main purpose of this history is to handle SSR. It starts in a special location that is nowhere. If the user is not on a browser context, it's up to them to replace that location with the starter location by either calling `router.push()` or `router.replace()`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function createMemoryHistory(base?: string): RouterHistory
 ```
 
-### Parameters
+### 파라미터
 
 | Parameter | Type     | Description                               |
 | --------- | -------- | ----------------------------------------- |
 | base      | `string` | Base applied to all urls, defaults to '/' |
 
-### Returns
+### 반환 값
 
 A history object that can be passed to the router constructor
 
@@ -291,7 +314,7 @@ A history object that can be passed to the router constructor
 
 Enumeration with all possible types for navigation failures. Can be passed to [isNavigationFailure](#isnavigationfailure) to check for specific failures. **Never use any of the numerical values**, always use the variables like `NavigationFailureType.aborted`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare enum NavigationFailureType
@@ -307,8 +330,8 @@ export declare enum NavigationFailureType
 
 ## START_LOCATION
 
-- **Type**: [`RouteLocationNormalized`](#routelocationnormalized)
-- **Details**:
+- **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
+- **상세**:
 
   Initial route location where the router is. Can be used in navigation guards to differentiate the initial navigation.
 
@@ -328,13 +351,13 @@ export declare enum NavigationFailureType
 
 Add a navigation guard that triggers whenever the component for the current location is about to be left. Similar to `beforeRouteLeave` but can be used in any component. The guard is removed when the component is unmounted.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function onBeforeRouteLeave(leaveGuard: NavigationGuard): void
 ```
 
-#### Parameters
+#### 파라미터
 
 | Parameter  | Type                                  | Description             |
 | ---------- | ------------------------------------- | ----------------------- |
@@ -344,13 +367,13 @@ export declare function onBeforeRouteLeave(leaveGuard: NavigationGuard): void
 
 Add a navigation guard that triggers whenever the current location is about to be updated. Similar to `beforeRouteUpdate` but can be used in any component. The guard is removed when the component is unmounted.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function onBeforeRouteUpdate(updateGuard: NavigationGuard): void
 ```
 
-#### Parameters
+#### 파라미터
 
 | Parameter   | Type                                  | Description             |
 | ----------- | ------------------------------------- | ----------------------- |
@@ -360,7 +383,7 @@ export declare function onBeforeRouteUpdate(updateGuard: NavigationGuard): void
 
 Returns everything exposed by the [`v-slot` API](#router-link-s-v-slot).
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function useLink(props: RouterLinkOptions): {
@@ -372,7 +395,7 @@ export declare function useLink(props: RouterLinkOptions): {
 }
 ```
 
-#### Parameters
+#### 파라미터
 
 | Parameter | Type                | Description                                                                           |
 | --------- | ------------------- | ------------------------------------------------------------------------------------- |
@@ -382,7 +405,7 @@ export declare function useLink(props: RouterLinkOptions): {
 
 Returns the current route location. Equivalent to using `$route` inside templates. Must be called inside of `setup()`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function useRoute(): RouteLocationNormalized
@@ -392,7 +415,7 @@ export declare function useRoute(): RouteLocationNormalized
 
 Returns the [router](#router-properties) instance. Equivalent to using `$router` inside templates. Must be called inside of `setup()`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 export declare function useRouter(): Router
@@ -406,15 +429,15 @@ Here are some of the interfaces and types used by Vue Router. The documentation 
 
 ### currentRoute
 
-- **Type**: [`Ref<RouteLocationNormalized>`](#routelocationnormalized)
-- **Details**:
+- **타입**: [`Ref<RouteLocationNormalized>`](#routelocationnormalized)
+- **상세**:
 
   Current route location. Readonly.
 
 ### options
 
-- **Type**: [`RouterOptions`](#routeroptions)
-- **Details**:
+- **타입**: [`RouterOptions`](#routeroptions)
+- **상세**:
 
   Original options object passed to create the Router. Readonly.
 
@@ -424,13 +447,13 @@ Here are some of the interfaces and types used by Vue Router. The documentation 
 
 Add a new [Route Record](#routerecordraw) as the child of an existing route. If the route has a `name` and there is already an existing one with the same one, it removes it first.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 addRoute(parentName: string | symbol, route: RouteRecordRaw): () => void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter  | Type                                | Description                                             |
 | ---------- | ----------------------------------- | ------------------------------------------------------- |
@@ -441,13 +464,13 @@ _Parameters_
 
 Add a new [route record](#routerecordraw) to the router. If the route has a `name` and there is already an existing one with the same one, it removes it first.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 addRoute(route: RouteRecordRaw): () => void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                | Description         |
 | --------- | ----------------------------------- | ------------------- |
@@ -461,19 +484,19 @@ Note adding routes does not trigger a new navigation, meaning that the added rou
 
 Add a navigation hook that is executed after every navigation. Returns a function that removes the registered hook.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 afterEach(guard: NavigationHookAfter): () => void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                  | Description            |
 | --------- | --------------------- | ---------------------- |
 | guard     | `NavigationHookAfter` | navigation hook to add |
 
-#### Examples
+#### 예제
 
 ```js
 router.afterEach((to, from, failure) => {
@@ -487,7 +510,7 @@ router.afterEach((to, from, failure) => {
 
 Go back in history if possible by calling `history.back()`. Equivalent to `router.go(-1)`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 back(): void
@@ -497,13 +520,13 @@ back(): void
 
 Add a navigation guard that executes before any navigation. Returns a function that removes the registered guard.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 beforeEach(guard: NavigationGuard): () => void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                  | Description             |
 | --------- | ------------------------------------- | ----------------------- |
@@ -513,19 +536,19 @@ _Parameters_
 
 Add a navigation guard that executes before navigation is about to be resolved. At this state all component have been fetched and other navigation guards have been successful. Returns a function that removes the registered guard.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 beforeResolve(guard: NavigationGuard): () => void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                  | Description             |
 | --------- | ------------------------------------- | ----------------------- |
 | guard     | [`NavigationGuard`](#navigationguard) | navigation guard to add |
 
-#### Examples
+#### 예제
 
 ```js
 router.beforeResolve(to => {
@@ -537,7 +560,7 @@ router.beforeResolve(to => {
 
 Go forward in history if possible by calling `history.forward()`. Equivalent to `router.go(1)`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 forward(): void
@@ -547,7 +570,7 @@ forward(): void
 
 Get a full list of all the [route records](#routerecordnormalized).
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 getRoutes(): RouteRecordNormalized[]
@@ -557,13 +580,13 @@ getRoutes(): RouteRecordNormalized[]
 
 Allows you to move forward or backward through the history.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 go(delta: number): void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type     | Description                                                                         |
 | --------- | -------- | ----------------------------------------------------------------------------------- |
@@ -573,13 +596,13 @@ _Parameters_
 
 Checks if a route with a given name exists
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 hasRoute(name: string | symbol): boolean
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type               | Description                |
 | --------- | ------------------ | -------------------------- |
@@ -589,7 +612,7 @@ _Parameters_
 
 Returns a Promise that resolves when the router has completed the initial navigation, which means it has resolved all async enter hooks and async components that are associated with the initial route. If the initial navigation already happened, the promise resolves immediately.This is useful in server-side rendering to ensure consistent output on both the server and the client. Note that on server side, you need to manually push the initial location while on client side, the router automatically picks it up from the URL.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 isReady(): Promise<void>
@@ -599,13 +622,13 @@ isReady(): Promise<void>
 
 Adds an error handler that is called every time a non caught error happens during navigation. This includes errors thrown synchronously and asynchronously, errors returned or passed to `next` in any navigation guard, and errors occurred when trying to resolve an async component that is required to render a route.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 onError(handler: (error: any, to: RouteLocationNormalized, from: RouteLocationNormalized) => any): () => void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                                                              | Description               |
 | --------- | --------------------------------------------------------------------------------- | ------------------------- |
@@ -615,13 +638,13 @@ _Parameters_
 
 Programmatically navigate to a new URL by pushing an entry in the history stack.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 push(to: RouteLocationRaw): Promise<NavigationFailure | void | undefined>
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                    | Description                   |
 | --------- | --------------------------------------- | ----------------------------- |
@@ -631,13 +654,13 @@ _Parameters_
 
 Remove an existing route by its name.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 removeRoute(name: string | symbol): void
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type               | Description                 |
 | --------- | ------------------ | --------------------------- |
@@ -647,13 +670,13 @@ _Parameters_
 
 Programmatically navigate to a new URL by replacing the current entry in the history stack.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 replace(to: RouteLocationRaw): Promise<NavigationFailure | void | undefined>
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                    | Description                   |
 | --------- | --------------------------------------- | ----------------------------- |
@@ -663,7 +686,7 @@ _Parameters_
 
 Returns the [normalized version](#routelocation) of a [route location](#routelocationraw). Also includes an `href` property that includes any existing `base`.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 resolve(to: RouteLocationRaw): RouteLocation & {
@@ -671,7 +694,7 @@ resolve(to: RouteLocationRaw): RouteLocation & {
 }
 ```
 
-_Parameters_
+_파라미터_
 
 | Parameter | Type                                    | Description                   |
 | --------- | --------------------------------------- | ----------------------------- |
@@ -683,13 +706,13 @@ _Parameters_
 
 History implementation used by the router. Most web applications should use `createWebHistory` but it requires the server to be properly configured. You can also use a _hash_ based history with `createWebHashHistory` that does not require any configuration on the server but isn't handled at all by search engines and does poorly on SEO.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 history: RouterHistory
 ```
 
-#### Examples
+#### 예제
 
 ```js
 createRouter({
@@ -702,7 +725,7 @@ createRouter({
 
 Default class applied to active [RouterLink](#router-link-props). If none is provided, `router-link-active` will be applied.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 linkActiveClass?: string
@@ -712,7 +735,7 @@ linkActiveClass?: string
 
 Default class applied to exact active [RouterLink](#router-link-props). If none is provided, `router-link-exact-active` will be applied.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 linkExactActiveClass?: string
@@ -722,13 +745,13 @@ linkExactActiveClass?: string
 
 Custom implementation to parse a query. Must decode query keys and values. See its counterpart, [stringifyQuery](#stringifyquery).
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 parseQuery?: (searchQuery: string) => Record<string, (string | null)[] | string | null>
 ```
 
-#### Examples
+#### 예제
 
 Let's say you want to use the package [qs](https://github.com/ljharb/qs) to parse queries, you can provide both `parseQuery` and `stringifyQuery`:
 
@@ -746,7 +769,7 @@ createRouter({
 
 Initial list of routes that should be added to the router.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 routes: RouteRecordRaw[]
@@ -754,15 +777,15 @@ routes: RouteRecordRaw[]
 
 ### scrollBehavior
 
-Function to control scrolling when navigating between pages. Can return a Promise to delay when the scrolling happens. See [Scroll Behaviour](../guide/advanced/scroll-behavior.md) for more details.
+Function to control scrolling when navigating between pages. Can return a Promise to delay when the scrolling happens.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 scrollBehavior?: RouterScrollBehavior
 ```
 
-#### Examples
+#### 예제
 
 ```js
 function scrollBehavior(to, from, savedPosition) {
@@ -771,11 +794,13 @@ function scrollBehavior(to, from, savedPosition) {
 }
 ```
 
+- **참고**: [가이드 - 스크롤 동작](/guide/advanced/scroll-behavior.md)
+
 ### stringifyQuery
 
 Custom implementation to stringify a query object. Should not prepend a leading `?`. Should properly encode query keys and values. [parseQuery](#parsequery) counterpart to handle query parsing.
 
-**Signature:**
+**시그니처**:
 
 ```typescript
 stringifyQuery?: (
@@ -791,86 +816,86 @@ stringifyQuery?: (
 Route record that can be provided by the user when adding routes via the [`routes` option](#routeroptions) or via [`router.addRoute()`](#addroute-2). There are three different kind of route records:
 
 - Single views records: have a `component` option
-- Multiple views records ([named views](../guide/essentials/named-views.md)): have a `components` option
+- Multiple views records ([named views](/guide/essentials/named-views.md)): have a `components` option
 - Redirect records: cannot have `component` or `components` option because a redirect record is never reached.
 
 ### path
 
-- **Type**: `string`
-- **Details**:
+- **타입**: `string`
+- **상세**:
 
   Path of the record. Should start with `/` unless the record is the child of another record. Can define parameters: `/users/:id` matches `/users/1` as well as `/users/posva`.
 
-- **See Also**: [Dynamic Route Matching](../guide/essentials/dynamic-matching.md)
+- **참고**: [가이드 - 동적 경로 매칭](/guide/essentials/dynamic-matching.md)
 
 ### redirect
 
-- **Type**: `RouteLocationRaw | (to: RouteLocationNormalized) => RouteLocationRaw` (Optional)
-- **Details**:
+- **타입**: `RouteLocationRaw | (to: RouteLocationNormalized) => RouteLocationRaw` (Optional)
+- **상세**:
 
   Where to redirect if the route is directly matched. The redirection happens before any navigation guard and triggers a new navigation with the new target location. Can also be a function that receives the target route location and returns the location we should redirect to.
 
 ### children
 
-- **Type**: Array of [`RouteRecordRaw`](#routerecordraw) (Optional)
-- **Details**:
+- **타입**: Array of [`RouteRecordRaw`](#routerecordraw) (Optional)
+- **상세**:
 
   Nested routes of the current record.
 
-- **See Also**: [Nested Routes](../guide/essentials/nested-routes.md)
+- **참고**: [가이드 - 중첩된 경로](/guide/essentials/nested-routes.md)
 
 ### alias
 
-- **Type**: `string | string[]` (Optional)
-- **Details**:
+- **타입**: `string | string[]` (Optional)
+- **상세**:
 
   Aliases for the route. Allows defining extra paths that will behave like a copy of the record. This enables paths shorthands like `/users/:id` and `/u/:id`. **All `alias` and `path` values must share the same params**.
 
 ### name
 
-- **Type**: `string | symbol` (Optional)
-- **Details**:
+- **타입**: `string | symbol` (Optional)
+- **상세**:
 
   Unique name for the route record.
 
 ### beforeEnter
 
-- **Type**: [`NavigationGuard | NavigationGuard[]`](#navigationguard) (Optional)
-- **Details**:
+- **타입**: [`NavigationGuard | NavigationGuard[]`](#navigationguard) (Optional)
+- **상세**:
 
   Before enter guard specific to this record. Note `beforeEnter` has no effect if the record has a `redirect` property.
 
 ### props
 
-- **Type**: `boolean | Record<string, any> | (to: RouteLocationNormalized) => Record<string, any>` (Optional)
-- **Details**:
+- **타입**: `boolean | Record<string, any> | (to: RouteLocationNormalized) => Record<string, any>` (Optional)
+- **상세**:
 
   Allows passing down params as props to the component rendered by `router-view`. When passed to a _multiple views record_, it should be an object with the same keys as `components` or a `boolean` to be applied to each component.target location.
 
-- **See Also**: [Passing props to Route Components](../guide/essentials/passing-props.md)
+- **참고**: [가이드 - 경로 컴포넌트에 props 전달하기](/guide/essentials/passing-props.md)
 
 ### sensitive
 
-- **Type**: `boolean` (Optional) 
-- **Details**: 
+- **타입**: `boolean` (Optional)
+- **상세**:
 
   Makes the route matching case sensitive, defaults to `false`. Note this can also be set at a route level.
 
 ### strict
 
-- **Type**: `boolean` (Optional) 
-- **Details**: 
+- **타입**: `boolean` (Optional)
+- **상세**:
 
   Strictly checks the presence or absence of a trailing slash (`/`) at the end of the path. Defaults to `false` meaning that by default a route `/users` matches both `/users` and `/users/`. Note this can also be set at a route level.
 
 ### meta
 
-- **Type**: [`RouteMeta`](#routemeta) (Optional)
-- **Details**:
+- **타입**: [`RouteMeta`](#routemeta) (Optional)
+- **상세**:
 
   Custom data attached to the record.
 
-- **See Also**: [Meta fields](../guide/advanced/meta.md)
+- **참고**: [가이드 - 경로 메타 필드](/guide/advanced/meta.md)
 
 :::tip
 If you want to use a functional component, make sure to add a `displayName` to it.
@@ -892,74 +917,74 @@ Normalized version of a [Route Record](#routerecordraw)
 
 ### aliasOf
 
-- **Type**: `RouteRecordNormalized | undefined`
-- **Details**:
+- **타입**: `RouteRecordNormalized | undefined`
+- **상세**:
 
   Defines if this record is the alias of another one. This property is `undefined` if the record is the original one.
 
 ### beforeEnter
 
-- **Type**: [`NavigationGuard`](#navigationguard)
-- **Details**:
+- **타입**: [`NavigationGuard`](#navigationguard)
+- **상세**:
 
   Navigation guard applied when entering this record from somewhere else.
 
-- **See Also**: [Navigation guards](../guide/advanced/navigation-guards.md)
+- **참고**: [가이드 - 네비게이션 가드](/guide/advanced/navigation-guards.md)
 
 ### children
 
-- **Type**: Array of normalized [route records](#routerecordnormalized)
-- **Details**:
+- **타입**: Array of normalized [route records](#routerecordnormalized)
+- **상세**:
 
   Children route records of a route at the time it was added. Empty array if none. Note this array doesn't update when `addRoute()` and `removeRoute()` are called.
 
 ### components
 
-- **Type**: `Record<string, Component>`
-- **Details**:
+- **타입**: `Record<string, Component>`
+- **상세**:
 
   Dictionary of named views, if none, contains an object with the key `default`.
 
 ### meta
 
-- **Type**: `RouteMeta`
-- **Details**:
+- **타입**: `RouteMeta`
+- **상세**:
 
   Arbitrary data attached to the record.
 
-- **See also**: [Meta fields](../guide/advanced/meta.md)
+- **참고**: [가이드 - 경로 메타 필드](/guide/advanced/meta.md)
 
 ### name
 
-- **Type**: `string | symbol | undefined`
-- **Details**:
+- **타입**: `string | symbol | undefined`
+- **상세**:
 
   Name for the route record. `undefined` if none was provided.
 
 ### path
 
-- **Type**: `string`
-- **Details**:
+- **타입**: `string`
+- **상세**:
 
   Normalized path of the record. Includes any parent's `path`.
 
 ### props
 
-- **Type**: `Record<string, boolean | Function | Record<string, any>>`
-- **Details**:
+- **타입**: `Record<string, boolean | Function | Record<string, any>>`
+- **상세**:
 
   Dictionary of the [`props` option](#props) for each named view. If none, it will contain only one property named `default`.
 
 ### redirect
 
-- **Type**: [`RouteLocationRaw`](#routelocationraw)
-- **Details**:
+- **타입**: [`RouteLocationRaw`](#routelocationraw)
+- **상세**:
 
   Where to redirect if the route is directly matched. The redirection happens before any navigation guard and triggers a new navigation with the new target location.
 
 ## RouteLocationRaw
 
-User-level route location that can be passed to `router.push()`, `redirect`, and returned in [Navigation Guards](../guide/advanced/navigation-guards.md).
+User-level route location that can be passed to `router.push()`, `redirect`, and returned in [Navigation Guards](/guide/advanced/navigation-guards.md).
 
 A raw location can either be a `string` like `/users/posva#bio` or an object:
 
@@ -996,66 +1021,66 @@ Normalized route location. Does not have any [redirect records](#routerecordraw)
 
 ### fullPath
 
-- **Type**: `string`
-- **Details**:
+- **타입**: `string`
+- **상세**:
 
   Encoded URL associated to the route location. Contains `path`, `query` and `hash`.
 
 ### hash
 
-- **Type**: `string`
-- **Details**:
+- **타입**: `string`
+- **상세**:
 
   Decoded `hash` section of the URL. Always starts with a `#`. Empty string if there is no `hash` in the URL.
 
 ### query
 
-- **Type**: `Record<string, LocationQueryValue | LocationQueryValue[]>`
-- **Details**:
+- **타입**: `Record<string, LocationQueryValue | LocationQueryValue[]>`
+- **상세**:
 
   Dictionary of decoded query params extracted from the `search` section of the URL.
 
 ### matched
 
-- **Type**: [`RouteRecordNormalized[]`](#routerecordnormalized)
-- **Details**:
+- **타입**: [`RouteRecordNormalized[]`](#routerecordnormalized)
+- **상세**:
 
   Array of [normalized route records](#routerecordnormalized) that were matched with the given route location.
 
 ### meta
 
-- **Type**: `RouteMeta`
-- **Details**:
+- **타입**: `RouteMeta`
+- **상세**:
 
   Arbitrary data attached to all matched records merged (non recursively) from parent to child.
 
-- **See also**: [Meta fields](../guide/advanced/meta.md)
+- **참고**: [가이드 - 경로 메타 필드](/guide/advanced/meta.md)
 
 ### name
 
-- **Type**: `string | symbol | undefined | null`
-- **Details**:
+- **타입**: `string | symbol | undefined | null`
+- **상세**:
 
   Name for the route record. `undefined` if none was provided.
 
 ### params
 
-- **Type**: `Record<string, string | string[]>`
-- **Details**:
+- **타입**: `Record<string, string | string[]>`
+- **상세**:
 
   Dictionary of decoded params extracted from `path`.
 
 ### path
 
-- **Type**: `string`
-- **Details**:
+- **타입**: `string`
+- **상세**:
 
   Encoded `pathname` section of the URL associated to the route location.
 
 ### redirectedFrom
 
-- **Type**: [`RouteLocation`](#routelocation)
-- **Details**:
+- **타입**: [`RouteLocation`](#routelocation)
+- **상세**:
 
   Route location we were initially trying to access before ending up on the current location when a `redirect` option was found or a navigation guard called `next()` with a route location. `undefined` if there was no redirection.
 
@@ -1063,36 +1088,36 @@ Normalized route location. Does not have any [redirect records](#routerecordraw)
 
 ### from
 
-- **Type**: [`RouteLocationNormalized`](#routelocationnormalized)
-- **Details**:
+- **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
+- **상세**:
 
   Route location we were navigating from
 
 ### to
 
-- **Type**: [`RouteLocationNormalized`](#routelocationnormalized)
-- **Details**:
+- **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
+- **상세**:
 
   Route location we were navigating to
 
 ### type
 
-- **Type**: [`NavigationFailureType`](#navigationfailuretype)
-- **Details**:
+- **타입**: [`NavigationFailureType`](#navigationfailuretype)
+- **상세**:
 
   Type of the navigation failure.
 
-- **See Also**: [Navigation Failures](../guide/advanced/navigation-failures.md)
+- **참고**: [가이드 - 탐색 실패](/guide/advanced/navigation-failures.md)
 
 ## NavigationGuard
 
-- **Arguments**:
+- **인자**:
 
   - [`RouteLocationNormalized`](#routelocationnormalized) to - Route location we are navigating to
   - [`RouteLocationNormalized`](#routelocationnormalized) from - Route location we are navigating from
   - `Function` next (Optional) - Callback to validate the navigation
 
-- **Details**:
+- **상세**:
 
   Function that can be passed to control a router navigation. The `next` callback can be omitted if you return a value (or a Promise) instead, which is encouraged. Possible return values (and parameters for `next`) are:
 
@@ -1101,7 +1126,7 @@ Normalized route location. Does not have any [redirect records](#routerecordraw)
   - [`RouteLocationRaw`](#routelocationraw): redirects to a different location
   - `(vm: ComponentPublicInstance) => any` **only for `beforeRouteEnter`**: A callback to be executed once the navigation completes. Receives the route component instance as the parameter.
 
-- **See Also**: [Navigation Guards](../guide/advanced/navigation-guards.md)
+- **참고**: [가이드 - 네비게이션 가드](/guide/advanced/navigation-guards.md)
 
 ## Component Injections
 
@@ -1122,5 +1147,5 @@ These properties are injected into every child component by calling `app.use(rou
 - **beforeRouteEnter**
 - **beforeRouteUpdate**
 - **beforeRouteLeave**
-
-See [In Component Guards](../guide/advanced/navigation-guards.md#in-component-guards).
+  <br>
+- **참고**: [가이드 - 네비게이션 가드: 컴포넌트 내부 가드](/guide/advanced/navigation-guards.md#in-component-guards).
