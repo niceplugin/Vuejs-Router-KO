@@ -182,9 +182,9 @@
 - **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
 - **상세**:
 
-  ⚠️번역 보류
-
-  A route location that has all of its component resolved (if any was lazy loaded) so it can be displayed.
+  모든 컴포넌트를 뷰(view)에 표시할 수 있도록 해결된(지연 로드인 경우 로드가 완료된) 경로 위치 객체를 받습니다.
+  보통 `router.resolt`로 경로 위치 객체를 생성하며,
+  이 객체는 `shallowRef`나 `computed`를 사용해 **반응형으로 감싼 객체**를 받아야 합니다.
 
 ## `<router-view>`'s `v-slot`
 
@@ -355,7 +355,9 @@ export declare enum NavigationFailureType
 
 ### onBeforeRouteLeave
 
-Add a navigation guard that triggers whenever the component for the current location is about to be left. Similar to `beforeRouteLeave` but can be used in any component. The guard is removed when the component is unmounted.
+현재 위치의 컴포넌트가 떠나려고 할 때마다 트리거되는 네비게이션 가드를 추가합니다.
+`beforeRouteLeave`와 유사하며 모든 컴포넌트에서 사용할 수 있습니다.
+컴포넌트가 마운트 해제되면 가드가 제거됩니다.
 
 **시그니처**:
 
@@ -367,11 +369,13 @@ export declare function onBeforeRouteLeave(leaveGuard: NavigationGuard): void
 
 | 파라미터  | 타입                                  | 설명             |
 | ---------- | ------------------------------------- | ----------------------- |
-| leaveGuard | [`NavigationGuard`](#navigationguard) | Navigation guard to add |
+| leaveGuard | [`NavigationGuard`](#navigationguard) | 네비게이션 가드를 추가합니다. |
 
 ### onBeforeRouteUpdate
 
-Add a navigation guard that triggers whenever the current location is about to be updated. Similar to `beforeRouteUpdate` but can be used in any component. The guard is removed when the component is unmounted.
+현재 위치가 업데이트되려고 할 때마다 트리거되는 네비게이션 가드를 추가합니다.
+`beforeRouteUpdate`와 유사하며 모든 컴포넌트에서 사용할 수 있습니다.
+컴포넌트가 마운트 해제되면 가드가 제거됩니다.
 
 **시그니처**:
 
@@ -383,11 +387,11 @@ export declare function onBeforeRouteUpdate(updateGuard: NavigationGuard): void
 
 | 파라미터   | 타입                                  | 설명             |
 | ----------- | ------------------------------------- | ----------------------- |
-| updateGuard | [`NavigationGuard`](#navigationguard) | Navigation guard to add |
+| updateGuard | [`NavigationGuard`](#navigationguard) | 네비게이션 가드를 추가합니다. |
 
 ### useLink
 
-Returns everything exposed by the [`v-slot` API](#router-link-s-v-slot).
+[`v-slot` API](#router-link-s-v-slot)에 의해 노출되는 모든 것을 반환합니다.
 
 **시그니처**:
 
@@ -405,11 +409,13 @@ export declare function useLink(props: RouterLinkOptions): {
 
 | 파라미터 | 타입                | 설명                                                                           |
 | --------- | ------------------- | ------------------------------------------------------------------------------------- |
-| props     | `RouterLinkOptions` | props object that can be passed to `<router-link>`. Accepts `Ref`s and `ComputedRef`s |
+| props     | `RouterLinkOptions` | `<router-link>`에 전달할 수 있는 props 객체입니다. `Ref`와 `ComputedRef`를 허용합니다. |
 
 ### useRoute
 
-Returns the current route location. Equivalent to using `$route` inside templates. Must be called inside of `setup()`.
+현재 경로 위치를 반환합니다.
+템플릿 내에서 `$route`를 사용하는 것과 같습니다.
+`setup()` 내부에서 호출되어야 합니다.
 
 **시그니처**:
 
@@ -419,7 +425,9 @@ export declare function useRoute(): RouteLocationNormalized
 
 ### useRouter
 
-Returns the [router](#router-properties) instance. Equivalent to using `$router` inside templates. Must be called inside of `setup()`.
+[라우터](#router-properties) 인스턴스를 반환합니다.
+템플릿 내에서 `$router`를 사용하는 것과 동일합니다.
+`setup()` 내부에서 호출되어야 합니다.
 
 **시그니처**:
 
@@ -429,29 +437,31 @@ export declare function useRouter(): Router
 
 ## TypeScript
 
-Here are some of the interfaces and types used by Vue Router. The documentation references them to give you an idea of the existing properties in objects.
+Vue Router에서 사용하는 인터페이스와 타입은 다음과 같습니다.
+문서는 객체의 기존 속성에 대한 개념을 제공하기 위해 이러한 속성을 참조합니다.
 
-## Router Properties
+## Router 프로퍼티 {#router-properties}
 
 ### currentRoute
 
 - **타입**: [`Ref<RouteLocationNormalized>`](#routelocationnormalized)
 - **상세**:
 
-  Current route location. Readonly.
+  읽기 전용. 현재 경로 위치.
 
 ### options
 
 - **타입**: [`RouterOptions`](#routeroptions)
 - **상세**:
 
-  Original options object passed to create the Router. Readonly.
+  읽기 전용. 라우터를 생성하기 위해 전달된 원본 옵션 객체.
 
-## Router Methods
+## Router 메서드 {#router-methods}
 
 ### addRoute
 
-Add a new [Route Record](#routerecordraw) as the child of an existing route. If the route has a `name` and there is already an existing one with the same one, it removes it first.
+기존 경로의 자식으로 새 [경로 레코드](#routerecordraw)를 추가합니다.
+경로에 `name` 값이 있고, 동일한 값을 가진 기존 경로가 이미 있으면, 먼저 제거 후 추가합니다.
 
 **시그니처**:
 
@@ -463,12 +473,15 @@ _파라미터_
 
 | 파라미터  | 타입                                | 설명                                             |
 | ---------- | ----------------------------------- | ------------------------------------------------------- |
-| parentName | `string \| symbol`                  | Parent Route Record where `route` should be appended at |
-| route      | [`RouteRecordRaw`](#routerecordraw) | Route Record to add                                     |
+| parentName | `string \| symbol`                  | `route`가 추가되어야 하는 상위 경로 레코드. |
+| route      | [`RouteRecordRaw`](#routerecordraw) | 경로 레코드 추가.                                     |
 
 ### addRoute
 
 Add a new [route record](#routerecordraw) to the router. If the route has a `name` and there is already an existing one with the same one, it removes it first.
+
+라우터에 새 [경로 레코드](#routerecordraw)를 추가합니다.
+경로에 `name` 값이 있고, 동일한 값을 가진 기존 경로가 이미 있으면, 먼저 제거 후 추가합니다.
 
 **시그니처**:
 
@@ -480,15 +493,17 @@ _파라미터_
 
 | 파라미터 | 타입                                | 설명         |
 | --------- | ----------------------------------- | ------------------- |
-| route     | [`RouteRecordRaw`](#routerecordraw) | Route Record to add |
+| route     | [`RouteRecordRaw`](#routerecordraw) | 경로 레코드 추가. |
 
 :::tip
-Note adding routes does not trigger a new navigation, meaning that the added route will not be displayed unless a new navigation is triggered.
+경로를 추가해도 새 탐색이 트리거되지 않습니다.
+즉, 새 탐색이 트리거되지 않는 한 추가된 경로는 표시되지 않습니다.
 :::
 
 ### afterEach
 
-Add a navigation hook that is executed after every navigation. Returns a function that removes the registered hook.
+모든 탐색 이후에 실행되는 네비게이션 훅을 추가합니다.
+등록된 훅을 제거하는 함수를 반환합니다.
 
 **시그니처**:
 
@@ -500,21 +515,22 @@ _파라미터_
 
 | 파라미터 | 타입                  | 설명            |
 | --------- | --------------------- | ---------------------- |
-| guard     | `NavigationHookAfter` | navigation hook to add |
+| guard     | `NavigationHookAfter` | 탐색 후 네비게이션 훅 추가. |
 
 #### 예제
 
 ```js
 router.afterEach((to, from, failure) => {
   if (isNavigationFailure(failure)) {
-    console.log('failed navigation', failure)
+    console.log('탐색 실패: ', failure)
   }
 })
 ```
 
 ### back
 
-Go back in history if possible by calling `history.back()`. Equivalent to `router.go(-1)`.
+가능하다면 `history.back()`을 호출하여 히스토리에서 뒤로 이동합니다.
+`router.go(-1)`와 동일합니다.
 
 **시그니처**:
 
@@ -524,7 +540,8 @@ back(): void
 
 ### beforeEach
 
-Add a navigation guard that executes before any navigation. Returns a function that removes the registered guard.
+탐색 전에 실행되는 네비게이션 가드를 추가합니다.
+등록된 가드를 제거하는 함수를 반환합니다.
 
 **시그니처**:
 
@@ -536,11 +553,14 @@ _파라미터_
 
 | 파라미터 | 타입                                  | 설명             |
 | --------- | ------------------------------------- | ----------------------- |
-| guard     | [`NavigationGuard`](#navigationguard) | navigation guard to add |
+| guard     | [`NavigationGuard`](#navigationguard) | 네비게이션 가드 추가. |
 
 ### beforeResolve
 
-Add a navigation guard that executes before navigation is about to be resolved. At this state all component have been fetched and other navigation guards have been successful. Returns a function that removes the registered guard.
+탐색이 해결되기 전에 실행되는 네비게이션 가드를 추가합니다.
+이 상태는 모든 컴포넌트를 로드했고,
+다른 탐색 가드가 성공한 것입니다.
+등록된 가드를 제거하는 함수를 반환합니다.
 
 **시그니처**:
 
@@ -552,7 +572,7 @@ _파라미터_
 
 | 파라미터 | 타입                                  | 설명             |
 | --------- | ------------------------------------- | ----------------------- |
-| guard     | [`NavigationGuard`](#navigationguard) | navigation guard to add |
+| guard     | [`NavigationGuard`](#navigationguard) | 네비게이션 가드 추가. |
 
 #### 예제
 
@@ -564,7 +584,8 @@ router.beforeResolve(to => {
 
 ### forward
 
-Go forward in history if possible by calling `history.forward()`. Equivalent to `router.go(1)`.
+가능하다면 `history.forward()`를 호출하여 히스토리에서 앞으로 이동합니다.
+`router.go(1)`와 동일합니다.
 
 **시그니처**:
 
@@ -574,7 +595,7 @@ forward(): void
 
 ### getRoutes
 
-Get a full list of all the [route records](#routerecordnormalized).
+모든 [경로 레코드](#routerecordnormalized) 전체 목록을 가져옵니다.
 
 **시그니처**:
 
@@ -584,7 +605,7 @@ getRoutes(): RouteRecordNormalized[]
 
 ### go
 
-Allows you to move forward or backward through the history.
+히스토리를 사용하여 앞으로 또는 뒤로 이동합니다.
 
 **시그니처**:
 
@@ -596,11 +617,11 @@ _파라미터_
 
 | 파라미터 | 타입     | 설명                                                                         |
 | --------- | -------- | ----------------------------------------------------------------------------------- |
-| delta     | `number` | The position in the history to which you want to move, relative to the current page |
+| delta     | `number` | 현재 페이지를 기준으로 이동하려는 히스토리의 위치. |
 
 ### hasRoute
 
-Checks if a route with a given name exists
+인자로 전달된 이름의 경로가 존재하는지 확인합니다.
 
 **시그니처**:
 
@@ -612,11 +633,16 @@ _파라미터_
 
 | 파라미터 | 타입               | 설명                |
 | --------- | ------------------ | -------------------------- |
-| name      | `string \| symbol` | Name of the route to check |
+| name      | `string \| symbol` | 확인할 경로의 이름. |
 
 ### isReady
 
-Returns a Promise that resolves when the router has completed the initial navigation, which means it has resolved all async enter hooks and async components that are associated with the initial route. If the initial navigation already happened, the promise resolves immediately.This is useful in server-side rendering to ensure consistent output on both the server and the client. Note that on server side, you need to manually push the initial location while on client side, the router automatically picks it up from the URL.
+라우터가 초기 탐색을 완료했을 때 해결되는 Promise를 반환합니다.
+즉, 초기 경로와 관련된 모든 비동기 진입 훅과 비동기 컴포넌트가 해결되었음을 의미합니다.
+초기 탐색이 이미 발생한 경우 Promise는 즉시 해결됩니다.
+이는 SSR에서 서버와 클라이언트 모두에서 일관된 출력을 보장하는 데 유용합니다.
+서버에서는 초기 위치를 수동으로 푸시해야 하지만,
+클라이언트에서는 라우터가 자동으로 URL에서 해당 위치를 선택합니다.
 
 **시그니처**:
 
@@ -626,7 +652,10 @@ isReady(): Promise<void>
 
 ### onError
 
-Adds an error handler that is called every time a non caught error happens during navigation. This includes errors thrown synchronously and asynchronously, errors returned or passed to `next` in any navigation guard, and errors occurred when trying to resolve an async component that is required to render a route.
+탐색 중에 포착되지 않은 애러가 발생할 때마다, 호출되는 애러 핸들러를 추가합니다.
+여기에는 동기 및 비동기적으로 발생한 애러,
+탐색 가드에서 반환되거나 `next`로 전달된 애러,
+경로를 렌더링하는 데 필요한 비동기 컴포넌트를 해결하려고 할 때 발생한 애러가 포함됩니다.
 
 **시그니처**:
 
@@ -638,11 +667,11 @@ _파라미터_
 
 | 파라미터 | 타입                                                                              | 설명               |
 | --------- | --------------------------------------------------------------------------------- | ------------------------- |
-| handler   | `(error: any, to: RouteLocationNormalized, from: RouteLocationNormalized) => any` | error handler to register |
+| handler   | `(error: any, to: RouteLocationNormalized, from: RouteLocationNormalized) => any` | 애러 핸들러 등록. |
 
 ### push
 
-Programmatically navigate to a new URL by pushing an entry in the history stack.
+히스토리 스택에 항목을 푸시하여, 프로그래밍 방식으로 새 URL로 이동합니다.
 
 **시그니처**:
 
@@ -654,11 +683,11 @@ _파라미터_
 
 | 파라미터 | 타입                                    | 설명                   |
 | --------- | --------------------------------------- | ----------------------------- |
-| to        | [`RouteLocationRaw`](#routelocationraw) | Route location to navigate to |
+| to        | [`RouteLocationRaw`](#routelocationraw) | 탐색할 경로 위치. |
 
 ### removeRoute
 
-Remove an existing route by its name.
+이름으로 기존 경로를 제거합니다.
 
 **시그니처**:
 
@@ -670,11 +699,11 @@ _파라미터_
 
 | 파라미터 | 타입               | 설명                 |
 | --------- | ------------------ | --------------------------- |
-| name      | `string \| symbol` | Name of the route to remove |
+| name      | `string \| symbol` | 제거할 경로의 이름. |
 
 ### replace
 
-Programmatically navigate to a new URL by replacing the current entry in the history stack.
+히스토리 스택의 현재 항목을 교체하여, 프로그래밍 방식으로 새 URL로 이동합니다.
 
 **시그니처**:
 
@@ -686,11 +715,12 @@ _파라미터_
 
 | 파라미터 | 타입                                    | 설명                   |
 | --------- | --------------------------------------- | ----------------------------- |
-| to        | [`RouteLocationRaw`](#routelocationraw) | Route location to navigate to |
+| to        | [`RouteLocationRaw`](#routelocationraw) | 탐색할 경로 위치 |
 
 ### resolve
 
-Returns the [normalized version](#routelocation) of a [route location](#routelocationraw). Also includes an `href` property that includes any existing `base`.
+[경로 위치](#routelocationraw)의 [정규화된 버전](#routelocation)을 반환합니다.
+또한 기존 `base`를 포함하는 `href` 속성도 포함합니다.
 
 **시그니처**:
 
@@ -704,13 +734,19 @@ _파라미터_
 
 | 파라미터 | 타입                                    | 설명                   |
 | --------- | --------------------------------------- | ----------------------------- |
-| to        | [`RouteLocationRaw`](#routelocationraw) | Raw route location to resolve |
+| to        | [`RouteLocationRaw`](#routelocationraw) | 확인할 경로 위치 |
 
 ## RouterOptions
 
 ### history
 
-History implementation used by the router. Most web applications should use `createWebHistory` but it requires the server to be properly configured. You can also use a _hash_ based history with `createWebHashHistory` that does not require any configuration on the server but isn't handled at all by search engines and does poorly on SEO.
+라우터에서 사용하는 히스토리 구현 방법입니다.
+대부분의 웹 앱은 `createWebHistory`를 사용해야 하지만,
+제대로 구성하려면 서버가 필요합니다.
+또는 `createWebHashHistory`로 해시 기반 히스토리를 사용할 수 있습니다.
+이 히스토리은 서버에서 구성이 필요하지 않지만,
+검색 엔진에서 전혀 처리되지 않으므로,
+SEO에서 제대로 작동하지 않습니다.
 
 **시그니처**:
 
@@ -723,13 +759,14 @@ history: RouterHistory
 ```js
 createRouter({
   history: createWebHistory(),
-  // other options...
+  // 다른 옵션...
 })
 ```
 
 ### linkActiveClass
 
-Default class applied to active [RouterLink](#router-link-props). If none is provided, `router-link-active` will be applied.
+활성화된 [RouterLink](#router-link-props)에 적용되는 기본 클래스입니다.
+아무것도 제공하지 않으면 `router-link-active`가 적용됩니다.
 
 **시그니처**:
 
@@ -739,7 +776,8 @@ linkActiveClass?: string
 
 ### linkExactActiveClass
 
-Default class applied to exact active [RouterLink](#router-link-props). If none is provided, `router-link-exact-active` will be applied.
+정확히 활성화된 [RouterLink](#router-link-props)에 적용되는 기본 클래스입니다.
+아무것도 제공하지 않으면 `router-link-exact-active`가 적용됩니다.
 
 **시그니처**:
 
@@ -749,7 +787,9 @@ linkExactActiveClass?: string
 
 ### parseQuery
 
-Custom implementation to parse a query. Must decode query keys and values. See its counterpart, [stringifyQuery](#stringifyquery).
+쿼리를 파싱하기 위한 커스텀 구현.
+반드시 쿼리 키와 값을 디코딩해야 합니다.
+[stringifyQuery](#stringifyquery)와 대응됩니다.
 
 **시그니처**:
 
@@ -759,13 +799,14 @@ parseQuery?: (searchQuery: string) => Record<string, (string | null)[] | string 
 
 #### 예제
 
-Let's say you want to use the package [qs](https://github.com/ljharb/qs) to parse queries, you can provide both `parseQuery` and `stringifyQuery`:
+[qs](https://github.com/ljharb/qs) 패키지를 사용하여 쿼리를 파싱하려는 경우,
+`parseQuery`와 `stringifyQuery`를 모두 제공할 수 있습니다:
 
 ```js
 import qs from 'qs'
 
 createRouter({
-  // other options...
+  // 다른 옵션...
   parseQuery: qs.parse,
   stringifyQuery: qs.stringify,
 })
@@ -773,7 +814,7 @@ createRouter({
 
 ### routes
 
-Initial list of routes that should be added to the router.
+라우터에 추가해야 하는 경로의 초기 목록입니다.
 
 **시그니처**:
 
@@ -783,7 +824,8 @@ routes: RouteRecordRaw[]
 
 ### scrollBehavior
 
-Function to control scrolling when navigating between pages. Can return a Promise to delay when the scrolling happens.
+페이지 간 이동 시, 스크롤을 제어하는 함수입니다.
+스크롤을 지연하기 위해 Promise를 반환할 수 있습니다.
 
 **시그니처**:
 
@@ -795,8 +837,8 @@ scrollBehavior?: RouterScrollBehavior
 
 ```js
 function scrollBehavior(to, from, savedPosition) {
-  // `to` and `from` are both route locations
-  // `savedPosition` can be null if there isn't one
+  // `to`와 `from`은 모두 경로 위치입니다.
+  // `savedPosition`은 없는 경우 null일 수 있습니다.
 }
 ```
 
@@ -804,7 +846,10 @@ function scrollBehavior(to, from, savedPosition) {
 
 ### stringifyQuery
 
-Custom implementation to stringify a query object. Should not prepend a leading `?`. Should properly encode query keys and values. [parseQuery](#parsequery) counterpart to handle query parsing.
+쿼리 객체를 문자열화하기 위한 커스텀 구현.
+앞에 `?`를 붙이면 안 되며,
+쿼리 키와 값을 올바르게 인코딩해야 합니다.
+쿼리를 파싱하는 [parseQuery](#parsequery)와 대응됩니다.
 
 **시그니처**:
 
