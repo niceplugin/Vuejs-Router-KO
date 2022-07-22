@@ -8,7 +8,7 @@
 
 ---
 
-웹 페이지 바로가기: [한글화 문서](https://vuejs-router-4-korean.pages.dev/)
+웹 페이지 바로가기: [한글화 문서](https://router.vuejs.kr/)
 
 ## 빠른시작
 
