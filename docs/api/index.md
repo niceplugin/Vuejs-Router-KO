@@ -1095,46 +1095,51 @@ router.replace({ hash: '#bio' })
 
 ## RouteLocation
 
-Resolved [RouteLocationRaw](#routelocationraw) that can contain [redirect records](#routerecordraw). Apart from that it has the same properties as [RouteLocationNormalized](#routelocationnormalized).
+[리디렉션 레코드](#routerecordraw)를 포함할 수 있는 결정된(resolved) [RouteLocationRaw](#routelocationraw).
+그 외에도 [RouteLocationNormalized](#routelocationnormalized)와 동일한 속성을 가집니다.
 
 ## RouteLocationNormalized
 
-Normalized route location. Does not have any [redirect records](#routerecordraw). In navigation guards, `to` and `from` are always of this type.
+정규화된 경로 위치.
+[리디렉션 레코드](#routerecordraw)를 가지지 않습니다.
+네비게이션 가드에서 `to`와 `from`은 항상 이 유형입니다.
 
 ### fullPath
 
 - **타입**: `string`
 - **상세**:
 
-  Encoded URL associated to the route location. Contains `path`, `query` and `hash`.
+  경로 위치와 연결된 인코딩된 URL입니다.
+  `path`, `query` 및 `hash`를 포함합니다.
 
 ### hash
 
 - **타입**: `string`
 - **상세**:
 
-  Decoded `hash` section of the URL. Always starts with a `#`. Empty string if there is no `hash` in the URL.
+  URL의 `hash` 섹션을 디코딩한 값으로, 항상 `#`으로 시작합니다.
+  URL에 `hash`가 없으면 빈 문자열입니다.
 
 ### query
 
 - **타입**: `Record<string, LocationQueryValue | LocationQueryValue[]>`
 - **상세**:
 
-  Dictionary of decoded query params extracted from the `search` section of the URL.
+  URL의 `search` 섹션에서 추출된 디코딩된 쿼리 파라미터의 모음집(객체)입니다.
 
 ### matched
 
 - **타입**: [`RouteRecordNormalized[]`](#routerecordnormalized)
 - **상세**:
 
-  Array of [normalized route records](#routerecordnormalized) that were matched with the given route location.
+  주어진 경로 위치와 일치하는 [정규화된 경로 레코드](#routerecordnormalized)로 이루어진 배열입니다.
 
 ### meta
 
 - **타입**: `RouteMeta`
 - **상세**:
 
-  Arbitrary data attached to all matched records merged (non recursively) from parent to child.
+  일치하는 모든 레코드에 첨부된 임의의 데이터가 부모에서 자식으로 병합(비재귀적으로)된 객체.
 
 - **참고**: [가이드 - 경로 메타 필드](/guide/advanced/meta.md)
 
@@ -1143,28 +1148,30 @@ Normalized route location. Does not have any [redirect records](#routerecordraw)
 - **타입**: `string | symbol | undefined | null`
 - **상세**:
 
-  Name for the route record. `undefined` if none was provided.
+  경로 레코드의 이름입니다.
+  제공되지 않은 경우, `undefined`입니다.
 
 ### params
 
 - **타입**: `Record<string, string | string[]>`
 - **상세**:
 
-  Dictionary of decoded params extracted from `path`.
+  `path`에서 추출된 디코딩된 파라미터의 모음집(객체)입니다.
 
 ### path
 
 - **타입**: `string`
 - **상세**:
 
-  Encoded `pathname` section of the URL associated to the route location.
+  경로 위치와 연결된 URL의 인코딩된 `pathname` 섹션입니다.
 
 ### redirectedFrom
 
 - **타입**: [`RouteLocation`](#routelocation)
 - **상세**:
 
-  Route location we were initially trying to access before ending up on the current location when a `redirect` option was found or a navigation guard called `next()` with a route location. `undefined` if there was no redirection.
+  `redirect` 옵션이 감지되었거나 네비게이션 가드에서 `next()`를 호출한 경우, 현재 위치에 도달하기 전 최초에 접근하려고 했던 경로 위치.
+  리디렉션이 없으면 `undefined`입니다.
 
 ## NavigationFailure
 
@@ -1173,21 +1180,21 @@ Normalized route location. Does not have any [redirect records](#routerecordraw)
 - **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
 - **상세**:
 
-  Route location we were navigating from
+  탐색을 시작한 경로 위치.
 
 ### to
 
 - **타입**: [`RouteLocationNormalized`](#routelocationnormalized)
 - **상세**:
 
-  Route location we were navigating to
+  탐색하려고 한 경로 위치.
 
 ### type
 
 - **타입**: [`NavigationFailureType`](#navigationfailuretype)
 - **상세**:
 
-  Type of the navigation failure.
+  탐색 실패 유형.
 
 - **참고**: [가이드 - 탐색 실패](/guide/advanced/navigation-failures.md)
 
