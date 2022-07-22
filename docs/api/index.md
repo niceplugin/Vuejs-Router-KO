@@ -478,8 +478,6 @@ _파라미터_
 
 ### addRoute
 
-Add a new [route record](#routerecordraw) to the router. If the route has a `name` and there is already an existing one with the same one, it removes it first.
-
 라우터에 새 [경로 레코드](#routerecordraw)를 추가합니다.
 경로에 `name` 값이 있고, 동일한 값을 가진 기존 경로가 이미 있으면, 먼저 제거 후 추가합니다.
 
@@ -928,7 +926,7 @@ stringifyQuery?: (
 - **타입**: [`NavigationGuard | NavigationGuard[]`](#navigationguard) (선택적)
 - **상세**:
 
-  이 레코드의 "진입 전 가드"입니다.
+  이 레코드의 "진입 전 네비게이션 가드"입니다.
   레코드에 `redirect` 속성이 있는 경우, `beforeEnter`는 효과가 없습니다.
 
 ### props
@@ -983,21 +981,22 @@ const routes = [{ path: '/', component: HomeView }]
 
 ## RouteRecordNormalized
 
-Normalized version of a [Route Record](#routerecordraw)
+[경로 레코드](#routerecordraw)의 정규화된 버전입니다.
 
 ### aliasOf
 
 - **타입**: `RouteRecordNormalized | undefined`
 - **상세**:
 
-  Defines if this record is the alias of another one. This property is `undefined` if the record is the original one.
+  이 레코드가 다른 레코드의 별칭인지 정의합니다.
+  이 레코드가 원본인 경우, 이 속성은 `undefined`입니다.
 
 ### beforeEnter
 
 - **타입**: [`NavigationGuard`](#navigationguard)
 - **상세**:
 
-  Navigation guard applied when entering this record from somewhere else.
+  다른 곳에서 이 레코드로 진입할 때 적용될 "진입 전 네비게이션 가드".
 
 - **참고**: [가이드 - 네비게이션 가드](/guide/advanced/navigation-guards.md)
 
@@ -1006,21 +1005,25 @@ Normalized version of a [Route Record](#routerecordraw)
 - **타입**: Array of normalized [route records](#routerecordnormalized)
 - **상세**:
 
-  Children route records of a route at the time it was added. Empty array if none. Note this array doesn't update when `addRoute()` and `removeRoute()` are called.
+  이 레코드의 자식 경로 레코드입니다.
+  자식 경로가 없는 경우, 빈 배열입니다.
+  이 배열은 `addRoute()`와 `removeRoute()`의 호출로 업데이트되지 않습니다.
 
 ### components
 
 - **타입**: `Record<string, Component>`
 - **상세**:
 
-  Dictionary of named views, if none, contains an object with the key `default`.
+  이름이 있는 뷰(view)의 모음집 객체.
+  이름이 있는 뷰가 없는 경우에는 `default`키와 값만 있습니다.
+
 
 ### meta
 
 - **타입**: `RouteMeta`
 - **상세**:
 
-  Arbitrary data attached to the record.
+  레코드에 첨부된 임의의 데이터입니다.
 
 - **참고**: [가이드 - 경로 메타 필드](/guide/advanced/meta.md)
 
@@ -1029,55 +1032,64 @@ Normalized version of a [Route Record](#routerecordraw)
 - **타입**: `string | symbol | undefined`
 - **상세**:
 
-  Name for the route record. `undefined` if none was provided.
+  경로 레코드의 이름입니다.
+  제공되지 않은 경우 `undefined`입니다.
 
 ### path
 
 - **타입**: `string`
 - **상세**:
 
-  Normalized path of the record. Includes any parent's `path`.
+  레코드의 정규화된 경로입니다.
+  모든 부모 `path`를 포함합니다.
 
 ### props
 
 - **타입**: `Record<string, boolean | Function | Record<string, any>>`
 - **상세**:
 
-  Dictionary of the [`props` option](#props) for each named view. If none, it will contain only one property named `default`.
+  각 이름이 있는 뷰(view)의 [`props` 옵션](#props) 모음집 객체입니다.
+  없으면 `default`라는 속성 하나만 포함됩니다.
 
 ### redirect
 
 - **타입**: [`RouteLocationRaw`](#routelocationraw)
 - **상세**:
 
-  Where to redirect if the route is directly matched. The redirection happens before any navigation guard and triggers a new navigation with the new target location.
+  경로가 일치하는 경우, 리디렉션할 위치입니다.
+  리디렉션은 네비게이션 가드보다 먼저 트리거되고,
+  대상 위치로 새 탐색을 트리거합니다.
 
 ## RouteLocationRaw
 
-User-level route location that can be passed to `router.push()`, `redirect`, and returned in [Navigation Guards](/guide/advanced/navigation-guards.md).
+`router.push()`나 `redirect`에 전달하거나,
+[Navigation Guards](/guide/advanced/navigation-guards.md)에서 반환하는 유저-레벨(개발자 입장에서 사용 가능한) 경로 위치입니다.
 
-A raw location can either be a `string` like `/users/posva#bio` or an object:
+이 저수준 위치는 `/users/posva#bio`와 같은 `string`이거나, 객체 입니다:
 
 ```js
-// these three forms are equivalent
+// 이 세 가지 포멧은 동일함.
 router.push('/users/posva#bio')
 router.push({ path: '/users/posva', hash: '#bio' })
 router.push({ name: 'users', params: { username: 'posva' }, hash: '#bio' })
-// only change the hash
+// 해시만 변경.
 router.push({ hash: '#bio' })
-// only change query
+// 쿼리만 변경
 router.push({ query: { page: '2' } })
-// change one param
+// 파라미터만 변경
 router.push({ params: { username: 'jolyne' } })
 ```
 
-Note `path` must be provided encoded (e.g. `phantom blood` becomes `phantom%20blood`) while `params`, `query` and `hash` must not, they are encoded by the router.
+참고로 `path`는 인코딩된 상태로 제공되어야 하며(예: `phantom blood`는 `phantom%20blood`으로),
+`params`, `query` 및 `hash`는 인코딩되지 않아야 하며 라우터에 의해 인코딩됩니다.
 
-Raw route locations also support an extra option `replace` to call `router.replace()` instead of `router.push()` in navigation guards. Note this also internally calls `router.replace()` even when calling `router.push()`:
+저수준 경로 위치는 네비게이션 가드에서 `router.push()` 대신 `router.replace()`를 호출하는 `replace` 옵션도 지원합니다.
+이것을 사용하면 `router.push()`를 호출할 때,
+내부적으로 `router.replace()`를 호출합니다.
 
 ```js
 router.push({ hash: '#bio', replace: true })
-// equivalent to
+// 둘 다 동일함.
 router.replace({ hash: '#bio' })
 ```
 
