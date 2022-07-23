@@ -1,4 +1,4 @@
-# Router 메서드 {#router-methods}
+# 라우터 메서드 {#router-methods}
 
 ## addRoute
 

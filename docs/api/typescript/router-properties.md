@@ -1,4 +1,4 @@
-# Router 프로퍼티 {#router-properties}
+# 라우터 속성 {#router-properties}
 
 ## currentRoute
 
