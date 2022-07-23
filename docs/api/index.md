@@ -1,9 +1,5 @@
 # API 레퍼런스 {#api-reference}
 
-::: danger
-번역 진행 중에 있습니다.
-:::
-
 ## `<router-link>` Props
 
 ### to
@@ -1202,36 +1198,43 @@ router.replace({ hash: '#bio' })
 
 - **인자**:
 
-  - [`RouteLocationNormalized`](#routelocationnormalized) to - Route location we are navigating to
-  - [`RouteLocationNormalized`](#routelocationnormalized) from - Route location we are navigating from
-  - `Function` next (선택적) - Callback to validate the navigation
+  - [`RouteLocationNormalized`](#routelocationnormalized) to - 탐색하려고 한 경로 위치.
+  - [`RouteLocationNormalized`](#routelocationnormalized) from - 탐색을 시작한 경로 위치.
+  - `Function` next (선택적) - 탐색을 승인하는 콜백
 
 - **상세**:
 
-  Function that can be passed to control a router navigation. The `next` callback can be omitted if you return a value (or a Promise) instead, which is encouraged. Possible return values (and parameters for `next`) are:
+  경로 탐색을 제어하기 위해 전달할 수 있는 함수입니다.
+  값(또는 Promise)을 반환하는 경우, `next` 콜백을 생략할 수 있으며, 이 패턴은 권장됩니다.
+  이 함수에서 반환 가능한 값 또는 `next`에 전달 가능한 인자는 다음과 같습니다:
 
-  - `undefined | void | true`: validates the navigation
-  - `false`: cancels the navigation
-  - [`RouteLocationRaw`](#routelocationraw): redirects to a different location
-  - `(vm: ComponentPublicInstance) => any` **only for `beforeRouteEnter`**: A callback to be executed once the navigation completes. Receives the route component instance as the parameter.
+  - `undefined | void | true`: 탐색이 유효함.
+  - `false`: 탐색이 취소됨.
+  - [`RouteLocationRaw`](#routelocationraw): 다른 위치로 리디렉션.
+  - `(vm: ComponentPublicInstance) => any` **`beforeRouteEnter`에만 해당**:
+    탐색이 완료되면 실행할 콜백. 경로 컴포넌트 인스턴스를 인자로 받습니다.
 
 - **참고**: [가이드 - 네비게이션 가드](/guide/advanced/navigation-guards.md)
 
-## Component Injections
+## 컴포넌트에 주입된 것 {#component-injections}
 
-### Component Injected Properties
+### 컴포넌트에 주입된 속성 {#component-injected-properties}
 
-These properties are injected into every child component by calling `app.use(router)`.
+`app.use(router)`를 호출함으로서 모든 자식 컴포넌트에 속성이 주입됩니다.
 
 - **this.\$router**
 
-  The router instance.
+  라우터 인스턴스입니다.
 
 - **this.\$route**
 
-  The current active [route location](#routelocationnormalized). This property is read-only and its properties are immutable, but it can be watched.
+  유효한 [현재 경로 위치](#routelocationnormalized).
+  이 속성은 읽기 전용이며, 속성은 변경할 수 없지만 감시할 수 있습니다.
 
-### Component Enabled Options
+### 컴포넌트에서 사용 가능한 옵션 {#component-enabled-options}
+
+이것은 컴포넌트에서 옵션 API 스타일로 `<script>`를 작성할 때,
+내부에 추가 가능한 옵션입니다:
 
 - **beforeRouteEnter**
 - **beforeRouteUpdate**
