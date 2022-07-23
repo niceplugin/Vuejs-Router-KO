@@ -56,11 +56,11 @@ const config = defineConfig({
     nav: [
       {
         text: '가이드',
-        link: '/guide/',
+        link: '/guide/index.html',
       },
       {
         text: 'API 참고서',
-        link: '/api/',
+        link: '/api/styles/general.html',
       },
       {
         text: 'v4.x',
@@ -187,6 +187,94 @@ const config = defineConfig({
               link: '/guide/advanced/dynamic-routing.html',
             },
           ],
+        },
+      ],
+      '/api/': [
+        {
+          text: '빌트인 컴포넌트',
+          collapsible: true,
+          items: [
+            {
+              text: '<router-link> props',
+              link: '/api/built-in-components/router-link-props.html'
+            },
+            {
+              text: '<router-link>의 v-slot',
+              link: '/api/built-in-components/router-link-v-slot.html'
+            },
+            {
+              text: '<router-view> props',
+              link: '/api/built-in-components/router-view-props.html'
+            },
+            {
+              text: '<router-view>의 v-slot',
+              link: '/api/built-in-components/router-view-v-slot.html'
+            },
+          ]
+        },
+        {
+          text: 'API 스타일',
+          collapsible: true,
+          items: [
+            {
+              text: '공통',
+              link: '/api/styles/general.html'
+            },
+            {
+              text: '옵션 API',
+              link: '/api/styles/options-api.html'
+            },
+            {
+              text: '컴포지션 API',
+              link: '/api/styles/composition-api.html'
+            },
+          ]
+        },
+        {
+          text: '인터페이스와 타입',
+          collapsible: true,
+          items: [
+            {
+              text: '라우터 속성',
+              link: '/api/typescript/router-properties.html'
+            },
+            {
+              text: '라우터 메서드',
+              link: '/api/typescript/router-methods.html'
+            },
+            {
+              text: 'RouterOptions',
+              link: '/api/typescript/router-options.html'
+            },
+            {
+              text: 'RouteRecordRaw',
+              link: '/api/typescript/route-record-raw.html'
+            },
+            {
+              text: 'RouteRecordNormalized',
+              link: '/api/typescript/route-record-normalized.html'
+            },
+            {
+              text: 'RouteLocation',
+              link: '/api/typescript/route-location.html'
+            },
+            {
+              text: 'RouteLocationRaw',
+              link: '/api/typescript/route-location-raw.html'
+            },
+            {
+              text: 'RouteLocationNormalized',
+              link: '/api/typescript/route-location-normalized.html'
+            },
+            {
+              text: 'NavigationFailure',
+              link: '/api/typescript/navigation-failure.html'
+            },
+            {
+              text: 'NavigationGuard',
+              link: '/api/typescript/navigation-guard.html'
+            },
+          ]
         },
       ],
     },
