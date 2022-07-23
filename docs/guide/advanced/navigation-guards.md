@@ -24,16 +24,16 @@ router.beforeEach((to, from) => {
 
 모든 가드 함수는 두 개의 인자를 받습니다:
 
-- **`to`**: 탐색 될 [경로 위치 객체](/api/#routelocationnormalized)
-- **`from`**: 탐색 전 현재 [경로 위치 객체](/api/#routelocationnormalized)
+- **`to`**: 탐색 될 [경로 위치 객체](/api/typescript/route-location-normalized.html)
+- **`from`**: 탐색 전 현재 [경로 위치 객체](/api/typescript/route-location-normalized.html)
 
 그리고 선택적으로 다음 값 중 하나를 반환할 수 있습니다:
 
 - `false`: 현재 탐색을 취소합니다.
   URL이 변경된 경우,
   `from` 경로로 URL이 재설정됩니다.
-- [경로 위치 정보](/api/#routelocationraw):
-  [`router.push()`](/api/#push)를 사용할 때처럼 경로 위치(문자열 또는 객체)를 전달합니다.
+- [경로 위치 정보](/api/typescript/route-location-raw.html):
+  [`router.push()`](/api/typescript/router-methods.html#push)를 사용할 때처럼 경로 위치(문자열 또는 객체)를 전달합니다.
   현재 탐색이 중단되고, 기존 `from` 위치에서 새로운 탐색 동작이 생성됩니다.
 
   ```js
@@ -51,7 +51,7 @@ router.beforeEach((to, from) => {
   ```
 
 예외 상황 시 `Error`를 던질 수도 있습니다.
-이 경우에도 탐색은 취소되고 [`router.onError()`](/api/#onerror) 메서드에 전달돼 등록된 모든 콜백 함수를 호출합니다.
+이 경우에도 탐색은 취소되고 [`router.onError()`](/api/typescript/router-methods.html#onerror) 메서드에 전달돼 등록된 모든 콜백 함수를 호출합니다.
 
 `undefined`, `true` 또는 아무것도 반환되지 않으면,
 **탐색이 유효**하다고 판단하고 다음 탐색 가드가 호출됩니다.

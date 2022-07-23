@@ -1,7 +1,7 @@
 # 트랜지션 {#transitions}
 
 경로 컴포넌트에서 트랜지션을 사용하고 탐색에 애니메이션을 적용하려면,
-[v-slot API](/api/#router-view-s-v-slot)를 사용해야 합니다:
+[v-slot API](/api/built-in-components/router-view-v-slot.html)를 사용해야 합니다:
 
 ```html
 <router-view v-slot="{ Component }">
