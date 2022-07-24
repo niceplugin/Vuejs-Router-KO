@@ -277,15 +277,6 @@ beforeRouteLeave (to, from) {
 
 ## 전체적인 탐색 흐름 {#the-full-navigation-resolution-flow}
 
-1. 탐색 시작.
-2. 비활성화되는 컴포넌트에서 `beforeRouteLeave` 호출.
-3. 전역 `beforeEach` 호출.
-4. 재사용된 컴포넌트에서 `beforeRouteUpdate` 호출.
-5. 경로 `beforeEnter` 호출.
-6. 비동기 경로 컴포넌트 해결.
-7. 활성화된 컴포넌트에서 `beforeRouteEnter` 호출.
-8. 전역 `beforeResolve` 호출.
-9. 탐색 결정됨.
-10. 전역 `afterEach` 호출.
-11. DOM 업데이트 트리거.
-12. `beforeRouteEnter`의 `next`로 전달된 콜백에 컴포넌트 인스턴스를 인자로 전달하여 실행.
+![Vue router flow](./images/vue-router-lifecycle.png)
+
+<!-- https://www.figma.com/file/KOQQRmhZs9qJtpOTfw8a1I/Vue-Router-Lifecycle-(ko-kr) -->
