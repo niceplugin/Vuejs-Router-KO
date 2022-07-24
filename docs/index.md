@@ -1,4 +1,5 @@
 ---
+title: Vue 3의 최신 라우터
 layout: home
 
 hero:

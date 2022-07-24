@@ -35,7 +35,8 @@ const config = defineConfig({
     lastUpdatedText: '마지막 수정일',
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/niceplugin/Vuejs-Router-KO' }
+      { icon: 'github', link: 'https://github.com/niceplugin/Vuejs-Router-KO' },
+      { icon: 'slack', link: 'https://vuejs-korea.slack.com/' }
     ],
 
     // carbonAds: {
@@ -64,11 +65,16 @@ const config = defineConfig({
       },
       {
         text: 'v4.x',
-        items: [{ text: 'v3.x', link: 'https://v3.router.vuejs.org' }],
-      },
-      {
-        text: '변경사항',
-        link: 'https://github.com/vuejs/router/blob/main/packages/router/CHANGELOG.md',
+        items: [
+          {
+            text: 'v3.x',
+            link: 'https://v3.router.vuejs.org/kr/'
+          },
+          {
+            text: '변경사항',
+            link: 'https://github.com/vuejs/router/blob/main/packages/router/CHANGELOG.md',
+          },
+        ],
       },
     ],
 
@@ -280,6 +286,7 @@ const config = defineConfig({
     },
 
     footer: {
+      message: 'Translated by router.vuejs.kr',
       copyright: 'MIT Licensed | Copyright © 2014-present Evan You, Eduardo San Martin Morote'
     },
   },
