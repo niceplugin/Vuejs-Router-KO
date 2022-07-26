@@ -4,17 +4,6 @@ const head: UserConfig['head'] = [
   ['link', { rel: 'icon', href: `/logo-icon.png` }],
 ]
 
-// @ts-ignore
-if (process.env.NODE_ENV === 'production') {
-  head.push([
-    'script',
-    {
-      src: 'https://unpkg.com/thesemetrics@latest',
-      async: '',
-    },
-  ])
-}
-
 const config = defineConfig({
   lang: 'ko',
   title: 'Vue Router',
