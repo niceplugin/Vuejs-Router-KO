@@ -4,7 +4,7 @@
 각 경로의 컴포넌트를 별도의 청크로 분할하고,
 해당 경로를 방문할 때만 로드할 수 있다면 더 효율적일 것입니다.
 
-Vue Router는 기본적으로 [동적 가져오기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports)를 지원하므로,
+Vue Router는 기본적으로 [동적 가져오기](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)를 지원하므로,
 정적 가져오기를 동적 가져오기로 바꿀 수 있습니다.
 
 ```js
