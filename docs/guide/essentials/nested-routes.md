@@ -105,3 +105,39 @@ const routes = [
 ```
 
 참고: [예제](https://codesandbox.io/s/nested-views-vue-router-4-examples-hl326?initialpath=%2Fusers%2Feduardo)
+
+## 중첩된 이름이 있는 경로 {#nested-named-routes}
+
+[이름이 있는 경로](./named-routes.md)를 처리할 때, 일반적으로 **"자식 경로의 이름"만 지정**합니다:
+
+```js
+const routes = [
+  {
+    path: '/user/:id',
+    component: User,
+    // 자식 경로에만 이름이 있음.
+    children: [{ path: '', name: 'user', component: UserHome }],
+  },
+]
+```
+
+이렇게 하면 `/user/:id`로 이동하면 항상 중첩 경로가 표시됩니다.
+
+일부 시나리오에서는 중첩 경로로 이동하지 않고 이름이 있는 경로로 이동하고자 할 수 있습니다.
+예를 들어 중첩된 이름이 있는 경로(위 예제의 `name: user` 경로)를 표시하지 않고 `/user/:id`로 이동하려는 경우입니다.
+
+```js
+const routes = [
+  {
+    path: '/user/:id',
+    name: 'user-parent',
+    component: User,
+    children: [{ path: '', name: 'user', component: UserHome }],
+  },
+]
+```
+
+이 경우 부모 경로의 이름을 지정하고,
+`router.push({ name: 'user-parent' })`처럼 프로그래밍 방식으로 탐색할 수도 있습니다.
+하지만 페이지를 새로고침하면,
+이름이 있는 부모 경로 대신 `/users/:id` 경로로의 탐색으로 간주되므로 항상 중첩된 자식 경로가 표시됩니다:
