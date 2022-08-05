@@ -1,12 +1,12 @@
 # RouterLinkProps
 
-## Hierarchy
+## 계층
 
 - `RouterLinkOptions`
 
   ↳ **`RouterLinkProps`**
 
-## Properties
+## 속성
 
 ### activeClass
 
@@ -51,7 +51,7 @@ ___
 
 Calls `router.replace` instead of `router.push`.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 RouterLinkOptions.replace
 
@@ -63,6 +63,6 @@ ___
 
 Route Location the link should navigate to when clicked on.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 RouterLinkOptions.to

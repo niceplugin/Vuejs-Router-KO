@@ -2,13 +2,13 @@
 
 ▸ **useLink**(`props`): `Object`
 
-## Parameters
+### 파라미터
 
 | Name | Type |
 | :------ | :------ |
 | `props` | `VueUseOptions`<`RouterLinkOptions`\> |
 
-## Returns
+### 반환 값
 
 `Object`
 

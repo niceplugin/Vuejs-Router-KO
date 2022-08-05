@@ -2,13 +2,13 @@
 
 Normalized version of a [route record](../type-aliases/RouteRecord.md).
 
-## Hierarchy
+## 계층
 
 - **`RouteRecordNormalized`**
 
   ↳ [`RouteLocationMatched`](RouteLocationMatched.md)
 
-## Properties
+## 속성
 
 ### aliasOf
 

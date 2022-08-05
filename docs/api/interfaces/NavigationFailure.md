@@ -2,19 +2,19 @@
 
 Extended Error that contains extra information regarding a failed navigation.
 
-## Hierarchy
+## 계층
 
 - `Error`
 
   ↳ **`NavigationFailure`**
 
-## Properties
+## 속성
 
 ### cause
 
 • `Optional` **cause**: `Error`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 Error.cause
 
@@ -32,7 +32,7 @@ ___
 
 • **message**: `string`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 Error.message
 
@@ -42,7 +42,7 @@ ___
 
 • **name**: `string`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 Error.name
 
@@ -52,7 +52,7 @@ ___
 
 • `Optional` **stack**: `string`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 Error.stack
 

@@ -2,13 +2,13 @@
 
 Normalized version of a [route record](../type-aliases/RouteRecord.md).
 
-## Hierarchy
+## 계층
 
 - [`RouteRecordNormalized`](RouteRecordNormalized.md)
 
   ↳ **`RouteLocationMatched`**
 
-## Properties
+## 속성
 
 ### aliasOf
 
@@ -17,7 +17,7 @@ Normalized version of a [route record](../type-aliases/RouteRecord.md).
 Defines if this record is the alias of another one. This property is
 `undefined` if the record is the original one.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[aliasOf](RouteRecordNormalized.md#aliasof)
 
@@ -29,7 +29,7 @@ ___
 
 Registered beforeEnter guards
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[beforeEnter](RouteRecordNormalized.md#beforeenter)
 
@@ -41,7 +41,7 @@ ___
 
 Nested route records.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[children](RouteRecordNormalized.md#children)
 
@@ -71,7 +71,7 @@ view, basically duplicating the content on the page, which shouldn't happen
 in practice. It will work if multiple apps are rendering different named
 views.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[instances](RouteRecordNormalized.md#instances)
 
@@ -83,7 +83,7 @@ ___
 
 {@inheritDoc _RouteRecordBase.meta}
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[meta](RouteRecordNormalized.md#meta)
 
@@ -95,7 +95,7 @@ ___
 
 {@inheritDoc _RouteRecordBase.name}
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[name](RouteRecordNormalized.md#name)
 
@@ -107,7 +107,7 @@ ___
 
 {@inheritDoc _RouteRecordBase.path}
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[path](RouteRecordNormalized.md#path)
 
@@ -119,7 +119,7 @@ ___
 
 {@inheritDoc RouteRecordMultipleViews.props}
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[props](RouteRecordNormalized.md#props)
 
@@ -131,6 +131,6 @@ ___
 
 {@inheritDoc _RouteRecordBase.redirect}
 
-#### Inherited from
+#### 다음에서 상속됨
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[redirect](RouteRecordNormalized.md#redirect)

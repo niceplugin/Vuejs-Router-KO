@@ -4,12 +4,8 @@
 
 Creates an HTML5 history. Most common history for single page applications.
 
-## Parameters
+### 파라미터
 
 | Name | Type |
 | :------ | :------ |
 | `base?` | `string` |
-
-## Returns
-
-[`RouterHistory`](../interfaces/RouterHistory.md)

@@ -2,6 +2,6 @@
 
 Allowed HTML history.state
 
-## Indexable
+### Indexable
 
 ▪ [x: `number`]: `HistoryStateValue`

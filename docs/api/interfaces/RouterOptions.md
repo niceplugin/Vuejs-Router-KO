@@ -2,13 +2,13 @@
 
 Options to initialize a [Router](Router.md) instance.
 
-## Hierarchy
+## 계층
 
 - [`PathParserOptions`](../type-aliases/PathParserOptions.md)
 
   ↳ **`RouterOptions`**
 
-## Properties
+## 속성
 
 ### end
 
@@ -20,7 +20,7 @@ Should the RegExp match until the end by appending a `$` to it.
 
 `true`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 PathParserOptions.end
 
@@ -36,7 +36,7 @@ You can also use a _hash_ based history with `createWebHashHistory` that
 does not require any configuration on the server but isn't handled at all
 by search engines and does poorly on SEO.
 
-**`Example`**
+#### 예제
 
 ```js
 createRouter({
@@ -72,7 +72,7 @@ ___
 Custom implementation to parse a query. See its counterpart,
 [stringifyQuery](RouterOptions.md#stringifyquery).
 
-**`Example`**
+#### 예제
 
 Let's say you want to use the [qs package](https://github.com/ljharb/qs)
 to parse queries, you can provide both `parseQuery` and `stringifyQuery`:
@@ -103,7 +103,7 @@ ___
 Function to control scrolling when navigating between pages. Can return a
 Promise to delay scrolling. Check ScrollBehavior.
 
-**`Example`**
+#### 예제
 
 ```js
 function scrollBehavior(to, from, savedPosition) {
@@ -124,7 +124,7 @@ Makes the RegExp case-sensitive.
 
 `false`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 PathParserOptions.sensitive
 
@@ -140,7 +140,7 @@ Whether to disallow a trailing slash or not.
 
 `false`
 
-#### Inherited from
+#### 다음에서 상속됨
 
 PathParserOptions.strict
 

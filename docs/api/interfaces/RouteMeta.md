@@ -2,7 +2,7 @@
 
 Interface to type `meta` fields in route records.
 
-**`Example`**
+### 예제
 
 ```ts
 // typings.d.ts or router.ts
@@ -15,7 +15,7 @@ declare module 'vue-router' {
  }
 ```
 
-## Hierarchy
+### 계층
 
 - `Record`<`string` \| `number` \| `symbol`, `unknown`\>
 

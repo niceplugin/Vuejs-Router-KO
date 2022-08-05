@@ -4,12 +4,8 @@
 
 Creates a Router instance that can be used by a Vue app.
 
-## Parameters
+### 파라미터
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `options` | [`RouterOptions`](../interfaces/RouterOptions.md) | [RouterOptions](../interfaces/RouterOptions.md) |
-
-## Returns
-
-[`Router`](../interfaces/Router.md)

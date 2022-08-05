@@ -2,13 +2,13 @@
 
 [RouteLocationRaw](../type-aliases/RouteLocationRaw.md) resolved using the matcher
 
-## Hierarchy
+## 계층
 
 - `_RouteLocationBase`
 
   ↳ **`RouteLocation`**
 
-## Properties
+## 속성
 
 ### fullPath
 
@@ -17,7 +17,7 @@
 The whole location including the `search` and `hash`. This string is
 percentage encoded.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.fullPath
 
@@ -29,7 +29,7 @@ ___
 
 Hash of the current location. If present, starts with a `#`.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.hash
 
@@ -51,7 +51,7 @@ ___
 
 Merged `meta` properties from all the matched route records.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.meta
 
@@ -63,7 +63,7 @@ ___
 
 Name of the matched record
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.name
 
@@ -75,7 +75,7 @@ ___
 
 Object of decoded params extracted from the `path`.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.params
 
@@ -87,7 +87,7 @@ ___
 
 Percentage encoded pathname section of the URL.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.path
 
@@ -99,7 +99,7 @@ ___
 
 Object representation of the `search` property of the current location.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.query
 
@@ -112,6 +112,6 @@ ___
 Contains the location we were initially trying to access before ending up
 on the current location.
 
-#### Inherited from
+#### 다음에서 상속됨
 
 \_RouteLocationBase.redirectedFrom

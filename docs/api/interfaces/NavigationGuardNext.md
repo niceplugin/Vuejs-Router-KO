@@ -1,67 +1,16 @@
 # NavigationGuardNext
 
-## Callable
-
-### NavigationGuardNext
+이것은 [Callable](https://en.wikipedia.org/wiki/Callable_object)입니다.
 
 ▸ **NavigationGuardNext**(): `void`
 
-#### Returns
+▸ **NavigationGuardNext**(`error`|`location`|`valid`|`cb`): `void`
 
-`void`
-
-### NavigationGuardNext
-
-▸ **NavigationGuardNext**(`error`): `void`
-
-#### Parameters
+### 파라미터
 
 | Name | Type |
 | :------ | :------ |
 | `error` | `Error` |
-
-#### Returns
-
-`void`
-
-### NavigationGuardNext
-
-▸ **NavigationGuardNext**(`location`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
 | `location` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) |
-
-#### Returns
-
-`void`
-
-### NavigationGuardNext
-
-▸ **NavigationGuardNext**(`valid`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
 | `valid` | `undefined` \| `boolean` |
-
-#### Returns
-
-`void`
-
-### NavigationGuardNext
-
-▸ **NavigationGuardNext**(`cb`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
 | `cb` | `NavigationGuardNextCallback` |
-
-#### Returns
-
-`void`

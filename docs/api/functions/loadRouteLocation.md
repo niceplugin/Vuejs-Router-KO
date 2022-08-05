@@ -4,12 +4,8 @@
 
 Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.
 
-## Parameters
+### 파라미터
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `route` | [`RouteLocationNormalized`](../interfaces/RouteLocationNormalized.md) | resolved route to load |
-
-## Returns
-
-`Promise`<[`RouteLocationNormalizedLoaded`](../interfaces/RouteLocationNormalizedLoaded.md)\>

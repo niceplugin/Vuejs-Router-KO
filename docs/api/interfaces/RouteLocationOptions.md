@@ -2,7 +2,7 @@
 
 Common options for all navigation methods.
 
-## Properties
+## 속성
 
 ### force
 

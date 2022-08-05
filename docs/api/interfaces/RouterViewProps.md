@@ -1,6 +1,6 @@
 # RouterViewProps
 
-## Properties
+## 속성
 
 ### name
 

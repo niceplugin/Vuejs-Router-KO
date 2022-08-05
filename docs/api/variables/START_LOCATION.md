@@ -5,7 +5,7 @@
 Initial route location where the router is. Can be used in navigation guards
 to differentiate the initial navigation.
 
-**`Example`**
+### 예제
 
 ```js
 import { START_LOCATION } from 'vue-router'

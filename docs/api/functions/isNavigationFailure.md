@@ -4,7 +4,7 @@
 
 Check if an object is a [NavigationFailure](../interfaces/NavigationFailure.md).
 
-**`Example`**
+### 예제
 
 ```js
 import { isNavigationFailure, NavigationFailureType } from 'vue-router'
@@ -25,26 +25,20 @@ router.afterEach((to, from, failure) => {
 })
 ```
 
-## Parameters
+### 파라미터
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `error` | `any` | possible [NavigationFailure](../interfaces/NavigationFailure.md) |
 | `type?` | `NAVIGATION_GUARD_REDIRECT` | optional types to check for |
 
-## Returns
-
-error is NavigationRedirectError
+---
 
 ▸ **isNavigationFailure**(`error`, `type?`): error is NavigationFailure
 
-## Parameters
+### 파라미터
 
 | Name    | Type |
 |:--------| :------ |
 | `error` | `any` |
 | `type?` | `ErrorTypes` \| [`NavigationFailureType`](../enums/NavigationFailureType.md) |
-
-## Returns
-
-error is NavigationFailure
