@@ -186,7 +186,7 @@ const config = defineConfig({
       ],
       '/api/': [
         {
-          text: 'Enumerations',
+          text: 'Enumerations (열거형)',
           collapsible: true,
           items: [
             {
@@ -196,7 +196,7 @@ const config = defineConfig({
           ]
         },
         {
-          text: 'Interfaces',
+          text: 'Interfaces (인터페이스)',
           collapsible: true,
           items: [
             {
@@ -278,7 +278,7 @@ const config = defineConfig({
           ]
         },
         {
-          text: 'Type Aliases',
+          text: 'Type Aliases (타입 별칭)',
           collapsible: true,
           items: [
             {
@@ -324,7 +324,7 @@ const config = defineConfig({
           ]
         },
         {
-          text: 'Variables',
+          text: 'Variables (변수)',
           collapsible: true,
           items: [
             {
@@ -342,7 +342,7 @@ const config = defineConfig({
           ]
         },
         {
-          text: 'Functions',
+          text: 'Functions (함수)',
           collapsible: true,
           items: [
             {
