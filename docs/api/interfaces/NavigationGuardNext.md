@@ -32,7 +32,7 @@
 
 | Name | Type |
 | :------ | :------ |
-| `location` | [`RouteLocationRaw`](../index.md#routelocationraw) |
+| `location` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) |
 
 #### Returns
 

@@ -1,6 +1,6 @@
 # RouteRecordNormalized
 
-Normalized version of a [route record](../index.md#routerecord).
+Normalized version of a [route record](../type-aliases/RouteRecord.md).
 
 ## Hierarchy
 
@@ -29,7 +29,7 @@ ___
 
 ### children
 
-• **children**: [`RouteRecordRaw`](../index.md#routerecordraw)[]
+• **children**: [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md)[]
 
 Nested route records.
 
@@ -67,7 +67,7 @@ ___
 
 ### name
 
-• **name**: `undefined` \| [`RouteRecordName`](../index.md#routerecordname)
+• **name**: `undefined` \| [`RouteRecordName`](../type-aliases/RouteRecordName.md)
 
 {@inheritDoc _RouteRecordBase.name}
 

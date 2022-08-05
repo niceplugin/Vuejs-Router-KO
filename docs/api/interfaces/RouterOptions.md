@@ -4,7 +4,7 @@ Options to initialize a [Router](Router.md) instance.
 
 ## Hierarchy
 
-- [`PathParserOptions`](../index.md#pathparseroptions)
+- [`PathParserOptions`](../type-aliases/PathParserOptions.md)
 
   ↳ **`RouterOptions`**
 
@@ -51,7 +51,7 @@ ___
 
 • `Optional` **linkActiveClass**: `string`
 
-Default class applied to active [RouterLink](../index.md#routerlink). If none is provided,
+Default class applied to active [RouterLink](../variables/RouterLink.md). If none is provided,
 `router-link-active` will be applied.
 
 ___
@@ -60,7 +60,7 @@ ___
 
 • `Optional` **linkExactActiveClass**: `string`
 
-Default class applied to exact active [RouterLink](../index.md#routerlink). If none is provided,
+Default class applied to exact active [RouterLink](../variables/RouterLink.md). If none is provided,
 `router-link-exact-active` will be applied.
 
 ___
@@ -90,7 +90,7 @@ ___
 
 ### routes
 
-• **routes**: readonly [`RouteRecordRaw`](../index.md#routerecordraw)[]
+• **routes**: readonly [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md)[]
 
 Initial list of routes that should be added to the router.
 

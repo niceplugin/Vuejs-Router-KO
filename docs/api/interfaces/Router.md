@@ -32,14 +32,14 @@ Original options object passed to create the Router
 
 ▸ **addRoute**(`parentName`, `route`): () => `void`
 
-Add a new [route record](../index.md#routerecordraw) as the child of an existing route.
+Add a new [route record](../type-aliases/RouteRecordRaw.md) as the child of an existing route.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `parentName` | [`RouteRecordName`](../index.md#routerecordname) | Parent Route Record where `route` should be appended at |
-| `route` | [`RouteRecordRaw`](../index.md#routerecordraw) | Route Record to add |
+| `parentName` | [`RouteRecordName`](../type-aliases/RouteRecordName.md) | Parent Route Record where `route` should be appended at |
+| `route` | [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md) | Route Record to add |
 
 #### Returns
 
@@ -47,7 +47,7 @@ Add a new [route record](../index.md#routerecordraw) as the child of an existing
 
 ▸ (): `void`
 
-Add a new [route record](../index.md#routerecordraw) as the child of an existing route.
+Add a new [route record](../type-aliases/RouteRecordRaw.md) as the child of an existing route.
 
 ##### Returns
 
@@ -55,13 +55,13 @@ Add a new [route record](../index.md#routerecordraw) as the child of an existing
 
 ▸ **addRoute**(`route`): () => `void`
 
-Add a new [route record](../index.md#routerecordraw) to the router.
+Add a new [route record](../type-aliases/RouteRecordRaw.md) to the router.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `route` | [`RouteRecordRaw`](../index.md#routerecordraw) | Route Record to add |
+| `route` | [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md) | Route Record to add |
 
 #### Returns
 
@@ -69,7 +69,7 @@ Add a new [route record](../index.md#routerecordraw) to the router.
 
 ▸ (): `void`
 
-Add a new [route record](../index.md#routerecordraw) to the router.
+Add a new [route record](../type-aliases/RouteRecordRaw.md) to the router.
 
 ##### Returns
 
@@ -231,7 +231,7 @@ ___
 
 ▸ **getRoutes**(): [`RouteRecordNormalized`](RouteRecordNormalized.md)[]
 
-Get a full list of all the [route records](../index.md#routerecord).
+Get a full list of all the [route records](../type-aliases/RouteRecord.md).
 
 #### Returns
 
@@ -268,7 +268,7 @@ Checks if a route with a given name exists
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `name` | [`RouteRecordName`](../index.md#routerecordname) | Name of the route to check |
+| `name` | [`RouteRecordName`](../type-aliases/RouteRecordName.md) | Name of the route to check |
 
 #### Returns
 
@@ -341,7 +341,7 @@ stack.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Route location to navigate to |
+| `to` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) | Route location to navigate to |
 
 #### Returns
 
@@ -359,7 +359,7 @@ Remove an existing route by its name.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `name` | [`RouteRecordName`](../index.md#routerecordname) | Name of the route to remove |
+| `name` | [`RouteRecordName`](../type-aliases/RouteRecordName.md) | Name of the route to remove |
 
 #### Returns
 
@@ -378,7 +378,7 @@ the history stack.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Route location to navigate to |
+| `to` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) | Route location to navigate to |
 
 #### Returns
 
@@ -391,7 +391,7 @@ ___
 ▸ **resolve**(`to`, `currentLocation?`): [`RouteLocation`](RouteLocation.md) & { `href`: `string`  }
 
 Returns the [normalized version](RouteLocation.md) of a
-[route location](../index.md#routelocationraw). Also includes an `href` property
+[route location](../type-aliases/RouteLocationRaw.md). Also includes an `href` property
 that includes any existing `base`. By default, the `currentLocation` used is
 `route.currentRoute` and should only be overridden in advanced use cases.
 
@@ -399,7 +399,7 @@ that includes any existing `base`. By default, the `currentLocation` used is
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Raw route location to resolve |
+| `to` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) | Raw route location to resolve |
 | `currentLocation?` | [`RouteLocationNormalizedLoaded`](RouteLocationNormalizedLoaded.md) | Optional current location to resolve against |
 
 #### Returns

@@ -59,7 +59,7 @@ ___
 
 ### to
 
-• **to**: [`RouteLocationRaw`](../index.md#routelocationraw)
+• **to**: [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md)
 
 Route Location the link should navigate to when clicked on.
 

@@ -1,6 +1,6 @@
 # RouteLocation
 
-[RouteLocationRaw](../index.md#routelocationraw) resolved using the matcher
+[RouteLocationRaw](../type-aliases/RouteLocationRaw.md) resolved using the matcher
 
 ## Hierarchy
 
@@ -39,7 +39,7 @@ ___
 
 • **matched**: [`RouteRecordNormalized`](RouteRecordNormalized.md)[]
 
-Array of [RouteRecord](../index.md#routerecord) containing components as they were
+Array of [RouteRecord](../type-aliases/RouteRecord.md) containing components as they were
 passed when adding records. It can also contain redirect records. This
 can't be used directly
 
@@ -59,7 +59,7 @@ ___
 
 ### name
 
-• **name**: `undefined` \| ``null`` \| [`RouteRecordName`](../index.md#routerecordname)
+• **name**: `undefined` \| ``null`` \| [`RouteRecordName`](../type-aliases/RouteRecordName.md)
 
 Name of the matched record
 
@@ -71,7 +71,7 @@ ___
 
 ### params
 
-• **params**: [`RouteParams`](../index.md#routeparams)
+• **params**: [`RouteParams`](../type-aliases/RouteParams.md)
 
 Object of decoded params extracted from the `path`.
 
@@ -95,7 +95,7 @@ ___
 
 ### query
 
-• **query**: [`LocationQuery`](../index.md#locationquery)
+• **query**: [`LocationQuery`](../type-aliases/LocationQuery.md)
 
 Object representation of the `search` property of the current location.
 
