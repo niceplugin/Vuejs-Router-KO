@@ -49,8 +49,8 @@ const config = defineConfig({
         link: '/guide/index.html',
       },
       {
-        text: 'API 참고서',
-        link: '/api/styles/general.html',
+        text: 'API 문서',
+        link: '/api/index.html',
       },
       {
         text: 'v4.x',
@@ -186,88 +186,208 @@ const config = defineConfig({
       ],
       '/api/': [
         {
-          text: '빌트인 컴포넌트',
+          text: 'Enumerations',
           collapsible: true,
           items: [
             {
-              text: '<router-link> props',
-              link: '/api/built-in-components/router-link-props.html'
-            },
-            {
-              text: '<router-link>의 v-slot',
-              link: '/api/built-in-components/router-link-v-slot.html'
-            },
-            {
-              text: '<router-view> props',
-              link: '/api/built-in-components/router-view-props.html'
-            },
-            {
-              text: '<router-view>의 v-slot',
-              link: '/api/built-in-components/router-view-v-slot.html'
+              text: 'NavigationFailureType',
+              link: '/api/enums/NavigationFailureType.md'
             },
           ]
         },
         {
-          text: 'API 스타일',
+          text: 'Interfaces',
           collapsible: true,
           items: [
             {
-              text: '공통',
-              link: '/api/styles/general.html'
-            },
-            {
-              text: '옵션 API',
-              link: '/api/styles/options-api.html'
-            },
-            {
-              text: '컴포지션 API',
-              link: '/api/styles/composition-api.html'
-            },
-          ]
-        },
-        {
-          text: '인터페이스와 타입',
-          collapsible: true,
-          items: [
-            {
-              text: '라우터 속성',
-              link: '/api/typescript/router-properties.html'
-            },
-            {
-              text: '라우터 메서드',
-              link: '/api/typescript/router-methods.html'
-            },
-            {
-              text: 'RouterOptions',
-              link: '/api/typescript/router-options.html'
-            },
-            {
-              text: 'RouteRecordRaw',
-              link: '/api/typescript/route-record-raw.html'
-            },
-            {
-              text: 'RouteRecordNormalized',
-              link: '/api/typescript/route-record-normalized.html'
-            },
-            {
-              text: 'RouteLocation',
-              link: '/api/typescript/route-location.html'
-            },
-            {
-              text: 'RouteLocationRaw',
-              link: '/api/typescript/route-location-raw.html'
-            },
-            {
-              text: 'RouteLocationNormalized',
-              link: '/api/typescript/route-location-normalized.html'
+              text: 'HistoryState',
+              link: '/api/interfaces/HistoryState.md'
             },
             {
               text: 'NavigationFailure',
-              link: '/api/typescript/navigation-failure.html'
+              link: '/api/interfaces/NavigationFailure.md'
             },
             {
               text: 'NavigationGuard',
-              link: '/api/typescript/navigation-guard.html'
+              link: '/api/interfaces/NavigationGuard.md'
+            },
+            {
+              text: 'NavigationGuardNext',
+              link: '/api/interfaces/NavigationGuardNext.md'
+            },
+            {
+              text: 'NavigationGuardWithThis',
+              link: '/api/interfaces/NavigationGuardWithThis.md'
+            },
+            {
+              text: 'NavigationHookAfter',
+              link: '/api/interfaces/NavigationHookAfter.md'
+            },
+            {
+              text: 'RouteLocation',
+              link: '/api/interfaces/RouteLocation.md'
+            },
+            {
+              text: 'RouteLocationMatched',
+              link: '/api/interfaces/RouteLocationMatched.md'
+            },
+            {
+              text: 'RouteLocationNormalized',
+              link: '/api/interfaces/RouteLocationNormalized.md'
+            },
+            {
+              text: 'RouteLocationNormalizedLoaded',
+              link: '/api/interfaces/RouteLocationNormalizedLoaded.md'
+            },
+            {
+              text: 'RouteLocationOptions',
+              link: '/api/interfaces/RouteLocationOptions.md'
+            },
+            {
+              text: 'RouteMeta',
+              link: '/api/interfaces/RouteMeta.md'
+            },
+            {
+              text: 'Router',
+              link: '/api/interfaces/Router.md'
+            },
+            {
+              text: 'RouteRecordNormalized',
+              link: '/api/interfaces/RouteRecordNormalized.md'
+            },
+            {
+              text: 'RouterHistory',
+              link: '/api/interfaces/RouterHistory.md'
+            },
+            {
+              text: 'RouterLinkProps',
+              link: '/api/interfaces/RouterLinkProps.md'
+            },
+            {
+              text: 'RouterOptions',
+              link: '/api/interfaces/RouterOptions.md'
+            },
+            {
+              text: 'RouterScrollBehavior',
+              link: '/api/interfaces/RouterScrollBehavior.md'
+            },
+            {
+              text: 'RouterViewProps',
+              link: '/api/interfaces/RouterViewProps.md'
+            },
+          ]
+        },
+        {
+          text: 'Type Aliases',
+          collapsible: true,
+          items: [
+            {
+              text: 'LocationQuery',
+              link: '/api/type-aliases/LocationQuery.md'
+            },
+            {
+              text: 'LocationQueryRaw',
+              link: '/api/type-aliases/LocationQueryRaw.md'
+            },
+            {
+              text: 'PathParserOptions',
+              link: '/api/type-aliases/PathParserOptions.md'
+            },
+            {
+              text: 'RouteComponent',
+              link: '/api/type-aliases/RouteComponent.md'
+            },
+            {
+              text: 'RouteLocationRaw',
+              link: '/api/type-aliases/RouteLocationRaw.md'
+            },
+            {
+              text: 'RouteParams',
+              link: '/api/type-aliases/RouteParams.md'
+            },
+            {
+              text: 'RouteRecord',
+              link: '/api/type-aliases/RouteRecord.md'
+            },
+            {
+              text: 'RouteRecordName',
+              link: '/api/type-aliases/RouteRecordName.md'
+            },
+            {
+              text: 'RouteRecordRaw',
+              link: '/api/type-aliases/RouteRecordRaw.md'
+            },
+            {
+              text: 'UseLinkOptions',
+              link: '/api/type-aliases/UseLinkOptions.md'
+            },
+          ]
+        },
+        {
+          text: 'Variables',
+          collapsible: true,
+          items: [
+            {
+              text: 'RouterLink',
+              link: '/api/variables/RouterLink.md'
+            },
+            {
+              text: 'RouterView',
+              link: '/api/variables/RouterView.md'
+            },
+            {
+              text: 'START_LOCATION',
+              link: '/api/variables/START_LOCATION.md'
+            },
+          ]
+        },
+        {
+          text: 'Functions',
+          collapsible: true,
+          items: [
+            {
+              text: 'createMemoryHistory',
+              link: '/api/functions/createMemoryHistory.md'
+            },
+            {
+              text: 'createRouter',
+              link: '/api/functions/createRouter.md'
+            },
+            {
+              text: 'createWebHashHistory',
+              link: '/api/functions/createWebHashHistory.md'
+            },
+            {
+              text: 'createWebHistory',
+              link: '/api/functions/createWebHistory.md'
+            },
+            {
+              text: 'isNavigationFailure',
+              link: '/api/functions/isNavigationFailure.md'
+            },
+            {
+              text: 'loadRouteLocation',
+              link: '/api/functions/loadRouteLocation.md'
+            },
+            {
+              text: 'onBeforeRouteLeave',
+              link: '/api/functions/onBeforeRouteLeave.md'
+            },
+            {
+              text: 'onBeforeRouteUpdate',
+              link: '/api/functions/onBeforeRouteUpdate.md'
+            },
+            {
+              text: 'useLink',
+              link: '/api/functions/useLink.md'
+            },
+            {
+              text: 'useRoute',
+              link: '/api/functions/useRoute.md'
+            },
+            {
+              text: 'useRouter',
+              link: '/api/functions/useRouter.md'
             },
           ]
         },

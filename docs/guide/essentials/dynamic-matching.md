@@ -38,7 +38,7 @@ const User = {
 | /users/:username/posts/:postId | /users/eduardo/posts/123 | `{ username: 'eduardo', postId: '123' }` |
 
 `$route` 객체는 `$route.params` 외에도 `$route.query`(URL에 쿼리가 있는 경우), `$route.hash` 등과 같은 다른 유용한 정보도 노출합니다.
-자세한 내용은 [API 참조](/api/typescript/route-location-normalized.html)에서 확인할 수 있습니다.
+자세한 내용은 [API 참조](/api/interfaces/RouteLocationNormalized.html)에서 확인할 수 있습니다.
 
 이 예제의 작동 데모는 [여기](https://codesandbox.io/s/route-params-vue-router-examples-mlb14?from-embed&initialpath=%2Fusers%2Feduardo%2Fposts%2F1)에서 찾을 수 있습니다.
 

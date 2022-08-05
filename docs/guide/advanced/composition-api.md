@@ -1,6 +1,6 @@
 # Vue Router와 컴포지션 API {#vue-router-and-the-composition-api}
 
-Vue 3에서는 `setup`과 [컴포지션 API](https://v3-docs.vuejs-korea.org/guide/introduction.html#composition-api)가 도입되었습니다.
+Vue 3에서는 `setup`과 [컴포지션 API](https://vuejs.kr/guide/introduction.html#composition-api)가 도입되었습니다.
 따라서 컴포넌트 내부의 탐색 가드와 `this`에서 라우터에 접근하는 기존 방식을 대체할 수 있는 몇 가지 새로운 함수를 사용할 수 있습니다.
 
 ## `setup` 내부에서 라우터 및 현재 경로에 접근하기 {#accessing-the-router-and-current-route-inside-setup}
@@ -93,7 +93,7 @@ export default {
 ## `useLink`
 
 Vue Router는 컴포지션 API로 RouterLink의 내부 동작 기능을 메서드로 노출합니다.
-[`v-slot` API](/api/built-in-components/router-link-v-slot.html)와 동일한 속성에 접근할 수 있습니다:
+[`v-slot` API](/api/functions/useLink.md)와 동일한 속성에 접근할 수 있습니다:
 
 ```js
 import { RouterLink, useLink } from 'vue-router'
