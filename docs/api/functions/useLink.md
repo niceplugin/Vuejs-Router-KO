@@ -17,5 +17,5 @@
 | `href` | `ComputedRef`<`string`\> |
 | `isActive` | `ComputedRef`<`boolean`\> |
 | `isExactActive` | `ComputedRef`<`boolean`\> |
-| `navigate` | (`e`: `MouseEvent`) => `Promise`<`void` \| [`NavigationFailure`](interfaces/NavigationFailure.md)\> |
-| `route` | `ComputedRef`<[`RouteLocation`](interfaces/RouteLocation.md) & { `href`: `string`  }\> |
+| `navigate` | (`e`: `MouseEvent`) => `Promise`<`void` \| [`NavigationFailure`](../interfaces/NavigationFailure.md)\> |
+| `route` | `ComputedRef`<[`RouteLocation`](../interfaces/RouteLocation.md) & { `href`: `string`  }\> |

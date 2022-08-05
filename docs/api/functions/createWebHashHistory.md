@@ -1,6 +1,6 @@
 # createWebHashHistory
 
-▸ **createWebHashHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
+▸ **createWebHashHistory**(`base?`): [`RouterHistory`](../interfaces/RouterHistory.md)
 
 Creates a hash history. Useful for web applications with no host (e.g. `file://`) or when configuring a server to
 handle any URL is not possible.
@@ -29,4 +29,4 @@ createWebHashHistory('/iAmIgnored') // gives a url of `file:///usr/etc/folder/in
 
 ## Returns
 
-[`RouterHistory`](interfaces/RouterHistory.md)
+[`RouterHistory`](../interfaces/RouterHistory.md)

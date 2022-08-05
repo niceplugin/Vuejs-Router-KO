@@ -1,6 +1,6 @@
 # loadRouteLocation
 
-▸ **loadRouteLocation**(`route`): `Promise`<[`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)\>
+▸ **loadRouteLocation**(`route`): `Promise`<[`RouteLocationNormalizedLoaded`](../interfaces/RouteLocationNormalizedLoaded.md)\>
 
 Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.
 
@@ -8,8 +8,8 @@ Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `route` | [`RouteLocationNormalized`](interfaces/RouteLocationNormalized.md) | resolved route to load |
+| `route` | [`RouteLocationNormalized`](../interfaces/RouteLocationNormalized.md) | resolved route to load |
 
 ## Returns
 
-`Promise`<[`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)\>
+`Promise`<[`RouteLocationNormalizedLoaded`](../interfaces/RouteLocationNormalizedLoaded.md)\>

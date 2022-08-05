@@ -1,7 +1,7 @@
 # 트랜지션 {#transitions}
 
 경로 컴포넌트에서 트랜지션을 사용하고 탐색에 애니메이션을 적용하려면,
-[v-slot API](/api/built-in-components/router-view-v-slot.html)를 사용해야 합니다:
+[v-slot API](/api/variables/RouterView.md)를 사용해야 합니다:
 
 ```html
 <router-view v-slot="{ Component }">
@@ -11,7 +11,7 @@
 </router-view>
 ```
 
-모든 트랜지션 API 작동은 [이곳](https://v3-docs.vuejs-korea.org/guide/built-ins/transition.html)에서 설명하는 것과 같습니다.
+모든 트랜지션 API 작동은 [이곳](https://vuejs.kr/guide/built-ins/transition.html)에서 설명하는 것과 같습니다.
 
 ## 라우트 별 트랜지션 {#per-route-transition}
 
@@ -72,7 +72,7 @@ router.afterEach((to, from) => {
 ## 재사용된 뷰에서 강제로 트랜지션 {#forcing-a-transition-between-reused-views}
 
 Vue는 동일한 컴포넌트를 자동으로 재사용하여 트랜지션이 작동하지 않을 수 있습니다.
-다행히도 [`key`](https://v3-docs.vuejs-korea.org/api/built-in-special-attributes.html#key) 속성을 추가해 강제로 트랜지션을 트리거 하는 것이 가능합니다.
+다행히도 [`key`](https://vuejs.kr/api/built-in-special-attributes.html#key) 속성을 추가해 강제로 트랜지션을 트리거 하는 것이 가능합니다.
 이렇게 하면 경로를 유지하면서 파라미터 변경에 의한 트랜지션을 구현할 수 있습니다:
 
 ```vue

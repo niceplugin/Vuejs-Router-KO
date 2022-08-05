@@ -10,7 +10,7 @@ component. The guard is removed when the component is unmounted.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `updateGuard` | [`NavigationGuard`](interfaces/NavigationGuard.md) | [NavigationGuard](interfaces/NavigationGuard.md) |
+| `updateGuard` | [`NavigationGuard`](../interfaces/NavigationGuard.md) | [NavigationGuard](../interfaces/NavigationGuard.md) |
 
 ## Returns
 

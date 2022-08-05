@@ -1,6 +1,6 @@
 # createRouter
 
-▸ **createRouter**(`options`): [`Router`](interfaces/Router.md)
+▸ **createRouter**(`options`): [`Router`](../interfaces/Router.md)
 
 Creates a Router instance that can be used by a Vue app.
 
@@ -8,8 +8,8 @@ Creates a Router instance that can be used by a Vue app.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `options` | [`RouterOptions`](interfaces/RouterOptions.md) | [RouterOptions](interfaces/RouterOptions.md) |
+| `options` | [`RouterOptions`](../interfaces/RouterOptions.md) | [RouterOptions](../interfaces/RouterOptions.md) |
 
 ## Returns
 
-[`Router`](interfaces/Router.md)
+[`Router`](../interfaces/Router.md)

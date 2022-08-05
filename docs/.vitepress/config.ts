@@ -283,43 +283,43 @@ const config = defineConfig({
           items: [
             {
               text: 'LocationQuery',
-              link: '/api/type_aliases/LocationQuery.md'
+              link: '/api/type-aliases/LocationQuery.md'
             },
             {
               text: 'LocationQueryRaw',
-              link: '/api/type_aliases/LocationQueryRaw.md'
+              link: '/api/type-aliases/LocationQueryRaw.md'
             },
             {
               text: 'PathParserOptions',
-              link: '/api/type_aliases/PathParserOptions.md'
+              link: '/api/type-aliases/PathParserOptions.md'
             },
             {
               text: 'RouteComponent',
-              link: '/api/type_aliases/RouteComponent.md'
+              link: '/api/type-aliases/RouteComponent.md'
             },
             {
               text: 'RouteLocationRaw',
-              link: '/api/type_aliases/RouteLocationRaw.md'
+              link: '/api/type-aliases/RouteLocationRaw.md'
             },
             {
               text: 'RouteParams',
-              link: '/api/type_aliases/RouteParams.md'
+              link: '/api/type-aliases/RouteParams.md'
             },
             {
               text: 'RouteRecord',
-              link: '/api/type_aliases/RouteRecord.md'
+              link: '/api/type-aliases/RouteRecord.md'
             },
             {
               text: 'RouteRecordName',
-              link: '/api/type_aliases/RouteRecordName.md'
+              link: '/api/type-aliases/RouteRecordName.md'
             },
             {
               text: 'RouteRecordRaw',
-              link: '/api/type_aliases/RouteRecordRaw.md'
+              link: '/api/type-aliases/RouteRecordRaw.md'
             },
             {
               text: 'UseLinkOptions',
-              link: '/api/type_aliases/UseLinkOptions.md'
+              link: '/api/type-aliases/UseLinkOptions.md'
             },
           ]
         },

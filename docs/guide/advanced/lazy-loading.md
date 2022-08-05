@@ -32,7 +32,7 @@ const UserDetails = () =>
 일반적으로 모든 경로는 **항상 동적 가져오기**를 사용하는 것이 좋습니다.
 
 ::: tip 참고
-경로에 [비동기 컴포넌트](https://v3-docs.vuejs-korea.org/guide/components/async.html)를 **사용하지 마십시오**.
+경로에 [비동기 컴포넌트](https://vuejs.kr/guide/components/async.html)를 **사용하지 마십시오**.
 비동기 컴포넌트는 여전히 경로 컴포넌트 내에서 사용할 수 있지만,
 경로 컴포넌트 자체는 동적 가져오기에 불과합니다.
 :::

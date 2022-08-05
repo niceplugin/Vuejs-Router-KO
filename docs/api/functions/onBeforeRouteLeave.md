@@ -10,7 +10,7 @@ used in any component. The guard is removed when the component is unmounted.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `leaveGuard` | [`NavigationGuard`](interfaces/NavigationGuard.md) | [NavigationGuard](interfaces/NavigationGuard.md) |
+| `leaveGuard` | [`NavigationGuard`](../interfaces/NavigationGuard.md) | [NavigationGuard](../interfaces/NavigationGuard.md) |
 
 ## Returns
 

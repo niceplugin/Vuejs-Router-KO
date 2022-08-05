@@ -114,4 +114,4 @@ router.go(100)
 
 따라서 이미 [브라우저 히스토리 API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)에 익숙하다면, Vue Router를 사용할 때 히스토리 조작이 익숙할 것입니다.
 
-Vue Router의 탐색 메서드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달되는 [`history` 옵션](/api/typescript/router-options.html#history) 값에 상관없이 일관되게 작동합니다.
+Vue Router의 탐색 메서드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달되는 [`history` 옵션](/api/interfaces/RouterOptions.md#history) 값에 상관없이 일관되게 작동합니다.

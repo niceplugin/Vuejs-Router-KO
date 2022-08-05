@@ -2,7 +2,7 @@
 
 ▸ **isNavigationFailure**(`error`, `type?`): error is NavigationRedirectError
 
-Check if an object is a [NavigationFailure](interfaces/NavigationFailure.md).
+Check if an object is a [NavigationFailure](../interfaces/NavigationFailure.md).
 
 **`Example`**
 
@@ -29,7 +29,7 @@ router.afterEach((to, from, failure) => {
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `error` | `any` | possible [NavigationFailure](interfaces/NavigationFailure.md) |
+| `error` | `any` | possible [NavigationFailure](../interfaces/NavigationFailure.md) |
 | `type?` | `NAVIGATION_GUARD_REDIRECT` | optional types to check for |
 
 ## Returns
@@ -40,10 +40,10 @@ error is NavigationRedirectError
 
 ## Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name    | Type |
+|:--------| :------ |
 | `error` | `any` |
-| `type?` | `ErrorTypes` \| [`NavigationFailureType`](enums/NavigationFailureType.md) |
+| `type?` | `ErrorTypes` \| [`NavigationFailureType`](../enums/NavigationFailureType.md) |
 
 ## Returns
 

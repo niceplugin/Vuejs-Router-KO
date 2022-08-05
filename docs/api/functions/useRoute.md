@@ -1,10 +1,10 @@
 # useRoute
 
-▸ **useRoute**(): [`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)
+▸ **useRoute**(): [`RouteLocationNormalizedLoaded`](../interfaces/RouteLocationNormalizedLoaded.md)
 
 Returns the current route location. Equivalent to using `$route` inside
 templates.
 
 ## Returns
 
-[`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)
+[`RouteLocationNormalizedLoaded`](../interfaces/RouteLocationNormalizedLoaded.md)

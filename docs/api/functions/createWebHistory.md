@@ -1,6 +1,6 @@
 # createWebHistory
 
-▸ **createWebHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
+▸ **createWebHistory**(`base?`): [`RouterHistory`](../interfaces/RouterHistory.md)
 
 Creates an HTML5 history. Most common history for single page applications.
 
@@ -12,4 +12,4 @@ Creates an HTML5 history. Most common history for single page applications.
 
 ## Returns
 
-[`RouterHistory`](interfaces/RouterHistory.md)
+[`RouterHistory`](../interfaces/RouterHistory.md)

@@ -36,7 +36,7 @@ this.isMenuOpen = false
 ## 탐색 실패 감지하기 {#detecting-navigation-failures}
 
 탐색이 금지되어 사용자가 같은 페이지에 머무르는 경우,
-`router.push`가 반환하는 `Promise`의 해결된 값은 [`NavigationFailure`](/api/typescript/navigation-failure.html)입니다.
+`router.push`가 반환하는 `Promise`의 해결된 값은 [`NavigationFailure`](/api/enums/NavigationFailureType.md)입니다.
 반면, 탐색이 금지되지 않은 경우에는 falsy 값이 반환됩니다(일반적으로 `undefined`).
 따라서 이를 통해 현재 위치에서 다른 곳으로 이동했는지 구분할 수 있습니다:
 
@@ -96,7 +96,7 @@ router.push('/admin').then(failure => {
 })
 ```
 
-`to`와 `from`은 항상 [정규화된 경로 위치](/api/typescript/route-location-normalized.html)입니다.
+`to`와 `from`은 항상 [정규화된 경로 위치](/api/interfaces/RouteLocationNormalized.html)입니다.
 
 ## 리디렉션 감지 {#detecting-redirections}
 
