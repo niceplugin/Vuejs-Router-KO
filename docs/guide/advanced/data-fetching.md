@@ -90,6 +90,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     getPost(to.params.id, (err, post) => {
+      // `setData`는 아래서에 정의된 메서드임.
       next(vm => vm.setData(err, post))
     })
   },
@@ -103,6 +104,15 @@ export default {
       this.error = error.toString()
     }
   },
+  methods: {
+    setData(error, post) {
+      if (error) {
+        this.error = error
+      } else {
+        this.post = post
+      }
+    }
+  }
 }
 ```
 
