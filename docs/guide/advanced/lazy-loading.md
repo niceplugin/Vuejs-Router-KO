@@ -10,7 +10,7 @@ Vue Router는 기본적으로 [동적 가져오기](https://developer.mozilla.or
 ```js
 // import UserDetails from './views/UserDetails'
 // 주석처리 된 위의 기존 코드를 아래처럼 변경
-const UserDetails = () => import('./views/UserDetails')
+const UserDetails = () => import('./views/UserDetails.vue')
 
 const router = createRouter({
   // ...
