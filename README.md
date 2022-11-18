@@ -1,4 +1,4 @@
-# vue-router [![release candidate](https://img.shields.io/npm/v/vue-router.svg)](https://www.npmjs.com/package/vue-router) [![CircleCI](https://badgen.net/circleci/github/vuejs/router/main)](https://circleci.com/gh/vuejs/router)
+# vue-router [![release candidate](https://img.shields.io/npm/v/vue-router.svg)](https://www.npmjs.com/package/vue-router) [![test](https://github.com/vuejs/router/actions/workflows/test.yml/badge.svg)](https://github.com/vuejs/router/actions/workflows/test.yml)
 
 > 여기는 Vue Router 4 (Vue 3전용) 웹 페이지 한글화를 위해 포크한 저장소 입니다.
 
