@@ -37,7 +37,7 @@ const routes = [
 ```html
 <router-view v-slot="{ Component, route }">
   <!-- 커스텀 트랜지션 또는 `fade`를 사용 -->
-  <transition :name="route.meta.transition || 'fade'">
+  <transition :name="route.meta.transitionName || 'fade'">
     <component :is="Component" />
   </transition>
 </router-view>

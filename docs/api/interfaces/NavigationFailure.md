@@ -12,7 +12,7 @@ Extended Error that contains extra information regarding a failed navigation.
 
 ### cause
 
-• `Optional` **cause**: `Error`
+• `Optional` **cause**: `unknown`
 
 #### 다음에서 상속됨
 
