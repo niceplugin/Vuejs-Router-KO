@@ -44,6 +44,8 @@ Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니�
 ## JavaScript
 
 ```js
+import VueRouter from 'vue-router'
+
 // 1. 경로에 사용할 컴포넌트를 정의.
 // import를 사용해 파일을 가져올 수 있음.
 const Home = { template: '<div>Home</div>' }
