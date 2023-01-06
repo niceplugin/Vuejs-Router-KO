@@ -37,7 +37,7 @@ const routes = [
 ```html
 <router-view v-slot="{ Component, route }">
   <!-- 커스텀 트랜지션 또는 `fade`를 사용 -->
-  <transition :name="route.meta.transitionName || 'fade'">
+  <transition :name="route.meta.transition || 'fade'">
     <component :is="Component" />
   </transition>
 </router-view>
@@ -52,7 +52,7 @@ const routes = [
 ```html
 <!-- 동적인 트랜지션의 name 사용 -->
 <router-view v-slot="{ Component, route }">
-  <transition :name="route.meta.transitionName">
+  <transition :name="route.meta.transition">
     <component :is="Component" />
   </transition>
 </router-view>
@@ -65,7 +65,7 @@ const routes = [
 router.afterEach((to, from) => {
   const toDepth = to.path.split('/').length
   const fromDepth = from.path.split('/').length
-  to.meta.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+  to.meta.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
 })
 ```
 
