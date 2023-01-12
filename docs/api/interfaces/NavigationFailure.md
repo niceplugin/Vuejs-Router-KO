@@ -1,20 +1,28 @@
-# NavigationFailure
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / NavigationFailure
+
+# Interface: NavigationFailure
 
 Extended Error that contains extra information regarding a failed navigation.
 
-## 계층
+## Hierarchy
 
 - `Error`
 
   ↳ **`NavigationFailure`**
 
-## 속성
+## Properties
 
 ### cause
 
 • `Optional` **cause**: `unknown`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 Error.cause
 
@@ -32,7 +40,7 @@ ___
 
 • **message**: `string`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 Error.message
 
@@ -42,7 +50,7 @@ ___
 
 • **name**: `string`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 Error.name
 
@@ -52,7 +60,7 @@ ___
 
 • `Optional` **stack**: `string`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 Error.stack
 

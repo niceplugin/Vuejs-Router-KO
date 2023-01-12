@@ -1,8 +1,16 @@
-# Router
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / Router
+
+# Interface: Router
 
 Router instance.
 
-## 속성
+## Properties
 
 ### currentRoute
 
@@ -26,30 +34,54 @@ ___
 
 Original options object passed to create the Router
 
-## 메서드
+## Methods
 
 ### addRoute
 
 ▸ **addRoute**(`parentName`, `route`): () => `void`
 
-Add a new [route record](../type-aliases/RouteRecordRaw.md) as the child of an existing route.
+Add a new [route record](../index.md#routerecordraw) as the child of an existing route.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `parentName` | [`RouteRecordName`](../type-aliases/RouteRecordName.md) | Parent Route Record where `route` should be appended at |
-| `route` | [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md) | Route Record to add |
+| `parentName` | [`RouteRecordName`](../index.md#routerecordname) | Parent Route Record where `route` should be appended at |
+| `route` | [`RouteRecordRaw`](../index.md#routerecordraw) | Route Record to add |
+
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Add a new [route record](../index.md#routerecordraw) as the child of an existing route.
+
+##### Returns
+
+`void`
 
 ▸ **addRoute**(`route`): () => `void`
 
-Add a new [route record](../type-aliases/RouteRecordRaw.md) to the router.
+Add a new [route record](../index.md#routerecordraw) to the router.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `route` | [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md) | Route Record to add |
+| `route` | [`RouteRecordRaw`](../index.md#routerecordraw) | Route Record to add |
+
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Add a new [route record](../index.md#routerecordraw) to the router.
+
+##### Returns
+
+`void`
 
 ___
 
@@ -60,7 +92,7 @@ ___
 Add a navigation hook that is executed after every navigation. Returns a
 function that removes the registered hook.
 
-#### 예제
+**`Example`**
 
 ```js
 router.afterEach((to, from, failure) => {
@@ -70,11 +102,34 @@ router.afterEach((to, from, failure) => {
 })
 ```
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `guard` | [`NavigationHookAfter`](NavigationHookAfter.md) | navigation hook to add |
+
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Add a navigation hook that is executed after every navigation. Returns a
+function that removes the registered hook.
+
+**`Example`**
+
+```js
+router.afterEach((to, from, failure) => {
+  if (isNavigationFailure(failure)) {
+    console.log('failed navigation', failure)
+  }
+})
+```
+
+##### Returns
+
+`void`
 
 ___
 
@@ -85,6 +140,10 @@ ___
 Go back in history if possible by calling `history.back()`. Equivalent to
 `router.go(-1)`.
 
+#### Returns
+
+`void`
+
 ___
 
 ### beforeEach
@@ -94,11 +153,24 @@ ___
 Add a navigation guard that executes before any navigation. Returns a
 function that removes the registered guard.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `guard` | [`NavigationGuardWithThis`](NavigationGuardWithThis.md)<`undefined`\> | navigation guard to add |
+
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Add a navigation guard that executes before any navigation. Returns a
+function that removes the registered guard.
+
+##### Returns
+
+`void`
 
 ___
 
@@ -111,7 +183,7 @@ resolved. At this state all component have been fetched and other
 navigation guards have been successful. Returns a function that removes the
 registered guard.
 
-#### 예제
+**`Example`**
 
 ```js
 router.beforeResolve(to => {
@@ -119,11 +191,34 @@ router.beforeResolve(to => {
 })
 ```
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `guard` | [`NavigationGuardWithThis`](NavigationGuardWithThis.md)<`undefined`\> | navigation guard to add |
+
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Add a navigation guard that executes before navigation is about to be
+resolved. At this state all component have been fetched and other
+navigation guards have been successful. Returns a function that removes the
+registered guard.
+
+**`Example`**
+
+```js
+router.beforeResolve(to => {
+  if (to.meta.requiresAuth && !isAuthenticated) return false
+})
+```
+
+##### Returns
+
+`void`
 
 ___
 
@@ -134,13 +229,21 @@ ___
 Go forward in history if possible by calling `history.forward()`.
 Equivalent to `router.go(1)`.
 
+#### Returns
+
+`void`
+
 ___
 
 ### getRoutes
 
 ▸ **getRoutes**(): [`RouteRecordNormalized`](RouteRecordNormalized.md)[]
 
-Get a full list of all the [route records](../type-aliases/RouteRecord.md).
+Get a full list of all the [route records](../index.md#routerecord).
+
+#### Returns
+
+[`RouteRecordNormalized`](RouteRecordNormalized.md)[]
 
 ___
 
@@ -151,11 +254,15 @@ ___
 Allows you to move forward or backward through the history. Calls
 `history.go()`.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `delta` | `number` | The position in the history to which you want to move, relative to the current page |
+
+#### Returns
+
+`void`
 
 ___
 
@@ -165,11 +272,15 @@ ___
 
 Checks if a route with a given name exists
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `name` | [`RouteRecordName`](../type-aliases/RouteRecordName.md) | Name of the route to check |
+| `name` | [`RouteRecordName`](../index.md#routerecordname) | Name of the route to check |
+
+#### Returns
+
+`boolean`
 
 ___
 
@@ -187,6 +298,10 @@ the server and the client. Note that on server side, you need to manually
 push the initial location while on client side, the router automatically
 picks it up from the URL.
 
+#### Returns
+
+`Promise`<`void`\>
+
 ___
 
 ### onError
@@ -199,11 +314,27 @@ asynchronously, errors returned or passed to `next` in any navigation
 guard, and errors occurred when trying to resolve an async component that
 is required to render a route.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `handler` | `_ErrorHandler` | error handler to register |
+
+#### Returns
+
+`fn`
+
+▸ (): `void`
+
+Adds an error handler that is called every time a non caught error happens
+during navigation. This includes errors thrown synchronously and
+asynchronously, errors returned or passed to `next` in any navigation
+guard, and errors occurred when trying to resolve an async component that
+is required to render a route.
+
+##### Returns
+
+`void`
 
 ___
 
@@ -214,11 +345,15 @@ ___
 Programmatically navigate to a new URL by pushing an entry in the history
 stack.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `to` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) | Route location to navigate to |
+| `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Route location to navigate to |
+
+#### Returns
+
+`Promise`<`undefined` \| `void` \| [`NavigationFailure`](NavigationFailure.md)\>
 
 ___
 
@@ -228,11 +363,15 @@ ___
 
 Remove an existing route by its name.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `name` | [`RouteRecordName`](../type-aliases/RouteRecordName.md) | Name of the route to remove |
+| `name` | [`RouteRecordName`](../index.md#routerecordname) | Name of the route to remove |
+
+#### Returns
+
+`void`
 
 ___
 
@@ -243,11 +382,15 @@ ___
 Programmatically navigate to a new URL by replacing the current entry in
 the history stack.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `to` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) | Route location to navigate to |
+| `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Route location to navigate to |
+
+#### Returns
+
+`Promise`<`undefined` \| `void` \| [`NavigationFailure`](NavigationFailure.md)\>
 
 ___
 
@@ -256,13 +399,17 @@ ___
 ▸ **resolve**(`to`, `currentLocation?`): [`RouteLocation`](RouteLocation.md) & { `href`: `string`  }
 
 Returns the [normalized version](RouteLocation.md) of a
-[route location](../type-aliases/RouteLocationRaw.md). Also includes an `href` property
+[route location](../index.md#routelocationraw). Also includes an `href` property
 that includes any existing `base`. By default, the `currentLocation` used is
 `router.currentRoute` and should only be overridden in advanced use cases.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
-| `to` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) | Raw route location to resolve |
+| `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Raw route location to resolve |
 | `currentLocation?` | [`RouteLocationNormalizedLoaded`](RouteLocationNormalizedLoaded.md) | Optional current location to resolve against |
+
+#### Returns
+
+[`RouteLocation`](RouteLocation.md) & { `href`: `string`  }

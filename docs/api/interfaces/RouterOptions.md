@@ -1,14 +1,22 @@
-# RouterOptions
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / RouterOptions
+
+# Interface: RouterOptions
 
 Options to initialize a [Router](Router.md) instance.
 
-## 계층
+## Hierarchy
 
-- [`PathParserOptions`](../type-aliases/PathParserOptions.md)
+- [`PathParserOptions`](../index.md#pathparseroptions)
 
   ↳ **`RouterOptions`**
 
-## 속성
+## Properties
 
 ### end
 
@@ -20,7 +28,7 @@ Should the RegExp match until the end by appending a `$` to it.
 
 `true`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 PathParserOptions.end
 
@@ -36,7 +44,7 @@ You can also use a _hash_ based history with `createWebHashHistory` that
 does not require any configuration on the server but isn't handled at all
 by search engines and does poorly on SEO.
 
-#### 예제
+**`Example`**
 
 ```js
 createRouter({
@@ -51,7 +59,7 @@ ___
 
 • `Optional` **linkActiveClass**: `string`
 
-Default class applied to active [RouterLink](../variables/RouterLink.md). If none is provided,
+Default class applied to active [RouterLink](../index.md#routerlink). If none is provided,
 `router-link-active` will be applied.
 
 ___
@@ -60,7 +68,7 @@ ___
 
 • `Optional` **linkExactActiveClass**: `string`
 
-Default class applied to exact active [RouterLink](../variables/RouterLink.md). If none is provided,
+Default class applied to exact active [RouterLink](../index.md#routerlink). If none is provided,
 `router-link-exact-active` will be applied.
 
 ___
@@ -72,7 +80,7 @@ ___
 Custom implementation to parse a query. See its counterpart,
 [stringifyQuery](RouterOptions.md#stringifyquery).
 
-#### 예제
+**`Example`**
 
 Let's say you want to use the [qs package](https://github.com/ljharb/qs)
 to parse queries, you can provide both `parseQuery` and `stringifyQuery`:
@@ -90,7 +98,7 @@ ___
 
 ### routes
 
-• **routes**: readonly [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md)[]
+• **routes**: readonly [`RouteRecordRaw`](../index.md#routerecordraw)[]
 
 Initial list of routes that should be added to the router.
 
@@ -103,7 +111,7 @@ ___
 Function to control scrolling when navigating between pages. Can return a
 Promise to delay scrolling. Check ScrollBehavior.
 
-#### 예제
+**`Example`**
 
 ```js
 function scrollBehavior(to, from, savedPosition) {
@@ -124,7 +132,7 @@ Makes the RegExp case-sensitive.
 
 `false`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 PathParserOptions.sensitive
 
@@ -140,7 +148,7 @@ Whether to disallow a trailing slash or not.
 
 `false`
 
-#### 다음에서 상속됨
+#### Inherited from
 
 PathParserOptions.strict
 

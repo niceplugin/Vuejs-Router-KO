@@ -1,6 +1,14 @@
-# RouterViewProps
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-## 속성
+[API Documentation](../index.md) / RouterViewProps
+
+# Interface: RouterViewProps
+
+## Properties
 
 ### name
 

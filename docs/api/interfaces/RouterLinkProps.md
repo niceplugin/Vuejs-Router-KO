@@ -1,12 +1,20 @@
-# RouterLinkProps
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-## 계층
+[API Documentation](../index.md) / RouterLinkProps
+
+# Interface: RouterLinkProps
+
+## Hierarchy
 
 - `RouterLinkOptions`
 
   ↳ **`RouterLinkProps`**
 
-## 속성
+## Properties
 
 ### activeClass
 
@@ -51,7 +59,7 @@ ___
 
 Calls `router.replace` instead of `router.push`.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 RouterLinkOptions.replace
 
@@ -59,10 +67,10 @@ ___
 
 ### to
 
-• **to**: [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md)
+• **to**: [`RouteLocationRaw`](../index.md#routelocationraw)
 
 Route Location the link should navigate to when clicked on.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 RouterLinkOptions.to

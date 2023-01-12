@@ -1,15 +1,23 @@
-# RouteLocationNormalized
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / RouteLocationNormalized
+
+# Interface: RouteLocationNormalized
 
 Similar to [RouteLocation](RouteLocation.md) but its
 [matched](RouteLocationNormalized.md#matched) cannot contain redirect records
 
-## 계층
+## Hierarchy
 
 - `_RouteLocationBase`
 
   ↳ **`RouteLocationNormalized`**
 
-## 속성
+## Properties
 
 ### fullPath
 
@@ -18,7 +26,7 @@ Similar to [RouteLocation](RouteLocation.md) but its
 The whole location including the `search` and `hash`. This string is
 percentage encoded.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.fullPath
 
@@ -30,7 +38,7 @@ ___
 
 Hash of the current location. If present, starts with a `#`.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.hash
 
@@ -50,7 +58,7 @@ ___
 
 Merged `meta` properties from all the matched route records.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.meta
 
@@ -58,11 +66,11 @@ ___
 
 ### name
 
-• **name**: `undefined` \| ``null`` \| [`RouteRecordName`](../type-aliases/RouteRecordName.md)
+• **name**: `undefined` \| ``null`` \| [`RouteRecordName`](../index.md#routerecordname)
 
 Name of the matched record
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.name
 
@@ -70,11 +78,11 @@ ___
 
 ### params
 
-• **params**: [`RouteParams`](../type-aliases/RouteParams.md)
+• **params**: [`RouteParams`](../index.md#routeparams)
 
 Object of decoded params extracted from the `path`.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.params
 
@@ -86,7 +94,7 @@ ___
 
 Percentage encoded pathname section of the URL.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.path
 
@@ -94,11 +102,11 @@ ___
 
 ### query
 
-• **query**: [`LocationQuery`](../type-aliases/LocationQuery.md)
+• **query**: [`LocationQuery`](../index.md#locationquery)
 
 Object representation of the `search` property of the current location.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.query
 
@@ -111,6 +119,6 @@ ___
 Contains the location we were initially trying to access before ending up
 on the current location.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.redirectedFrom

@@ -1,16 +1,75 @@
-# NavigationGuardNext
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-이것은 [Callable](https://en.wikipedia.org/wiki/Callable_object)입니다.
+[API Documentation](../index.md) / NavigationGuardNext
+
+# Interface: NavigationGuardNext
+
+## Callable
+
+### NavigationGuardNext
 
 ▸ **NavigationGuardNext**(): `void`
 
-▸ **NavigationGuardNext**(`error`|`location`|`valid`|`cb`): `void`
+#### Returns
 
-### 파라미터
+`void`
+
+### NavigationGuardNext
+
+▸ **NavigationGuardNext**(`error`): `void`
+
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `error` | `Error` |
-| `location` | [`RouteLocationRaw`](../type-aliases/RouteLocationRaw.md) |
+
+#### Returns
+
+`void`
+
+### NavigationGuardNext
+
+▸ **NavigationGuardNext**(`location`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `location` | [`RouteLocationRaw`](../index.md#routelocationraw) |
+
+#### Returns
+
+`void`
+
+### NavigationGuardNext
+
+▸ **NavigationGuardNext**(`valid`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
 | `valid` | `undefined` \| `boolean` |
+
+#### Returns
+
+`void`
+
+### NavigationGuardNext
+
+▸ **NavigationGuardNext**(`cb`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
 | `cb` | `NavigationGuardNextCallback` |
+
+#### Returns
+
+`void`

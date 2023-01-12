@@ -1,14 +1,22 @@
-# RouteRecordNormalized
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-Normalized version of a [route record](../type-aliases/RouteRecord.md).
+[API Documentation](../index.md) / RouteRecordNormalized
 
-## 계층
+# Interface: RouteRecordNormalized
+
+Normalized version of a [route record](../index.md#routerecord).
+
+## Hierarchy
 
 - **`RouteRecordNormalized`**
 
   ↳ [`RouteLocationMatched`](RouteLocationMatched.md)
 
-## 속성
+## Properties
 
 ### aliasOf
 
@@ -29,7 +37,7 @@ ___
 
 ### children
 
-• **children**: [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md)[]
+• **children**: [`RouteRecordRaw`](../index.md#routerecordraw)[]
 
 Nested route records.
 
@@ -67,7 +75,7 @@ ___
 
 ### name
 
-• **name**: `undefined` \| [`RouteRecordName`](../type-aliases/RouteRecordName.md)
+• **name**: `undefined` \| [`RouteRecordName`](../index.md#routerecordname)
 
 {@inheritDoc _RouteRecordBase.name}
 

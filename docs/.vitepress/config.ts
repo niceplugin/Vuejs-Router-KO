@@ -186,208 +186,129 @@ const config = defineConfig({
       ],
       '/api/': [
         {
-          text: 'Enumerations (열거형)',
-          collapsible: true,
+          collapsible: false,
           items: [
             {
-              text: 'NavigationFailureType',
-              link: '/api/enums/NavigationFailureType.md'
-            },
-          ]
-        },
-        {
-          text: 'Interfaces (인터페이스)',
-          collapsible: true,
-          items: [
-            {
-              text: 'HistoryState',
-              link: '/api/interfaces/HistoryState.md'
+              text: 'Enumerations (열거형)',
+              link: '/api/#enumerations',
             },
             {
-              text: 'NavigationFailure',
-              link: '/api/interfaces/NavigationFailure.md'
+              text: 'Interfaces (인터페이스)',
+              link: '/api/#interfaces'
             },
             {
-              text: 'NavigationGuard',
-              link: '/api/interfaces/NavigationGuard.md'
+              text: 'Type Aliases (타입 별칭)',
+              link: '/api/#locationquery',
+              items: [
+                {
+                  text: 'LocationQuery',
+                  link: '/api/#LocationQuery'
+                },
+                {
+                  text: 'LocationQueryRaw',
+                  link: '/api/#LocationQueryRaw'
+                },
+                {
+                  text: 'PathParserOptions',
+                  link: '/api/#PathParserOptions'
+                },
+                {
+                  text: 'RouteComponent',
+                  link: '/api/#RouteComponent'
+                },
+                {
+                  text: 'RouteLocationRaw',
+                  link: '/api/#RouteLocationRaw'
+                },
+                {
+                  text: 'RouteParams',
+                  link: '/api/#RouteParams'
+                },
+                {
+                  text: 'RouteRecord',
+                  link: '/api/#RouteRecord'
+                },
+                {
+                  text: 'RouteRecordName',
+                  link: '/api/#RouteRecordName'
+                },
+                {
+                  text: 'RouteRecordRaw',
+                  link: '/api/#RouteRecordRaw'
+                },
+                {
+                  text: 'UseLinkOptions',
+                  link: '/api/#UseLinkOptions'
+                },
+              ]
             },
             {
-              text: 'NavigationGuardNext',
-              link: '/api/interfaces/NavigationGuardNext.md'
+              text: 'Variables (변수)',
+              link: '/api/#variables',
+              items: [
+                {
+                  text: 'RouterLink',
+                  link: '/api/#RouterLink'
+                },
+                {
+                  text: 'RouterView',
+                  link: '/api/#RouterView'
+                },
+                {
+                  text: 'START_LOCATION',
+                  link: '/api/#START_LOCATION'
+                },
+              ]
             },
             {
-              text: 'NavigationGuardWithThis',
-              link: '/api/interfaces/NavigationGuardWithThis.md'
-            },
-            {
-              text: 'NavigationHookAfter',
-              link: '/api/interfaces/NavigationHookAfter.md'
-            },
-            {
-              text: 'RouteLocation',
-              link: '/api/interfaces/RouteLocation.md'
-            },
-            {
-              text: 'RouteLocationMatched',
-              link: '/api/interfaces/RouteLocationMatched.md'
-            },
-            {
-              text: 'RouteLocationNormalized',
-              link: '/api/interfaces/RouteLocationNormalized.md'
-            },
-            {
-              text: 'RouteLocationNormalizedLoaded',
-              link: '/api/interfaces/RouteLocationNormalizedLoaded.md'
-            },
-            {
-              text: 'RouteLocationOptions',
-              link: '/api/interfaces/RouteLocationOptions.md'
-            },
-            {
-              text: 'RouteMeta',
-              link: '/api/interfaces/RouteMeta.md'
-            },
-            {
-              text: 'Router',
-              link: '/api/interfaces/Router.md'
-            },
-            {
-              text: 'RouteRecordNormalized',
-              link: '/api/interfaces/RouteRecordNormalized.md'
-            },
-            {
-              text: 'RouterHistory',
-              link: '/api/interfaces/RouterHistory.md'
-            },
-            {
-              text: 'RouterLinkProps',
-              link: '/api/interfaces/RouterLinkProps.md'
-            },
-            {
-              text: 'RouterOptions',
-              link: '/api/interfaces/RouterOptions.md'
-            },
-            {
-              text: 'RouterScrollBehavior',
-              link: '/api/interfaces/RouterScrollBehavior.md'
-            },
-            {
-              text: 'RouterViewProps',
-              link: '/api/interfaces/RouterViewProps.md'
-            },
-          ]
-        },
-        {
-          text: 'Type Aliases (타입 별칭)',
-          collapsible: true,
-          items: [
-            {
-              text: 'LocationQuery',
-              link: '/api/type-aliases/LocationQuery.md'
-            },
-            {
-              text: 'LocationQueryRaw',
-              link: '/api/type-aliases/LocationQueryRaw.md'
-            },
-            {
-              text: 'PathParserOptions',
-              link: '/api/type-aliases/PathParserOptions.md'
-            },
-            {
-              text: 'RouteComponent',
-              link: '/api/type-aliases/RouteComponent.md'
-            },
-            {
-              text: 'RouteLocationRaw',
-              link: '/api/type-aliases/RouteLocationRaw.md'
-            },
-            {
-              text: 'RouteParams',
-              link: '/api/type-aliases/RouteParams.md'
-            },
-            {
-              text: 'RouteRecord',
-              link: '/api/type-aliases/RouteRecord.md'
-            },
-            {
-              text: 'RouteRecordName',
-              link: '/api/type-aliases/RouteRecordName.md'
-            },
-            {
-              text: 'RouteRecordRaw',
-              link: '/api/type-aliases/RouteRecordRaw.md'
-            },
-            {
-              text: 'UseLinkOptions',
-              link: '/api/type-aliases/UseLinkOptions.md'
-            },
-          ]
-        },
-        {
-          text: 'Variables (변수)',
-          collapsible: true,
-          items: [
-            {
-              text: 'RouterLink',
-              link: '/api/variables/RouterLink.md'
-            },
-            {
-              text: 'RouterView',
-              link: '/api/variables/RouterView.md'
-            },
-            {
-              text: 'START_LOCATION',
-              link: '/api/variables/START_LOCATION.md'
-            },
-          ]
-        },
-        {
-          text: 'Functions (함수)',
-          collapsible: true,
-          items: [
-            {
-              text: 'createMemoryHistory',
-              link: '/api/functions/createMemoryHistory.md'
-            },
-            {
-              text: 'createRouter',
-              link: '/api/functions/createRouter.md'
-            },
-            {
-              text: 'createWebHashHistory',
-              link: '/api/functions/createWebHashHistory.md'
-            },
-            {
-              text: 'createWebHistory',
-              link: '/api/functions/createWebHistory.md'
-            },
-            {
-              text: 'isNavigationFailure',
-              link: '/api/functions/isNavigationFailure.md'
-            },
-            {
-              text: 'loadRouteLocation',
-              link: '/api/functions/loadRouteLocation.md'
-            },
-            {
-              text: 'onBeforeRouteLeave',
-              link: '/api/functions/onBeforeRouteLeave.md'
-            },
-            {
-              text: 'onBeforeRouteUpdate',
-              link: '/api/functions/onBeforeRouteUpdate.md'
-            },
-            {
-              text: 'useLink',
-              link: '/api/functions/useLink.md'
-            },
-            {
-              text: 'useRoute',
-              link: '/api/functions/useRoute.md'
-            },
-            {
-              text: 'useRouter',
-              link: '/api/functions/useRouter.md'
+              text: 'Functions (함수)',
+              link: '/api/#functions',
+              items: [
+                {
+                  text: 'createMemoryHistory',
+                  link: '/api/#createMemoryHistory'
+                },
+                {
+                  text: 'createRouter',
+                  link: '/api/#createRouter'
+                },
+                {
+                  text: 'createWebHashHistory',
+                  link: '/api/#createWebHashHistory'
+                },
+                {
+                  text: 'createWebHistory',
+                  link: '/api/#createWebHistory'
+                },
+                {
+                  text: 'isNavigationFailure',
+                  link: '/api/#isNavigationFailure'
+                },
+                {
+                  text: 'loadRouteLocation',
+                  link: '/api/#loadRouteLocation'
+                },
+                {
+                  text: 'onBeforeRouteLeave',
+                  link: '/api/#onBeforeRouteLeave'
+                },
+                {
+                  text: 'onBeforeRouteUpdate',
+                  link: '/api/#onBeforeRouteUpdate'
+                },
+                {
+                  text: 'useLink',
+                  link: '/api/#useLink'
+                },
+                {
+                  text: 'useRoute',
+                  link: '/api/#useRoute'
+                },
+                {
+                  text: 'useRouter',
+                  link: '/api/#useRouter'
+                },
+              ]
             },
           ]
         },

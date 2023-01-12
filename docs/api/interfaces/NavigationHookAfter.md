@@ -1,13 +1,27 @@
-# NavigationHookAfter
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-이것은 [Callable](https://en.wikipedia.org/wiki/Callable_object)입니다.
+[API Documentation](../index.md) / NavigationHookAfter
+
+# Interface: NavigationHookAfter
+
+## Callable
+
+### NavigationHookAfter
 
 ▸ **NavigationHookAfter**(`to`, `from`, `failure?`): `any`
 
-### 파라미터
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `to` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |
 | `from` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |
 | `failure?` | `void` \| [`NavigationFailure`](NavigationFailure.md) |
+
+#### Returns
+
+`any`
