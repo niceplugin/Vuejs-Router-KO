@@ -6,6 +6,8 @@ sidebarDepth: 3
 
 # API Documentation
 
+API 문서 번역 01월 14일부터 시작!
+
 ## Enumerations
 
 - [NavigationFailureType](enums/NavigationFailureType.md)

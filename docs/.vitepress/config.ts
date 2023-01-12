@@ -66,6 +66,19 @@ const config = defineConfig({
           },
         ],
       },
+      {
+        text: '생태계',
+        items: [
+          {
+            text: 'Vue.js 3',
+            link: 'https://vuejs.kr'
+          },
+          {
+            text: '피니아 (상태관리)',
+            link: 'https://pinia.vuejs.kr',
+          },
+        ],
+      },
     ],
 
     sidebar: {
