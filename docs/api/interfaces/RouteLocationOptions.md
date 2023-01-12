@@ -1,8 +1,16 @@
-# RouteLocationOptions
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / RouteLocationOptions
+
+# Interface: RouteLocationOptions
 
 Common options for all navigation methods.
 
-## 속성
+## Properties
 
 ### force
 

@@ -1,14 +1,22 @@
-# RouteLocationMatched
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-Normalized version of a [route record](../type-aliases/RouteRecord.md).
+[API Documentation](../index.md) / RouteLocationMatched
 
-## 계층
+# Interface: RouteLocationMatched
+
+Normalized version of a [route record](../index.md#routerecord).
+
+## Hierarchy
 
 - [`RouteRecordNormalized`](RouteRecordNormalized.md)
 
   ↳ **`RouteLocationMatched`**
 
-## 속성
+## Properties
 
 ### aliasOf
 
@@ -17,7 +25,7 @@ Normalized version of a [route record](../type-aliases/RouteRecord.md).
 Defines if this record is the alias of another one. This property is
 `undefined` if the record is the original one.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[aliasOf](RouteRecordNormalized.md#aliasof)
 
@@ -29,7 +37,7 @@ ___
 
 Registered beforeEnter guards
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[beforeEnter](RouteRecordNormalized.md#beforeenter)
 
@@ -37,11 +45,11 @@ ___
 
 ### children
 
-• **children**: [`RouteRecordRaw`](../type-aliases/RouteRecordRaw.md)[]
+• **children**: [`RouteRecordRaw`](../index.md#routerecordraw)[]
 
 Nested route records.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[children](RouteRecordNormalized.md#children)
 
@@ -49,7 +57,7 @@ ___
 
 ### components
 
-• **components**: `undefined` \| ``null`` \| `Record`<`string`, [`RouteComponent`](../type-aliases/RouteComponent.md)\>
+• **components**: `undefined` \| ``null`` \| `Record`<`string`, [`RouteComponent`](../index.md#routecomponent)\>
 
 {@inheritDoc RouteRecordMultipleViews.components}
 
@@ -71,7 +79,7 @@ view, basically duplicating the content on the page, which shouldn't happen
 in practice. It will work if multiple apps are rendering different named
 views.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[instances](RouteRecordNormalized.md#instances)
 
@@ -83,7 +91,7 @@ ___
 
 {@inheritDoc _RouteRecordBase.meta}
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[meta](RouteRecordNormalized.md#meta)
 
@@ -91,11 +99,11 @@ ___
 
 ### name
 
-• **name**: `undefined` \| [`RouteRecordName`](../type-aliases/RouteRecordName.md)
+• **name**: `undefined` \| [`RouteRecordName`](../index.md#routerecordname)
 
 {@inheritDoc _RouteRecordBase.name}
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[name](RouteRecordNormalized.md#name)
 
@@ -107,7 +115,7 @@ ___
 
 {@inheritDoc _RouteRecordBase.path}
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[path](RouteRecordNormalized.md#path)
 
@@ -119,7 +127,7 @@ ___
 
 {@inheritDoc RouteRecordMultipleViews.props}
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[props](RouteRecordNormalized.md#props)
 
@@ -131,6 +139,6 @@ ___
 
 {@inheritDoc _RouteRecordBase.redirect}
 
-#### 다음에서 상속됨
+#### Inherited from
 
 [RouteRecordNormalized](RouteRecordNormalized.md).[redirect](RouteRecordNormalized.md#redirect)

@@ -1,8 +1,16 @@
-# RouteMeta
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / RouteMeta
+
+# Interface: RouteMeta
 
 Interface to type `meta` fields in route records.
 
-### 예제
+**`Example`**
 
 ```ts
 // typings.d.ts or router.ts
@@ -15,7 +23,7 @@ declare module 'vue-router' {
  }
 ```
 
-### 계층
+## Hierarchy
 
 - `Record`<`string` \| `number` \| `symbol`, `unknown`\>
 

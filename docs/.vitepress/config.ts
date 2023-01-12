@@ -2,31 +2,32 @@ import { defineConfig, UserConfig } from 'vitepress'
 
 const head: UserConfig['head'] = [
   ['link', { rel: 'icon', href: `/logo-icon.png` }],
+  ['script', { src: 'https://unpkg.com/thesemetrics@latest', async: '',}]
 ]
 
 const config = defineConfig({
+
   lang: 'ko',
   title: 'Vue Router',
-  description: 'Vue.js 공식 라우터',
+  description: 'Vue 3에 필요한 최신 공식 라우터',
   head,
   // serviceWorker: true,
 
-  lastUpdated: true,
+  locales: {
+    '/': {
+      lang: 'ko',
+      title: 'Vue Router',
+      description: 'Vue 3에 필요한 최신 공식 라우터',
+    },
+  },
 
   themeConfig: {
-    logo: '/logo-icon.png',
-
-    editLink: {
-      pattern: 'https://github.com/niceplugin/Vuejs-Router-KO/edit/main-korean/docs/:path',
-      text: '이 페이지 편집 제안하기'
-    },
-
-    lastUpdatedText: '마지막 수정일',
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/niceplugin/Vuejs-Router-KO' },
-      { icon: 'slack', link: 'https://vuejs-korea.slack.com/' }
-    ],
+    repo: 'niceplugin/Vuejs-Router-KO',
+    docsRepo: 'niceplugin/Vuejs-Router-KO',
+    docsDir: 'docs',
+    docsBranch: 'main-korean',
+    editLinks: true,
+    editLinkText: '이 페이지 편집 제안하기',
 
     // carbonAds: {
     //   carbon: 'CEBICK3I',
@@ -68,33 +69,19 @@ const config = defineConfig({
     ],
 
     sidebar: {
-      '/guide/': [
+      '/': [
         {
-          text: '시작하기',
-          collapsible: true,
-          items: [
-            {
-              text: '소개',
-              link: '/guide/introduction.html',
-            },
-            {
-              text: '설치',
-              link: '/guide/installation.html',
-            },
-            {
-              text: '시작하기',
-              link: '/guide/',
-            },
-            {
-              text: '⚠️Vue 2에서 마이그레이션 (영문)',
-              link: '/guide/migration.html',
-            },
-          ]
+          text: '소개',
+          link: '/introduction.html',
+        },
+        {
+          text: '설치',
+          link: '/installation.html',
         },
         {
           text: '핵심',
-          collapsible: true,
-          items: [
+          collapsible: false,
+          children: [
             {
               text: '동적 경로 매칭',
               link: '/guide/essentials/dynamic-matching.html',
@@ -135,8 +122,8 @@ const config = defineConfig({
         },
         {
           text: '고급',
-          collapsible: true,
-          items: [
+          collapsible: false,
+          children: [
             {
               text: '네비게이션 가드',
               link: '/guide/advanced/navigation-guards.html',
@@ -183,220 +170,11 @@ const config = defineConfig({
             },
           ],
         },
-      ],
-      '/api/': [
         {
-          text: 'Enumerations (열거형)',
-          collapsible: true,
-          items: [
-            {
-              text: 'NavigationFailureType',
-              link: '/api/enums/NavigationFailureType.md'
-            },
-          ]
-        },
-        {
-          text: 'Interfaces (인터페이스)',
-          collapsible: true,
-          items: [
-            {
-              text: 'HistoryState',
-              link: '/api/interfaces/HistoryState.md'
-            },
-            {
-              text: 'NavigationFailure',
-              link: '/api/interfaces/NavigationFailure.md'
-            },
-            {
-              text: 'NavigationGuard',
-              link: '/api/interfaces/NavigationGuard.md'
-            },
-            {
-              text: 'NavigationGuardNext',
-              link: '/api/interfaces/NavigationGuardNext.md'
-            },
-            {
-              text: 'NavigationGuardWithThis',
-              link: '/api/interfaces/NavigationGuardWithThis.md'
-            },
-            {
-              text: 'NavigationHookAfter',
-              link: '/api/interfaces/NavigationHookAfter.md'
-            },
-            {
-              text: 'RouteLocation',
-              link: '/api/interfaces/RouteLocation.md'
-            },
-            {
-              text: 'RouteLocationMatched',
-              link: '/api/interfaces/RouteLocationMatched.md'
-            },
-            {
-              text: 'RouteLocationNormalized',
-              link: '/api/interfaces/RouteLocationNormalized.md'
-            },
-            {
-              text: 'RouteLocationNormalizedLoaded',
-              link: '/api/interfaces/RouteLocationNormalizedLoaded.md'
-            },
-            {
-              text: 'RouteLocationOptions',
-              link: '/api/interfaces/RouteLocationOptions.md'
-            },
-            {
-              text: 'RouteMeta',
-              link: '/api/interfaces/RouteMeta.md'
-            },
-            {
-              text: 'Router',
-              link: '/api/interfaces/Router.md'
-            },
-            {
-              text: 'RouteRecordNormalized',
-              link: '/api/interfaces/RouteRecordNormalized.md'
-            },
-            {
-              text: 'RouterHistory',
-              link: '/api/interfaces/RouterHistory.md'
-            },
-            {
-              text: 'RouterLinkProps',
-              link: '/api/interfaces/RouterLinkProps.md'
-            },
-            {
-              text: 'RouterOptions',
-              link: '/api/interfaces/RouterOptions.md'
-            },
-            {
-              text: 'RouterScrollBehavior',
-              link: '/api/interfaces/RouterScrollBehavior.md'
-            },
-            {
-              text: 'RouterViewProps',
-              link: '/api/interfaces/RouterViewProps.md'
-            },
-          ]
-        },
-        {
-          text: 'Type Aliases (타입 별칭)',
-          collapsible: true,
-          items: [
-            {
-              text: 'LocationQuery',
-              link: '/api/type-aliases/LocationQuery.md'
-            },
-            {
-              text: 'LocationQueryRaw',
-              link: '/api/type-aliases/LocationQueryRaw.md'
-            },
-            {
-              text: 'PathParserOptions',
-              link: '/api/type-aliases/PathParserOptions.md'
-            },
-            {
-              text: 'RouteComponent',
-              link: '/api/type-aliases/RouteComponent.md'
-            },
-            {
-              text: 'RouteLocationRaw',
-              link: '/api/type-aliases/RouteLocationRaw.md'
-            },
-            {
-              text: 'RouteParams',
-              link: '/api/type-aliases/RouteParams.md'
-            },
-            {
-              text: 'RouteRecord',
-              link: '/api/type-aliases/RouteRecord.md'
-            },
-            {
-              text: 'RouteRecordName',
-              link: '/api/type-aliases/RouteRecordName.md'
-            },
-            {
-              text: 'RouteRecordRaw',
-              link: '/api/type-aliases/RouteRecordRaw.md'
-            },
-            {
-              text: 'UseLinkOptions',
-              link: '/api/type-aliases/UseLinkOptions.md'
-            },
-          ]
-        },
-        {
-          text: 'Variables (변수)',
-          collapsible: true,
-          items: [
-            {
-              text: 'RouterLink',
-              link: '/api/variables/RouterLink.md'
-            },
-            {
-              text: 'RouterView',
-              link: '/api/variables/RouterView.md'
-            },
-            {
-              text: 'START_LOCATION',
-              link: '/api/variables/START_LOCATION.md'
-            },
-          ]
-        },
-        {
-          text: 'Functions (함수)',
-          collapsible: true,
-          items: [
-            {
-              text: 'createMemoryHistory',
-              link: '/api/functions/createMemoryHistory.md'
-            },
-            {
-              text: 'createRouter',
-              link: '/api/functions/createRouter.md'
-            },
-            {
-              text: 'createWebHashHistory',
-              link: '/api/functions/createWebHashHistory.md'
-            },
-            {
-              text: 'createWebHistory',
-              link: '/api/functions/createWebHistory.md'
-            },
-            {
-              text: 'isNavigationFailure',
-              link: '/api/functions/isNavigationFailure.md'
-            },
-            {
-              text: 'loadRouteLocation',
-              link: '/api/functions/loadRouteLocation.md'
-            },
-            {
-              text: 'onBeforeRouteLeave',
-              link: '/api/functions/onBeforeRouteLeave.md'
-            },
-            {
-              text: 'onBeforeRouteUpdate',
-              link: '/api/functions/onBeforeRouteUpdate.md'
-            },
-            {
-              text: 'useLink',
-              link: '/api/functions/useLink.md'
-            },
-            {
-              text: 'useRoute',
-              link: '/api/functions/useRoute.md'
-            },
-            {
-              text: 'useRouter',
-              link: '/api/functions/useRouter.md'
-            },
-          ]
+          text: '⚠️Vue 2에서 마이그레이션 (영문)',
+          link: '/guide/migration.html',
         },
       ],
-    },
-
-    footer: {
-      message: 'Translated by router.vuejs.kr',
-      copyright: 'MIT Licensed | Copyright © 2014-present Evan You, Eduardo San Martin Morote'
     },
   },
 })

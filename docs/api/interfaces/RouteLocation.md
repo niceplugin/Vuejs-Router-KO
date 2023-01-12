@@ -1,14 +1,22 @@
-# RouteLocation
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
 
-[RouteLocationRaw](../type-aliases/RouteLocationRaw.md) resolved using the matcher
+[API Documentation](../index.md) / RouteLocation
 
-## 계층
+# Interface: RouteLocation
+
+[RouteLocationRaw](../index.md#routelocationraw) resolved using the matcher
+
+## Hierarchy
 
 - `_RouteLocationBase`
 
   ↳ **`RouteLocation`**
 
-## 속성
+## Properties
 
 ### fullPath
 
@@ -17,7 +25,7 @@
 The whole location including the `search` and `hash`. This string is
 percentage encoded.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.fullPath
 
@@ -29,7 +37,7 @@ ___
 
 Hash of the current location. If present, starts with a `#`.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.hash
 
@@ -39,7 +47,7 @@ ___
 
 • **matched**: [`RouteRecordNormalized`](RouteRecordNormalized.md)[]
 
-Array of [RouteRecord](../type-aliases/RouteRecord.md) containing components as they were
+Array of [RouteRecord](../index.md#routerecord) containing components as they were
 passed when adding records. It can also contain redirect records. This
 can't be used directly
 
@@ -51,7 +59,7 @@ ___
 
 Merged `meta` properties from all the matched route records.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.meta
 
@@ -59,11 +67,11 @@ ___
 
 ### name
 
-• **name**: `undefined` \| ``null`` \| [`RouteRecordName`](../type-aliases/RouteRecordName.md)
+• **name**: `undefined` \| ``null`` \| [`RouteRecordName`](../index.md#routerecordname)
 
 Name of the matched record
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.name
 
@@ -71,11 +79,11 @@ ___
 
 ### params
 
-• **params**: [`RouteParams`](../type-aliases/RouteParams.md)
+• **params**: [`RouteParams`](../index.md#routeparams)
 
 Object of decoded params extracted from the `path`.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.params
 
@@ -87,7 +95,7 @@ ___
 
 Percentage encoded pathname section of the URL.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.path
 
@@ -95,11 +103,11 @@ ___
 
 ### query
 
-• **query**: [`LocationQuery`](../type-aliases/LocationQuery.md)
+• **query**: [`LocationQuery`](../index.md#locationquery)
 
 Object representation of the `search` property of the current location.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.query
 
@@ -112,6 +120,6 @@ ___
 Contains the location we were initially trying to access before ending up
 on the current location.
 
-#### 다음에서 상속됨
+#### Inherited from
 
 \_RouteLocationBase.redirectedFrom

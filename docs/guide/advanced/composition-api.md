@@ -94,7 +94,7 @@ export default {
 ## `useLink`
 
 Vue Router는 컴포지션 API로 RouterLink의 내부 동작 기능을 메서드로 노출합니다.
-[`v-slot` API](/api/functions/useLink.md)와 동일한 속성에 접근할 수 있습니다:
+[`v-slot` API](/api/#router-link-s-v-slot)와 동일한 속성에 접근할 수 있습니다:
 
 ```js
 import { RouterLink, useLink } from 'vue-router'

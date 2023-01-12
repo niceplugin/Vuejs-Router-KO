@@ -1,9 +1,17 @@
-# RouterHistory
+---
+sidebar: "auto"
+editLinks: false
+sidebarDepth: 3
+---
+
+[API Documentation](../index.md) / RouterHistory
+
+# Interface: RouterHistory
 
 Interface implemented by History implementations that can be passed to the
 router as Router.history
 
-## 속성
+## Properties
 
 ### base
 
@@ -29,7 +37,7 @@ ___
 
 Current History state
 
-## 메서드
+## Methods
 
 ### createHref
 
@@ -37,11 +45,15 @@ Current History state
 
 Generates the corresponding href to be used in an anchor tag.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `location` | `string` | history location that should create an href |
+
+#### Returns
+
+`string`
 
 ___
 
@@ -51,6 +63,10 @@ ___
 
 Clears any event listener attached by the history implementation.
 
+#### Returns
+
+`void`
+
 ___
 
 ### go
@@ -59,19 +75,23 @@ ___
 
 Traverses history in a given direction.
 
-#### 예제
+**`Example`**
 
 ```js
 myHistory.go(-1) // equivalent to window.history.back()
 myHistory.go(1) // equivalent to window.history.forward()
 ```
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `delta` | `number` | distance to travel. If delta is \< 0, it will go back, if it's \> 0, it will go forward by that amount of entries. |
 | `triggerListeners?` | `boolean` | whether this should trigger listeners attached to the history |
+
+#### Returns
+
+`void`
 
 ___
 
@@ -84,13 +104,28 @@ navigation is triggered from outside (like the Browser back and forward
 buttons) or when passing `true` to RouterHistory.back and
 RouterHistory.forward
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `callback` | `NavigationCallback` | listener to attach |
 
-#### 반환 값
+#### Returns
+
+`fn`
+
+a callback to remove the listener
+
+▸ (): `void`
+
+Attach a listener to the History implementation that is triggered when the
+navigation is triggered from outside (like the Browser back and forward
+buttons) or when passing `true` to RouterHistory.back and
+RouterHistory.forward
+
+##### Returns
+
+`void`
 
 a callback to remove the listener
 
@@ -103,12 +138,16 @@ ___
 Navigates to a location. In the case of an HTML5 History implementation,
 this will call `history.pushState` to effectively change the URL.
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `to` | `string` | location to push |
 | `data?` | [`HistoryState`](HistoryState.md) | optional [HistoryState](HistoryState.md) to be associated with the navigation entry |
+
+#### Returns
+
+`void`
 
 ___
 
@@ -119,9 +158,13 @@ ___
 Same as [push](RouterHistory.md#push) but performs a `history.replaceState`
 instead of `history.pushState`
 
-#### 파라미터
+#### Parameters
 
-| 이름 | 타입 | 설명 |
+| Name | Type | Description |
 | :------ | :------ | :------ |
 | `to` | `string` | location to set |
 | `data?` | [`HistoryState`](HistoryState.md) | optional [HistoryState](HistoryState.md) to be associated with the navigation entry |
+
+#### Returns
+
+`void`
