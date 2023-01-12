@@ -2,31 +2,32 @@ import { defineConfig, UserConfig } from 'vitepress'
 
 const head: UserConfig['head'] = [
   ['link', { rel: 'icon', href: `/logo-icon.png` }],
+  ['script', { src: 'https://unpkg.com/thesemetrics@latest', async: '',}]
 ]
 
 const config = defineConfig({
+
   lang: 'ko',
   title: 'Vue Router',
-  description: 'Vue.js 공식 라우터',
+  description: 'Vue 3에 필요한 최신 공식 라우터',
   head,
   // serviceWorker: true,
 
-  lastUpdated: true,
+  locales: {
+    '/': {
+      lang: 'ko',
+      title: 'Vue Router',
+      description: 'Vue 3에 필요한 최신 공식 라우터',
+    },
+  },
 
   themeConfig: {
-    logo: '/logo-icon.png',
-
-    editLink: {
-      pattern: 'https://github.com/niceplugin/Vuejs-Router-KO/edit/main-korean/docs/:path',
-      text: '이 페이지 편집 제안하기'
-    },
-
-    lastUpdatedText: '마지막 수정일',
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/niceplugin/Vuejs-Router-KO' },
-      { icon: 'slack', link: 'https://vuejs-korea.slack.com/' }
-    ],
+    repo: 'niceplugin/Vuejs-Router-KO',
+    docsRepo: 'niceplugin/Vuejs-Router-KO',
+    docsDir: 'docs',
+    docsBranch: 'main-korean',
+    editLinks: true,
+    editLinkText: '이 페이지 편집 제안하기',
 
     // carbonAds: {
     //   carbon: 'CEBICK3I',
@@ -68,33 +69,19 @@ const config = defineConfig({
     ],
 
     sidebar: {
-      '/guide/': [
+      '/': [
         {
-          text: '시작하기',
-          collapsible: true,
-          items: [
-            {
-              text: '소개',
-              link: '/guide/introduction.html',
-            },
-            {
-              text: '설치',
-              link: '/guide/installation.html',
-            },
-            {
-              text: '시작하기',
-              link: '/guide/',
-            },
-            {
-              text: '⚠️Vue 2에서 마이그레이션 (영문)',
-              link: '/guide/migration.html',
-            },
-          ]
+          text: '소개',
+          link: '/introduction.html',
+        },
+        {
+          text: '설치',
+          link: '/installation.html',
         },
         {
           text: '핵심',
-          collapsible: true,
-          items: [
+          collapsible: false,
+          children: [
             {
               text: '동적 경로 매칭',
               link: '/guide/essentials/dynamic-matching.html',
@@ -135,8 +122,8 @@ const config = defineConfig({
         },
         {
           text: '고급',
-          collapsible: true,
-          items: [
+          collapsible: false,
+          children: [
             {
               text: '네비게이션 가드',
               link: '/guide/advanced/navigation-guards.html',
@@ -183,141 +170,11 @@ const config = defineConfig({
             },
           ],
         },
-      ],
-      '/api/': [
         {
-          collapsible: false,
-          items: [
-            {
-              text: 'Enumerations (열거형)',
-              link: '/api/#enumerations',
-            },
-            {
-              text: 'Interfaces (인터페이스)',
-              link: '/api/#interfaces'
-            },
-            {
-              text: 'Type Aliases (타입 별칭)',
-              link: '/api/#locationquery',
-              items: [
-                {
-                  text: 'LocationQuery',
-                  link: '/api/#LocationQuery'
-                },
-                {
-                  text: 'LocationQueryRaw',
-                  link: '/api/#LocationQueryRaw'
-                },
-                {
-                  text: 'PathParserOptions',
-                  link: '/api/#PathParserOptions'
-                },
-                {
-                  text: 'RouteComponent',
-                  link: '/api/#RouteComponent'
-                },
-                {
-                  text: 'RouteLocationRaw',
-                  link: '/api/#RouteLocationRaw'
-                },
-                {
-                  text: 'RouteParams',
-                  link: '/api/#RouteParams'
-                },
-                {
-                  text: 'RouteRecord',
-                  link: '/api/#RouteRecord'
-                },
-                {
-                  text: 'RouteRecordName',
-                  link: '/api/#RouteRecordName'
-                },
-                {
-                  text: 'RouteRecordRaw',
-                  link: '/api/#RouteRecordRaw'
-                },
-                {
-                  text: 'UseLinkOptions',
-                  link: '/api/#UseLinkOptions'
-                },
-              ]
-            },
-            {
-              text: 'Variables (변수)',
-              link: '/api/#variables',
-              items: [
-                {
-                  text: 'RouterLink',
-                  link: '/api/#RouterLink'
-                },
-                {
-                  text: 'RouterView',
-                  link: '/api/#RouterView'
-                },
-                {
-                  text: 'START_LOCATION',
-                  link: '/api/#START_LOCATION'
-                },
-              ]
-            },
-            {
-              text: 'Functions (함수)',
-              link: '/api/#functions',
-              items: [
-                {
-                  text: 'createMemoryHistory',
-                  link: '/api/#createMemoryHistory'
-                },
-                {
-                  text: 'createRouter',
-                  link: '/api/#createRouter'
-                },
-                {
-                  text: 'createWebHashHistory',
-                  link: '/api/#createWebHashHistory'
-                },
-                {
-                  text: 'createWebHistory',
-                  link: '/api/#createWebHistory'
-                },
-                {
-                  text: 'isNavigationFailure',
-                  link: '/api/#isNavigationFailure'
-                },
-                {
-                  text: 'loadRouteLocation',
-                  link: '/api/#loadRouteLocation'
-                },
-                {
-                  text: 'onBeforeRouteLeave',
-                  link: '/api/#onBeforeRouteLeave'
-                },
-                {
-                  text: 'onBeforeRouteUpdate',
-                  link: '/api/#onBeforeRouteUpdate'
-                },
-                {
-                  text: 'useLink',
-                  link: '/api/#useLink'
-                },
-                {
-                  text: 'useRoute',
-                  link: '/api/#useRoute'
-                },
-                {
-                  text: 'useRouter',
-                  link: '/api/#useRouter'
-                },
-              ]
-            },
-          ]
+          text: '⚠️Vue 2에서 마이그레이션 (영문)',
+          link: '/guide/migration.html',
         },
       ],
-    },
-
-    footer: {
-      message: 'Translated by router.vuejs.kr',
-      copyright: 'MIT Licensed | Copyright © 2014-present Evan You, Eduardo San Martin Morote'
     },
   },
 })

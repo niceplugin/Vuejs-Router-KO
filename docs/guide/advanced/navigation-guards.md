@@ -32,7 +32,7 @@ router.beforeEach((to, from) => {
 - `false`: 현재 탐색을 취소합니다.
   URL이 변경된 경우,
   `from` 경로로 URL이 재설정됩니다.
-- [경로 위치 정보](/api/type-aliases/RouteLocationRaw.md):
+- [경로 위치 정보](/api/#routelocationraw):
   [`router.push()`](/api/interfaces/Router.md#push)를 사용할 때처럼 경로 위치(문자열 또는 객체)를 전달합니다.
   현재 탐색이 중단되고, 기존 `from` 위치에서 새로운 탐색 동작이 생성됩니다.
 
