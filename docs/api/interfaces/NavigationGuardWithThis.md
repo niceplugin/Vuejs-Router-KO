@@ -10,7 +10,7 @@ sidebarDepth: 3
 
 ## Type parameters
 
-| Name |
+| 이름 |
 | :------ |
 | `T` |
 
@@ -25,7 +25,7 @@ Guards](/guide/advanced/navigation-guards.md).
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `this` | `T` |
 | `to` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |

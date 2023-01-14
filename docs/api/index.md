@@ -6,13 +6,11 @@ sidebarDepth: 3
 
 # API Documentation
 
-API 문서 번역 01월 14일부터 시작!
-
-## Enumerations
+## Enumerations (열거형) {#enumerations}
 
 - [NavigationFailureType](enums/NavigationFailureType.md)
 
-## Interfaces
+## Interfaces (인터페이스) {#interfaces}
 
 - [HistoryState](interfaces/HistoryState.md)
 - [NavigationFailure](interfaces/NavigationFailure.md)
@@ -34,13 +32,13 @@ API 문서 번역 01월 14일부터 시작!
 - [RouterScrollBehavior](interfaces/RouterScrollBehavior.md)
 - [RouterViewProps](interfaces/RouterViewProps.md)
 
-## Type Aliases
+## Type Aliases (타입 별칭) {#type-aliases}
 
 ### LocationQuery
 
 Ƭ **LocationQuery**: `Record`<`string`, `LocationQueryValue` \| `LocationQueryValue`[]\>
 
-Normalized query object that appears in [RouteLocationNormalized](interfaces/RouteLocationNormalized.md)
+[RouteLocationNormalized](interfaces/RouteLocationNormalized.md)에 나타나는 정규화된 쿼리 객체
 
 ___
 
@@ -48,9 +46,9 @@ ___
 
 Ƭ **LocationQueryRaw**: `Record`<`string` \| `number`, `LocationQueryValueRaw` \| `LocationQueryValueRaw`[]\>
 
-Loose [LocationQuery](index.md#locationquery) object that can be passed to functions like
-[push](interfaces/Router.md#push) and [replace](interfaces/Router.md#replace) or anywhere when creating a
-[RouteLocationRaw](index.md#routelocationraw)
+[RouteLocationRaw](index.md#routelocationraw)를 생성할 때,
+[push](interfaces/Router.md#push) 및 [replace](interfaces/Router.md#replace)와 같은 함수
+또는 모든 위치에 전달할 수 있는 느슨한 [LocationQuery](index.md#locationquery) 객체입니다.
 
 ___
 
@@ -64,7 +62,7 @@ ___
 
 Ƭ **RouteComponent**: `Component` \| `DefineComponent`
 
-Allowed Component in [RouteLocationMatched](interfaces/RouteLocationMatched.md)
+[RouteLocationMatched](interfaces/RouteLocationMatched.md)에서 허용된 컴포넌트
 
 ___
 
@@ -72,7 +70,7 @@ ___
 
 Ƭ **RouteLocationRaw**: `string` \| `RouteLocationPathRaw` \| `RouteLocationNamedRaw`
 
-User-level route location
+사용자 수준 경로 위치
 
 ___
 
@@ -92,7 +90,7 @@ ___
 
 Ƭ **RouteRecord**: [`RouteRecordNormalized`](interfaces/RouteRecordNormalized.md)
 
-Normalized version of a [route record](index.md#routerecord).
+[경로 레코드](index.md#routerecord)의 정규화된 버전.
 
 ___
 
@@ -100,7 +98,7 @@ ___
 
 Ƭ **RouteRecordName**: `string` \| `symbol`
 
-Possible values for a user-defined route record's name
+커스텀 경로 레코드 이름에 가능한 값
 
 ___
 
@@ -114,13 +112,13 @@ ___
 
 Ƭ **UseLinkOptions**: `VueUseOptions`<`RouterLinkOptions`\>
 
-## Variables
+## Variables (변수) {#variables}
 
 ### RouterLink
 
 • `Const` **RouterLink**: `_RouterLinkI`
 
-Component to render a link that triggers a navigation on click.
+클릭 시 탐색을 트리거하는 링크를 렌더링하는 컴포넌트.
 
 ___
 
@@ -132,7 +130,7 @@ ___
 
 • **new RouterView**()
 
-Component to display the current route the user is at.
+사용자가 있는 현재 경로를 표시하는 컴포넌트.
 
 ___
 
@@ -140,8 +138,8 @@ ___
 
 • `Const` **START\_LOCATION**: [`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)
 
-Initial route location where the router is. Can be used in navigation guards
-to differentiate the initial navigation.
+라우터가 있는 초기 경로 위치입니다.
+탐색 가드에서 초기 탐색을 구별하는 데 사용할 수 있습니다.
 
 **`Example`**
 
@@ -150,31 +148,33 @@ import { START_LOCATION } from 'vue-router'
 
 router.beforeEach((to, from) => {
   if (from === START_LOCATION) {
-    // initial navigation
+    // 탐색 초기화
   }
 })
 ```
 
-## Functions
+## Functions (함수) {#functions}
 
 ### createMemoryHistory
 
 ▸ **createMemoryHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
 
-Creates an in-memory based history. The main purpose of this history is to handle SSR. It starts in a special location that is nowhere.
-It's up to the user to replace that location with the starter location by either calling `router.push` or `router.replace`.
+메모리 기반 히스토리를 생성합니다.
+이 히스토리의 주요 목적은 SSR을 처리하는 것입니다.
+이것은 어디에도 없는 특별한 장소에서 시작됩니다.
+`router.push` 또는 `router.replace`를 호출하여 해당 위치를 시작 위치로 바꾸는 것은 사용자에게 달려 있습니다.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `base` | `string` | `''` | Base applied to all urls, defaults to '/' |
+| 이름     | 타입       | 기본 값 | 설명                          |
+|:-------|:---------|:-----|:----------------------------|
+| `base` | `string` | `''` | 기본값이 모든 URL에 적용되고, 기본값은 '/' |
 
 #### Returns
 
 [`RouterHistory`](interfaces/RouterHistory.md)
 
-a history object that can be passed to the router constructor
+라우터 생성자에게 전달될 수 있는 히스토리 객체
 
 ___
 
@@ -182,12 +182,12 @@ ___
 
 ▸ **createRouter**(`options`): [`Router`](interfaces/Router.md)
 
-Creates a Router instance that can be used by a Vue app.
+Vue 앱에서 사용할 수 있는 라우터 인스턴스를 생성.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| 이름        | 타입                                             | 설명                                           |
+|:----------|:-----------------------------------------------|:---------------------------------------------|
 | `options` | [`RouterOptions`](interfaces/RouterOptions.md) | [RouterOptions](interfaces/RouterOptions.md) |
 
 #### Returns
@@ -200,30 +200,30 @@ ___
 
 ▸ **createWebHashHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
 
-Creates a hash history. Useful for web applications with no host (e.g. `file://`) or when configuring a server to
-handle any URL is not possible.
+해시 히스토리를 만듭니다.
+호스트가 없는 웹 애플리케이션(예: `file://`)이나 URL을 처리하도록 서버를 구성할 수 없는 경우에 유용합니다.
 
 **`Example`**
 
 ```js
-// at https://example.com/folder
-createWebHashHistory() // gives a url of `https://example.com/folder#`
-createWebHashHistory('/folder/') // gives a url of `https://example.com/folder/#`
-// if the `#` is provided in the base, it won't be added by `createWebHashHistory`
-createWebHashHistory('/folder/#/app/') // gives a url of `https://example.com/folder/#/app/`
-// you should avoid doing this because it changes the original url and breaks copying urls
-createWebHashHistory('/other-folder/') // gives a url of `https://example.com/other-folder/#`
+// https://example.com/folder 에서
+createWebHashHistory() // `https://example.com/folder#`라는 URL이 제공됨.
+createWebHashHistory('/folder/') // `https://example.com/folder/#`라는 URL이 제공됨.
+// 베이스에 `#`이 제공되면, `createWebHashHistory`에 의해 추가되지 않습니다
+createWebHashHistory('/folder/#/app/') // `https://example.com/folder/#/app/`라는 URL이 제공됨.
+// 원래 URL을 변경하고 URL 복사를 중단하므로 이 작업을 피해야 합니다.
+createWebHashHistory('/other-folder/') // `https://example.com/other-folder/#`라는 URL이 제공됨.
 
-// at file:///usr/etc/folder/index.html
-// for locations with no `host`, the base is ignored
-createWebHashHistory('/iAmIgnored') // gives a url of `file:///usr/etc/folder/index.html#`
+// file:///usr/etc/folder/index.html 에서
+// `host`가 없는 위치의 경우 기본값이 무시됨.
+createWebHashHistory('/iAmIgnored') // `file:///usr/etc/folder/index.html#`라는 URL이 제공됨.
 ```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `base?` | `string` | optional base to provide. Defaults to `location.pathname + location.search` If there is a `<base>` tag in the `head`, its value will be ignored in favor of this parameter **but note it affects all the history.pushState() calls**, meaning that if you use a `<base>` tag, it's `href` value **has to match this parameter** (ignoring anything after the `#`). |
+| 이름      | 타입       | 설명                                                                                                                                                                                                          |
+|:--------|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `base?` | `string` | 선택적으로 베이스를 제공. 기본값은 `location.pathname + location.search`입니다. 헤드에 `<base>` 태그가 있는 경우, 해당 값은 이 파라미터를 위해 무시되지만, 모든 `history.pushState()` 호출에 영향을 줍니다. `<base>` 태그의 `href` 값은 이 파라미터와 일치해야 합니다(`#` 뒤의 항목은 무시). |
 
 #### Returns
 
@@ -235,12 +235,13 @@ ___
 
 ▸ **createWebHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
 
-Creates an HTML5 history. Most common history for single page applications.
+HTML5 히스토리를 만듭니다.
+단일 페이지 애플리케이션에 대한 가장 일반적인 히스토리입니다.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| 이름      | 타입       |
+|:--------|:---------|
 | `base?` | `string` |
 
 #### Returns
@@ -251,9 +252,9 @@ ___
 
 ### isNavigationFailure
 
-▸ **isNavigationFailure**(`error`, `type?`): error is NavigationRedirectError
+▸ **isNavigationFailure**(`error`, `type?`): 애러는 NavigationRedirectError 임.
 
-Check if an object is a [NavigationFailure](interfaces/NavigationFailure.md).
+객체가 [NavigationFailure](interfaces/NavigationFailure.md)인지 확인합니다.
 
 **`Example`**
 
@@ -261,15 +262,15 @@ Check if an object is a [NavigationFailure](interfaces/NavigationFailure.md).
 import { isNavigationFailure, NavigationFailureType } from 'vue-router'
 
 router.afterEach((to, from, failure) => {
-  // Any kind of navigation failure
+  // 모든 종류의 탐색 실패
   if (isNavigationFailure(failure)) {
     // ...
   }
-  // Only duplicated navigations
+  // 오직 중복 탐색만
   if (isNavigationFailure(failure, NavigationFailureType.duplicated)) {
     // ...
   }
-  // Aborted or canceled navigations
+  // 중단되거나 취소된 탐색만
   if (isNavigationFailure(failure, NavigationFailureType.aborted | NavigationFailureType.canceled)) {
     // ...
   }
@@ -278,27 +279,27 @@ router.afterEach((to, from, failure) => {
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `any` | possible [NavigationFailure](interfaces/NavigationFailure.md) |
-| `type?` | `NAVIGATION_GUARD_REDIRECT` | optional types to check for |
+| 이름      | 타입                          | 설명                                                       |
+|:--------|:----------------------------|:---------------------------------------------------------|
+| `error` | `any`                       | 가능한 [NavigationFailure](interfaces/NavigationFailure.md) |
+| `type?` | `NAVIGATION_GUARD_REDIRECT` | 선택적으로 확인할 타입                                             |
 
 #### Returns
 
-error is NavigationRedirectError
+NavigationRedirectError 애러.
 
-▸ **isNavigationFailure**(`error`, `type?`): error is NavigationFailure
+▸ **isNavigationFailure**(`error`, `type?`): NavigationFailure 애러.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `error` | `any` |
-| `type?` | `ErrorTypes` \| [`NavigationFailureType`](enums/NavigationFailureType.md) |
+| 이름      | 타입             |
+|:--------|:---------------|
+| `error` | `any`          |
+| `type?` | `ErrorTypes` \ | [`NavigationFailureType`](enums/NavigationFailureType.md) |
 
 #### Returns
 
-error is NavigationFailure
+NavigationFailure 애러.
 
 ___
 
@@ -306,13 +307,15 @@ ___
 
 ▸ **loadRouteLocation**(`route`): `Promise`<[`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)\>
 
-Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.
+경로가 로드되었는지 확인하여 `<RouterView>`에 o prop으로 전달할 수 있습니다.
+
+(원문: Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.)
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `route` | [`RouteLocationNormalized`](interfaces/RouteLocationNormalized.md) | resolved route to load |
+| 이름      | 타입                                                                 | 설명            |
+|:--------|:-------------------------------------------------------------------|:--------------|
+| `route` | [`RouteLocationNormalized`](interfaces/RouteLocationNormalized.md) | 로드하기위해 확인된 경로 |
 
 #### Returns
 
@@ -324,14 +327,14 @@ ___
 
 ▸ **onBeforeRouteLeave**(`leaveGuard`): `void`
 
-Add a navigation guard that triggers whenever the component for the current
-location is about to be left. Similar to beforeRouteLeave but can be
-used in any component. The guard is removed when the component is unmounted.
+현재 위치에 대한 컴포넌트가 남으려고 할 때마다 트리거되는 탐색 가드를 추가합니다.
+`beforeRouteLeave`와 유사하지만, 모든 컴포넌트에서 사용할 수 있습니다.
+컴포넌트가 마운트 해제되면 가드가 제거됩니다.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| 이름           | 타입                                                 | 설명                                               |
+|:-------------|:---------------------------------------------------|:-------------------------------------------------|
 | `leaveGuard` | [`NavigationGuard`](interfaces/NavigationGuard.md) | [NavigationGuard](interfaces/NavigationGuard.md) |
 
 #### Returns
@@ -344,14 +347,14 @@ ___
 
 ▸ **onBeforeRouteUpdate**(`updateGuard`): `void`
 
-Add a navigation guard that triggers whenever the current location is about
-to be updated. Similar to beforeRouteUpdate but can be used in any
-component. The guard is removed when the component is unmounted.
+현재 위치가 업데이트될 때마다 트리거되는 내비게이션 가드를 추가합니다.
+`beforeRouteUpdate`와 유사하지만, 모든 컴포넌트에서 사용할 수 있습니다.
+컴포넌트가 마운트 해제되면 가드가 제거됩니다.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
+| 이름            | 타입                                                 | 설명                                               |
+|:--------------|:---------------------------------------------------|:-------------------------------------------------|
 | `updateGuard` | [`NavigationGuard`](interfaces/NavigationGuard.md) | [NavigationGuard](interfaces/NavigationGuard.md) |
 
 #### Returns
@@ -366,21 +369,21 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| 이름      | 타입                                    |
+|:--------|:--------------------------------------|
 | `props` | `VueUseOptions`<`RouterLinkOptions`\> |
 
 #### Returns
 
 `Object`
 
-| Name | Type |
-| :------ | :------ |
-| `href` | `ComputedRef`<`string`\> |
-| `isActive` | `ComputedRef`<`boolean`\> |
-| `isExactActive` | `ComputedRef`<`boolean`\> |
-| `navigate` | (`e`: `MouseEvent`) => `Promise`<`void` \| [`NavigationFailure`](interfaces/NavigationFailure.md)\> |
-| `route` | `ComputedRef`<[`RouteLocation`](interfaces/RouteLocation.md) & { `href`: `string`  }\> |
+| 이름              | 타입                                                                                     |
+|:----------------|:---------------------------------------------------------------------------------------|
+| `href`          | `ComputedRef`<`string`\>                                                               |
+| `isActive`      | `ComputedRef`<`boolean`\>                                                              |
+| `isExactActive` | `ComputedRef`<`boolean`\>                                                              |
+| `navigate`      | (`e`: `MouseEvent`) => `Promise`<`void` \                                              | [`NavigationFailure`](interfaces/NavigationFailure.md)\> |
+| `route`         | `ComputedRef`<[`RouteLocation`](interfaces/RouteLocation.md) & { `href`: `string`  }\> |
 
 ___
 
@@ -388,8 +391,8 @@ ___
 
 ▸ **useRoute**(): [`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)
 
-Returns the current route location. Equivalent to using `$route` inside
-templates.
+현재 경로 위치를 반환합니다.
+템플릿 내에서 `$route`를 사용하는 것과 같습니다.
 
 #### Returns
 
@@ -401,8 +404,8 @@ ___
 
 ▸ **useRouter**(): [`Router`](interfaces/Router.md)
 
-Returns the router instance. Equivalent to using `$router` inside
-templates.
+라우터 인스턴스를 반환합니다.
+템플릿 내에서 `$router`를 사용하는 것과 같습니다.
 
 #### Returns
 

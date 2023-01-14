@@ -47,7 +47,7 @@ Generates the corresponding href to be used in an anchor tag.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `location` | `string` | history location that should create an href |
 
@@ -84,7 +84,7 @@ myHistory.go(1) // equivalent to window.history.forward()
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `delta` | `number` | distance to travel. If delta is \< 0, it will go back, if it's \> 0, it will go forward by that amount of entries. |
 | `triggerListeners?` | `boolean` | whether this should trigger listeners attached to the history |
@@ -106,7 +106,7 @@ RouterHistory.forward
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `callback` | `NavigationCallback` | listener to attach |
 
@@ -140,7 +140,7 @@ this will call `history.pushState` to effectively change the URL.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `to` | `string` | location to push |
 | `data?` | [`HistoryState`](HistoryState.md) | optional [HistoryState](HistoryState.md) to be associated with the navigation entry |
@@ -160,7 +160,7 @@ instead of `history.pushState`
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `to` | `string` | location to set |
 | `data?` | [`HistoryState`](HistoryState.md) | optional [HistoryState](HistoryState.md) to be associated with the navigation entry |

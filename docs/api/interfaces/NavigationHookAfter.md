@@ -16,7 +16,7 @@ sidebarDepth: 3
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `to` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |
 | `from` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |

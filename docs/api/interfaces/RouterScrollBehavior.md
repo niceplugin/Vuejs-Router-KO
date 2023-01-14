@@ -16,11 +16,11 @@ sidebarDepth: 3
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `to` | [`RouteLocationNormalized`](RouteLocationNormalized.md) | Route location where we are navigating to |
+| 이름 | 타입 | 설명                                |
+| :------ | :------ |:--------------------------------------------|
+| `to` | [`RouteLocationNormalized`](RouteLocationNormalized.md) | Route location where we are navigating to   |
 | `from` | [`RouteLocationNormalizedLoaded`](RouteLocationNormalizedLoaded.md) | Route location where we are navigating from |
-| `savedPosition` | ``null`` \| `_ScrollPositionNormalized` | saved position if it exists, `null` otherwise |
+| `savedPosition` | ``null`` \| `_ScrollPositionNormalized`                 | saved position if it exists, `null` otherwise |
 
 #### Returns
 
