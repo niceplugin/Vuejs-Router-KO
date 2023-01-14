@@ -44,7 +44,7 @@ Add a new [route record](../index.md#routerecordraw) as the child of an existing
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `parentName` | [`RouteRecordName`](../index.md#routerecordname) | Parent Route Record where `route` should be appended at |
 | `route` | [`RouteRecordRaw`](../index.md#routerecordraw) | Route Record to add |
@@ -67,7 +67,7 @@ Add a new [route record](../index.md#routerecordraw) to the router.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `route` | [`RouteRecordRaw`](../index.md#routerecordraw) | Route Record to add |
 
@@ -104,7 +104,7 @@ router.afterEach((to, from, failure) => {
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `guard` | [`NavigationHookAfter`](NavigationHookAfter.md) | navigation hook to add |
 
@@ -155,7 +155,7 @@ function that removes the registered guard.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `guard` | [`NavigationGuardWithThis`](NavigationGuardWithThis.md)<`undefined`\> | navigation guard to add |
 
@@ -193,7 +193,7 @@ router.beforeResolve(to => {
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `guard` | [`NavigationGuardWithThis`](NavigationGuardWithThis.md)<`undefined`\> | navigation guard to add |
 
@@ -256,7 +256,7 @@ Allows you to move forward or backward through the history. Calls
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `delta` | `number` | The position in the history to which you want to move, relative to the current page |
 
@@ -274,9 +274,9 @@ Checks if a route with a given name exists
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
-| `name` | [`RouteRecordName`](../index.md#routerecordname) | Name of the route to check |
+| `name` | [`RouteRecordName`](../index.md#routerecordname) | 확인할 경로 이름 |
 
 #### Returns
 
@@ -316,7 +316,7 @@ is required to render a route.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `handler` | `_ErrorHandler` | error handler to register |
 
@@ -347,7 +347,7 @@ stack.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Route location to navigate to |
 
@@ -365,7 +365,7 @@ Remove an existing route by its name.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `name` | [`RouteRecordName`](../index.md#routerecordname) | Name of the route to remove |
 
@@ -384,7 +384,7 @@ the history stack.
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Route location to navigate to |
 
@@ -405,7 +405,7 @@ that includes any existing `base`. By default, the `currentLocation` used is
 
 #### Parameters
 
-| Name | Type | Description |
+| 이름 | 타입 | 설명 |
 | :------ | :------ | :------ |
 | `to` | [`RouteLocationRaw`](../index.md#routelocationraw) | Raw route location to resolve |
 | `currentLocation?` | [`RouteLocationNormalizedLoaded`](RouteLocationNormalizedLoaded.md) | Optional current location to resolve against |

@@ -19,7 +19,7 @@ Guards](/guide/advanced/navigation-guards.md).
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `to` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |
 | `from` | [`RouteLocationNormalized`](RouteLocationNormalized.md) |

@@ -24,7 +24,7 @@ sidebarDepth: 3
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `error` | `Error` |
 
@@ -38,7 +38,7 @@ sidebarDepth: 3
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `location` | [`RouteLocationRaw`](../index.md#routelocationraw) |
 
@@ -52,7 +52,7 @@ sidebarDepth: 3
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `valid` | `undefined` \| `boolean` |
 
@@ -66,7 +66,7 @@ sidebarDepth: 3
 
 #### Parameters
 
-| Name | Type |
+| 이름 | 타입 |
 | :------ | :------ |
 | `cb` | `NavigationGuardNextCallback` |
 
