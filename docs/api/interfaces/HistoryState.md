@@ -8,7 +8,7 @@ sidebarDepth: 3
 
 # Interface: HistoryState
 
-Allowed HTML history.state
+허용된 HTML history.state
 
 ## Indexable
 
