@@ -1,9 +1,20 @@
 ---
-home: true
+layout: home
 
-heroImage: /logo.png
-actionText: 시작하기 →
-actionLink: /installation.html
+title: Vue Router
+titleTemplate: Vue.js의 공식 라우터
+
+hero:
+  name: Vue Router
+  text: Vue.js의 공식 라우터
+  tagline: Vue.js를 위한 표현, 구성 및 편리한 라우팅
+  image:
+    src: /logo.svg
+    alt: Vue Router
+  actions:
+    - theme: brand
+      text: 시작하기
+      link: /installation
 
 features:
   - title: 🛣 경로를 표현하는 문법
@@ -18,6 +29,4 @@ features:
     details: 모든 페이지에서 스크롤 위치를 정확하게 컨트롤합니다.
   - title: 🌐 오토 인코딩
     details: 코드에서 유니코드 문자를 사용할 수 있습니다.
-
-footer: MIT Licensed | Copyright © 2014-present Evan You, Eduardo San Martin Morote | Translator niceplugin
 ---

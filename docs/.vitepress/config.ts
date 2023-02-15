@@ -1,33 +1,64 @@
-import { defineConfig, UserConfig } from 'vitepress'
+import {defineConfig} from 'vitepress'
 
-const head: UserConfig['head'] = [
-  ['link', { rel: 'icon', href: `/logo-icon.png` }],
-  ['script', { src: 'https://unpkg.com/thesemetrics@latest', async: '',}]
-]
+const META_URL = 'https://router.vuejs.kr'
+const META_TITLE = 'Vue Router'
+const META_DESCRIPTION = 'Vue 3에 필요한 최신 공식 라우터'
+const META_IMAGE = 'https://pinia.vuejs.org/social.png'
 
 const config = defineConfig({
 
   lang: 'ko',
-  title: 'Vue Router',
-  description: 'Vue 3에 필요한 최신 공식 라우터',
-  head,
-  // serviceWorker: true,
+  title: META_TITLE,
+  appearance: 'dark',
+  description: META_DESCRIPTION,
+
+  markdown: {
+    theme: {
+      dark: 'one-dark-pro',
+      light: 'github-light',
+    },
+
+    attrs: {
+      leftDelimiter: '{',
+      rightDelimiter: '}',
+    },
+  },
+
+  head: [
+    ['script', {src: 'https://unpkg.com/thesemetrics@latest', async: '', type: 'text/javascript'}],
+    ['link', {rel: 'icon', type: 'image/svg+xml', href: '/logo.svg'}],
+    ['link', {rel: 'icon', type: 'image/png', href: '/logo.png'}],
+    ['meta', {property: 'og:type', content: 'website'}],
+    ['meta', {property: 'og:url', content: META_URL}],
+    ['meta', {property: 'og:description', content: META_DESCRIPTION}],
+    ['meta', {property: 'twitter:url', content: META_URL}],
+    ['meta', {property: 'twitter:title', content: META_TITLE}],
+    ['meta', {property: 'twitter:description', content: META_DESCRIPTION}],
+    ['meta', {property: 'twitter:card', content: 'summary_large_image'}],
+    ['meta', {property: 'twitter:image', content: META_IMAGE}],
+  ],
 
   locales: {
-    '/': {
+    root: {
+      label: 'Korean',
       lang: 'ko',
+      link: '/',
       title: 'Vue Router',
       description: 'Vue 3에 필요한 최신 공식 라우터',
     },
   },
 
   themeConfig: {
-    repo: 'niceplugin/Vuejs-Router-KO',
-    docsRepo: 'niceplugin/Vuejs-Router-KO',
-    docsDir: 'docs',
-    docsBranch: 'main-korean',
-    editLinks: true,
-    editLinkText: '이 페이지 편집 제안하기',
+
+    footer: {
+      copyright: 'Copyright © 2014-present Evan You, Eduardo San Martin Morote',
+      message: 'Released under the MIT License. Translator niceplugin',
+    },
+
+    editLink: {
+      pattern: 'https://github.com/niceplugin/Vuejs-Router-KO/edit/main-korean/docs/:path',
+      text: '이 페이지 편집 제안하기',
+    },
 
     // carbonAds: {
     //   carbon: 'CEBICK3I',
@@ -93,8 +124,7 @@ const config = defineConfig({
         },
         {
           text: '핵심',
-          collapsible: false,
-          children: [
+          items: [
             {
               text: '동적 경로 매칭',
               link: '/guide/essentials/dynamic-matching.html',
@@ -135,8 +165,7 @@ const config = defineConfig({
         },
         {
           text: '고급',
-          collapsible: false,
-          children: [
+          items: [
             {
               text: '네비게이션 가드',
               link: '/guide/advanced/navigation-guards.html',
