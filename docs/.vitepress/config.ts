@@ -25,6 +25,7 @@ const config = defineConfig({
   },
 
   head: [
+    ['script', {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9482958208962357', async: '', type: 'text/javascript', crossorigin: "anonymous"}],
     ['script', {src: 'https://unpkg.com/thesemetrics@latest', async: '', type: 'text/javascript'}],
     ['link', {rel: 'icon', type: 'image/svg+xml', href: '/logo.svg'}],
     ['link', {rel: 'icon', type: 'image/png', href: '/logo.png'}],
