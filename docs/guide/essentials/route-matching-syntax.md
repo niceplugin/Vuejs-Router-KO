@@ -1,4 +1,4 @@
-# 경로 매칭 문법 {#routes-matching-syntax}
+# 경로 매칭 문법 %{#routes-matching-syntax}%
 
 대부분의 앱은 [동적 경로 매칭](dynamic-matching.md)에서 본 것처럼,
 `/about` 같은 정적 경로와 `/users/:userId` 같은 동적 경로를 사용하지만,
@@ -8,7 +8,7 @@ Vue Router는 훨씬 더 많은 것을 제공합니다!
 이 문서에서는, 각 경로 객체의 `path` 속성 값을 집중 탐구하기 위해 의도적으로 `component` 속성은 생략했습니다.
 :::
 
-## 파라미터에 커스텀 정규식 사용하기 {#custom-regex-in-params}
+## 파라미터에 커스텀 정규식 사용하기 %{#custom-regex-in-params}%
 
 `:userId`라는 파라미터를 정의하면,
 내부적으로 "`/`가 아닌 하나 이상의 문자"라는 의미를 가진 `([^/]+)` 정규식을 사용하여,
@@ -51,7 +51,7 @@ JavaScript 문자열에서 `\` 문자를 실제로 `\d`처럼 전달하려면,
 **`\`를 이스케이프**처리해 `\\d`와 같이 전달해야 합니다.
 :::
 
-## 반복가능한 파라미터 {#repeatable-params}
+## 반복가능한 파라미터 %{#repeatable-params}%
 
 `/first/second/third`처럼 여러 섹션이 있는 경로를 매칭해야 하는 경우,
 파라미터에 `*`(의미: 0개 이상) 또는 `+`(의미: 1개 이상)를 사용하여,
@@ -93,7 +93,7 @@ const routes = [
 ]
 ```
 
-## 민감하고 엄격한 경로 옵션 {#sensitive-and-strict-route-options}
+## 민감하고 엄격한 경로 옵션 %{#sensitive-and-strict-route-options}%
 
 기본적으로 모든 경로는 대소문자를 구분하지 않으며,
 후행 슬래시가 있거나 없는 경로와 일치합니다.
@@ -121,7 +121,7 @@ const router = createRouter({
 })
 ```
 
-## 선택적 파라미터 {#optional-parameters}
+## 선택적 파라미터 %{#optional-parameters}%
 
 `?`(0개 또는 1개) 수식어를 사용하여 파라미터를 선택사항으로 정의할 수도 있습니다:
 
@@ -139,7 +139,7 @@ const routes = [
 `*`는 기술적으로 파라미터를 선택사항으로 정의합니다.
 하지만 `?`는 반복 불가능 파라미터로 배열 대신 문자열을 제공집니다.
 
-## 디버깅 {#debugging}
+## 디버깅 %{#debugging}%
 
 경로가 매칭되지 않는 원인을 찾아야 하는 경우가 있습니다.
 경로가 정규식으로 변환되는 방법 분석 또는 버그 보고를 위해 [경로 우선순위 확인 도구](https://paths.esm.dev/?p=AAMeJSyAwR4UbFDAFxAcAGAIJXMAAA..#)를 사용할 수 있습니다.

@@ -1,4 +1,4 @@
-# 이름이 있는 뷰 {#named-views}
+# 이름이 있는 뷰 %{#named-views}%
 
 때로는 여러 뷰(view)를 중첩하지 않고,
 동시에 표시해야 합니다(예: 사이드바와 메인 뷰가 있는 레이아웃).
@@ -42,7 +42,7 @@ const router = createRouter({
 
 참고: [예제](https://codesandbox.io/s/named-views-vue-router-4-examples-rd20l)
 
-## 중첩된 이름이 있는 뷰 {#nested-named-views}
+## 중첩된 이름이 있는 뷰 %{#nested-named-views}%
 
 중첩된 뷰와 명명된 뷰를 사용하여 복잡한 레이아웃을 만들 수 있습니다.
 이 때 중첩된 `router-view`에 이름도 지정해야 합니다.

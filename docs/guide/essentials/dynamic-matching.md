@@ -1,4 +1,4 @@
-# 파라미터를 사용한 동적 경로 매칭 {#dynamic-route-matching-with-params}
+# 파라미터를 사용한 동적 경로 매칭 %{#dynamic-route-matching-with-params}%
 
 주어진 경로의 패턴에 해당하는 컴포넌트를 매핑해야하는 경우가 자주 있습니다.
 예를 들어 모든 사용자에게 렌더링되어야 하지만, 사용자 ID가 다른 `User` 컴포넌트가 있을 수 있습니다.
@@ -50,7 +50,7 @@ const User = {
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
 ></iframe> -->
 
-## 파라미터 변경에 반응하기 {#reacting-to-params-changes}
+## 파라미터 변경에 반응하기 %{#reacting-to-params-changes}%
 
 파라미터가 있는 경로를 사용하는 경우,
 사용자가 `/users/mike`에서 `/users/john`으로 이동할 때,
@@ -87,7 +87,7 @@ const User = {
 }
 ```
 
-## 모두 예외처리 / 404 Not found 경로 {#catch-all-404-not-found-route}
+## 모두 예외처리 / 404 Not found 경로 %{#catch-all-404-not-found-route}%
 
 일반 파라미터는 `/`로 구분된 일부 URL 문자만 매치합니다.
 **모든 것**과 일치시키려면 파라미터 바로 뒤에 괄호 안에 정규식을 추가하여 맞춤 파라미터를 사용할 수 있습니다.
@@ -120,7 +120,7 @@ this.$router.push({
 
 [히스토리 모드](history-mode.md)를 사용하는 경우, 지침에 따라 서버를 올바르게 구성해야 합니다.
 
-## 고급 매칭 패턴 {#advanced-matching-patterns}
+## 고급 매칭 패턴 %{#advanced-matching-patterns}%
 
 Vue Router는 `express`에서 사용하는 자체 경로 매칭 문법에서 영감을 받았습니다.
 선택적 매개변수, 0개 이상/하나 이상의 요구사항, 커스텀 정규식 패턴과 같은 많은 고급 매칭 패턴을 지원합니다.

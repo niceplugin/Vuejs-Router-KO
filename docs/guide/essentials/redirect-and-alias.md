@@ -1,6 +1,6 @@
-# 리디렉션과 별칭 {#redirect-and-alias}
+# 리디렉션과 별칭 %{#redirect-and-alias}%
 
-## 리디렉션 {#redirect}
+## 리디렉션 %{#redirect}%
 
 리디렉션은 `routes` 설정 시 정의할 수도 있습니다.
 `/home`에서 `/`로 리디렉션하려면:
@@ -44,7 +44,7 @@ const routes = [
 단, [중첩된 경로](nested-routes.md)를 사용하는 경우에는 예외입니다.
 경로에 `children`과 `redirect` 속성이 있으면 `component` 속성도 있어야 합니다.
 
-### 상대적인 리디렉션 {#relative-redirecting}
+### 상대적인 리디렉션 %{#relative-redirecting}%
 
 상대적인 위치로 리디렉션할 수도 있습니다:
 
@@ -74,7 +74,7 @@ const routes = [
 ]
 ```
 
-## 별칭 {#alias}
+## 별칭 %{#alias}%
 
 **`/`의 별칭이 `/home`일 경우,
 `/home`을 방문할 때 URL이 `/home`으로 유지되지만,

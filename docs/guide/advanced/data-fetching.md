@@ -1,4 +1,4 @@
-# 데이터 가져오기 {#data-fetching}
+# 데이터 가져오기 %{#data-fetching}%
 
 경로가 활성화될 때, 서버에서 데이터를 가져와야 하는 경우가 있습니다.
 예를 들어 사용자 프로필을 렌더링하기 전에 서버에서 사용자 데이터를 가져와야 합니다.
@@ -14,7 +14,7 @@
 기술적으로 둘 다 유효하므로,
 목표로 하는 UX에 따라 선택하면 됩니다.
 
-## 탐색 후 가져오기 {#fetching-after-navigation}
+## 탐색 후 가져오기 %{#fetching-after-navigation}%
 
 이 접근 방식은 컴포넌트의 `created` 훅에서 데이터를 가져오는 것입니다.
 네트워크를 통해 데이터를 가져오는 동안 로딩 상태를 표시할 수 있습니다.
@@ -74,7 +74,7 @@ export default {
 }
 ```
 
-## 탐색 전 가져오기 {#fetching-before-navigation}
+## 탐색 전 가져오기 %{#fetching-before-navigation}%
 
 이 접근 방식은 실제로 새 경로로 이동하기 전에 데이터를 가져옵니다.
 경로 컴포넌트의 `beforeRouteEnter` 가드에서 데이터 가져오기를 수행하며,

@@ -1,4 +1,4 @@
-# 경로 지연 로딩 {#lazy-loading-routes}
+# 경로 지연 로딩 %{#lazy-loading-routes}%
 
 번들러를 사용하여 앱을 빌드할 때 JavaScript 번들이 상당히 커질 수 있으며 페이지 로드 시간에 영향을 줍니다.
 각 경로의 컴포넌트를 별도의 청크로 분할하고,
@@ -43,9 +43,9 @@ webpack과 같은 번들러를 사용하는 경우,
 Babel을 사용하는 경우,
 Babel이 문법을 제대로 파싱할 수 있도록 [syntax-dynamic-import](https://babeljs.io/docs/plugins/syntax-dynamic-import/) 플러그인을 추가해야 합니다.
 
-## 동일한 청크에서 컴포넌트 그룹화 {#grouping-components-in-the-same-chunk}
+## 동일한 청크에서 컴포넌트 그룹화 %{#grouping-components-in-the-same-chunk}%
 
-### Webpack 사용 시 {#with-webpack}
+### Webpack 사용 시 %{#with-webpack}%
 
 때로는 동일한 경로 내부에 중첩된 모든 컴포넌트를 하나의 비동기 청크로 그룹화할 수 있습니다.
 이를 구현하려면 특수 주석 문법으로 청크 이름을 제공하여 [명명된 청크](https://webpack.js.org/guides/code-splitting/#dynamic-imports)를 사용해야 합니다(webpack > 2.4 필요):
@@ -61,7 +61,7 @@ const UserProfileEdit = () =>
 
 webpack은 동일한 청크 이름을 가진 모든 비동기 모듈을 하나의 비동기 청크로 그룹화합니다.
 
-### Vite 사용 시 {#with-vite}
+### Vite 사용 시 %{#with-vite}%
 
 Vite에서는 [`rollupOptions`](https://vitejs.dev/config/#build-rollupoptions) 내부에서 청크를 정의할 수 있습니다:
 

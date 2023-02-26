@@ -1,4 +1,4 @@
-# 소개 {#introduction}
+# 소개 %{#introduction}%
 
 Vue Router는 [Vue.js](https://vuejs.org)의 공식 라우터입니다.
 Vue.js 코어와 긴밀하게 통합되어 싱글 페이지 앱을 쉽게 만들 수 있습니다.

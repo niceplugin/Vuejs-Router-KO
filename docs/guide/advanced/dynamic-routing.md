@@ -1,11 +1,11 @@
-# 동적 라우팅 {#dynamic-routing}
+# 동적 라우팅 %{#dynamic-routing}%
 
 라우터에 경로를 추가하는 것은 일반적으로 [`routes` 옵션](/api/interfaces/RouterOptions.md#routes)을 통해 이루어지지만,
 어떤 상황에서는 앱이 이미 실행 중인 경우에도 경로를 추가하거나 제거하고 싶을 수 있습니다.
 [Vue CLI UI](https://cli.vuejs.org/dev-guide/ui-api.html)와 같은 확장 가능한 인터페이스가 있는 앱은,
 이를 사용하여 앱을 확장할 수 있습니다.
 
-## 경로 추가하기 {#adding-routes}
+## 경로 추가하기 %{#adding-routes}%
 
 동적 라우팅은 주로 `router.addRoute()`와 `router.removeRoute()` 두 개의 함수로 구현됩니다.
 이것들은 새 경로만 등록하므로,
@@ -41,7 +41,7 @@ router.replace(router.currentRoute.value.fullPath)
 
 새 경로가 표시될 때까지 기다려야 하는 경우, `await router.replace()`할 수 있음을 기억합시다.
 
-## 네비게이션 가드 내부에서 경로 추가하기 {#adding-routes-inside-navigation-guards}
+## 네비게이션 가드 내부에서 경로 추가하기 %{#adding-routes-inside-navigation-guards}%
 
 네비게이션 가드 내부에서 경로를 추가하거나 제거하기로 결정했다면,
 `router.replace()`를 호출하지 말고 새 위치를 반환하는 리디렉션을 트리거해야 합니다:
@@ -67,7 +67,7 @@ router.beforeEach(to => {
 실제 시나리오에서는 네비게이션 가드 외부에서 뷰 컴포넌트가 마운트되면,
 이러한 동작을 처리해야 할 수도 있습니다.
 
-## 경로 제거하기 {#removing-routes}
+## 경로 제거하기 %{#removing-routes}%
 
 존재하는 경로를 제거하는 몇 가지 방법이 있습니다:
 
@@ -94,7 +94,7 @@ router.beforeEach(to => {
 
 경로가 제거되면 **모든 별칭과 자식**도 함께 제거됩니다.
 
-## 중첩 경로 추가하기 {#adding-nested-routes}
+## 중첩 경로 추가하기 %{#adding-nested-routes}%
 
 중첩된 경로를 기존 경로에 추가하려면,
 경로의 `name`을 첫 번째 파라미터로 `router.addRoute()`에 전달할 수 있습니다.
@@ -116,10 +116,10 @@ router.addRoute({
 })
 ```
 
-## 존재하는 경로 찾기 {#looking-at-existing-routes}
+## 존재하는 경로 찾기 %{#looking-at-existing-routes}%
 
 Vue Router는 존재하는 경로를 찾아볼 수 있도록,
 두 개의 함수를 제공합니다:
 
-- [`router.hasRoute()`](/api/interfaces/Router.md#hasroute): 경로 이름을 인자로 전달하여 경로가 존재하는지 확인.
-- [`router.getRoutes()`](/api/interfaces/Router.md#getroutes): 모든 경로 레코드를 배열로 반환.
+- [`router.hasRoute()`](/api/interfaces/Router.md#Methods-hasRoute): 경로 이름을 인자로 전달하여 경로가 존재하는지 확인.
+- [`router.getRoutes()`](/api/interfaces/Router.md#Methods-getRoutes): 모든 경로 레코드를 배열로 반환.

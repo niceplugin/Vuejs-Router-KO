@@ -19,13 +19,12 @@ const config = defineConfig({
     },
 
     attrs: {
-      leftDelimiter: '{',
-      rightDelimiter: '}',
+      leftDelimiter: '%{',
+      rightDelimiter: '}%',
     },
   },
 
   head: [
-    ['script', {src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9482958208962357', async: '', type: 'text/javascript', crossorigin: "anonymous"}],
     ['script', {src: 'https://unpkg.com/thesemetrics@latest', async: '', type: 'text/javascript'}],
     ['link', {rel: 'icon', type: 'image/svg+xml', href: '/logo.svg'}],
     ['link', {rel: 'icon', type: 'image/png', href: '/logo.png'}],
@@ -50,6 +49,20 @@ const config = defineConfig({
   },
 
   themeConfig: {
+    logo: '/logo.svg',
+    outline: [2, 3],
+
+    socialLinks: [
+      { icon: 'twitter', link: 'https://twitter.com/posva' },
+      {
+        icon: 'github',
+        link: 'https://github.com/vuejs/router',
+      },
+      {
+        icon: 'discord',
+        link: 'https://chat.vuejs.org',
+      },
+    ],
 
     footer: {
       copyright: 'Copyright © 2014-present Evan You, Eduardo San Martin Morote',
@@ -215,7 +228,7 @@ const config = defineConfig({
         },
         {
           text: '⚠️Vue 2에서 마이그레이션 (영문)',
-          link: '/guide/migration.html',
+          link: '/guide/migration/index.html',
         },
       ],
     },

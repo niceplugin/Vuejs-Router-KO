@@ -1,4 +1,4 @@
-# 시작하기 {#getting-started}
+# 시작하기 %{#getting-started}%
 
 Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 쉽습니다.
 Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니다.
@@ -77,9 +77,8 @@ app.mount('#app')
 // 이제 앱이 시작되었습니다!
 ```
 
-`app.use(router)`를 실행했으므로,
-`this.$router`로 라우터 인스턴스에 접근할 수 있으며,
-컴포넌트 내부에서 `this.$route`로 현재 경로에 접근할 수 있습니다.
+`app.use(router)`를 호출하여 초기 탐색을 트리거하고,
+`this.$router` 내부의 모든 컴포넌트에서 현재 `this.$route`에 대한 접근 권한을 부여합니다.
 
 ```js
 // Home.vue
