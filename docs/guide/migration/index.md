@@ -177,7 +177,7 @@ app.config.globalProperties.append = (path, pathToAppend) =>
 
 ### Removal of `event` and `tag` props in `<router-link>`
 
-Both `event`, and `tag` props have been removed from `<router-link>`. You can use the [`v-slot` API](/api/#uselink) to fully customize `<router-link>`:
+Both `event`, and `tag` props have been removed from `<router-link>`. You can use the [`v-slot` API](/guide/advanced/composition-api#uselink) to fully customize `<router-link>`:
 
 ```html
 replace
@@ -197,7 +197,7 @@ The `exact` prop has been removed because the caveat it was fixing is no longer 
 - Routes are now active based on the route records they represent instead of the generated route location objects and their `path`, `query`, and `hash` properties
 - Only the `path` section is matched, `query`, and `hash` aren't taken into account anymore
 
-If you wish to customize this behavior, e.g. take into account the `hash` section, you should use the [`v-slot` API](/api/#useLink) to extend `<router-link>`.
+If you wish to customize this behavior, e.g. take into account the `hash` section, you should use the [`v-slot` API](/guide/advanced/composition-api#uselink) to extend `<router-link>`.
 
 **Reason**: See the [RFC about active matching](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0028-router-active-link.md#summary) changes for more details.
 
@@ -207,7 +207,7 @@ At the moment navigation guards in mixins are not supported. You can track its s
 
 ### Removal of `router.match` and changes to `router.resolve`
 
-Both `router.match`, and `router.resolve` have been merged together into `router.resolve` with a slightly different signature. [Refer to the API](/api/interfaces/Router.md#resolve) for more details.
+Both `router.match`, and `router.resolve` have been merged together into `router.resolve` with a slightly different signature. [Refer to the API](api/interfaces/router#Methods-resolve) for more details.
 
 **Reason**: Uniting multiple methods that were used for the same purpose.
 
@@ -421,10 +421,10 @@ Note this will work if `path` was `/parent/` as the relative location `home` to 
 
 Decoded values in `params`, `query`, and `hash` are now consistent no matter where the navigation is initiated (older browsers will still produce unencoded `path` and `fullPath`). The initial navigation should yield the same results as in-app navigations.
 
-Given any [normalized route location](/api/interfaces/RouteLocationNormalized.html):
+Given any [normalized route location](/api/#routelocationnormalized):
 
 - Values in `path`, `fullPath` are not decoded anymore. They will appear as provided by the browser (most browsers provide them encoded). e.g. directly writing on the address bar `https://example.com/hello world` will yield the encoded version: `https://example.com/hello%20world` and both `path` and `fullPath` will be `/hello%20world`.
-- `hash` is now decoded, that way it can be copied over: `router.push({ hash: $route.hash })` and be used directly in [scrollBehavior](/api/interfaces/RouterOptions.md#scrollbehavior)'s `el` option.
+- `hash` is now decoded, that way it can be copied over: `router.push({ hash: $route.hash })` and be used directly in [scrollBehavior](/api/#scrollbehavior)'s `el` option.
 - When using `push`, `resolve`, and `replace` and providing a `string` location or a `path` property in an object, **it must be encoded** (like in the previous version). On the other hand, `params`, `query` and `hash` must be provided in its unencoded version.
 - The slash character (`/`) is now properly decoded inside `params` while still producing an encoded version on the URL: `%2F`.
 
