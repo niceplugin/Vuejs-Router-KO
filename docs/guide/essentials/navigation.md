@@ -1,9 +1,9 @@
-# 프로그래밍 방식 탐색 {#programmatic-navigation}
+# 프로그래밍 방식 탐색 %{#programmatic-navigation}%
 
 `<router-link>`로 생성된 앵커 태그로 탐색하는 방법 외에도,
 라우터의 인스턴스 메서드를 사용하여 프로그래밍 방식으로 탐색을 할 수 있습니다.
 
-## 다른 위치로 이동 {#navigate-to-a-different-location}
+## 다른 위치로 이동 %{#navigate-to-a-different-location}%
 
 **참고: Vue 인스턴스 내부에서 `$router`로 라우터 인스턴스에 접근할 수 있습니다.
 따라서 `this.$router.push`를 호출할 수 있습니다.**
@@ -68,7 +68,7 @@ router.push({ path: '/user', params: { username } }) // -> /user
 `router.push`를 포함한 모든 탐색 메서드는 탐색이 완료될 때까지 기다렸다가 성공했는지 실패했는지 알 수 있도록 하는 `Promise`를 반환합니다.
 [탐색 결과 대기하기](../advanced/navigation-failures.md)에서 더 자세히 이야기하겠습니다.
 
-## 현재 위치 바꾸기 {#replace-current-location}
+## 현재 위치 바꾸기 %{#replace-current-location}%
 
 이것은 `router.push`처럼 작동합니다.
 유일한 차이점은 이름에서 알 수 있듯이,
@@ -86,7 +86,7 @@ router.push({ path: '/home', replace: true })
 router.replace({ path: '/home' })
 ```
 
-## 히스토리 이동 {#traverse-history}
+## 히스토리 이동 %{#traverse-history}%
 
 이 메서드는 `window.history.go(n)`과 유사하게,
 히스토리 스택에서 앞 또는 뒤로 이동할 단계를 나타내는 정수를 단일 인자로 사용합니다.
@@ -108,7 +108,7 @@ router.go(-100)
 router.go(100)
 ```
 
-## 히스토리 조작 {#history-manipulation}
+## 히스토리 조작 %{#history-manipulation}%
 
 `router.push`, `router.replace`, `router.go`는 `window.history` API의 [`window.history.pushState`, `window.history.replaceState`, `window.history.go`](https://developer.mozilla.org/en-US/docs/Web/API/History)처럼 작동합니다.
 

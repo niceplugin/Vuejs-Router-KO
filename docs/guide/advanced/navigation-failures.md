@@ -1,4 +1,4 @@
-# 탐색 결과 기다리기 {#waiting-for-the-result-of-a-navigation}
+# 탐색 결과 기다리기 %{#waiting-for-the-result-of-a-navigation}%
 
 `router-link`를 사용할 때,
 Vue Router는 `router.push`를 호출하여 탐색을 트리거합니다.
@@ -33,7 +33,7 @@ this.isMenuOpen = false
 이제 메뉴는 탐색이 완료되면 닫히지만 탐색이 금지된 경우에도 닫힙니다.
 현재 있는 페이지를 실제로 변경했는지 여부를 감지할 방법이 필요합니다.
 
-## 탐색 실패 감지하기 {#detecting-navigation-failures}
+## 탐색 실패 감지하기 %{#detecting-navigation-failures}%
 
 탐색이 금지되어 사용자가 같은 페이지에 머무르는 경우,
 `router.push`가 반환하는 `Promise`의 해결된 값은 [`NavigationFailure`](/api/enums/NavigationFailureType.md)입니다.
@@ -70,7 +70,7 @@ if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
 두 번째 파라미터를 생략하면, `isNavigationFailure(failure)`의 `failure`가 `NavigationFailure`인지 여부만 확인합니다.
 :::
 
-## 탐색 실패 구별하기 {#differentiating-navigation-failures}
+## 탐색 실패 구별하기 %{#differentiating-navigation-failures}%
 
 서두에 언급했듯이 탐색이 중단되는 여러 상황이 있으며, `NavigationFailure`를 반환합니다.
 이것은 `isNavigationFailure`와 `NavigationFailureType`을 사용하여 구분할 수 있으며,
@@ -81,7 +81,7 @@ if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
   예를 들어 네비게이션 가드 내부에서 기다리는 동안 `router.push`가 호출됨.
 - `duplicated`: 이미 해당 위치에 있기 때문에 탐색이 차단됨.
 
-## 탐색 실패의 속성 {#navigation-failures-s-properties}
+## 탐색 실패의 속성 %{#navigation-failures-s-properties}%
 
 모든 탐색 실패는 `to`와 `from` 속성을 노출하여,
 현재 위치와 실패한 탐색의 대상 위치를 제공합니다:
@@ -98,7 +98,7 @@ router.push('/admin').then(failure => {
 
 `to`와 `from`은 항상 [정규화된 경로 위치](/api/interfaces/RouteLocationNormalized.html)입니다.
 
-## 리디렉션 감지 {#detecting-redirections}
+## 리디렉션 감지 %{#detecting-redirections}%
 
 네비게이션 가드 내부에서 새로운 위치를 반환할 때,
 진행 중인 탐색을 재정의하는 새로운 탐색을 트리거합니다.

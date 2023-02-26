@@ -1,4 +1,4 @@
-# 중첩된 경로 {#nested-routes}
+# 중첩된 경로 %{#nested-routes}%
 
 일부 앱의 UI는 여러 단계로 중첩된 컴포넌트로 구성됩니다.
 이 경우, URL 세그먼트가 중첩된 컴포넌트 중 특정 구조와 일치되어야 하는 것은 매우 일반적입니다.
@@ -106,7 +106,7 @@ const routes = [
 
 참고: [예제](https://codesandbox.io/s/nested-views-vue-router-4-examples-hl326?initialpath=%2Fusers%2Feduardo)
 
-## 중첩된 이름이 있는 경로 {#nested-named-routes}
+## 중첩된 이름이 있는 경로 %{#nested-named-routes}%
 
 [이름이 있는 경로](./named-routes.md)를 처리할 때, 일반적으로 **"자식 경로의 이름"만 지정**합니다:
 

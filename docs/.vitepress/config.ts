@@ -19,8 +19,8 @@ const config = defineConfig({
     },
 
     attrs: {
-      leftDelimiter: '{',
-      rightDelimiter: '}',
+      leftDelimiter: '%{',
+      rightDelimiter: '}%',
     },
   },
 
@@ -50,6 +50,20 @@ const config = defineConfig({
   },
 
   themeConfig: {
+    logo: '/logo.svg',
+    outline: [2, 3],
+
+    socialLinks: [
+      { icon: 'twitter', link: 'https://twitter.com/posva' },
+      {
+        icon: 'github',
+        link: 'https://github.com/vuejs/router',
+      },
+      {
+        icon: 'discord',
+        link: 'https://chat.vuejs.org',
+      },
+    ],
 
     footer: {
       copyright: 'Copyright © 2014-present Evan You, Eduardo San Martin Morote',

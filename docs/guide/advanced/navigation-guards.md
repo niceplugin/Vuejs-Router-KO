@@ -1,9 +1,9 @@
-# 네비게이션 가드 {#navigation-guards}
+# 네비게이션 가드 %{#navigation-guards}%
 
 네비게이션 가드는 주로 탐색을 리디렉션하거나 취소하여, 탐색을 막는데 사용됩니다.
 경로 탐색 프로세스에 가드를 연결하는 방법으로는 "전역", "경로별", "컴포넌트 내부"가 있습니다.
 
-## 전역: 비포 가드 {#global-before-guards}
+## 전역: 비포 가드 %{#global-before-guards}%
 
 라우터 인스턴스의 `beforeEach()` 메서드에 콜백 함수를 전달하여,
 "비포(탐색 전) 가드"를 전역으로 등록할 수 있습니다:
@@ -66,7 +66,7 @@ router.beforeEach(async (to, from) => {
 })
 ```
 
-### 선택적 세 번째 인자 `next` {#optional-third-argument-next}
+### 선택적 세 번째 인자 `next` %{#optional-third-argument-next}%
 
 Vue Router의 이전 버전에서는 세 번째 인자 `next`를 사용할 수도 있었는데,
 이는 일반적인 실수의 원인이었으며,
@@ -94,7 +94,7 @@ router.beforeEach((to, from, next) => {
 })
 ```
 
-## 전역: 리졸브(resolve) 가드 {#global-resolve-guards}
+## 전역: 리졸브(resolve) 가드 %{#global-resolve-guards}%
 
 `router.beforeResolve`로 전역 가드를 등록할 수 있습니다.
 이것은 **모든 탐색**에서 트리거되기 때문에 `router.beforeEach`와 유사하지만,
@@ -125,7 +125,7 @@ router.beforeResolve(async to => {
 
 <!-- TODO: how to combine with [`meta` fields](./meta.md) to create a [generic fetching mechanism](#TODO). -->
 
-## 전역: 탐색 후 훅 {#global-after-hooks}
+## 전역: 탐색 후 훅 %{#global-after-hooks}%
 
 전역으로 탐색 후 훅을 등록할 수도 있지만,
 가드와 달리 `next` 함수를 전달받지 않으며 탐색에 영향을 줄 수 없습니다:
@@ -149,7 +149,7 @@ router.afterEach((to, from, failure) => {
 
 참고: [가이드 - 탐색 실패](navigation-failures.md)
 
-## 경로 별 가드 {#per-route-guard}
+## 경로 별 가드 %{#per-route-guard}%
 
 경로를 구성하는 객체에서 직접 `beforeEnter` 가드를 정의할 수 있습니다:
 
@@ -197,11 +197,11 @@ const routes = [
 ]
 ```
 
-## 컴포넌트 내부 가드 {#in-component-guards}
+## 컴포넌트 내부 가드 %{#in-component-guards}%
 
 마지막으로 경로를 구성하는 객체에 전달되는 "경로 컴포넌트" 내에서 경로 탐색 가드를 직접 정의할 수 있습니다.
 
-### 옵션 API 사용 {#using-the-options-api}
+### 옵션 API 사용 %{#using-the-options-api}%
 
 경로 컴포넌트에 다음과 같은 가드 옵션을 추가할 수 있습니다:
 
@@ -268,14 +268,14 @@ beforeRouteLeave (to, from) {
 }
 ```
 
-### 컴포지션 API 사용 {#using-the-composition-api}
+### 컴포지션 API 사용 %{#using-the-composition-api}%
 
 [컴포지션 API 및 `setup` 함수](https://vuejs.kr/api/composition-api-setup.html#setup)를 사용하여 컴포넌트를 작성하는 경우,
 `onBeforeRouteUpdate` 및 `onBeforeRouteLeave` 가드를 추가할 수 있습니다.
 
 참고: [가이드 - 컴포지션 API](composition-api.md#navigation-guards)
 
-## 전체적인 탐색 흐름 {#the-full-navigation-resolution-flow}
+## 전체적인 탐색 흐름 %{#the-full-navigation-resolution-flow}%
 
 ![Vue router flow](./images/vue-router-lifecycle.png)
 

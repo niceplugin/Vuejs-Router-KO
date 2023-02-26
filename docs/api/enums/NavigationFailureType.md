@@ -13,7 +13,7 @@ sidebarDepth: 3
 
 ## Enumeration Members
 
-### aborted (중단됨) {#aborted}
+### aborted (중단됨) %{#aborted}%
 
 • **aborted** = ``4``
 
@@ -22,7 +22,7 @@ sidebarDepth: 3
 
 ___
 
-### cancelled (취소됨) {#cancelled}
+### cancelled (취소됨) %{#cancelled}%
 
 • **cancelled** = ``8``
 
@@ -30,7 +30,7 @@ ___
 
 ___
 
-### duplicated (중복됨) {#duplicated}
+### duplicated (중복됨) %{#duplicated}%
 
 • **duplicated** = ``16``
 

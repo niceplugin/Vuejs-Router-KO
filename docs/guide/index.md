@@ -1,4 +1,4 @@
-# 시작하기 {#getting-started}
+# 시작하기 %{#getting-started}%
 
 Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 쉽습니다.
 Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니다.

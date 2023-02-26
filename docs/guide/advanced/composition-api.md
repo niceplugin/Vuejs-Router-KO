@@ -1,9 +1,9 @@
-# Vue Router와 컴포지션 API {#vue-router-and-the-composition-api}
+# Vue Router와 컴포지션 API %{#vue-router-and-the-composition-api}%
 
 Vue 3에서는 `setup`과 [컴포지션 API](https://vuejs.kr/guide/introduction.html#composition-api)가 도입되었습니다.
 따라서 컴포넌트 내부의 탐색 가드와 `this`에서 라우터에 접근하는 기존 방식을 대체할 수 있는 몇 가지 새로운 함수를 사용할 수 있습니다.
 
-## `setup` 내부에서 라우터 및 현재 경로에 접근하기 {#accessing-the-router-and-current-route-inside-setup}
+## `setup` 내부에서 라우터 및 현재 경로에 접근하기 %{#accessing-the-router-and-current-route-inside-setup}%
 
 `setup` 내부에서는 `this`에 접근할 수 없기 때문에,
 `this.$router` 또는 `this.$route`에 접근할 수 없습니다.
@@ -57,7 +57,7 @@ export default {
 템플릿 내부에서는 여전히 `$router` 및 `$route`로 접근할 수 있으므로,
 `setup` 내부에서 `router` 및 `route`를 반환할 필요는 없습니다.
 
-## 탐색 가드 {#navigation-guards}
+## 탐색 가드 %{#navigation-guards}%
 
 Vue Router는 업데이트 및 리브 가드를 컴포지션 API 메서드로 노출하므로,
 `setup` 함수에서 컴포넌트 내 탐색 가드를 계속 사용할 수 있습니다.

@@ -1,4 +1,4 @@
-# 경로 컴포넌트에 props 전달하기 {#passing-props-to-route-components}
+# 경로 컴포넌트에 props 전달하기 %{#passing-props-to-route-components}%
 
 컴포넌트에서 `$route`를 사용하면 특정 URL에서만 사용할 수 있으므로,
 경로와 긴밀하게 결합되고 컴포넌트의 유연성이 제한됩니다.
@@ -34,11 +34,11 @@ const routes = [{ path: '/user/:id', component: User, props: true }]
 이 패턴의 근본적인 목적은 "**경로에 컴포넌트가 종속되지 않고 가독성과 재사용성을 유지**"하기 위함임을 인지해야 합니다.
 :::
 
-## 불리언 모드 {#boolean-mode}
+## 불리언 모드 %{#boolean-mode}%
 
 경로의 `props`가 `true`로 설정되면, `route.params`가 컴포넌트의 props로 설정됩니다.
 
-## 이름이 있는 뷰 {#named-views}
+## 이름이 있는 뷰 %{#named-views}%
 
 이름이 있는 뷰가 있는 경로의 경우,
 이름이 있는 뷰 각각에 `props` 옵션을 정의해야 합니다:
@@ -53,7 +53,7 @@ const routes = [
 ]
 ```
 
-## 객체 모드 {#object-mode}
+## 객체 모드 %{#object-mode}%
 
 `props`가 객체인 경우,
 이는 그대로 컴포넌트의 props로 설정됩니다.
@@ -69,7 +69,7 @@ const routes = [
 ]
 ```
 
-## 함수 모드 {#function-mode}
+## 함수 모드 %{#function-mode}%
 
 Props를 반환하는 함수를 만들 수 있습니다.
 이를 통해 파라미터를 다른 유형으로 캐스팅하고,

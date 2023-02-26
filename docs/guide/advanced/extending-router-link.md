@@ -1,4 +1,4 @@
-# RouterLink 확장하기 {#extending-routerlink}
+# RouterLink 확장하기 %{#extending-routerlink}%
 
 `<router-link>` 컴포넌트는 대부분의 기본 앱에 충분할 만큼의 `props`를 노출하지만,
 가능한 모든 사용 사례를 다루지 않으며,

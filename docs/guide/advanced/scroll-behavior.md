@@ -1,4 +1,4 @@
-# 스크롤 동작 {#scroll-behavior}
+# 스크롤 동작 %{#scroll-behavior}%
 
 클라이언트 측 라우팅을 사용할 때,
 새로운 경로로 이동하면 스크롤을 맨위로 이동하거나,
@@ -94,7 +94,7 @@ const router = createRouter({
 })
 ```
 
-## 스크롤 지연 {#delaying-the-scroll}
+## 스크롤 지연 %{#delaying-the-scroll}%
 
 때때로 우리는 페이지에서 스크롤하기 전에 조금 기다려야 합니다.
 예를 들어 트랜지션을 처리하는 경우, 트랜지션이 완료될 때까지 기다린 후 스크롤을 해야 합니다.
