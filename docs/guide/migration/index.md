@@ -207,7 +207,7 @@ At the moment navigation guards in mixins are not supported. You can track its s
 
 ### Removal of `router.match` and changes to `router.resolve`
 
-Both `router.match`, and `router.resolve` have been merged together into `router.resolve` with a slightly different signature. [Refer to the API](api/interfaces/router#Methods-resolve) for more details.
+Both `router.match`, and `router.resolve` have been merged together into `router.resolve` with a slightly different signature. [Refer to the API](/api/interfaces/Router#Methods-resolve) for more details.
 
 **Reason**: Uniting multiple methods that were used for the same purpose.
 
@@ -444,6 +444,6 @@ To make typings more consistent and expressive, some types have been renamed:
 
 Some of new features to keep an eye on in Vue Router 4 include:
 
-- [Dynamic Routing](advanced/dynamic-routing.md)
-- [Composition API](advanced/composition-api.md)
+- [Dynamic Routing](../advanced/dynamic-routing.md)
+- [Composition API](../advanced/composition-api.md)
 <!-- - Custom History implementation -->

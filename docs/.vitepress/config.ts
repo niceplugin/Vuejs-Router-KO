@@ -229,7 +229,7 @@ const config = defineConfig({
         },
         {
           text: '⚠️Vue 2에서 마이그레이션 (영문)',
-          link: '/guide/migration.html',
+          link: '/guide/migration/index.html',
         },
       ],
     },
