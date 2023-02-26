@@ -121,5 +121,5 @@ router.addRoute({
 Vue Router는 존재하는 경로를 찾아볼 수 있도록,
 두 개의 함수를 제공합니다:
 
-- [`router.hasRoute()`](/api/interfaces/Router.md#hasroute): 경로 이름을 인자로 전달하여 경로가 존재하는지 확인.
-- [`router.getRoutes()`](/api/interfaces/Router.md#getroutes): 모든 경로 레코드를 배열로 반환.
+- [`router.hasRoute()`](/api/interfaces/Router.md#Methods-hasRoute): 경로 이름을 인자로 전달하여 경로가 존재하는지 확인.
+- [`router.getRoutes()`](/api/interfaces/Router.md#Methods-getRoutes): 모든 경로 레코드를 배열로 반환.
