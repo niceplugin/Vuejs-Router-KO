@@ -1,11 +1,11 @@
 # 이름이 있는 뷰 %{#named-views}%
 
-때로는 여러 뷰(view)를 중첩하지 않고,
-동시에 표시해야 합니다(예: 사이드바와 메인 뷰가 있는 레이아웃).
-이럴 때는 이름이 있는 뷰를 사용하면 유용합니다.
-"결과를 노출할 수단"(이하 아울렛)으로 하나의 뷰를 사용하는 것보다,
-여러 개의 아울렛 뷰 각각에 이름을 지정해 사용하는 것입니다.
-이름이 지정되지 않은 `<router-view>`는 기본 값으로 `default`라는 이름을 가집니다.
+
+
+
+
+
+때로는 여러 뷰(view)를 중첩하지 않고, 동시에 표시해야 합니다(예: 사이드바와 메인 뷰가 있는 레이아웃). 이럴 때는 이름이 있는 뷰를 사용하면 유용합니다. "결과를 노출할 수단"(이하 아울렛)으로 하나의 뷰를 사용하는 것보다, 여러 개의 아울렛 뷰 각각에 이름을 지정해 사용하는 것입니다. 이름이 지정되지 않은 `<router-view>`는 기본 값으로 `default`라는 이름을 가집니다.
 
 ```html
 <router-view class="view left-sidebar" name="LeftSidebar"></router-view>
@@ -18,21 +18,16 @@
 따라서 이러한 경로에는 `components` 옵션을 사용해야 합니다:
 
 ```js
-import Home from './Home.vue'
-import LeftSidebar from './LeftSidebar.vue'
-import RightSidebar from './RightSidebar.vue'
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
       path: '/',
-      // component 뒤에 s가 붙은 복수형 단어를 속성명으로 사용함.
-      // 오타에 의한 애러 주의!
       components: {
         default: Home,
         // 아래 두 컴포넌트는 `<router-view>`의 `name` 속성에 매치됨.
-        LeftSidebar, // 짧은 문법: `LeftSidebar: LeftSidebar`와 같음.
+        // `LeftSidebar: LeftSidebar` 문법과 같은 코드.
+        LeftSidebar,
         RightSidebar,
       },
     },
@@ -44,9 +39,7 @@ const router = createRouter({
 
 ## 중첩된 이름이 있는 뷰 %{#nested-named-views}%
 
-중첩된 뷰와 명명된 뷰를 사용하여 복잡한 레이아웃을 만들 수 있습니다.
-이 때 중첩된 `router-view`에 이름도 지정해야 합니다.
-유저 세팅 패널을 예로 들어 보겠습니다:
+중첩된 뷰와 명명된 뷰를 사용하여 복잡한 레이아웃을 만들 수 있습니다. 이 때 중첩된 `router-view`에 이름도 지정해야 합니다. 유저 세팅 패널을 예로 들어 보겠습니다:
 
 ```
 /settings/emails                                /settings/profile
@@ -83,20 +76,18 @@ const router = createRouter({
 ```js
 {
   path: '/settings',
+  // 상단(이곳)에 이름이 있는 view를 가질 수도 있음.
   component: UserSettings,
-  children: [
-    {
-      path: 'emails',
-      component: UserEmailsSubscriptions
-    },
-    {
-      path: 'profile',
-      components: {
-        default: UserProfile,
-        subView: UserProfilePreview
-      }
+  children: [{
+    path: 'emails',
+    component: UserEmailsSubscriptions
+  }, {
+    path: 'profile',
+    components: {
+      default: UserProfile,
+      subView: UserProfilePreview
     }
-  ]
+  }]
 }
 ```
 

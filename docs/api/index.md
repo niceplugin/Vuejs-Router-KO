@@ -155,10 +155,8 @@ router.beforeEach((to, from) => {
 
 ▸ **createMemoryHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
 
-메모리 기반 히스토리를 생성합니다.
-이 히스토리의 주요 목적은 SSR을 처리하는 것입니다.
-이것은 어디에도 없는 특별한 장소에서 시작됩니다.
-`router.push` 또는 `router.replace`를 호출하여 해당 위치를 시작 위치로 바꾸는 것은 사용자에게 달려 있습니다.
+메모리 기반 히스토리를 생성합니다. 이 히스토리의 주요 목적은 SSR을 처리하는 것입니다.
+이것은 어디에도 없는 특별한 장소에서 시작됩니다. `router.push` 또는 `router.replace`를 호출하여 해당 위치를 시작 위치로 바꾸는 것은 사용자에게 달려 있습니다.
 
 #### Parameters %{#Functions-createMemoryHistory-Parameters}%
 
@@ -231,8 +229,7 @@ ___
 
 ▸ **createWebHistory**(`base?`): [`RouterHistory`](interfaces/RouterHistory.md)
 
-HTML5 히스토리를 만듭니다.
-단일 페이지 애플리케이션에 대한 가장 일반적인 히스토리입니다.
+HTML5 히스토리를 만듭니다. 단일 페이지 애플리케이션에 대한 가장 일반적인 히스토리입니다.
 
 #### Parameters %{#Functions-createWebHistory-Parameters}%
 
@@ -303,9 +300,7 @@ ___
 
 ▸ **loadRouteLocation**(`route`): `Promise`<[`RouteLocationNormalizedLoaded`](interfaces/RouteLocationNormalizedLoaded.md)\>
 
-경로가 로드되었는지 확인하여 `<RouterView>`에 o prop으로 전달할 수 있습니다.
-
-(원문: Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.)
+경로가 로드되었는지 확인하여 `<RouterView>`에 o prop으로 전달할 수 있습니다. (원문: Ensures a route is loaded, so it can be passed as o prop to `<RouterView>`.)
 
 #### Parameters %{#Functions-loadRouteLocation-Parameters}%
 

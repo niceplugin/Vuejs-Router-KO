@@ -15,6 +15,12 @@ hero:
     - theme: brand
       text: 시작하기
       link: /installation
+    - theme: cta vueschool
+      text: 무료 비디오 코스 (영문)
+      link: https://vueschool.io/courses/vue-router-4-for-everyone?friend=vuerouter&utm_source=vuerouter&utm_medium=link&utm_campaign=homepage
+    - theme: cta vue-mastery
+      text: Vue Router 치트 시트 얻기 (영문)
+      link: https://www.vuemastery.com/vue-router?coupon=ROUTER-DOCS&via=eduardo
 
 features:
   - title: 🛣 경로를 표현하는 문법
@@ -30,3 +36,10 @@ features:
   - title: 🌐 오토 인코딩
     details: 코드에서 유니코드 문자를 사용할 수 있습니다.
 ---
+
+<script setup>
+import HomeSponsors from './.vitepress/theme/components/HomeSponsors.vue'
+import './.vitepress/theme/styles/home-links.css'
+</script>
+
+<HomeSponsors />
