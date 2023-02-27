@@ -68,7 +68,7 @@ const router = createRouter({
 
 ### Apache
 
-```apache
+```
 <IfModule mod_negotiation.c>
   Options -MultiViews
 </IfModule>
