@@ -1,26 +1,29 @@
+---
+sidebarDepth: 0
+---
+
 # 프로그래밍 방식 탐색 %{#programmatic-navigation}%
 
-`<router-link>`로 생성된 앵커 태그로 탐색하는 방법 외에도,
-라우터의 인스턴스 메서드를 사용하여 프로그래밍 방식으로 탐색을 할 수 있습니다.
+
+
+
+
+
+`<router-link>`로 생성된 앵커 태그로 탐색하는 방법 외에도, 라우터의 인스턴스 메서드를 사용하여 프로그래밍 방식으로 탐색을 할 수 있습니다.
 
 ## 다른 위치로 이동 %{#navigate-to-a-different-location}%
 
-**참고: Vue 인스턴스 내부에서 `$router`로 라우터 인스턴스에 접근할 수 있습니다.
-따라서 `this.$router.push`를 호출할 수 있습니다.**
+**참고: Vue 인스턴스 내부에서 `$router`로 라우터 인스턴스에 접근할 수 있습니다. 따라서 `this.$router.push`를 호출할 수 있습니다.**
 
-다른 URL로 이동하려면 `router.push`를 사용해야 합니다.
-이 메서드는 새 항목을 히스토리 스택으로 푸시하므로,
-사용자가 브라우저의 뒤로가기 버튼을 클릭하면 이전 URL로 이동합니다.
+다른 URL로 이동하려면 `router.push`를 사용해야 합니다. 이 메서드는 새 항목을 히스토리 스택으로 푸시하므로, 사용자가 브라우저의 뒤로가기 버튼을 클릭하면 이전 URL로 이동합니다.
 
-이것은 `<router-link>`를 클릭할 때 내부적으로 호출되는 메서드이므로,
-`<router-link :to="...">`를 클릭하는 것은 `router.push(...)`를 호출하는 것과 같습니다.
+이것은 `<router-link>`를 클릭할 때 내부적으로 호출되는 메서드이므로, `<router-link :to="...">`를 클릭하는 것은 `router.push(...)`를 호출하는 것과 같습니다.
 
 | 선언 방식                   | 프로그래밍 방식       |
 | ------------------------- | ------------------ |
 | `<router-link :to="...">` | `router.push(...)` |
 
-이 메서드의 인자는 "문자열 경로" 또는 "위치를 나타내는 객체"일 수 있습니다.
-예제:
+이 메서드의 인자는 "문자열 경로" 또는 "위치를 나타내는 객체"일 수 있습니다. 예제:
 
 ```js
 // 문자열 경로
@@ -32,19 +35,14 @@ router.push({ path: '/users/eduardo' })
 // 파라미터 값이 있는 이름을 가진 경로
 router.push({ name: 'user', params: { username: 'eduardo' } })
 
-// 쿼리(query) 사용
-// 이동할 경로: /register?plan=private
+// 쿼리(query) 사용, 이동할 경로: /register?plan=private
 router.push({ path: '/register', query: { plan: 'private' } })
 
-// 해시(hash) 사용
-// 이동할 경로: /about#team
+// 해시(hash) 사용, 이동할 경로: /about#team
 router.push({ path: '/about', hash: '#team' })
 ```
 
-**참고**: `path`가 제공되면 `params`가 무시됩니다.
-대신 경로에 `name`을 제공하거나,
-수동으로 파라미터를 포함한 전체 `path`를 지정해줘야 합니다.
-`query`의 경우, 위의 예제처럼 이러한 주의사항에 해당되지 않습니다.
+**참고**: `path`가 제공되면 `params`가 무시됩니다. 대신 경로에 `name`을 제공하거나, 수동으로 파라미터를 포함한 전체 `path`를 지정해줘야 합니다. `query`의 경우, 위의 예제처럼 이러한 주의사항에 해당되지 않습니다.
 
 ```js
 const username = 'eduardo'
@@ -58,21 +56,15 @@ router.push({ name: 'user', params: { username } }) // -> /user/eduardo
 router.push({ path: '/user', params: { username } }) // -> /user
 ```
 
-`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#repeatable-params)일 경우)를 제공해야 합니다.
-**다른 모든 유형(예: `false`)은 자동으로 문자열로 변환됩니다**.
-[선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우,
-건너뛸 값으로 빈 문자열(`""`)을 제공할 수 있습니다.
+`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#repeatable-params)일 경우)를 제공해야 합니다. **다른 모든 유형(예: `false`)은 자동으로 문자열로 변환됩니다**. [선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우, 건너뛸 값으로 빈 문자열(`""`)을 제공할 수 있습니다.
 
 `<router-link>`의 `to`는 `router.push`와 동일한 객체를 허용하므로 두 객체 모두 똑같은 규칙이 적용됩니다.
 
-`router.push`를 포함한 모든 탐색 메서드는 탐색이 완료될 때까지 기다렸다가 성공했는지 실패했는지 알 수 있도록 하는 `Promise`를 반환합니다.
-[탐색 결과 대기하기](../advanced/navigation-failures.md)에서 더 자세히 이야기하겠습니다.
+`router.push`를 포함한 모든 탐색 메서드는 탐색이 완료될 때까지 기다렸다가 성공했는지 실패했는지 알 수 있도록 하는 `Promise`를 반환합니다. [탐색 결과 대기하기](../advanced/navigation-failures.md)에서 더 자세히 이야기하겠습니다.
 
 ## 현재 위치 바꾸기 %{#replace-current-location}%
 
-이것은 `router.push`처럼 작동합니다.
-유일한 차이점은 이름에서 알 수 있듯이,
-새 히스토리 항목을 푸시하지 않고 탐색하는 것으로 현재 항목을 대체합니다.
+이것은 `router.push`처럼 작동합니다. 유일한 차이점은 이름에서 알 수 있듯이, 새 히스토리 항목을 푸시하지 않고 탐색하는 것으로 현재 항목을 대체합니다.
 
 | 선언 방식                           | 프로그래밍 방식          |
 |-----------------------------------| --------------------- |
@@ -88,8 +80,12 @@ router.replace({ path: '/home' })
 
 ## 히스토리 이동 %{#traverse-history}%
 
-이 메서드는 `window.history.go(n)`과 유사하게,
-히스토리 스택에서 앞 또는 뒤로 이동할 단계를 나타내는 정수를 단일 인자로 사용합니다.
+
+
+
+
+
+이 메서드는 `window.history.go(n)`과 유사하게, 히스토리 스택에서 앞 또는 뒤로 이동할 단계를 나타내는 정수를 단일 인자로 사용합니다.
 
 예제:
 

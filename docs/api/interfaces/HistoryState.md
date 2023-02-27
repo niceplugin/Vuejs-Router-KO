@@ -1,15 +1,13 @@
 ---
-sidebar: "auto"
-editLinks: false
-sidebarDepth: 3
+editLink: false
 ---
 
 [API Documentation](../index.md) / HistoryState
 
 # Interface: HistoryState
 
-허용된 HTML history.state
+Allowed HTML history.state
 
-## Indexable
+## Indexable %{#Indexable}%
 
 ▪ [x: `number`]: `HistoryStateValue`

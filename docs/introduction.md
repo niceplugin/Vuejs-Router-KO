@@ -1,9 +1,11 @@
 # 소개 %{#introduction}%
 
-Vue Router는 [Vue.js](https://vuejs.org)의 공식 라우터입니다.
-Vue.js 코어와 긴밀하게 통합되어 싱글 페이지 앱을 쉽게 만들 수 있습니다.
 
-기능은 다음과 같습니다:
+
+
+
+
+Vue Router는 [Vue.js](https://vuejs.org)의 공식 라우터입니다. Vue.js 코어와 긴밀하게 통합되어 싱글 페이지 앱을 쉽게 만들 수 있습니다. 기능은 다음과 같습니다:
 
 - 중첩된 경로 매핑
 - 동적 라우팅
@@ -17,3 +19,9 @@ Vue.js 코어와 긴밀하게 통합되어 싱글 페이지 앱을 쉽게 만들
 - URL에 대한 적절한 인코딩
 
 [시작하기](/guide/) 또는 브라우저에서 [CodeSandbox](https://codesandbox.io/s/vue-router-4-reproduction-hb9lh)로 연습하기.
+
+<HomeSponsors />
+
+<script setup>
+import HomeSponsors from './.vitepress/theme/components/HomeSponsors.vue'
+</script>
