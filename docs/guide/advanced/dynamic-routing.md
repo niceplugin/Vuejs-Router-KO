@@ -59,23 +59,29 @@ router.beforeEach(to => {
 존재하는 경로를 제거하는 몇 가지 방법이 있습니다:
 
 - 같은 `name`을 가지는 경로를 추가합니다. `name`이 중복될 경우, 기존 경로를 제거한 후에 경로를 추가합니다.
+
   ```js
   router.addRoute({ path: '/about', name: 'about', component: About })
   // name 값이 동일하므로 이전에 추가한 경로가 제거됨.
   router.addRoute({ path: '/other', name: 'about', component: Other })
   ```
+
 - `router.addRoute()`가 반환한 콜백을 호출:
+
   ```js
   const removeRoute = router.addRoute(routeRecord)
   removeRoute() // 경로가 존재하는 경우 제거함.
   ```
+
   `name`이 없는 경로일 경우에 유용합니다.
 - `router.removeRoute()`에 `name` 문자열을 인자로 전달해 경로를 제거합니다.
+
   ```js
   router.addRoute({ path: '/about', name: 'about', component: About })
   // 경로를 제거함.
   router.removeRoute('about')
   ```
+
   경로의 `name`에 `Symbol`을 사용하면, 경로간 `name`의 충돌을 피할 수 있습니다.
 
 경로가 제거되면 **모든 별칭과 자식**도 함께 제거됩니다.
