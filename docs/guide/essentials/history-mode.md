@@ -191,7 +191,7 @@ rewrite {
 
 vue-cli, nuxt 및 vite 프로젝트에서 이 파일은 일반적으로 `static` 또는 `public`이라는 폴더에 있습니다.
 
-다른 Netlify 기능과 리디렉션을 결합하기 위해 [`netlify.toml`을 생성](https://docs.netlify.com/configure-builds/file-based-configuration/)할 수도 있습니다. 문법에 대한 자세한 내용 참고: [Netlify 문서](https://docs.netlify.com/routing/redirects/rewrites-proxies/#history-pushstate-and-single-page-apps)
+[Netlify 문서](https://docs.netlify.com/routing/redirects/rewrites-proxies/#history-pushstate-and-single-page-apps)에서 문법에 대해 자세히 알아볼 수 있습니다. 리디렉션을 다른 Netlify 기능과 결합하기 위해 [`netlify.toml`을 생성](https://docs.netlify.com/configure-builds/file-based-configuration/)할 수도 있습니다.
 
 ### Vercel
 
