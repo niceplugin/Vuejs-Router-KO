@@ -41,7 +41,7 @@ Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 �
 ## JavaScript
 
 ```js
-import VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 // 1. 경로에 사용할 컴포넌트를 정의.
 // import를 사용해 파일을 가져올 수 있음.
@@ -57,9 +57,9 @@ const routes = [
 
 // 3. `routes`를 옵션으로 전달해 라우터 인스턴스를 생성.
 // 여기에 추가 옵션을 전달할 수 있지만, 지금은 간단하게 나타냄.
-const router = VueRouter.createRouter({
+const router = createRouter({
   // 4. 사용할 히스토리 모드 정의. 여기서는 간단하게 해시 모드를 사용.
-  history: VueRouter.createWebHashHistory(),
+  history: createWebHashHistory(),
   routes, // `routes: routes`와 같음
 })
 
