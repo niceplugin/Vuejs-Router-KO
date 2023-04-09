@@ -77,7 +77,7 @@ if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
 ```js
 // 가정: 관리자 페이지에 접근하려는 경우
 router.push('/admin').then(failure => {
-  if (isNavigationFailure(failure, NavigationFailureType.redirected)) {
+  if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
     failure.to.path // '/admin'
     failure.from.path // '/'
   }
