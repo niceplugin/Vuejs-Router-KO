@@ -145,7 +145,10 @@ app.provide('global', '안녕 인젝션!')
 
 // router.ts 또는 main.ts
 router.beforeEach((to, from) => {
-  console.log(inject('global')) // -> '안녕 인젝션!'
+  const global = inject('global') // '안녕 인젝션!'
+  // pinia 스토어
+  const userStore = useAuthStore()
+  // ...
 })
 ```
 
