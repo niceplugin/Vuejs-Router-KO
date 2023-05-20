@@ -134,6 +134,24 @@ router.afterEach((to, from, failure) => {
 
 참고: [가이드 - 탐색 실패](navigation-failures.md)
 
+## 가드에서 전역 인젝션(injection) %{global-injections-within-guards}%
+
+Vue 3.3부터는 내비게이션 가드 내에서 `inject()`를 사용할 수 있습니다. 이는 [pinia 스토어](https://pinia.vuejs.org)와 같은 전역 속성을 인젝션하는 데 유용합니다. `app.provide()`와 함께 제공되는 모든 항목은 `router.beforeEach()`, `router.beforeResolve()`, `router.afterEach()` 내에서도 액세스할 수 있습니다.
+
+```ts
+// main.ts
+const app = createApp(App)
+app.provide('global', '안녕 인젝션!')
+
+// router.ts 또는 main.ts
+router.beforeEach((to, from) => {
+  const global = inject('global') // '안녕 인젝션!'
+  // pinia 스토어
+  const userStore = useAuthStore()
+  // ...
+})
+```
+
 ## 경로 별 가드 %{#per-route-guard}%
 
 경로를 구성하는 객체에서 직접 `beforeEnter` 가드를 정의할 수 있습니다:
