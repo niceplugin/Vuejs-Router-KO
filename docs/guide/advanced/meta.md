@@ -17,16 +17,16 @@ const routes = [
         path: 'new',
         component: PostsNew,
         // 유저 인증 필수
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true },
       },
       {
         path: ':id',
         component: PostsDetail,
         // 유저 인증 없어도 됨
-        meta: { requiresAuth: false }
-      }
-    ]
-  }
+        meta: { requiresAuth: false },
+      },
+    ],
+  },
 ]
 ```
 
@@ -61,12 +61,13 @@ router.beforeEach((to, from) => {
 `vue-router`에서 `RouteMeta` 인터페이스를 확장하여 메타 필드를 입력할 수 있습니다:
 
 ```ts
-// 이것은 `router.ts`처럼, 아무 `.ts` 파일에 직접 추가 가능.
-// `.d.ts` 파일에 추가 가능하며,
-// 이 경우 모듈로 처리되도록 내보내기를 추가해야 함.
-export {}
-
+// `router.ts`와 같은 `.ts` 파일에 직접 추가할 수 있습니다.
+// `.d.ts` 파일에 추가할 수도 있습니다.
+// 프로젝트의 tsconfig.json "파일"에 포함되어 있는지 확인하십시오.
 import 'vue-router'
+
+// 모듈로 처리되도록 하려면 `export` 문을 하나 이상 추가하세요.
+export {}
 
 declare module 'vue-router' {
   interface RouteMeta {

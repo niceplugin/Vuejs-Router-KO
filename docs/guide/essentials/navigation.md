@@ -56,7 +56,7 @@ router.push({ name: 'user', params: { username } }) // -> /user/eduardo
 router.push({ path: '/user', params: { username } }) // -> /user
 ```
 
-`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#repeatable-params)일 경우)를 제공해야 합니다. **다른 모든 유형(예: `false`)은 자동으로 문자열로 변환됩니다**. [선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우, 건너뛸 값으로 빈 문자열(`""`)을 제공할 수 있습니다.
+`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#repeatable-params)일 경우)를 제공해야 합니다. **다른 모든 유형(예: 객체, 불린 등)은 자동으로 문자열로 변환됩니다**. [선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우, 빈 문자열(`""`) 또는 `null`을 값으로 제공하여 제거할 수 있습니다.
 
 `<router-link>`의 `to`는 `router.push`와 동일한 객체를 허용하므로 두 객체 모두 똑같은 규칙이 적용됩니다.
 
@@ -70,7 +70,7 @@ router.push({ path: '/user', params: { username } }) // -> /user
 |-----------------------------------| --------------------- |
 | `<router-link :to="..." replace>` | `router.replace(...)` |
 
-또는 `router.push`에 전달하는 `routeLocation`(경로 위치 객체)에 `replace: true` 속성을 직접 추가할 수도 있습니다:
+`router.push`에 전달되는 `to` 인수에 `replace: true` 속성을 직접 추가하는 것도 가능합니다:
 
 ```js
 router.push({ path: '/home', replace: true })
