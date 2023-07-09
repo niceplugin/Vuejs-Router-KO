@@ -62,6 +62,18 @@ if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
 두 번째 파라미터를 생략하면, `isNavigationFailure(failure)`의 `failure`가 `NavigationFailure`인지 여부만 확인합니다.
 :::
 
+## 전역 탐색 실패 %{#global-navigation-failures}%
+
+[`router.afterEach()` 네비게이션 가드](./navigation-guards.md#global-after-hooks)를 사용하여 전역 탐색 실패를 감지할 수 있습니다:
+
+```ts
+router.afterEach((to, from, failure) => {
+  if (failure) {
+    sendToAnalytics(to, from, failure)
+  }
+})
+```
+
 ## 탐색 실패 구별하기 %{#differentiating-navigation-failures}%
 
 서두에 언급했듯이 탐색이 중단되는 여러 상황이 있으며, `NavigationFailure`를 반환합니다. 이것은 `isNavigationFailure`와 `NavigationFailureType`을 사용하여 구분할 수 있으며, 세 가지 타입이 있습니다:
