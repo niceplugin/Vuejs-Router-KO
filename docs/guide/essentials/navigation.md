@@ -4,10 +4,10 @@ sidebarDepth: 0
 
 # 프로그래밍 방식 탐색 %{#programmatic-navigation}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/vue-router-4-programmatic-navigation"
+title="Learn how to navigate programmatically"
+/>
 
 `<router-link>`로 생성된 앵커 태그로 탐색하는 방법 외에도, 라우터의 인스턴스 메서드를 사용하여 프로그래밍 방식으로 탐색을 할 수 있습니다.
 
@@ -80,10 +80,10 @@ router.replace({ path: '/home' })
 
 ## 히스토리 이동 %{#traverse-history}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/go-back"
+title="Learn how to use Vue Router to go back"
+/>
 
 이 메서드는 `window.history.go(n)`과 유사하게, 히스토리 스택에서 앞 또는 뒤로 이동할 단계를 나타내는 정수를 단일 인자로 사용합니다.
 

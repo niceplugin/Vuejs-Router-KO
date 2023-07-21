@@ -7,5 +7,6 @@ export default defineConfig({
 
   locales: {
     root: { label: '한국어', lang: 'ko-KR', link: '/', ...koConfig },
+    en: { label: 'English', lang: 'en-US', link: 'https://router.vuejs.org/' },
   },
 })

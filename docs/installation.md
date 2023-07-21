@@ -1,6 +1,6 @@
 # 설치 %{#installation}%
 
-
+<VueMasteryLogoLink></VueMasteryLogoLink>
 
 ## 직접 다운로드 / CDN %{#direct-download-cdn}%
 

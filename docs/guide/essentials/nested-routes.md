@@ -1,9 +1,9 @@
 # 중첩된 경로 %{#nested-routes}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/nested-routes"
+title="Learn about nested routes"
+/>
 
 일부 앱의 UI는 여러 단계로 중첩된 컴포넌트로 구성됩니다. 이 경우, URL 세그먼트가 중첩된 컴포넌트 중 특정 구조와 일치되어야 하는 것은 매우 일반적입니다. 예를 들면 다음과 같습니다:
 

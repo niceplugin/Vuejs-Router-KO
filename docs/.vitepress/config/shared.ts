@@ -43,11 +43,6 @@ export const sharedConfig = defineConfig({
 
     [
       'meta',
-      { name: 'wwads-cn-verify', content: '7e7757b1e12abcb736ab9a754ffb617a' },
-    ],
-
-    [
-      'meta',
       {
         property: 'og:type',
         content: 'website',
@@ -61,24 +56,24 @@ export const sharedConfig = defineConfig({
         content: 'summary_large_image',
       },
     ],
-    // [
-    //   'meta',
-    //   {
-    //     property: 'twitter:image',
-    //     content: META_IMAGE,
-    //   },
-    // ],
+    [
+      'meta',
+      {
+        property: 'twitter:image',
+        content: META_IMAGE,
+      },
+    ],
 
-    // TODO: reactivate once it's fixed
-    // [
-    //   'script',
-    //   {
-    //     src: 'https://vueschool.io/banners/main.js',
-    //     // @ts-expect-error: vitepress bug
-    //     async: true,
-    //     type: 'text/javascript',
-    //   },
-    // ],
+    // Vue School Top banner
+    [
+      'script',
+      {
+        src: 'https://vueschool.io/banner.js?affiliate=vuerouter&type=top',
+        // @ts-expect-error: vitepress bug
+        async: true,
+        type: 'text/javascript',
+      },
+    ],
 
     ...(isProduction ? productionHead : []),
   ],
@@ -100,8 +95,8 @@ export const sharedConfig = defineConfig({
     ],
 
     footer: {
-      copyright: 'Copyright © 2014-present Evan You, Eduardo San Martin Morote',
-      message: 'Released under the MIT License.',
+      copyright: 'MIT Licensed | Copyright © 2014-present Evan You, Eduardo San Martin Morote',
+      message: 'Translated by router.vuejs.kr',
     },
 
     editLink: {
@@ -114,11 +109,11 @@ export const sharedConfig = defineConfig({
     //   apiKey: '771d10c8c5cc48f7922f15048b4d931c',
     //   indexName: 'next_router_vuejs',
     // },
-    //
-    // carbonAds: {
-    //   code: 'CEBICK3I',
-    //   // custom: 'CEBICK3M',
-    //   placement: 'routervuejsorg',
-    // },
+
+    carbonAds: {
+      code: 'CEBICK3I',
+      // custom: 'CEBICK3M',
+      placement: 'routervuejsorg',
+    },
   },
 })

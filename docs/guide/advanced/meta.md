@@ -1,9 +1,9 @@
 # 경로 메타 필드 %{#route-meta-fields}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/route-meta-fields"
+title="Learn how to use route meta fields"
+/>
 
 때때로, 경로에 `meta`라는 속성 객체를 사용하여, 임의의 정보(예: 누가 경로에 접근 가능한지, 트랜지션 이름 등)를 추가하면, 경로 위치 및 탐색 가드에서 접근할 수 있습니다. `meta` 속성은 다음과 같이 정의합니다:
 

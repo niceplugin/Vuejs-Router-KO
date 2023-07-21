@@ -1,9 +1,9 @@
 # 탐색 결과 기다리기 %{#waiting-for-the-result-of-a-navigation}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/vue-router-4-detecting-navigation-failures"
+title="Learn how to detect navigation failures"
+/>
 
 `router-link`를 사용할 때, Vue Router는 `router.push`를 호출하여 탐색을 트리거합니다. 대부분의 링크에서 예상되는 동작은 사용자를 새 페이지로 이동하는 것이지만, 사용자가 동일한 페이지에 남아 있는 몇 가지 상황이 있습니다.
 

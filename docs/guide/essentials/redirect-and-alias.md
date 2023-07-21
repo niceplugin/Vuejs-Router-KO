@@ -1,9 +1,9 @@
 # 리디렉션과 별칭 %{#redirect-and-alias}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/vue-router-4-redirect-and-alias"
+title="Learn how to use redirect and alias"
+/>
 
 ## 리디렉션 %{#redirect}%
 

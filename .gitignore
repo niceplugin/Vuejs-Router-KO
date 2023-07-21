@@ -1,3 +1,5 @@
+docs/.vitepress/cache
+
 # Logs
 logs
 *.log

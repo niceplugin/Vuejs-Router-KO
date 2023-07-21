@@ -1,17 +1,17 @@
-# Migrating from Vue 2
+# Vue 2에서 Vue 3로 마이그레이션하기 %{#migrating-from-vue-2}%
 
-Most of Vue Router API has remained unchanged during its rewrite from v3 (for Vue 2) to v4 (for Vue 3) but there are still a few breaking changes that you might encounter while migrating your application. This guide is here to help you understand why these changes happened and how to adapt your application to make it work with Vue Router 4.
+Vue Router API의 대부분은 v3(Vue 2용)에서 v4(Vue 3용)로의 재작성 과정에서 변경되지 않았지만, 여전히 일부 중단된 변경 사항들이 있습니다. 이 가이드는 이러한 변경 사항들이 발생한 이유를 이해하고 Vue Router 4에서 작동하도록 애플리케이션을 적응시키는 방법을 돕기 위해 제공됩니다.
 
-## Breaking Changes
+## 중단된 변경 사항들 %{#breaking-changes}%
 
-Changes are ordered by their usage. It is therefore recommended to follow this list in order.
+변경 사항들은 사용량에 따라 정렬되었습니다. 따라서 이 목록을 순서대로 따르는 것이 좋습니다.
 
-### new Router becomes createRouter
+### `new Router`가 `createRouter`로 대체되었습니다 %{#new-router-becomes-createrouter}%
 
-Vue Router is no longer a class but a set of functions. Instead of writing `new Router()`, you now have to call `createRouter`:
+Vue Router는 이제 클래스가 아닌 함수들의 집합입니다. 따라서 `new Router()`를 작성하는 대신에 이제 `createRouter`를 호출해야 합니다:
 
 ```js
-// previously was
+// 이전에는
 // import Router from 'vue-router'
 import { createRouter } from 'vue-router'
 
@@ -20,19 +20,19 @@ const router = createRouter({
 })
 ```
 
-### New `history` option to replace `mode`
+### 새로운 `history` 옵션이 `mode`를 대체했습니다 %{#new-history-option-to-replace-mode}%
 
-The `mode: 'history'` option has been replaced with a more flexible one named `history`. Depending on which mode you were using, you will have to replace it with the appropriate function:
+`mode: 'history'` 옵션이 더 유연한 `history`로 대체되었습니다. 사용하던 모드에 따라 적절한 함수로 교체해야 합니다:
 
 - `"history"`: `createWebHistory()`
 - `"hash"`: `createWebHashHistory()`
 - `"abstract"`: `createMemoryHistory()`
 
-Here is a full snippet:
+전체 코드 예시는 다음과 같습니다:
 
 ```js
 import { createRouter, createWebHistory } from 'vue-router'
-// there is also createWebHashHistory and createMemoryHistory
+// createWebHashHistory 및 createMemoryHistory도 있습니다.
 
 createRouter({
   history: createWebHistory(),
@@ -40,24 +40,24 @@ createRouter({
 })
 ```
 
-On SSR, you need to manually pass the appropriate history:
+SSR의 경우, 적절한 history를 수동으로 전달해야 합니다:
 
 ```js
 // router.js
 let history = isServer ? createMemoryHistory() : createWebHistory()
 let router = createRouter({ routes, history })
-// somewhere in your server-entry.js
-router.push(req.url) // request url
+// 서버 진입점(server-entry.js) 어딘가에서
+router.push(req.url) // 요청된 url
 router.isReady().then(() => {
-  // resolve the request
+  // 요청 처리
 })
 ```
 
-**Reason**: enable tree shaking of non used histories as well as implementing custom histories for advanced use cases like native solutions.
+**이유**: 사용하지 않는 history에 대해 트리 쉐이킹(tree shaking)을 가능하게 하며, 네이티브 솔루션과 같은 고급 사용 사례에 대해 사용자 정의 history를 구현할 수 있게 합니다.
 
-### Moved the `base` option
+### `base` 옵션이 이동되었습니다 %{#moved-the-base-option}%
 
-The `base` option is now passed as the first argument to `createWebHistory` (and other histories):
+`base` 옵션은 이제 `createWebHistory`(및 다른 histories)의 첫 번째 인자로 전달됩니다:
 
 ```js
 import { createRouter, createWebHistory } from 'vue-router'
@@ -67,40 +67,40 @@ createRouter({
 })
 ```
 
-### Removal of the `fallback` option
+### `fallback` 옵션이 제거되었습니다 %{#removal-of-the-fallback-option}%
 
-The `fallback` option is no longer supported when creating the router:
+`fallback` 옵션은 더 이상 라우터 생성 시 지원되지 않습니다:
 
 ```diff
 -new VueRouter({
 +createRouter({
 -  fallback: false,
-// other options...
+// 다른 옵션들...
 })
 ```
 
-**Reason**: All browsers supported by Vue support the [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API), allowing us to avoid hacks around modifying `location.hash` and directly use `history.pushState()`.
+**이유**: Vue가 지원하는 모든 브라우저가 [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)를 지원하므로 `location.hash`를 수정하는 해킹 방법을 피하고 직접 `history.pushState()`를 사용할 수 있습니다.
 
-### Removed `*` (star or catch all) routes
+### `*` (별표 또는 캐치 올) 라우트가 제거되었습니다 %{#removed-star-or-catch-all-routes}%
 
-Catch all routes (`*`, `/*`) must now be defined using a parameter with a custom regex:
+Catch all 라우트 (`*`, `/*`)는 이제 사용자 정의 정규식을 사용하는 매개변수로 정의해야 합니다:
 
 ```js
 const routes = [
-  // pathMatch is the name of the param, e.g., going to /not/found yields
-  // { params: { pathMatch: ['not', 'found'] }}
-  // this is thanks to the last *, meaning repeated params and it is necessary if you
-  // plan on directly navigating to the not-found route using its name
+  // pathMatch는 매개변수의 이름입니다. 예를 들어, /not/found로 이동하면
+  // { params: { pathMatch: ['not', 'found'] }}가 생성됩니다.
+  // 이것은 마지막 * 덕분에 반복된 매개변수가 생성되며,
+  // 이것은 not-found 라우트를 직접 이름으로 사용하여 해당 경로로 직접 이동하는 경우에 필요합니다.
   { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound },
-  // if you omit the last `*`, the `/` character in params will be encoded when resolving or pushing
+  // 마지막 `*`을 생략하면 params 내의 `/` 문자가 해석될 때 인코딩됩니다.
   { path: '/:pathMatch(.*)', name: 'bad-not-found', component: NotFound },
 ]
-// bad example if using named routes:
+// 명명된 라우트(named routes)를 사용하는 경우 나쁜 예시:
 router.resolve({
   name: 'bad-not-found',
   params: { pathMatch: 'not/found' },
 }).href // '/not%2Ffound'
-// good example:
+// 좋은 예시:
 router.resolve({
   name: 'not-found',
   params: { pathMatch: ['not', 'found'] },
@@ -108,21 +108,21 @@ router.resolve({
 ```
 
 :::tip
-You don't need to add the `*` for repeated params if you don't plan to directly push to the not found route using its name. If you call `router.push('/not/found/url')`, it will provide the right `pathMatch` param.
+라우트의 이름을 사용하여 직접 not-found 라우트로 이동하지 않는 경우에는 반복된 매개변수를 위해 `*`을 추가할 필요가 없습니다. `router.push('/not/found/url')`과 같이 호출하면 올바른 `pathMatch` 매개변수가 제공됩니다.
 :::
 
-**Reason**: Vue Router doesn't use `path-to-regexp` anymore, instead it implements its own parsing system that allows route ranking and enables dynamic routing. Since we usually add one single catch-all route per project, there is no big benefit in supporting a special syntax for `*`. The encoding of params is encoding across routes, without exception to make things easier to predict.
+**이유**: Vue Router는 더 이상 `path-to-regexp`을 사용하지 않으며, 대신 라우트 순위 지정과 동적 라우팅을 가능하게 하는 고유한 구문 분석 시스템을 구현합니다. 일반적으로 하나의 단일 catch-all 라우트를 프로젝트에 추가하므로 `*`에 대한 특별한 구문을 지원하는 것에 큰 이점이 없습니다. 매개변수의 인코딩은 예측하기 쉽도록 라우트 간에 인코딩됩니다.
 
-### Replaced `onReady` with `isReady`
+### `onReady`를 `isReady`로 대체했습니다 %{#replaced-onready-with-isready}%
 
-The existing `router.onReady()` function has been replaced with `router.isReady()` which doesn't take any argument and returns a Promise:
+기존의 `router.onReady()` 함수가 인자 없이 반환하는 Promise인 `router.isReady()`로 대체되었습니다:
 
 ```js
-// replace
+// 이전 방식
 router.onReady(onSuccess, onError)
-// with
+// 새로운 방식
 router.isReady().then(onSuccess).catch(onError)
-// or use await:
+// 또는 await을 사용합니다:
 try {
   await router.isReady()
   // onSuccess
@@ -131,15 +131,15 @@ try {
 }
 ```
 
-### `scrollBehavior` changes
+### `scrollBehavior` 변경사항 %{#scrollbehavior-changes}%
 
-The object returned in `scrollBehavior` is now similar to [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions): `x` is renamed to `left` and `y` is renamed to `top`. See [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0035-router-scroll-position.md).
+`scrollBehavior`에서 반환되는 객체가 이제 [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions)와 유사합니다. `x`는 `left`로, `y`는 `top`으로 이름이 변경되었습니다. [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0035-router-scroll-position.md)를 참조하세요.
 
-**Reason**: making the object similar to `ScrollToOptions` to make it feel more familiar with native JS APIs and potentially enable future new options.
+**이유**: 객체를 `ScrollToOptions`와 비슷하게 만들어서 원래의 JS 네이티브 API와 더 친숙하게 만들고, 미래에 새로운 옵션을 추가하는 것을 가능하게 하기 위함입니다.
 
-### `<router-view>`, `<keep-alive>`, and `<transition>`
+### `<router-view>`, `<keep-alive>`, 그리고 `<transition>` %{#router-view-keep-alive-and-transition}%
 
-`transition` and `keep-alive` must now be used **inside** of `RouterView` via the `v-slot` API:
+`transition`과 `keep-alive`는 이제 `RouterView` 내부에서 `v-slot` API를 통해 사용되어야 합니다:
 
 ```vue
 <router-view v-slot="{ Component }">
@@ -151,69 +151,69 @@ The object returned in `scrollBehavior` is now similar to [`ScrollToOptions`](ht
 </router-view>
 ```
 
-**Reason**: This was a necessary change. See the [related RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0034-router-view-keep-alive-transitions.md).
+**이유**: 이 변경은 필요한 변경으로, [관련된 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0034-router-view-keep-alive-transitions.md)를 참조하세요.
 
-### Removal of `append` prop in `<router-link>`
+### `<router-link>`의 `append` 속성 제거됨 %{#removal-of-append-prop-in-router-link}%
 
-The `append` prop has been removed from `<router-link>`. You can manually concatenate the value to an existing `path` instead:
+`<router-link>`에서 `append` 속성이 제거되었습니다. 이제 기존의 `path`에 값을 수동으로 연결해야 합니다:
 
 ```html
-replace
+이전 방식
 <router-link to="child-route" append>to relative child</router-link>
-with
+새로운 방식
 <router-link :to="append($route.path, 'child-route')">
   to relative child
 </router-link>
 ```
 
-You must define a global `append` function on your _App_ instance:
+_App_ 인스턴스 전역에서 `append` 함수를 정의해야 합니다:
 
 ```js
 app.config.globalProperties.append = (path, pathToAppend) =>
   path + (path.endsWith('/') ? '' : '/') + pathToAppend
 ```
 
-**Reason**: `append` wasn't used very often, is easy to replicate in user land.
+**이유**: `append`는 매우 자주 사용되지 않으며, 사용자 정의 코드로 쉽게 대체할 수 있습니다.
 
-### Removal of `event` and `tag` props in `<router-link>`
+### `<router-link>`의 `event`와 `tag` 속성 제거 %{#removal-of-event-and-tag-props-in-router-link}%
 
-Both `event`, and `tag` props have been removed from `<router-link>`. You can use the [`v-slot` API](/guide/advanced/composition-api#uselink) to fully customize `<router-link>`:
+`<router-link>`의 `event`와 `tag` 속성이 제거되었습니다. 이제 [`v-slot` API](/guide/advanced/composition-api#uselink)를 사용하여 `<router-link>`를 완전히 커스터마이징할 수 있습니다:
 
 ```html
-replace
+이전 방식
 <router-link to="/about" tag="span" event="dblclick">About Us</router-link>
-with
+새로운 방식
 <router-link to="/about" custom v-slot="{ navigate }">
   <span @click="navigate" @keypress.enter="navigate" role="link">About Us</span>
 </router-link>
 ```
 
-**Reason**: These props were often used together to use something different from an `<a>` tag but were introduced before the `v-slot` API and are not used enough to justify adding to the bundle size for everybody.
+**이유**: 이러한 속성들은 `<a>` 태그와 다른 요소를 사용하는 데 자주 함께 사용되었지만, `v-slot` API 이전에 도입되었으며 모든 사용자를 위해 번들 크기를 증가시키는 것에 충분히 사용되지 않았기 때문에 제거되었습니다.
 
-### Removal of the `exact` prop in `<router-link>`
+### `<router-link>`의 `exact` 속성 제거 %{#removal-of-the-exact-prop-in-router-link}%
 
-The `exact` prop has been removed because the caveat it was fixing is no longer present so you should be able to safely remove it. There are however two things you should be aware of:
+`exact` 속성은 더 이상 필요하지 않으므로 제거되었습니다. 이제 두 가지 사항을 알아두어야 합니다:
 
-- Routes are now active based on the route records they represent instead of the generated route location objects and their `path`, `query`, and `hash` properties
-- Only the `path` section is matched, `query`, and `hash` aren't taken into account anymore
+- 라우트는 더 이상 생성된 라우트 위치 객체 및 해당 `path`, `query`, `hash` 속성에 기반하여 활성화됩니다.
+- `path` 섹션만 일치하고 `query` 및 `hash`는 더 이상 고려되지 않습니다.
 
-If you wish to customize this behavior, e.g. take into account the `hash` section, you should use the [`v-slot` API](/guide/advanced/composition-api#uselink) to extend `<router-link>`.
+만약 `hash` 섹션도 고려하고자 한다면 [`v-slot` API](/guide/advanced/composition-api#uselink)를 사용하여 `<router-link>`를 확장해야 합니다.
 
-**Reason**: See the [RFC about active matching](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0028-router-active-link.md#summary) changes for more details.
+**이유**: 더 이상 필요하지 않은 기능을 수정하고, 라우터의 무게를 늘리지 않으면서 더 간단한 방법으로 처리하기 위해서입니다. 자세한 내용은 [active matching에 관한 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0028-router-active-link.md#summary)을 참조하십시오.
 
-### Navigation guards in mixins are ignored
+### 믹스인의 네비게이션 가드 무시 %{#navigation-guards-in-mixins-are-ignored}%
 
-At the moment navigation guards in mixins are not supported. You can track its support at [vue-router#454](https://github.com/vuejs/router/issues/454).
+현재 믹스인의 네비게이션 가드는 지원되지 않습니다. [vue-router#454](https://github.com/vuejs/router/issues/454)에서 이 지원에 대한 추적을 할 수 있습니다.
 
-### Removal of `router.match` and changes to `router.resolve`
+### `router.match` 제거 및 `router.resolve` 변경 %{#removal-of-router-match-and-changes-to-router-resolve}%
 
-Both `router.match`, and `router.resolve` have been merged together into `router.resolve` with a slightly different signature. [Refer to the API](/api/interfaces/Router.md#Methods-resolve) for more details.
+`router.match`와 `router.resolve` 모두 `router.resolve`로 통합되었으며 약간 다른 형식으로 변경되었습니다. 자세한 내용은 [API](/api/interfaces/Router.md#Methods-resolve)를 참조하십시오.
 
-**Reason**: Uniting multiple methods that were used for the same purpose.
+**이유**: 동일한 목적으로 사용되던 여러 메서드를 통합하기 위해서입니다.
 
-### Removal of `router.getMatchedComponents()`
+### `router.getMatchedComponents()` 제거 %{#removal-of-router-getmatchedcomponents}%
 
-The method `router.getMatchedComponents` is now removed as matched components can be retrieved from `router.currentRoute.value.matched`:
+`router.getMatchedComponents` 메서드가 이제 제거되었습니다. 대신 매치된 컴포넌트들은 `router.currentRoute.value.matched`에서 가져올 수 있습니다:
 
 ```js
 router.currentRoute.value.matched.flatMap(record =>
@@ -221,47 +221,47 @@ router.currentRoute.value.matched.flatMap(record =>
 )
 ```
 
-**Reason**: This method was only used during SSR and is a one liner that can be done by the user.
+**이유**: 이 메서드는 SSR 시에만 사용되었으며 사용자가 한 줄로 처리할 수 있는 간단한 메서드였기 때문에 제거되었습니다.
 
-### Redirect records cannot use special paths
+### 리다이렉트 레코드에서 특수 경로 사용 불가능 %{#redirect-records-cannot-use-special-paths}%
 
-Previously, a non documented feature allowed to set a redirect record to a special path like `/events/:id` and it would reuse an existing param `id`. This is no longer possible and there are two options:
+이전에는 비공개로 설정된 기능으로 리다이렉트 레코드를 `/events/:id`와 같은 특수 경로로 설정할 수 있었고, 기존의 `id` 매개변수를 재사용할 수 있었습니다. 이제 이 기능은 더 이상 지원되지 않으며 두 가지 옵션이 있습니다:
 
-- Using the name of the route without the param: `redirect: { name: 'events' }`. Note this won't work if the param `:id` is optional
-- Using a function to recreate the new location based on the target: `redirect: to => ({ name: 'events', params: to.params })`
+- 매개변수 없이 라우트의 이름을 사용하기: `redirect: { name: 'events' }`. 단, `:id` 매개변수가 선택적인 경우에는 작동하지 않습니다.
+- 함수를 사용하여 대상에 기반한 새 위치를 재생성하기: `redirect: to => ({ name: 'events', params: to.params })`
 
-**Reason**: This syntax was rarely used and _another way of doing things_ that wasn't shorter enough compared to the versions above while introducing some complexity and making the router heavier.
+**이유**: 이 구문은 거의 사용되지 않았으며 다른 방법들과 비교하여 짧지 않았을 뿐더러, 라우터를 무겁게 만드는 복잡성을 도입했습니다.
 
-### **All** navigations are now always asynchronous
+### 모든 네비게이션은 이제 항상 비동기 %{#all-navigations-are-now-always-asynchronous}%
 
-All navigations, including the first one, are now asynchronous, meaning that, if you use a `transition`, you may need to wait for the router to be _ready_ before mounting the app:
+첫 번째 네비게이션을 포함하여 모든 네비게이션은 이제 비동기로 처리됩니다. 따라서 `transition`을 사용하는 경우 앱을 마운트하기 전에 라우터가 "준비"되어야 할 수도 있습니다:
 
 ```js
 app.use(router)
-// Note: on Server Side, you need to manually push the initial location
+// 참고: 서버 측에서는 초기 위치를 수동으로 푸시해야 합니다
 router.isReady().then(() => app.mount('#app'))
 ```
 
-Otherwise there will be an initial transition as if you provided the `appear` prop to `transition` because the router displays its initial location (nothing) and then displays the first location.
+그렇지 않으면 `appear` prop을 `transition`에 제공한 것처럼 처음에 초기 전환이 발생하게 됩니다. 이것은 라우터가 초기 위치(아무것도 없는 상태)를 표시한 후에 첫 번째 위치를 표시하기 때문입니다.
 
-Note that **if you have navigation guards upon the initial navigation**, you might not want to block the app render until they are resolved unless you are doing Server Side Rendering. In this scenario, not waiting the router to be ready to mount the app would yield the same result as in Vue 2.
+**참고**: 초기 네비게이션에서 네비게이션 가드가 있는 경우, 서버 측 렌더링을 수행하지 않는 한 앱 렌더를 차단하고 해결되기 전까지 기다리지 않는 것이 좋습니다. 이 경우 라우터를 준비되기 전에 앱을 마운트하는 것은 Vue 2와 동일한 결과를 얻을 수 있습니다.
 
-### Removal of `router.app`
+### `router.app` 제거 %{#removal-of-router-app}%
 
-`router.app` used to represent the last root component (Vue instance) that injected the router. Vue Router can now be safely used by multiple Vue applications at the same time. You can still add it when using the router:
+`router.app`은 이제 더 이상 마지막 루트 컴포넌트(Vue 인스턴스)를 나타내지 않습니다. 이제 Vue Router는 동시에 여러 Vue 애플리케이션에서 안전하게 사용할 수 있습니다. 라우터를 사용하는 경우 여전히 `app`을 추가할 수 있습니다:
 
 ```js
 app.use(router)
 router.app = app
 ```
 
-You can also extend the TypeScript definition of the `Router` interface to add the `app` property.
+또한 `Router` 인터페이스의 TypeScript 정의를 확장하여 `app` 속성을 추가할 수도 있습니다.
 
-**Reason**: Vue 3 applications do not exist in Vue 2 and now we properly support multiple applications using the same Router instance, so having an `app` property would have been misleading because it would have been the application instead of the root instance.
+**이유**: Vue 3 애플리케이션이 Vue 2에서 존재하지 않고 이제 같은 라우터 인스턴스를 사용하는 여러 애플리케이션을 올바르게 지원합니다. `app` 속성이 있으면 루트 인스턴스가 아닌 애플리케이션을 나타내므로 혼란스러울 수 있습니다.
 
-### Passing content to route components' `<slot>`
+### 라우트 컴포넌트의 `<slot>`에 콘텐츠 전달 %{#passing-content-to-route-components-slot}%
 
-Before you could directly pass a template to be rendered by a route components' `<slot>` by nesting it under a `<router-view>` component:
+이전에는 라우트 컴포넌트의 `<slot>`에 직접 템플릿을 전달할 수 있었습니다. 이제는 `<router-view>` 컴포넌트 아래에 중첩하여 `<slot>`에 전달해야 합니다:
 
 ```html
 <router-view>
@@ -269,7 +269,7 @@ Before you could directly pass a template to be rendered by a route components' 
 </router-view>
 ```
 
-Because of the introduction of the `v-slot` api for `<router-view>`, you must pass it to the `<component>` using the `v-slot` API:
+`<router-view>`에 대한 `v-slot` API를 사용하여 `<component>`에 전달해야 합니다:
 
 ```html
 <router-view v-slot="{ Component }">
@@ -279,95 +279,95 @@ Because of the introduction of the `v-slot` api for `<router-view>`, you must pa
 </router-view>
 ```
 
-### Removal of `parent` from route locations
+### 라우트 위치에서 `parent` 제거 %{#removal-of-parent-from-route-locations}%
 
-The `parent` property has been removed from normalized route locations (`this.$route` and object returned by `router.resolve`). You can still access it via the `matched` array:
+`parent` 속성은 정규화된 라우트 위치(`this.$route` 및 `router.resolve`에 의해 반환되는 객체)에서 제거되었습니다. 그러나 여전히 `matched` 배열을 통해 접근할 수 있습니다:
 
 ```js
 const parent = this.$route.matched[this.$route.matched.length - 2]
 ```
 
-**Reason**: Having `parent` and `children` creates unnecessary circular references while the properties could be retrieved already through `matched`.
+**이유**: `parent`와 `children` 속성이 중복되는 것은 불필요한 순환 참조를 만들어 냅니다. 이미 `matched`를 통해 속성을 얻을 수 있기 때문에 이러한 변경이 이루어졌습니다.
 
-### Removal of `pathToRegexpOptions`
+### `pathToRegexpOptions` 제거 %{#removal-of-pathtoregexpoptions}%
 
-The `pathToRegexpOptions` and `caseSensitive` properties of route records have been replaced with `sensitive` and `strict` options for `createRouter()`. They can now also be directly passed when creating the router with `createRouter()`. Any other option specific to `path-to-regexp` has been removed as `path-to-regexp` is no longer used to parse paths.
+라우트 레코드의 `pathToRegexpOptions`와 `caseSensitive` 속성이 `createRouter()`의 `sensitive` 및 `strict` 옵션으로 대체되었습니다. 이제 `createRouter()`를 사용하여 직접 `pathToRegexpOptions`를 전달할 수 있습니다. `path-to-regexp`에 특정한 다른 옵션은 더 이상 사용되지 않습니다.
 
-### Removal of unnamed parameters
+### 무명 매개변수 제거 %{#removal-of-unnamed-parameters}%
 
-Due to the removal of `path-to-regexp`, unnamed parameters are no longer supported:
+`path-to-regexp`의 제거로 인해 무명 매개변수가 더 이상 지원되지 않습니다:
 
-- `/foo(/foo)?/suffix` becomes `/foo/:_(foo)?/suffix`
-- `/foo(foo)?` becomes `/foo:_(foo)?`
-- `/foo/(.*)` becomes `/foo/:_(.*)`
+- `/foo(/foo)?/suffix`는 이제 `/foo/:_(foo)?/suffix`가 됩니다.
+- `/foo(foo)?`는 이제 `/foo:_(foo)?`가 됩니다.
+- `/foo/(.*)`는 이제 `/foo/:_(.*)`가 됩니다.
 
 :::tip
-Note you can use any name instead of `_` for the param. The point is to provide one.
+매개변수에 `_` 대신 다른 이름을 사용할 수 있습니다. 중요한 것은 하나를 제공하는 것입니다.
 :::
 
-### Usage of `history.state`
+### `history.state` 사용 %{#usage-of-history-state}%
 
-Vue Router saves information on the `history.state`. If you have any code manually calling `history.pushState()`, you should likely avoid it or refactor it with a regular `router.push()` and a `history.replaceState()`:
+Vue Router는 `history.state`에 정보를 저장합니다. 수동으로 `history.pushState()`를 호출하는 코드가 있다면, 이를 피하거나 정상적인 `router.push()`와 `history.replaceState()`로 리팩터링해야 합니다:
 
 ```js
-// replace
+// 이전 방식
 history.pushState(myState, '', url)
-// with
+// 새로운 방식
 await router.push(url)
 history.replaceState({ ...history.state, ...myState }, '')
 ```
 
-Similarly, if you were calling `history.replaceState()` without preserving the current state, you will need to pass the current `history.state`:
+마찬가지로, 현재 상태를 보존하지 않고 `history.replaceState()`를 호출하고 있다면 현재 `history.state`를 전달해야 합니다:
 
 ```js
-// replace
+// 이전 방식
 history.replaceState({}, '', url)
-// with
+// 새로운 방식
 history.replaceState(history.state, '', url)
 ```
 
-**Reason**: We use the history state to save information about the navigation like the scroll position, previous location, etc.
+**이유**: 라우터는 스크롤 위치, 이전 위치 등과 같은 네비게이션에 대한 정보를 history state에 저장하기 때문에 이러한 변경이 이루어졌습니다.
 
-### `routes` option is required in `options`
+### `options`에서 `routes` 옵션 필수화 %{#routes-option-is-required-in-options}%
 
-The property `routes` is now required in `options`.
+`options`에서 `routes` 속성은 이제 필수적으로 요구됩니다.
 
 ```js
 createRouter({ routes: [] })
 ```
 
-**Reason**: The router is designed to be created with routes even though you can add them later on. You need at least one route in most scenarios and this is written once per app in general.
+**이유**: 라우터는 라우트와 함께 생성되도록 설계되었습니다. 대부분의 경우 최소한 하나의 라우트가 필요하며, 대개 앱 당 한 번 작성되므로 이렇게 변경되었습니다.
 
-### Non existent named routes
+### 존재하지 않는 이름을 가진 라우트 %{#non-existent-named-routes}%
 
-Pushing or resolving a non existent named route throws an error:
+존재하지 않는 이름의 라우트를 푸시하거나 해결하려고 하면 오류가 발생합니다:
 
 ```js
-// Oops, we made a typo in name
-router.push({ name: 'homee' }) // throws
-router.resolve({ name: 'homee' }) // throws
+// 이름을 잘못 입력했을 경우
+router.push({ name: 'homee' }) // 오류 발생
+router.resolve({ name: 'homee' }) // 오류 발생
 ```
 
-**Reason**: Previously, the router would navigate to `/` but display nothing (instead of the home page). Throwing an error makes more sense because we cannot produce a valid URL to navigate to.
+**이유**: 이전에 라우터는 `/`로 이동하지만 아무 것도 표시하지 않았습니다(홈 페이지 대신). 오류를 발생시키는 것이 더 타당하며, 유효한 URL로 이동할 수 없기 때문에 더 이상 `/`로 이동하지 않습니다.
 
-### Missing required `params` on named routes
+### 필요한 매개변수가 누락된 이름 있는 라우트 %{#missing-required-params-on-named-routes}%
 
-Pushing or resolving a named route without its required params will throw an error:
+필요한 매개변수 없이 이름 있는 라우트를 푸시하거나 해결하려고 하면 오류가 발생합니다:
 
 ```js
-// given the following route:
+// 다음 라우트를 가정하면:
 const routes = [{ path: '/users/:id', name: 'user', component: UserDetails }]
 
-// Missing the `id` param will fail
+// `id` 매개변수가 누락된 경우 오류 발생
 router.push({ name: 'user' })
 router.resolve({ name: 'user' })
 ```
 
-**Reason**: Same as above.
+**이유**: 위와 동일합니다.
 
-### Named children routes with an empty `path` no longer appends a slash
+### 빈 `path`를 가진 이름 있는 하위 라우트의 슬래시 제거 %{#named-children-routes-with-an-empty-path-no-longer-appends-a-slash}%
 
-Given any nested named route with an empty `path`:
+빈 `path`를 가진 중첩된 이름 있는 라우트는 이제 슬래시를 포함하지 않습니다:
 
 ```js
 const routes = [
@@ -387,13 +387,13 @@ const routes = [
 ]
 ```
 
-Navigating or resolving to the named route `dashboard` will now produce a URL **without a trailing slash**:
+이름 있는 라우트 `dashboard`로 이동하면 이제 슬래시 없이 URL이 생성됩니다:
 
 ```js
 router.resolve({ name: 'dashboard' }).href // '/dashboard'
 ```
 
-This has an important side effect about children `redirect` records like these:
+이로 인해 다음과 같은 결과가 발생합니다:
 
 ```js
 const routes = [
@@ -401,7 +401,7 @@ const routes = [
     path: '/parent',
     component: Parent,
     children: [
-      // this would now redirect to `/home` instead of `/parent/home`
+      // 이제 `/parent/home` 대신 `/home`로 리디렉션됩니다.
       { path: '', redirect: 'home' },
       { path: 'home', component: Home },
     ],
@@ -409,30 +409,30 @@ const routes = [
 ]
 ```
 
-Note this will work if `path` was `/parent/` as the relative location `home` to `/parent/` is indeed `/parent/home` but the relative location of `home` to `/parent` is `/home`.
+주의: `path`가 `/parent/`인 경우에는 여전히 `/parent/home`으로의 상대적 위치는 `/parent/home`이며 `home`의 상대적 위치는 `/home`이기 때문에 작동합니다.
 
 <!-- Learn more about relative links [in the cookbook](../../cookbook/relative-links.md). -->
 
-**Reason**: This is to make trailing slash behavior consistent: by default all routes allow a trailing slash. It can be disabled by using the `strict` option and manually appending (or not) a slash to the routes.
+**이유**: 이로 인해 후행 슬래시 동작이 일관되게 유지되며, 기본적으로 모든 라우트가 후행 슬래시를 허용하게 됩니다. 이는 `strict` 옵션을 사용하여 비활성화할 수 있으며, 라우트에 직접 슬래시를 추가하거나 추가하지 않을 수도 있습니다.
 
 <!-- TODO: maybe a cookbook entry -->
 
-### `$route` properties Encoding
+### `$route` 속성 인코딩 %{#route-properties-encoding}%
 
-Decoded values in `params`, `query`, and `hash` are now consistent no matter where the navigation is initiated (older browsers will still produce unencoded `path` and `fullPath`). The initial navigation should yield the same results as in-app navigations.
+`params`, `query`, 그리고 `hash`에서 디코딩된 값들은 이제 어디서 네비게이션을 시작하더라도 일관성을 가집니다 (구버전 브라우저는 여전히 인코딩되지 않은 `path`와 `fullPath`를 생성할 것입니다). 초기 네비게이션은 앱 내에서 발생하는 네비게이션과 동일한 결과를 가져야 합니다.
 
-Given any [normalized route location](/api/interfaces/RouteLocationNormalized.md):
+아래는 [정규화된 라우트 위치](/api/interfaces/RouteLocationNormalized.md)를 기준으로 합니다:
 
-- Values in `path`, `fullPath` are not decoded anymore. They will appear as provided by the browser (most browsers provide them encoded). e.g. directly writing on the address bar `https://example.com/hello world` will yield the encoded version: `https://example.com/hello%20world` and both `path` and `fullPath` will be `/hello%20world`.
-- `hash` is now decoded, that way it can be copied over: `router.push({ hash: $route.hash })` and be used directly in [scrollBehavior](/api/interfaces/RouterOptions.md#Properties-scrollBehavior)'s `el` option.
-- When using `push`, `resolve`, and `replace` and providing a `string` location or a `path` property in an object, **it must be encoded** (like in the previous version). On the other hand, `params`, `query` and `hash` must be provided in its unencoded version.
-- The slash character (`/`) is now properly decoded inside `params` while still producing an encoded version on the URL: `%2F`.
+- `path`, `fullPath`의 값은 이제 더 이상 디코딩되지 않습니다. 브라우저가 제공하는대로 표시됩니다(대부분의 브라우저에서는 인코딩된 상태로 제공됩니다). 예를 들어, 주소 창에 직접 `https://example.com/hello world`를 입력하면 인코딩된 버전인 `https://example.com/hello%20world`를 얻게 되며, `path`와 `fullPath`는 모두 `/hello%20world`가 됩니다.
+- `hash`는 이제 디코딩되며, 이로 인해 다음과 같이 복사하여 사용할 수 있습니다: `router.push({ hash: $route.hash })` 그리고 [scrollBehavior](/api/interfaces/RouterOptions.md#Properties-scrollBehavior)의 `el` 옵션에서 직접 사용할 수 있습니다.
+- `push`, `resolve`, 그리고 `replace`를 사용하고 `string` 위치나 객체의 `path` 속성을 제공할 때, **반드시 인코딩**해야 합니다(이전 버전과 같습니다). 반면에 `params`, `query`, 그리고 `hash`는 인코딩되지 않은 상태로 제공되어야 합니다.
+- 슬래시 문자 (`/`)는 이제 `params` 내에서 적절히 디코딩되지만 URL에서는 인코딩된 버전인 `%2F`로 생성됩니다.
 
-**Reason**: This allows to easily copy existing properties of a location when calling `router.push()` and `router.resolve()`, and make the resulting route location consistent across browsers. `router.push()` is now idempotent, meaning that calling `router.push(route.fullPath)`, `router.push({ hash: route.hash })`, `router.push({ query: route.query })`, and `router.push({ params: route.params })` will not create extra encoding.
+**이유**: 이로 인해 `router.push()`와 `router.resolve()`를 호출할 때 존재하는 위치의 속성을 쉽게 복사할 수 있으며, 결과적으로 브라우저 간 일관된 라우트 위치를 만들 수 있습니다. `router.push()`는 이제 멱등성을 가지며, 즉 `router.push(route.fullPath)`, `router.push({ hash: route.hash })`, `router.push({ query: route.query })`, 그리고 `router.push({ params: route.params })`를 호출하여 추가적인 인코딩을 생성하지 않습니다.
 
-### TypeScript changes
+### TypeScript 변경 사항 %{#typescript-changes}%
 
-To make typings more consistent and expressive, some types have been renamed:
+더 일관적이고 표현력 있는 타이핑을 위해 몇 가지 타입이 이름을 바꾸었습니다:
 
 | `vue-router@3` | `vue-router@4`          |
 | -------------- | ----------------------- |
@@ -440,10 +440,10 @@ To make typings more consistent and expressive, some types have been renamed:
 | Location       | RouteLocation           |
 | Route          | RouteLocationNormalized |
 
-## New Features
+## 새로운 기능 %{#new-features}%
 
-Some of new features to keep an eye on in Vue Router 4 include:
+Vue Router 4에서 주목해야 할 일부 새로운 기능들은 다음과 같습니다:
 
-- [Dynamic Routing](../advanced/dynamic-routing.md)
+- [동적 라우팅](../advanced/dynamic-routing.md)
 - [Composition API](../advanced/composition-api.md)
 <!-- - Custom History implementation -->

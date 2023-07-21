@@ -1,9 +1,9 @@
 # 다양한 히스토리 모드 %{#different-history-modes}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/history-mode"
+title="Learn about the differences between Hash Mode and HTML5 Mode"
+/>
 
 라우터 인스턴스를 생성할 때 `history` 옵션을 사용하여, 다양한 히스토리 모드 중에서 하나를 적용할 수 있습니다.
 

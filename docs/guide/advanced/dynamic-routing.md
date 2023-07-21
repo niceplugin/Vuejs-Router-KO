@@ -1,9 +1,9 @@
 # 동적 라우팅 %{#dynamic-routing}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/vue-router-4-dynamic-routing"
+title="Learn how to add routes at runtime"
+/>
 
 라우터에 경로를 추가하는 것은 일반적으로 [`routes` 옵션](/api/interfaces/RouterOptions.md#routes)을 통해 이루어지지만, 어떤 상황에서는 앱이 이미 실행 중인 경우에도 경로를 추가하거나 제거하고 싶을 수 있습니다. [Vue CLI UI](https://cli.vuejs.org/dev-guide/ui-api.html)와 같은 확장 가능한 인터페이스가 있는 앱은, 이를 사용하여 앱을 확장할 수 있습니다.
 

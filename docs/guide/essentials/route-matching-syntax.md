@@ -1,9 +1,9 @@
 # 경로 매칭 문법 %{#routes-matching-syntax}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/vue-router-4-advanced-routes-matching-syntax"
+title="Learn how to use advanced route routes' matching syntax"
+/>
 
 대부분의 앱은 [동적 경로 매칭](dynamic-matching.md)에서 본 것처럼, `/about` 같은 정적 경로와 `/users/:userId` 같은 동적 경로를 사용하지만, Vue Router는 훨씬 더 많은 것을 제공합니다!
 
