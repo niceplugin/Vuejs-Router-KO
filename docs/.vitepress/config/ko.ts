@@ -168,7 +168,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         {
           items: [
             {
-              text: '⚠️Vue 2에서 마이그레이션 (영문)',
+              text: 'Vue 2에서 마이그레이션',
               link: '/guide/migration/index.html',
             },
           ],

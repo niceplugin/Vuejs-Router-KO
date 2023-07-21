@@ -1,9 +1,9 @@
 # 네비게이션 가드 %{#navigation-guards}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/route-guards"
+title="Learn how to add navigation guards"
+/>
 
 네비게이션 가드는 주로 탐색을 리디렉션하거나 취소하여, 탐색을 막는데 사용됩니다. 경로 탐색 프로세스에 가드를 연결하는 방법으로는 "전역", "경로별", "컴포넌트 내부"가 있습니다.
 

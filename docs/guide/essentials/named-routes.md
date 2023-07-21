@@ -1,9 +1,9 @@
 # 이름이 있는 경로 %{#named-routes}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/named-routes"
+title="Learn about the named routes"
+/>
 
 모든 경로에는 `path`와 더불어 `name`도 제공할 수 있으며, 다음과 같은 장점이 있습니다:
 

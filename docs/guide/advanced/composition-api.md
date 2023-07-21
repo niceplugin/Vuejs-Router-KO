@@ -1,9 +1,9 @@
 # Vue Router와 컴포지션 API %{#vue-router-and-the-composition-api}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/router-and-the-composition-api"
+title="Learn how to use Vue Router with the composition API"
+/>
 
 Vue 3에서는 `setup`과 [컴포지션 API](https://vuejs.kr/guide/introduction.html#composition-api)가 도입되었습니다. 따라서 컴포넌트 내부의 탐색 가드와 `this`에서 라우터에 접근하는 기존 방식을 대체할 수 있는 몇 가지 새로운 함수를 사용할 수 있습니다.
 

@@ -6,7 +6,7 @@
       rel="sponsored noopener"
       :title="title"
     >
-      <slot>{{ translations[site.lang] }}</slot>
+      <slot>{{ translations[site.lang] || translations.en }}</slot>
     </a>
   </div>
 </template>
@@ -15,8 +15,8 @@ import { useData } from 'vitepress'
 
 const { site } = useData()
 const translations = {
-  'en-US': 'Watch a free video lesson on Vue School',
-  'zh-CN': '在 Vue School 上观看免费视频课程',
+  en: 'Watch a free video lesson on Vue School',
+  'ko-KR': 'Watch a free video lesson on Vue School',
 }
 defineProps<{ href: string; title: string }>()
 </script>

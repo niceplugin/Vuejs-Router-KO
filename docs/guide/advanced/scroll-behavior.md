@@ -1,9 +1,9 @@
 # 스크롤 동작 %{#scroll-behavior}%
 
-
-
-
-
+<VueSchoolLink
+href="https://vueschool.io/lessons/scroll-behavior"
+title="Learn how to customize scroll behavior"
+/>
 
 클라이언트 측 라우팅을 사용할 때, 새로운 경로로 이동하면 스크롤을 맨위로 이동하거나, 이전 페이지를 다시 로드하면 기록된 스크롤 위치로 이동하도록 구현할 수 있습니다. 또한 경로 탐색 시, 스크롤 동작을 원하는 대로 커스텀할 수 있습니다.
 

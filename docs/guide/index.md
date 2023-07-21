@@ -1,5 +1,10 @@
 # 시작하기 %{#getting-started}%
 
+<VueSchoolLink
+href="https://vueschool.io/courses/vue-router-4-for-everyone"
+title="Learn how to build powerful Single Page Applications with the Vue Router on Vue School"
+>Watch a Free Vue Router Video Course</VueSchoolLink>
+
 Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 쉽습니다. Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니다. 여기에 Vue Router를 사용할 경우, 경로에 컴포넌트를 매핑하고 Vue Router에게 렌더링할 경로를 알려주기만 하면 됩니다. 다음은 기본 예제입니다:
 
 ## HTML
@@ -31,7 +36,7 @@ Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 �
 
 `router-view`는 URL에 해당하는 컴포넌트를 표시합니다. 어디에나 배치 가능하여 레이아웃에 맞게 조정할 수 있습니다.
 
-
+<VueMasteryLogoLink></VueMasteryLogoLink>
 
 ## JavaScript
 
