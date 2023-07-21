@@ -62,7 +62,8 @@ router.beforeEach(to => {
 
   ```js
   router.addRoute({ path: '/about', name: 'about', component: About })
-  // name 값이 동일하므로 이전에 추가한 경로가 제거됨.
+  // 이전에 추가된 경로를 제거합니다.
+  // 이는 그들이 동일한 이름을 가지고 있으며, 모든 경로에서 이름이 고유하기 때문입니다.
   router.addRoute({ path: '/other', name: 'about', component: Other })
   ```
 
