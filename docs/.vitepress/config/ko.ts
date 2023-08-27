@@ -50,6 +50,10 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             text: '변경사항',
             link: 'https://github.com/vuejs/router/blob/main/packages/router/CHANGELOG.md',
           },
+          {
+            text: 'Vue.js 자격증',
+            link: 'https://certification.vuejs.org/?friend=VUEROUTER',
+          },
         ],
       },
     ],
