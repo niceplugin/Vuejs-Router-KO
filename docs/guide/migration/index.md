@@ -113,6 +113,19 @@ router.resolve({
 
 **이유**: Vue Router는 더 이상 `path-to-regexp`을 사용하지 않으며, 대신 라우트 순위 지정과 동적 라우팅을 가능하게 하는 고유한 구문 분석 시스템을 구현합니다. 일반적으로 하나의 단일 catch-all 라우트를 프로젝트에 추가하므로 `*`에 대한 특별한 구문을 지원하는 것에 큰 이점이 없습니다. 매개변수의 인코딩은 예측하기 쉽도록 라우트 간에 인코딩됩니다.
 
+### `currentRoute` 속성은 이제 `ref()`입니다 %{#The-currentRoute-property-is-now-a-ref-}%
+
+이전에는 라우터 인스턴스의 [`currentRoute`](https://v3.router.vuejs.org/api/#router-currentroute) 객체의 속성에 직접 접근할 수 있었습니다.
+
+vue-router v4의 도입으로 라우터 인스턴스의 `currentRoute` 객체의 기본 유형이 Vue 3에서 소개된 새로운 [반응성 기본 사항](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)에서 가져온 `Ref<RouteLocationNormalizedLoaded>`으로 변경되었습니다.
+
+`useRoute()` 또는 `this.$route`로 라우트를 읽는 경우에는 아무 것도 변경되지 않지만 라우터 인스턴스에서 직접 접근하는 경우 `currentRoute.value`를 통해 실제 라우트 객체에 접근해야 합니다:
+
+```ts
+const { page } = router.currentRoute.query // [!code --]
+const { page } = router.currentRoute.value.query // [!code ++]
+```
+
 ### `onReady`를 `isReady`로 대체했습니다 %{#replaced-onready-with-isready}%
 
 기존의 `router.onReady()` 함수가 인자 없이 반환하는 Promise인 `router.isReady()`로 대체되었습니다:

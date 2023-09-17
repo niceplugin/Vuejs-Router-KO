@@ -83,7 +83,7 @@ const router = createRouter({
 </IfModule>
 ```
 
-`mod_rewrite` 대신 [`FallbackResource`](https://httpd.apache.org/docs/2.2/mod/mod_dir.html#fallbackresource)를 사용할 수도 있습니다.
+`mod_rewrite` 대신 [`FallbackResource`](https://httpd.apache.org/docs/2.4/mod/mod_dir.html#fallbackresource)를 사용할 수도 있습니다.
 
 ### nginx
 
