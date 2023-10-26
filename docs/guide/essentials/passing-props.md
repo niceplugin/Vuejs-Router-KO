@@ -78,3 +78,20 @@ const routes = [
 `/search?q=vue`는 `SearchUser` 컴포넌트의 props로 `{ query: 'vue' }`를 전달합니다.
 
 경로가 변경될 때만 `props`를 정의하는 함수가 평가되므로, 상태가 변경될 때도 반응하는 `props`를 전달하려면, 함수 내부에 상태를 사용하는 대신, 래퍼 컴포넌트를 사용해 계산된 속성(`computed`)을 `props`로 전달해야 합니다.
+
+## RouterView에서 직접 %{#via-routerview}%
+
+`<RouterView>`를 통해 직접 props를 전달할 수도 있습니다:
+
+```vue-html
+<RouterView v-slot="{ Component }">
+  <component
+    :is="Component"
+    view-prop="value"
+   />
+</RouterView
+```
+
+::: 경고
+이 경우, **모든 view 컴포넌트**가 `view-prop`을 받게 됩니다. 이는 보통 좋은 아이디어가 아닙니다. 왜냐하면 모든 view 컴포넌트가 `view-prop` prop을 선언했다는 것을 의미하기 때문입니다. 그렇지 않을 수도 있습니다. 가능하다면 위의 옵션 중 하나를 사용하세요.
+:::

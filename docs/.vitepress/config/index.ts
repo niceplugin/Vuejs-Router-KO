@@ -10,5 +10,6 @@ export default defineConfig({
     en: { label: 'English', lang: 'en-US', link: 'https://router.vuejs.org/' },
     zh: { label: '简体中文', lang: 'zh-CN', link: 'https://router.vuejs.org//zh/' },
     pt: { label: 'Português', lang: 'pt-PT', link: 'https://vue-router-docs-pt.netlify.app/' },
+    ru: { label: 'Русский', lang: 'ru-RU', link: 'https://vue-router-ru.netlify.app' },
   },
 })
