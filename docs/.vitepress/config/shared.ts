@@ -80,13 +80,13 @@ export const sharedConfig = defineConfig({
         content: 'summary_large_image',
       },
     ],
-    [
-      'meta',
-      {
-        property: 'twitter:image',
-        content: META_IMAGE,
-      },
-    ],
+    // [
+    //   'meta',
+    //   {
+    //     property: 'twitter:image',
+    //     content: META_IMAGE,
+    //   },
+    // ],
 
     // Vue School Top banner
     [
@@ -107,7 +107,7 @@ export const sharedConfig = defineConfig({
     outline: [2, 3],
 
     socialLinks: [
-      { icon: 'twitter', link: 'https://twitter.com/posva' },
+      { icon: 'x', link: 'https://twitter.com/posva' },
       {
         icon: 'github',
         link: 'https://github.com/vuejs/router',
