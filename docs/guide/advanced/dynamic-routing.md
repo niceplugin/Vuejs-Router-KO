@@ -5,7 +5,7 @@ href="https://vueschool.io/lessons/vue-router-4-dynamic-routing"
 title="Learn how to add routes at runtime"
 />
 
-라우터에 경로를 추가하는 것은 일반적으로 [`routes` 옵션](/api/interfaces/RouterOptions.md#routes)을 통해 이루어지지만, 어떤 상황에서는 앱이 이미 실행 중인 경우에도 경로를 추가하거나 제거하고 싶을 수 있습니다. [Vue CLI UI](https://cli.vuejs.org/dev-guide/ui-api.html)와 같은 확장 가능한 인터페이스가 있는 앱은, 이를 사용하여 앱을 확장할 수 있습니다.
+라우터에 라우트를 추가하는 것은 일반적으로 `routes` 옵션을 통해 이루어지지만, 애플리케이션이 이미 실행 중인 상황에서 라우트를 추가하거나 제거할 수도 있습니다. [Vue CLI UI](https://cli.vuejs.org/dev-guide/ui-api.html)와 같은 확장 가능한 인터페이스를 가진 애플리케이션은 이를 통해 애플리케이션을 성장시킬 수 있습니다.
 
 ## 경로 추가하기 %{#adding-routes}%
 
@@ -111,5 +111,5 @@ router.addRoute({
 
 Vue Router는 존재하는 경로를 찾아볼 수 있도록, 두 개의 함수를 제공합니다:
 
-- [`router.hasRoute()`](/api/interfaces/Router.md#Methods-hasRoute): 경로 이름을 인자로 전달하여 경로가 존재하는지 확인.
-- [`router.getRoutes()`](/api/interfaces/Router.md#Methods-getRoutes): 모든 경로 레코드를 배열로 반환.
+- [`router.hasRoute()`](/api/interfaces/Router.md#hasRoute): 경로 이름을 인자로 전달하여 경로가 존재하는지 확인.
+- [`router.getRoutes()`](/api/interfaces/Router.md#getRoutes): 모든 경로 레코드를 배열로 반환.

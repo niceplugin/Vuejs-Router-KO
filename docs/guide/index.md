@@ -2,8 +2,7 @@
 
 <VueSchoolLink
 href="https://vueschool.io/courses/vue-router-4-for-everyone"
-title="Learn how to build powerful Single Page Applications with the Vue Router on Vue School"
->Watch a Free Vue Router Video Course</VueSchoolLink>
+title="Learn how to build powerful Single Page Applications with the Vue Router on Vue School">Watch a Free Vue Router Video Course</VueSchoolLink>
 
 Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 쉽습니다. Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니다. 여기에 Vue Router를 사용할 경우, 경로에 컴포넌트를 매핑하고 Vue Router에게 렌더링할 경로를 알려주기만 하면 됩니다. 다음은 기본 예제입니다:
 
@@ -97,6 +96,6 @@ export default {
 }
 ```
 
-`setup` 함수 내부에서 라우터 또는 경로에 접근하려면, `useRouter` 또는 `useRoute` 함수를 호출해야 합니다. [컴포지션 API](advanced/composition-api.md#accessing-the-router-and-current-route-inside-setup)에서 이에 대해 자세히 알아볼 것입니다.
+`setup` 함수 내부에서 라우터 또는 경로에 접근하려면, `useRouter` 또는 `useRoute` 함수를 호출해야 합니다. [컴포지션 API](./advanced/composition-api.md#Accessing-the-Router-and-current-Route-inside-setup)에서 이에 대해 자세히 알아볼 것입니다.
 
 문서 전체에서 우리는 종종 `router` 인스턴스를 사용합니다. `this.$router`는 `createRouter`를 통해 생성된 `router` 인스턴스와 동일합니다. `this.$router`를 사용하는 이유는 라우팅을 조작해야 하는 모든 컴포넌트에서 라우터를 `import` 하고 싶지 않기 때문입니다.

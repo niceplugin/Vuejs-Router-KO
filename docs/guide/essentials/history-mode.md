@@ -64,7 +64,7 @@ const router = createRouter({
 
 ## 서버 구성 예제 %{#example-server-configurations}%
 
-참고: 아래 예제들은 루트 폴더에서 앱을 제공한다고 가정합니다. 루트 폴더 대신 하위 폴더에 배포하는 경우, [Vue CLI의 `publicPath` 옵션](https://cli.vuejs.org/config/#publicpath)과 [라우터의 `base` 속성](/api/#Functions-createWebHistory)을 설정해야 합니다. 또한 예제를 조정해야 합니다(예: `RewriteBase /`를 `RewriteBase /name-of-your-subfolder/`로 교체).
+참고: 아래 예제들은 루트 폴더에서 앱을 제공한다고 가정합니다. 루트 폴더 대신 하위 폴더에 배포하는 경우, [Vue CLI의 `publicPath` 옵션](https://cli.vuejs.org/config/#publicpath)과 [라우터의 `base` 속성](/api/interfaces/Router.md#createWebHistory)을 설정해야 합니다. 또한 예제를 조정해야 합니다(예: `RewriteBase /`를 `RewriteBase /name-of-your-subfolder/`로 교체).
 
 ### Apache
 

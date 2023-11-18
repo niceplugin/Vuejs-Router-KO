@@ -56,7 +56,7 @@ router.push({ name: 'user', params: { username } }) // -> /user/eduardo
 router.push({ path: '/user', params: { username } }) // -> /user
 ```
 
-`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#repeatable-params)일 경우)를 제공해야 합니다. **다른 모든 유형(예: 객체, 불린 등)은 자동으로 문자열로 변환됩니다**. [선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우, 빈 문자열(`""`) 또는 `null`을 값으로 제공하여 제거할 수 있습니다.
+`params`를 지정할 때 `string`, `number` 또는 `array`([반복 가능한 파라미터](./route-matching-syntax.md#Repeatable-params)일 경우)를 제공해야 합니다. **다른 모든 유형(예: 객체, 불린 등)은 자동으로 문자열로 변환됩니다**. [선택적 파라미터](./route-matching-syntax.md#optional-parameters)의 경우, 빈 문자열(`""`) 또는 `null`을 값으로 제공하여 제거할 수 있습니다.
 
 `<router-link>`의 `to`는 `router.push`와 동일한 객체를 허용하므로 두 객체 모두 똑같은 규칙이 적용됩니다.
 
@@ -110,4 +110,4 @@ router.go(100)
 
 따라서 이미 [브라우저 히스토리 API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)에 익숙하다면, Vue Router를 사용할 때 히스토리 조작이 익숙할 것입니다.
 
-Vue Router의 탐색 메서드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달되는 [`history` 옵션](/api/interfaces/RouterOptions.md#history) 값에 상관없이 일관되게 작동합니다.
+Vue Router의 내비게이션 메서드(`push`, `replace`, `go`)는 라우터 인스턴스를 생성할 때 전달된 `history` 옵션에 관계없이 일관된 방식으로 작동한다는 점을 언급하는 것이 중요합니다.

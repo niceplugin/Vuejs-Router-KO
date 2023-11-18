@@ -116,7 +116,7 @@ this.$router.push({
 })
 ```
 
-참고: [반복 가능한 파라미터](route-matching-syntax.md#repeatable-params)
+참고: [반복 가능한 파라미터](route-matching-syntax.md#Repeatable-params)
 
 [히스토리 모드](history-mode.md)를 사용하는 경우, 지침에 따라 서버를 올바르게 구성해야 합니다.
 
