@@ -44,7 +44,8 @@ const router = createRouter({
       // 아래 코드는
       // `el: document.getElementById('main'),`과 동일
       el: '#main',
-      top: -10,
+      // 엘리먼트를 10px 위로
+      top: 10,
     }
   },
 })
