@@ -31,7 +31,7 @@ router.beforeEach((to, from) => {
 그리고 선택적으로 다음 값 중 하나를 반환할 수 있습니다:
 
 - `false`: 현재 탐색을 취소합니다. URL이 변경된 경우, `from` 경로로 URL이 재설정됩니다.
-- [경로 위치 정보](/api/#routelocationraw): [`router.push()`](/api/interfaces/Router.md#push)를 사용할 때처럼 경로 위치(문자열 또는 객체)를 전달합니다. 현재 탐색이 중단되고, 기존 `from` 위치에서 새로운 탐색 동작이 생성됩니다.
+- [경로 위치 정보](/api/#RouteLocationRaw): `router.push()`를 사용할 때처럼 경로 위치(문자열 또는 객체)를 전달합니다. 현재 탐색이 중단되고, 기존 `from` 위치에서 새로운 탐색 동작이 생성됩니다.
 
   ```js
   router.beforeEach(async (to, from) => {
@@ -47,7 +47,7 @@ router.beforeEach((to, from) => {
   })
   ```
 
-예외 상황 시 `Error`를 던질 수도 있습니다. 이 경우에도 탐색은 취소되고 [`router.onError()`](/api/interfaces/Router.md#onerror) 메서드에 전달돼 등록된 모든 콜백 함수를 호출합니다.
+예외 상황 시 `Error`를 던질 수도 있습니다. 이 경우에도 탐색은 취소되고 [`router.onError()`](/api/interfaces/Router.md#onError) 메서드에 전달돼 등록된 모든 콜백 함수를 호출합니다.
 
 `undefined`, `true` 또는 아무것도 반환되지 않으면, **탐색이 유효**하다고 판단하고 다음 탐색 가드가 호출됩니다.
 
@@ -197,7 +197,7 @@ const routes = [
 ]
 ```
 
-[경로 메타 필드](./meta.md) 및 [전역 탐색 가드](#global-before-guards)를 사용하여 유사한 동작을 수행할 수 있습니다.
+[경로 메타 필드](./meta.md) 및 전역 탐색 가드를 사용하여 유사한 동작을 수행할 수 있습니다.
 
 ## 컴포넌트 내부 가드 %{#in-component-guards}%
 

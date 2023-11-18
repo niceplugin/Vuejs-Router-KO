@@ -64,7 +64,7 @@ if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
 
 ## 전역 탐색 실패 %{#global-navigation-failures}%
 
-[`router.afterEach()` 네비게이션 가드](./navigation-guards.md#global-after-hooks)를 사용하여 전역 탐색 실패를 감지할 수 있습니다:
+[`router.afterEach()` 네비게이션 가드](./navigation-guards.md#Global-After-Hooks)를 사용하여 전역 탐색 실패를 감지할 수 있습니다:
 
 ```ts
 router.afterEach((to, from, failure) => {

@@ -58,7 +58,7 @@ const routes = [
 </router-view>
 ```
 
-경로의 깊이에 따라 `meta` 필드에 정보를 동적으로 추가하기 위해, [탐색 후 훅](navigation-guards.md#global-after-hooks)을 추가할 수 있습니다:
+경로의 깊이에 따라 `meta` 필드에 정보를 동적으로 추가하기 위해, [탐색 후 훅](navigation-guards.md#Global-After-Hooks)을 추가할 수 있습니다:
 
 ```js
 router.afterEach((to, from) => {

@@ -40,4 +40,4 @@ router.push({ name: 'user', params: { username: 'erina' } })
 
 참고: [예제](https://github.com/vuejs/vue-router/blob/dev/examples/named-routes/app.js)
 
-각 이름은 모든 경로에서 **고유해야 합니다**. 하나의 이름을 여러 경로에 추가하면 라우터는 마지막에 추가된 것만 유지합니다. 이에 관해서 더 자세한 정보는 [동적 라우팅](../advanced/dynamic-routing.md#removing-routes) 섹션에서 확인할 수 있습니다.
+각 이름은 모든 경로에서 **고유해야 합니다**. 하나의 이름을 여러 경로에 추가하면 라우터는 마지막에 추가된 것만 유지합니다. 이에 관해서 더 자세한 정보는 [동적 라우팅](../advanced/dynamic-routing.md#Removing-routes) 섹션에서 확인할 수 있습니다.

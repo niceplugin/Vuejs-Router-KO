@@ -210,7 +210,7 @@ app.config.globalProperties.append = (path, pathToAppend) =>
 - 라우트는 더 이상 생성된 라우트 위치 객체 및 해당 `path`, `query`, `hash` 속성에 기반하여 활성화됩니다.
 - `path` 섹션만 일치하고 `query` 및 `hash`는 더 이상 고려되지 않습니다.
 
-만약 `hash` 섹션도 고려하고자 한다면 [`v-slot` API](/guide/advanced/composition-api#uselink)를 사용하여 `<router-link>`를 확장해야 합니다.
+만약 `hash` 섹션도 고려하고자 한다면 [`v-slot` API](/guide/advanced/composition-api#useLink)를 사용하여 `<router-link>`를 확장해야 합니다.
 
 **이유**: 더 이상 필요하지 않은 기능을 수정하고, 라우터의 무게를 늘리지 않으면서 더 간단한 방법으로 처리하기 위해서입니다. 자세한 내용은 [active matching에 관한 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0028-router-active-link.md#summary)을 참조하십시오.
 
@@ -220,7 +220,7 @@ app.config.globalProperties.append = (path, pathToAppend) =>
 
 ### `router.match` 제거 및 `router.resolve` 변경 %{#removal-of-router-match-and-changes-to-router-resolve}%
 
-`router.match`와 `router.resolve` 모두 `router.resolve`로 통합되었으며 약간 다른 형식으로 변경되었습니다. 자세한 내용은 [API](/api/interfaces/Router.md#Methods-resolve)를 참조하십시오.
+`router.match`와 `router.resolve` 모두 `router.resolve`로 통합되었으며 약간 다른 형식으로 변경되었습니다. 자세한 내용은 [API](/api/interfaces/Router.md#resolve)를 참조하십시오.
 
 **이유**: 동일한 목적으로 사용되던 여러 메서드를 통합하기 위해서입니다.
 
@@ -437,7 +437,7 @@ const routes = [
 아래는 [정규화된 라우트 위치](/api/interfaces/RouteLocationNormalized.md)를 기준으로 합니다:
 
 - `path`, `fullPath`의 값은 이제 더 이상 디코딩되지 않습니다. 브라우저가 제공하는대로 표시됩니다(대부분의 브라우저에서는 인코딩된 상태로 제공됩니다). 예를 들어, 주소 창에 직접 `https://example.com/hello world`를 입력하면 인코딩된 버전인 `https://example.com/hello%20world`를 얻게 되며, `path`와 `fullPath`는 모두 `/hello%20world`가 됩니다.
-- `hash`는 이제 디코딩되며, 이로 인해 다음과 같이 복사하여 사용할 수 있습니다: `router.push({ hash: $route.hash })` 그리고 [scrollBehavior](/api/interfaces/RouterOptions.md#Properties-scrollBehavior)의 `el` 옵션에서 직접 사용할 수 있습니다.
+- `hash`는 이제 디코딩되며, 이로 인해 다음과 같이 복사하여 사용할 수 있습니다: `router.push({ hash: $route.hash })` 그리고 [scrollBehavior](/api/interfaces/RouterOptions.md#scrollBehavior)의 `el` 옵션에서 직접 사용할 수 있습니다.
 - `push`, `resolve`, 그리고 `replace`를 사용하고 `string` 위치나 객체의 `path` 속성을 제공할 때, **반드시 인코딩**해야 합니다(이전 버전과 같습니다). 반면에 `params`, `query`, 그리고 `hash`는 인코딩되지 않은 상태로 제공되어야 합니다.
 - 슬래시 문자 (`/`)는 이제 `params` 내에서 적절히 디코딩되지만 URL에서는 인코딩된 버전인 `%2F`로 생성됩니다.
 

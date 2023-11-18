@@ -18,11 +18,11 @@ declare module 'vue-router' {
   interface RouteMeta {
     requiresAuth?: boolean
   }
- }
+}
 ```
 
 ## Hierarchy
 
-- `Record`<`string` \| `number` \| `symbol`, `unknown`\>
+- `Record`\<`string` \| `number` \| `symbol`, `unknown`\>
 
   ↳ **`RouteMeta`**
