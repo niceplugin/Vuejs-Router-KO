@@ -140,6 +140,10 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/advanced/composition-api.html',
             },
             {
+              text: 'RouterView 슬롯',
+              link: '/guide/advanced/router-view-slot.html',
+            },
+            {
               text: '트랜지션',
               link: '/guide/advanced/transitions.html',
             },

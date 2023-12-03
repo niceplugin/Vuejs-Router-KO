@@ -1,4 +1,4 @@
-# 이름이 있는 경로 %{#named-routes}%
+# 이름이 있는 경로 %{#Named-Routes}%
 
 <VueSchoolLink
 href="https://vueschool.io/lessons/named-routes"
@@ -24,7 +24,7 @@ const routes = [
 
 `<router-link>` 컴포넌트의 `to`에 객체를 전달해 이름이 있는 경로에 연결할 수 있습니다.
 
-```html
+```vue-html
 <router-link :to="{ name: 'user', params: { username: 'erina' }}">
   유저 링크!
 </router-link>

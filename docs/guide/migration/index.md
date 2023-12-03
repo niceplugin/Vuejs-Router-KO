@@ -1,12 +1,12 @@
-# Vue 2에서 Vue 3로 마이그레이션하기 %{#migrating-from-vue-2}%
+# Vue 2에서 Vue 3로 마이그레이션하기 %{#Migrating-from-Vue-2}%
 
 Vue Router API의 대부분은 v3(Vue 2용)에서 v4(Vue 3용)로의 재작성 과정에서 변경되지 않았지만, 여전히 일부 중단된 변경 사항들이 있습니다. 이 가이드는 이러한 변경 사항들이 발생한 이유를 이해하고 Vue Router 4에서 작동하도록 애플리케이션을 적응시키는 방법을 돕기 위해 제공됩니다.
 
-## 중단된 변경 사항들 %{#breaking-changes}%
+## 중단된 변경 사항들 %{#Breaking-Changes}%
 
 변경 사항들은 사용량에 따라 정렬되었습니다. 따라서 이 목록을 순서대로 따르는 것이 좋습니다.
 
-### `new Router`가 `createRouter`로 대체되었습니다 %{#new-router-becomes-createrouter}%
+### `new Router`가 `createRouter`로 대체되었습니다 %{#new-Router-becomes-createRouter}%
 
 Vue Router는 이제 클래스가 아닌 함수들의 집합입니다. 따라서 `new Router()`를 작성하는 대신에 이제 `createRouter`를 호출해야 합니다:
 
@@ -20,7 +20,7 @@ const router = createRouter({
 })
 ```
 
-### 새로운 `history` 옵션이 `mode`를 대체했습니다 %{#new-history-option-to-replace-mode}%
+### 새로운 `history` 옵션이 `mode`를 대체했습니다 %{#New-history-option-to-replace-mode}%
 
 `mode: 'history'` 옵션이 더 유연한 `history`로 대체되었습니다. 사용하던 모드에 따라 적절한 함수로 교체해야 합니다:
 
@@ -55,7 +55,7 @@ router.isReady().then(() => {
 
 **이유**: 사용하지 않는 history에 대해 트리 쉐이킹(tree shaking)을 가능하게 하며, 네이티브 솔루션과 같은 고급 사용 사례에 대해 사용자 정의 history를 구현할 수 있게 합니다.
 
-### `base` 옵션이 이동되었습니다 %{#moved-the-base-option}%
+### `base` 옵션이 이동되었습니다 %{#Moved-the-base-option}%
 
 `base` 옵션은 이제 `createWebHistory`(및 다른 histories)의 첫 번째 인자로 전달됩니다:
 
@@ -67,7 +67,7 @@ createRouter({
 })
 ```
 
-### `fallback` 옵션이 제거되었습니다 %{#removal-of-the-fallback-option}%
+### `fallback` 옵션이 제거되었습니다 %{#Removal-of-the-fallback-option}%
 
 `fallback` 옵션은 더 이상 라우터 생성 시 지원되지 않습니다:
 
@@ -81,7 +81,7 @@ createRouter({
 
 **이유**: Vue가 지원하는 모든 브라우저가 [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)를 지원하므로 `location.hash`를 수정하는 해킹 방법을 피하고 직접 `history.pushState()`를 사용할 수 있습니다.
 
-### `*` (별표 또는 캐치 올) 라우트가 제거되었습니다 %{#removed-star-or-catch-all-routes}%
+### `*` (별표 또는 캐치 올) 라우트가 제거되었습니다 %{#Removed-star-or-catch-all-routes}%
 
 Catch all 라우트 (`*`, `/*`)는 이제 사용자 정의 정규식을 사용하는 매개변수로 정의해야 합니다:
 
@@ -126,7 +126,7 @@ const { page } = router.currentRoute.query // [!code --]
 const { page } = router.currentRoute.value.query // [!code ++]
 ```
 
-### `onReady`를 `isReady`로 대체했습니다 %{#replaced-onready-with-isready}%
+### `onReady`를 `isReady`로 대체했습니다 %{#Replaced-onReady-with-isReady}%
 
 기존의 `router.onReady()` 함수가 인자 없이 반환하는 Promise인 `router.isReady()`로 대체되었습니다:
 
@@ -144,7 +144,7 @@ try {
 }
 ```
 
-### `scrollBehavior` 변경사항 %{#scrollbehavior-changes}%
+### `scrollBehavior` 변경사항 %{#scrollBehavior-changes}%
 
 `scrollBehavior`에서 반환되는 객체가 이제 [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions)와 유사합니다. `x`는 `left`로, `y`는 `top`으로 이름이 변경되었습니다. [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0035-router-scroll-position.md)를 참조하세요.
 
@@ -154,7 +154,7 @@ try {
 
 `transition`과 `keep-alive`는 이제 `RouterView` 내부에서 `v-slot` API를 통해 사용되어야 합니다:
 
-```vue
+```vue-html
 <router-view v-slot="{ Component }">
 <transition>
   <keep-alive>
@@ -166,11 +166,11 @@ try {
 
 **이유**: 이 변경은 필요한 변경으로, [관련된 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0034-router-view-keep-alive-transitions.md)를 참조하세요.
 
-### `<router-link>`의 `append` 속성 제거됨 %{#removal-of-append-prop-in-router-link}%
+### `<router-link>`의 `append` 속성 제거됨 %{#Removal-of-append-prop-in-router-link}%
 
 `<router-link>`에서 `append` 속성이 제거되었습니다. 이제 기존의 `path`에 값을 수동으로 연결해야 합니다:
 
-```html
+```vue-html
 이전 방식
 <router-link to="child-route" append>to relative child</router-link>
 새로운 방식
@@ -188,11 +188,11 @@ app.config.globalProperties.append = (path, pathToAppend) =>
 
 **이유**: `append`는 매우 자주 사용되지 않으며, 사용자 정의 코드로 쉽게 대체할 수 있습니다.
 
-### `<router-link>`의 `event`와 `tag` 속성 제거 %{#removal-of-event-and-tag-props-in-router-link}%
+### `<router-link>`의 `event`와 `tag` 속성 제거 %{#Removal-of-event-and-tag-props-in-router-link}%
 
 `<router-link>`의 `event`와 `tag` 속성이 제거되었습니다. 이제 [`v-slot` API](/guide/advanced/composition-api#uselink)를 사용하여 `<router-link>`를 완전히 커스터마이징할 수 있습니다:
 
-```html
+```vue-html
 이전 방식
 <router-link to="/about" tag="span" event="dblclick">About Us</router-link>
 새로운 방식
@@ -203,7 +203,7 @@ app.config.globalProperties.append = (path, pathToAppend) =>
 
 **이유**: 이러한 속성들은 `<a>` 태그와 다른 요소를 사용하는 데 자주 함께 사용되었지만, `v-slot` API 이전에 도입되었으며 모든 사용자를 위해 번들 크기를 증가시키는 것에 충분히 사용되지 않았기 때문에 제거되었습니다.
 
-### `<router-link>`의 `exact` 속성 제거 %{#removal-of-the-exact-prop-in-router-link}%
+### `<router-link>`의 `exact` 속성 제거 %{#Removal-of-the-exact-prop-in-router-link}%
 
 `exact` 속성은 더 이상 필요하지 않으므로 제거되었습니다. 이제 두 가지 사항을 알아두어야 합니다:
 
@@ -214,17 +214,17 @@ app.config.globalProperties.append = (path, pathToAppend) =>
 
 **이유**: 더 이상 필요하지 않은 기능을 수정하고, 라우터의 무게를 늘리지 않으면서 더 간단한 방법으로 처리하기 위해서입니다. 자세한 내용은 [active matching에 관한 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0028-router-active-link.md#summary)을 참조하십시오.
 
-### 믹스인의 네비게이션 가드 무시 %{#navigation-guards-in-mixins-are-ignored}%
+### 믹스인의 네비게이션 가드 무시 %{#Navigation-guards-in-mixins-are-ignored}%
 
 현재 믹스인의 네비게이션 가드는 지원되지 않습니다. [vue-router#454](https://github.com/vuejs/router/issues/454)에서 이 지원에 대한 추적을 할 수 있습니다.
 
-### `router.match` 제거 및 `router.resolve` 변경 %{#removal-of-router-match-and-changes-to-router-resolve}%
+### `router.match` 제거 및 `router.resolve` 변경 %{#Removal-of-router-match-and-changes-to-router-resolve}%
 
 `router.match`와 `router.resolve` 모두 `router.resolve`로 통합되었으며 약간 다른 형식으로 변경되었습니다. 자세한 내용은 [API](/api/interfaces/Router.md#resolve)를 참조하십시오.
 
 **이유**: 동일한 목적으로 사용되던 여러 메서드를 통합하기 위해서입니다.
 
-### `router.getMatchedComponents()` 제거 %{#removal-of-router-getmatchedcomponents}%
+### `router.getMatchedComponents()` 제거 %{#Removal-of-router-getMatchedComponents}%
 
 `router.getMatchedComponents` 메서드가 이제 제거되었습니다. 대신 매치된 컴포넌트들은 `router.currentRoute.value.matched`에서 가져올 수 있습니다:
 
@@ -236,7 +236,7 @@ router.currentRoute.value.matched.flatMap(record =>
 
 **이유**: 이 메서드는 SSR 시에만 사용되었으며 사용자가 한 줄로 처리할 수 있는 간단한 메서드였기 때문에 제거되었습니다.
 
-### 리다이렉트 레코드에서 특수 경로 사용 불가능 %{#redirect-records-cannot-use-special-paths}%
+### 리다이렉트 레코드에서 특수 경로 사용 불가능 %{#Redirect-records-cannot-use-special-paths}%
 
 이전에는 비공개로 설정된 기능으로 리다이렉트 레코드를 `/events/:id`와 같은 특수 경로로 설정할 수 있었고, 기존의 `id` 매개변수를 재사용할 수 있었습니다. 이제 이 기능은 더 이상 지원되지 않으며 두 가지 옵션이 있습니다:
 
@@ -245,7 +245,7 @@ router.currentRoute.value.matched.flatMap(record =>
 
 **이유**: 이 구문은 거의 사용되지 않았으며 다른 방법들과 비교하여 짧지 않았을 뿐더러, 라우터를 무겁게 만드는 복잡성을 도입했습니다.
 
-### 모든 네비게이션은 이제 항상 비동기 %{#all-navigations-are-now-always-asynchronous}%
+### 모든 네비게이션은 이제 항상 비동기 %{#All-navigations-are-now-always-asynchronous}%
 
 첫 번째 네비게이션을 포함하여 모든 네비게이션은 이제 비동기로 처리됩니다. 따라서 `transition`을 사용하는 경우 앱을 마운트하기 전에 라우터가 "준비"되어야 할 수도 있습니다:
 
@@ -259,7 +259,7 @@ router.isReady().then(() => app.mount('#app'))
 
 **참고**: 초기 네비게이션에서 네비게이션 가드가 있는 경우, 서버 측 렌더링을 수행하지 않는 한 앱 렌더를 차단하고 해결되기 전까지 기다리지 않는 것이 좋습니다. 이 경우 라우터를 준비되기 전에 앱을 마운트하는 것은 Vue 2와 동일한 결과를 얻을 수 있습니다.
 
-### `router.app` 제거 %{#removal-of-router-app}%
+### `router.app` 제거 %{#Removal-of-router-app}%
 
 `router.app`은 이제 더 이상 마지막 루트 컴포넌트(Vue 인스턴스)를 나타내지 않습니다. 이제 Vue Router는 동시에 여러 Vue 애플리케이션에서 안전하게 사용할 수 있습니다. 라우터를 사용하는 경우 여전히 `app`을 추가할 수 있습니다:
 
@@ -272,11 +272,11 @@ router.app = app
 
 **이유**: Vue 3 애플리케이션이 Vue 2에서 존재하지 않고 이제 같은 라우터 인스턴스를 사용하는 여러 애플리케이션을 올바르게 지원합니다. `app` 속성이 있으면 루트 인스턴스가 아닌 애플리케이션을 나타내므로 혼란스러울 수 있습니다.
 
-### 라우트 컴포넌트의 `<slot>`에 콘텐츠 전달 %{#passing-content-to-route-components-slot}%
+### 라우트 컴포넌트의 `<slot>`에 콘텐츠 전달 %{#Passing-content-to-route-components-slot}%
 
 이전에는 라우트 컴포넌트의 `<slot>`에 직접 템플릿을 전달할 수 있었습니다. 이제는 `<router-view>` 컴포넌트 아래에 중첩하여 `<slot>`에 전달해야 합니다:
 
-```html
+```vue-html
 <router-view>
   <p>In Vue Router 3, I render inside the route component</p>
 </router-view>
@@ -284,7 +284,7 @@ router.app = app
 
 `<router-view>`에 대한 `v-slot` API를 사용하여 `<component>`에 전달해야 합니다:
 
-```html
+```vue-html
 <router-view v-slot="{ Component }">
   <component :is="Component">
     <p>In Vue Router 3, I render inside the route component</p>
@@ -292,7 +292,7 @@ router.app = app
 </router-view>
 ```
 
-### 라우트 위치에서 `parent` 제거 %{#removal-of-parent-from-route-locations}%
+### 라우트 위치에서 `parent` 제거 %{#Removal-of-parent-from-route-locations}%
 
 `parent` 속성은 정규화된 라우트 위치(`this.$route` 및 `router.resolve`에 의해 반환되는 객체)에서 제거되었습니다. 그러나 여전히 `matched` 배열을 통해 접근할 수 있습니다:
 
@@ -302,11 +302,11 @@ const parent = this.$route.matched[this.$route.matched.length - 2]
 
 **이유**: `parent`와 `children` 속성이 중복되는 것은 불필요한 순환 참조를 만들어 냅니다. 이미 `matched`를 통해 속성을 얻을 수 있기 때문에 이러한 변경이 이루어졌습니다.
 
-### `pathToRegexpOptions` 제거 %{#removal-of-pathtoregexpoptions}%
+### `pathToRegexpOptions` 제거 %{#Removal-of-pathToRegexpOptions}%
 
 라우트 레코드의 `pathToRegexpOptions`와 `caseSensitive` 속성이 `createRouter()`의 `sensitive` 및 `strict` 옵션으로 대체되었습니다. 이제 `createRouter()`를 사용하여 직접 `pathToRegexpOptions`를 전달할 수 있습니다. `path-to-regexp`에 특정한 다른 옵션은 더 이상 사용되지 않습니다.
 
-### 무명 매개변수 제거 %{#removal-of-unnamed-parameters}%
+### 무명 매개변수 제거 %{#Removal-of-unnamed-parameters}%
 
 `path-to-regexp`의 제거로 인해 무명 매개변수가 더 이상 지원되지 않습니다:
 
@@ -318,7 +318,7 @@ const parent = this.$route.matched[this.$route.matched.length - 2]
 매개변수에 `_` 대신 다른 이름을 사용할 수 있습니다. 중요한 것은 하나를 제공하는 것입니다.
 :::
 
-### `history.state` 사용 %{#usage-of-history-state}%
+### `history.state` 사용 %{#Usage-of-history-state}%
 
 Vue Router는 `history.state`에 정보를 저장합니다. 수동으로 `history.pushState()`를 호출하는 코드가 있다면, 이를 피하거나 정상적인 `router.push()`와 `history.replaceState()`로 리팩터링해야 합니다:
 
@@ -351,7 +351,7 @@ createRouter({ routes: [] })
 
 **이유**: 라우터는 라우트와 함께 생성되도록 설계되었습니다. 대부분의 경우 최소한 하나의 라우트가 필요하며, 대개 앱 당 한 번 작성되므로 이렇게 변경되었습니다.
 
-### 존재하지 않는 이름을 가진 라우트 %{#non-existent-named-routes}%
+### 존재하지 않는 이름을 가진 라우트 %{#Non-existent-named-routes}%
 
 존재하지 않는 이름의 라우트를 푸시하거나 해결하려고 하면 오류가 발생합니다:
 
@@ -363,7 +363,7 @@ router.resolve({ name: 'homee' }) // 오류 발생
 
 **이유**: 이전에 라우터는 `/`로 이동하지만 아무 것도 표시하지 않았습니다(홈 페이지 대신). 오류를 발생시키는 것이 더 타당하며, 유효한 URL로 이동할 수 없기 때문에 더 이상 `/`로 이동하지 않습니다.
 
-### 필요한 매개변수가 누락된 이름 있는 라우트 %{#missing-required-params-on-named-routes}%
+### 필요한 매개변수가 누락된 이름 있는 라우트 %{#Missing-required-params-on-named-routes}%
 
 필요한 매개변수 없이 이름 있는 라우트를 푸시하거나 해결하려고 하면 오류가 발생합니다:
 
@@ -378,7 +378,7 @@ router.resolve({ name: 'user' })
 
 **이유**: 위와 동일합니다.
 
-### 빈 `path`를 가진 이름 있는 하위 라우트의 슬래시 제거 %{#named-children-routes-with-an-empty-path-no-longer-appends-a-slash}%
+### 빈 `path`를 가진 이름 있는 하위 라우트의 슬래시 제거 %{#Named-children-routes-with-an-empty-path-no-longer-appends-a-slash}%
 
 빈 `path`를 가진 중첩된 이름 있는 라우트는 이제 슬래시를 포함하지 않습니다:
 
@@ -430,7 +430,7 @@ const routes = [
 
 <!-- TODO: maybe a cookbook entry -->
 
-### `$route` 속성 인코딩 %{#route-properties-encoding}%
+### `$route` 속성 인코딩 %{#route-properties-Encoding}%
 
 `params`, `query`, 그리고 `hash`에서 디코딩된 값들은 이제 어디서 네비게이션을 시작하더라도 일관성을 가집니다 (구버전 브라우저는 여전히 인코딩되지 않은 `path`와 `fullPath`를 생성할 것입니다). 초기 네비게이션은 앱 내에서 발생하는 네비게이션과 동일한 결과를 가져야 합니다.
 
@@ -443,7 +443,7 @@ const routes = [
 
 **이유**: 이로 인해 `router.push()`와 `router.resolve()`를 호출할 때 존재하는 위치의 속성을 쉽게 복사할 수 있으며, 결과적으로 브라우저 간 일관된 라우트 위치를 만들 수 있습니다. `router.push()`는 이제 멱등성을 가지며, 즉 `router.push(route.fullPath)`, `router.push({ hash: route.hash })`, `router.push({ query: route.query })`, 그리고 `router.push({ params: route.params })`를 호출하여 추가적인 인코딩을 생성하지 않습니다.
 
-### TypeScript 변경 사항 %{#typescript-changes}%
+### TypeScript 변경 사항 %{#TypeScript-changes}%
 
 더 일관적이고 표현력 있는 타이핑을 위해 몇 가지 타입이 이름을 바꾸었습니다:
 
@@ -453,7 +453,7 @@ const routes = [
 | Location       | RouteLocation           |
 | Route          | RouteLocationNormalized |
 
-## 새로운 기능 %{#new-features}%
+## 새로운 기능 %{#New-Features}%
 
 Vue Router 4에서 주목해야 할 일부 새로운 기능들은 다음과 같습니다:
 
