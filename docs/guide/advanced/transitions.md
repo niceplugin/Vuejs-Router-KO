@@ -5,7 +5,7 @@ href="https://vueschool.io/lessons/route-transitions"
 title="Learn about route transitions"
 />
 
-경로 컴포넌트에서 트랜지션을 사용하고 탐색에 애니메이션을 적용하려면, v-slot API를 사용해야 합니다:
+라우트 컴포넌트에 트랜지션을 사용하고 탐색에 애니메이션을 적용하려면, [`<RouterView>` 슬롯](./router-view-slot)을 사용해야 합니다.
 
 ```html
 <router-view v-slot="{ Component }">
