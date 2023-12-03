@@ -89,7 +89,7 @@ const routes = [
     :is="Component"
     view-prop="value"
    />
-</RouterView
+</RouterView>
 ```
 
 ::: 경고
