@@ -264,7 +264,7 @@ beforeRouteLeave (to, from) {
 
 ### 컴포지션 API 사용 %{#using-the-composition-api}%
 
-[컴포지션 API 및 `setup` 함수](https://vuejs.kr/api/composition-api-setup.html#setup)를 사용하여 컴포넌트를 작성하는 경우, `onBeforeRouteUpdate` 및 `onBeforeRouteLeave` 가드를 추가할 수 있습니다. 참고: [가이드 - 컴포지션 API](composition-api.md#navigation-guards)
+[컴포지션 API 및 `setup` 함수](https://vuejs.kr/api/composition-api-setup.html)를 사용하여 컴포넌트를 작성하는 경우, `onBeforeRouteUpdate` 및 `onBeforeRouteLeave` 가드를 추가할 수 있습니다. 참고: [가이드 - 컴포지션 API](composition-api.md#navigation-guards)
 
 ## 전체적인 탐색 흐름 %{#the-full-navigation-resolution-flow}%
 
