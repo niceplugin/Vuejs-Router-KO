@@ -13,7 +13,7 @@ title="Learn how to navigate programmatically"
 
 ## 다른 위치로 이동 %{#navigate-to-a-different-location}%
 
-**참고: Vue 인스턴스 내부에서 `$router`로 라우터 인스턴스에 접근할 수 있습니다. 따라서 `this.$router.push`를 호출할 수 있습니다.**
+**참고: 아래 예시에서 라우터 인스턴스를 `router`라고 합니다. 컴포넌트 내에서 라우터에 접근하려면 `$router` 속성을 사용하세요. 예를 들어, `this.$router.push(...)`와 같이 사용할 수 있습니다. Composition API를 사용하는 경우, [`useRouter()`](../advanced/composition-api)를 호출하여 라우터에 접근할 수 있습니다.**
 
 다른 URL로 이동하려면 `router.push`를 사용해야 합니다. 이 메서드는 새 항목을 히스토리 스택으로 푸시하므로, 사용자가 브라우저의 뒤로가기 버튼을 클릭하면 이전 URL로 이동합니다.
 
