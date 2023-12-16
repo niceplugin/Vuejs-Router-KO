@@ -107,7 +107,7 @@ router.resolve({
 }).href // '/not/found'
 ```
 
-:::tip
+::: tip
 라우트의 이름을 사용하여 직접 not-found 라우트로 이동하지 않는 경우에는 반복된 매개변수를 위해 `*`을 추가할 필요가 없습니다. `router.push('/not/found/url')`과 같이 호출하면 올바른 `pathMatch` 매개변수가 제공됩니다.
 :::
 
@@ -314,7 +314,7 @@ const parent = this.$route.matched[this.$route.matched.length - 2]
 - `/foo(foo)?`는 이제 `/foo:_(foo)?`가 됩니다.
 - `/foo/(.*)`는 이제 `/foo/:_(.*)`가 됩니다.
 
-:::tip
+::: tip
 매개변수에 `_` 대신 다른 이름을 사용할 수 있습니다. 중요한 것은 하나를 제공하는 것입니다.
 :::
 
