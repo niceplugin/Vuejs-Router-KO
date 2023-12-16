@@ -7,7 +7,7 @@ title="Learn how to use advanced route routes' matching syntax"
 
 대부분의 앱은 [동적 경로 매칭](dynamic-matching.md)에서 본 것처럼, `/about` 같은 정적 경로와 `/users/:userId` 같은 동적 경로를 사용하지만, Vue Router는 훨씬 더 많은 것을 제공합니다!
 
-:::tip
+::: tip
 이 문서에서는, 각 경로 객체의 `path` 속성 값을 집중 탐구하기 위해 의도적으로 `component` 속성은 생략했습니다.
 :::
 
@@ -37,7 +37,7 @@ const routes = [
 
 이제 `/25`로 이동하면 `/:orderId`와 일치하고, 다른 항목으로 이동하면 `/:productName`과 일치합니다. `routes` 배열의 순서는 중요하지 않습니다!
 
-:::tip
+::: tip
 JavaScript 문자열에서 `\` 문자를 실제로 `\d`처럼 전달하려면, **`\`를 이스케이프**처리해 `\\d`와 같이 전달해야 합니다.
 :::
 
