@@ -128,3 +128,24 @@ const routes = [
   },
 ]
 ```
+
+## 부모 컴포넌트 생략 <Badge text="4.1+" /> %{#Omitting-parent-components-}%
+
+우리는 라우트 컴포넌트를 중첩할 필요 없이 라우트 간의 부모-자식 관계를 활용할 수도 있습니다. 이는 공통 경로 접두사를 가진 라우트를 그룹화하거나 [라우트 메타 필드](../advanced/meta)를 작업할 때 유용할 수 있습니다.
+
+이를 달성하기 위해, 부모 라우트에서 `component`와 `components` 옵션을 생략합니다:
+
+```js
+const routes = [
+  {
+    path: '/admin',
+    children: [
+      { path: '', component: AdminOverview },
+      { path: 'users', component: AdminUserList },
+      { path: 'users/:id', component: AdminUserDetails },
+    ], 
+  },
+]
+```
+
+부모가 라우트 컴포넌트를 지정하지 않기 때문에, 최상위 `<router-view>`는 부모를 건너뛰고 대신 관련 자식의 컴포넌트를 사용합니다.
