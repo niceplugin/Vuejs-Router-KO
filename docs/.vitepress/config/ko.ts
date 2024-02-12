@@ -82,15 +82,15 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/',
             },
             {
-              text: '동적 경로 매칭',
+              text: '동적 라우트 매칭',
               link: '/guide/essentials/dynamic-matching.html',
             },
             {
-              text: "경로 매칭 문법",
+              text: "라우트 매칭 문법",
               link: '/guide/essentials/route-matching-syntax.html',
             },
             {
-              text: '중첩된 경로',
+              text: '중첩된 라우트',
               link: '/guide/essentials/nested-routes.html',
             },
             {
@@ -98,7 +98,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/navigation.html',
             },
             {
-              text: '이름이 있는 경로',
+              text: '이름이 있는 라우트',
               link: '/guide/essentials/named-routes.html',
             },
             {
@@ -110,7 +110,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/redirect-and-alias.html',
             },
             {
-              text: '경로 컴포넌트에 props 전달하기',
+              text: '라우트 컴포넌트에 props 전달하기',
               link: '/guide/essentials/passing-props.html',
             },
             {
@@ -128,7 +128,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/advanced/navigation-guards.html',
             },
             {
-              text: '경로 메타 필드',
+              text: '라우트 메타 필드',
               link: '/guide/advanced/meta.html',
             },
             {
@@ -152,7 +152,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/advanced/scroll-behavior.html',
             },
             {
-              text: '경로 지연 로딩',
+              text: '라우트 지연 로딩',
               link: '/guide/advanced/lazy-loading.html',
             },
             {

@@ -5,7 +5,7 @@ href="https://vueschool.io/lessons/route-guards"
 title="Learn how to add navigation guards"
 />
 
-네비게이션 가드는 주로 탐색을 리디렉션하거나 취소하여, 탐색을 막는데 사용됩니다. 경로 탐색 프로세스에 가드를 연결하는 방법으로는 "전역", "경로별", "컴포넌트 내부"가 있습니다.
+네비게이션 가드는 주로 탐색을 리디렉션하거나 취소하여, 탐색을 막는데 사용됩니다. 라우트 탐색 프로세스에 가드를 연결하는 방법으로는 "전역", "라우트별", "컴포넌트 내부"가 있습니다.
 
 ## 전역: 비포 가드 %{#global-before-guards}%
 
@@ -25,13 +25,13 @@ router.beforeEach((to, from) => {
 
 모든 가드 함수는 두 개의 인자를 받습니다:
 
-- **`to`**: 탐색 될 [경로 위치 객체](/api/interfaces/RouteLocationNormalized.html)
-- **`from`**: 탐색 전 현재 [경로 위치 객체](/api/interfaces/RouteLocationNormalized.html)
+- **`to`**: 탐색 될 [라우트 위치 객체](/api/interfaces/RouteLocationNormalized.html)
+- **`from`**: 탐색 전 현재 [라우트 위치 객체](/api/interfaces/RouteLocationNormalized.html)
 
 그리고 선택적으로 다음 값 중 하나를 반환할 수 있습니다:
 
-- `false`: 현재 탐색을 취소합니다. URL이 변경된 경우, `from` 경로로 URL이 재설정됩니다.
-- [경로 위치 정보](/api/#RouteLocationRaw): `router.push()`를 사용할 때처럼 경로 위치(문자열 또는 객체)를 전달합니다. 현재 탐색이 중단되고, 기존 `from` 위치에서 새로운 탐색 동작이 생성됩니다.
+- `false`: 현재 탐색을 취소합니다. URL이 변경된 경우, `from` 라우트로 URL이 재설정됩니다.
+- [라우트 위치 정보](/api/#RouteLocationRaw): `router.push()`를 사용할 때처럼 라우트 위치(문자열 또는 객체)를 전달합니다. 현재 탐색이 중단되고, 기존 `from` 위치에서 새로운 탐색 동작이 생성됩니다.
 
   ```js
   router.beforeEach(async (to, from) => {
@@ -86,7 +86,7 @@ router.beforeEach((to, from, next) => {
 
 ## 전역: 리졸브(resolve) 가드 %{#global-resolve-guards}%
 
-`router.beforeResolve`로 전역 가드를 등록할 수 있습니다. 이것은 **모든 탐색**에서 트리거되기 때문에 `router.beforeEach`와 유사하지만, **컴포넌트 내 가드 및 비동기 경로 컴포넌트가 모두 해결된 후**, 최종적으로 탐색을 진행 할 것인지 결정하기 위한 목적으로 호출합니다. 다음은 [사용자 정의 메타를 정의한](meta.md) 속성 `requiresCamera`가 있는 경로에 대해, 사용자가 카메라에 접근 권한을 부여했는지 확인하는 예입니다:
+`router.beforeResolve`로 전역 가드를 등록할 수 있습니다. 이것은 **모든 탐색**에서 트리거되기 때문에 `router.beforeEach`와 유사하지만, **컴포넌트 내 가드 및 비동기 라우트 컴포넌트가 모두 해결된 후**, 최종적으로 탐색을 진행 할 것인지 결정하기 위한 목적으로 호출합니다. 다음은 [사용자 정의 메타를 정의한](meta.md) 속성 `requiresCamera`가 있는 라우트에 대해, 사용자가 카메라에 접근 권한을 부여했는지 확인하는 예입니다:
 
 ```js
 router.beforeResolve(async to => {
@@ -152,9 +152,9 @@ router.beforeEach((to, from) => {
 })
 ```
 
-## 경로 별 가드 %{#per-route-guard}%
+## 라우트 별 가드 %{#per-route-guard}%
 
-경로를 구성하는 객체에서 직접 `beforeEnter` 가드를 정의할 수 있습니다:
+라우트를 구성하는 객체에서 직접 `beforeEnter` 가드를 정의할 수 있습니다:
 
 ```js
 const routes = [
@@ -162,16 +162,16 @@ const routes = [
     path: '/users/:id',
     component: UserDetails,
     beforeEnter: (to, from) => {
-      // 경로 진입 거부
+      // 라우트 진입 거부
       return false
     },
   },
 ]
 ```
 
-경로 별 `beforeEnter`는 **경로에 진입할 때만 가드를 실행**하며, `params`, `query` 또는 `hash`가 변경될 때 트리거하지 않습니다(예: `/users/2`에서 `/users/3`으로 이동 또는 `/users/2#info`에서 `/users/2#projects`로 이동). **다른** 경로에서 탐색된 경우에만 실행됩니다.
+라우트 별 `beforeEnter`는 **라우트에 진입할 때만 가드를 실행**하며, `params`, `query` 또는 `hash`가 변경될 때 트리거하지 않습니다(예: `/users/2`에서 `/users/3`으로 이동 또는 `/users/2#info`에서 `/users/2#projects`로 이동). **다른** 라우트에서 탐색된 경우에만 실행됩니다.
 
-함수로 이루어진 배열을 `beforeEnter`에 전달할 수도 있습니다. 이는 다른 경로의 가드를 재사용할 때 유용합니다:
+함수로 이루어진 배열을 `beforeEnter`에 전달할 수도 있습니다. 이는 다른 라우트의 가드를 재사용할 때 유용합니다:
 
 ```js
 function removeQueryParams(to) {
@@ -222,11 +222,11 @@ const routes = [
 
 ## 컴포넌트 내부 가드 %{#in-component-guards}%
 
-마지막으로 경로를 구성하는 객체에 전달되는 "경로 컴포넌트" 내에서 경로 탐색 가드를 직접 정의할 수 있습니다.
+마지막으로 라우트를 구성하는 객체에 전달되는 "라우트 컴포넌트" 내에서 라우트 탐색 가드를 직접 정의할 수 있습니다.
 
 ### 옵션 API 사용 %{#using-the-options-api}%
 
-경로 컴포넌트에 다음과 같은 가드 옵션을 추가할 수 있습니다:
+라우트 컴포넌트에 다음과 같은 가드 옵션을 추가할 수 있습니다:
 
 - `beforeRouteEnter`
 - `beforeRouteUpdate`
@@ -236,18 +236,18 @@ const routes = [
 const UserDetails = {
   template: `...`,
   beforeRouteEnter(to, from) {
-    // 이 컴포넌트를 렌더링하는 경로가 결정되기 전에 호출됨.
+    // 이 컴포넌트를 렌더링하는 라우트가 결정되기 전에 호출됨.
     // 이 가드가 호출되는 시점에 컴포넌트 인스턴스는 아직 생성되지 않았으므로,
     // `this`로 컴포넌트 인스턴스에 접근할 수 없음.
   },
   beforeRouteUpdate(to, from) {
-    // 이 컴포넌트를 렌더링하는 경로의 세부 정보가 변경될 때 동일한 컴포넌트가 사용되는 경우 호출됨.
-    // 예를 들어 `/users/:id` 파라미터가 있는 경로가 `/users/1`과 `/users/2` 사이를 탐색할 때,
+    // 이 컴포넌트를 렌더링하는 라우트의 세부 정보가 변경될 때 동일한 컴포넌트가 사용되는 경우 호출됨.
+    // 예를 들어 `/users/:id` 파라미터가 있는 라우트가 `/users/1`과 `/users/2` 사이를 탐색할 때,
     // `UserDetails` 컴포넌트 인스턴스가 유지되면 이 훅이 호출됨.
     // 이 시점에서 컴포넌트 인스턴트는 마운트된 상태이므로, 훅 내부에서 `this`로 컴포넌트 인스턴스에 접근할 수 있음.
   },
   beforeRouteLeave(to, from) {
-    // 이 컴포넌트를 렌더링한 경로에서 떠나려고 할 때 호출됨.
+    // 이 컴포넌트를 렌더링한 라우트에서 떠나려고 할 때 호출됨.
     // `beforeRouteUpdate`처럼 `this`로 컴포넌트 인스턴스에 접근할 수 있음.
   },
 }
@@ -274,7 +274,7 @@ beforeRouteUpdate (to, from) {
 }
 ```
 
-**리브(leave) 가드**는 일반적으로 유저가 작업한 무엇인가를 저장하지 않고, 실수로 경로에서 떠나는 것을 방지하는 데 사용됩니다. `false`를 반환하여 탐색을 취소할 수 있습니다:
+**리브(leave) 가드**는 일반적으로 유저가 작업한 무엇인가를 저장하지 않고, 실수로 라우트에서 떠나는 것을 방지하는 데 사용됩니다. `false`를 반환하여 탐색을 취소할 수 있습니다:
 
 ```js
 beforeRouteLeave (to, from) {
@@ -293,8 +293,8 @@ beforeRouteLeave (to, from) {
 2. 비활성화된 컴포넌트에서 `beforeRouteLeave` 가드 호출.
 3. 전역 `beforeEach` 가드 호출.
 4. 재사용된 컴포넌트에서 `beforeRouteUpdate` 가드 호출.
-5. 경로를 구성하면서 `beforeEnter` 호출.
-6. 비동기 경로 컴포넌트를 해결(resolve).
+5. 라우트를 구성하면서 `beforeEnter` 호출.
+6. 비동기 라우트 컴포넌트를 해결(resolve).
 7. 활성화된 컴포넌트에서 `beforeRouteEnter` 호출.
 8. 전역 `beforeResolve` 가드 호출.
 9. 탐색이 승인됨.

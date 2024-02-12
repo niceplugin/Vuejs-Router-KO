@@ -1,16 +1,16 @@
-# 이름이 있는 경로 %{#Named-Routes}%
+# 이름이 있는 라우트 %{#Named-Routes}%
 
 <VueSchoolLink
 href="https://vueschool.io/lessons/named-routes"
 title="Learn about the named routes"
 />
 
-모든 경로에는 `path`와 더불어 `name`도 제공할 수 있으며, 다음과 같은 장점이 있습니다:
+모든 라우트에는 `path`와 더불어 `name`도 제공할 수 있으며, 다음과 같은 장점이 있습니다:
 
 - 하드코딩된 URL 없음.
 - `params`을 자동 인코딩/디코딩.
 - URL에 오타 발생 방지.
-- 경로의 우선순위를 우회.
+- 라우트의 우선순위를 우회.
 
 ```js
 const routes = [
@@ -22,7 +22,7 @@ const routes = [
 ]
 ```
 
-`<router-link>` 컴포넌트의 `to`에 객체를 전달해 이름이 있는 경로에 연결할 수 있습니다.
+`<router-link>` 컴포넌트의 `to`에 객체를 전달해 이름이 있는 라우트에 연결할 수 있습니다.
 
 ```vue-html
 <router-link :to="{ name: 'user', params: { username: 'erina' }}">
@@ -36,8 +36,8 @@ const routes = [
 router.push({ name: 'user', params: { username: 'erina' } })
 ```
 
-위의 두 경우 모두 `/user/erina` 경로로 이동합니다.
+위의 두 경우 모두 `/user/erina` 라우트로 이동합니다.
 
 참고: [예제](https://github.com/vuejs/vue-router/blob/dev/examples/named-routes/app.js)
 
-각 이름은 모든 경로에서 **고유해야 합니다**. 하나의 이름을 여러 경로에 추가하면 라우터는 마지막에 추가된 것만 유지합니다. 이에 관해서 더 자세한 정보는 [동적 라우팅](../advanced/dynamic-routing.md#Removing-routes) 섹션에서 확인할 수 있습니다.
+각 이름은 모든 라우트에서 **고유해야 합니다**. 하나의 이름을 여러 라우트에 추가하면 라우터는 마지막에 추가된 것만 유지합니다. 이에 관해서 더 자세한 정보는 [동적 라우팅](../advanced/dynamic-routing.md#Removing-routes) 섹션에서 확인할 수 있습니다.

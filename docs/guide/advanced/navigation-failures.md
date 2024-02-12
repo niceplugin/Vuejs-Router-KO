@@ -96,15 +96,15 @@ router.push('/admin').then(failure => {
 })
 ```
 
-`to`와 `from`은 항상 [정규화된 경로 위치](/api/interfaces/RouteLocationNormalized.html)입니다.
+`to`와 `from`은 항상 [정규화된 라우트 위치](/api/interfaces/RouteLocationNormalized.html)입니다.
 
 ## 리디렉션 감지 %{#detecting-redirections}%
 
-네비게이션 가드 내부에서 새로운 위치를 반환할 때, 진행 중인 탐색을 재정의하는 새로운 탐색을 트리거합니다. 리디렉션은 탐색을 중지하지 않으며 **새로운 값을 생성합니다**. 따라서 리디렉션 여부는 경로 위치에서 `redirectedFrom` 속성에 접근하는 방식으로 확인해야 합니다:
+네비게이션 가드 내부에서 새로운 위치를 반환할 때, 진행 중인 탐색을 재정의하는 새로운 탐색을 트리거합니다. 리디렉션은 탐색을 중지하지 않으며 **새로운 값을 생성합니다**. 따라서 리디렉션 여부는 라우트 위치에서 `redirectedFrom` 속성에 접근하는 방식으로 확인해야 합니다:
 
 ```js
 await router.push('/my-profile')
 if (router.currentRoute.value.redirectedFrom) {
-  // redirectedFrom은 네비게이션 가드에서 `to`와 `from`처럼 경로 위치는 나타냄.
+  // redirectedFrom은 네비게이션 가드에서 `to`와 `from`처럼 라우트 위치는 나타냄.
 }
 ```
