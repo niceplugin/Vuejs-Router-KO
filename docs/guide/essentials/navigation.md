@@ -23,26 +23,26 @@ title="Learn how to navigate programmatically"
 | ------------------------- | ------------------ |
 | `<router-link :to="...">` | `router.push(...)` |
 
-이 메서드의 인자는 "문자열 경로" 또는 "위치를 나타내는 객체"일 수 있습니다. 예제:
+이 메서드의 인자는 "문자열 라우트" 또는 "위치를 나타내는 객체"일 수 있습니다. 예제:
 
 ```js
-// 문자열 경로
+// 문자열 라우트
 router.push('/users/eduardo')
 
-// 경로(path)를 나타낸 객체
+// 라우트(path)를 나타낸 객체
 router.push({ path: '/users/eduardo' })
 
-// 파라미터 값이 있는 이름을 가진 경로
+// 파라미터 값이 있는 이름을 가진 라우트
 router.push({ name: 'user', params: { username: 'eduardo' } })
 
-// 쿼리(query) 사용, 이동할 경로: /register?plan=private
+// 쿼리(query) 사용, 이동할 라우트: /register?plan=private
 router.push({ path: '/register', query: { plan: 'private' } })
 
-// 해시(hash) 사용, 이동할 경로: /about#team
+// 해시(hash) 사용, 이동할 라우트: /about#team
 router.push({ path: '/about', hash: '#team' })
 ```
 
-**참고**: `path`가 제공되면 `params`가 무시됩니다. 대신 경로에 `name`을 제공하거나, 수동으로 파라미터를 포함한 전체 `path`를 지정해줘야 합니다. `query`의 경우, 위의 예제처럼 이러한 주의사항에 해당되지 않습니다.
+**참고**: `path`가 제공되면 `params`가 무시됩니다. 대신 라우트에 `name`을 제공하거나, 수동으로 파라미터를 포함한 전체 `path`를 지정해줘야 합니다. `query`의 경우, 위의 예제처럼 이러한 주의사항에 해당되지 않습니다.
 
 ```js
 const username = 'eduardo'

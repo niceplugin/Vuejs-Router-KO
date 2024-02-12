@@ -4,7 +4,7 @@
 href="https://vueschool.io/courses/vue-router-4-for-everyone"
 title="Learn how to build powerful Single Page Applications with the Vue Router on Vue School">Watch a Free Vue Router Video Course</VueSchoolLink>
 
-Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 쉽습니다. Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니다. 여기에 Vue Router를 사용할 경우, 경로에 컴포넌트를 매핑하고 Vue Router에게 렌더링할 경로를 알려주기만 하면 됩니다. 다음은 기본 예제입니다:
+Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 쉽습니다. Vue.js를 사용했다면, 이미 컴포넌트로 앱을 구성했을 것입니다. 여기에 Vue Router를 사용할 경우, 라우트에 컴포넌트를 매핑하고 Vue Router에게 렌더링할 라우트를 알려주기만 하면 됩니다. 다음은 기본 예제입니다:
 
 ## HTML
 
@@ -21,8 +21,8 @@ Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 �
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
   </p>
-  <!-- 경로 출력 -->
-  <!-- 현재 경로에 매핑된 컴포넌트가 렌더링됨. -->
+  <!-- 라우트 출력 -->
+  <!-- 현재 라우트에 매핑된 컴포넌트가 렌더링됨. -->
   <router-view></router-view>
 </div>
 ```
@@ -42,13 +42,13 @@ Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 �
 ```js
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-// 1. 경로에 사용할 컴포넌트를 정의.
+// 1. 라우트에 사용할 컴포넌트를 정의.
 // import를 사용해 파일을 가져올 수 있음.
 const Home = { template: '<div>Home</div>' }
 const About = { template: '<div>About</div>' }
 
-// 2. 경로를 정의하고, 각 경로를 컴포넌트와 매핑.
-// 중첩 경로에 대해서는 나중에 설명함.
+// 2. 라우트를 정의하고, 각 라우트를 컴포넌트와 매핑.
+// 중첩 라우트에 대해서는 나중에 설명함.
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About },
@@ -96,6 +96,6 @@ export default {
 }
 ```
 
-`setup` 함수 내부에서 라우터 또는 경로에 접근하려면, `useRouter` 또는 `useRoute` 함수를 호출해야 합니다. [컴포지션 API](./advanced/composition-api.md#Accessing-the-Router-and-current-Route-inside-setup)에서 이에 대해 자세히 알아볼 것입니다.
+`setup` 함수 내부에서 라우터 또는 라우트에 접근하려면, `useRouter` 또는 `useRoute` 함수를 호출해야 합니다. [컴포지션 API](./advanced/composition-api.md#Accessing-the-Router-and-current-Route-inside-setup)에서 이에 대해 자세히 알아볼 것입니다.
 
 문서 전체에서 우리는 종종 `router` 인스턴스를 사용합니다. `this.$router`는 `createRouter`를 통해 생성된 `router` 인스턴스와 동일합니다. `this.$router`를 사용하는 이유는 라우팅을 조작해야 하는 모든 컴포넌트에서 라우터를 `import` 하고 싶지 않기 때문입니다.

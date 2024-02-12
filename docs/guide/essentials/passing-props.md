@@ -1,11 +1,11 @@
-# 경로 컴포넌트에 props 전달하기 %{#Passing-Props-to-Route-Components}%
+# 라우트 컴포넌트에 props 전달하기 %{#Passing-Props-to-Route-Components}%
 
 <VueSchoolLink
 href="https://vueschool.io/lessons/route-props"
 title="Learn how to pass props to route components"
 />
 
-컴포넌트에서 `$route`를 사용하면 특정 URL에서만 사용할 수 있으므로, 경로와 긴밀하게 결합되고 컴포넌트의 유연성이 제한됩니다. 이것이 반드시 나쁜 것은 아니지만, `props` 옵션으로 이러한 작용을 분리할 수 있습니다.
+컴포넌트에서 `$route`를 사용하면 특정 URL에서만 사용할 수 있으므로, 라우트와 긴밀하게 결합되고 컴포넌트의 유연성이 제한됩니다. 이것이 반드시 나쁜 것은 아니지만, `props` 옵션으로 이러한 작용을 분리할 수 있습니다.
 
 이 예제 코드는:
 
@@ -20,7 +20,7 @@ const routes = [{ path: '/user/:id', component: User }]
 
 ```js
 const User = {
-  // 경로의 파라미터와 동일한 이름으로 prop을 추가해야 함.
+  // 라우트의 파라미터와 동일한 이름으로 prop을 추가해야 함.
   props: ['id'],
   template: '<div>사용자: {{ id }}</div>'
 }
@@ -31,11 +31,11 @@ const routes = [{ path: '/user/:id', component: User, props: true }]
 
 ## 불리언 모드 %{#Boolean-mode}%
 
-경로의 `props`가 `true`로 설정되면, `route.params`가 컴포넌트의 props로 설정됩니다.
+라우트의 `props`가 `true`로 설정되면, `route.params`가 컴포넌트의 props로 설정됩니다.
 
 ## 이름이 있는 뷰 %{#Named-views}%
 
-이름이 있는 뷰가 있는 경로의 경우, 이름이 있는 뷰 각각에 `props` 옵션을 정의해야 합니다:
+이름이 있는 뷰가 있는 라우트의 경우, 이름이 있는 뷰 각각에 `props` 옵션을 정의해야 합니다:
 
 ```js
 const routes = [
@@ -63,7 +63,7 @@ const routes = [
 
 ## 함수 모드 %{#Function-mode}%
 
-Props를 반환하는 함수를 만들 수 있습니다. 이를 통해 파라미터를 다른 유형으로 캐스팅하고, 정적 값을 경로 기반의 값과 결합하는 등의 작업을 수행할 수 있습니다.
+Props를 반환하는 함수를 만들 수 있습니다. 이를 통해 파라미터를 다른 유형으로 캐스팅하고, 정적 값을 라우트 기반의 값과 결합하는 등의 작업을 수행할 수 있습니다.
 
 ```js
 const routes = [
@@ -77,7 +77,7 @@ const routes = [
 
 `/search?q=vue`는 `SearchUser` 컴포넌트의 props로 `{ query: 'vue' }`를 전달합니다.
 
-경로가 변경될 때만 `props`를 정의하는 함수가 평가되므로, 상태가 변경될 때도 반응하는 `props`를 전달하려면, 함수 내부에 상태를 사용하는 대신, 래퍼 컴포넌트를 사용해 계산된 속성(`computed`)을 `props`로 전달해야 합니다.
+라우트가 변경될 때만 `props`를 정의하는 함수가 평가되므로, 상태가 변경될 때도 반응하는 `props`를 전달하려면, 함수 내부에 상태를 사용하는 대신, 래퍼 컴포넌트를 사용해 계산된 속성(`computed`)을 `props`로 전달해야 합니다.
 
 ## RouterView에서 직접 %{#Via-RouterView}%
 

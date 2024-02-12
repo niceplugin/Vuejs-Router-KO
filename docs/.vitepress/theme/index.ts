@@ -9,7 +9,7 @@ import VueSchoolLink from './components/VueSchoolLink.vue'
 import VueMasteryLogoLink from './components/VueMasteryLogoLink.vue'
 
 const theme: Theme = {
-  ...DefaultTheme,
+  extends: DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
       // 'home-features-after': () => h(HomeSponsors),

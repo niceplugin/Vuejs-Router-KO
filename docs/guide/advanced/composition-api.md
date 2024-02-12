@@ -7,7 +7,7 @@ title="Learn how to use Vue Router with the composition API"
 
 Vue 3에서는 `setup`과 [컴포지션 API](https://vuejs.kr/guide/extras/composition-api-faq.html)가 도입되었습니다. 따라서 컴포넌트 내부의 탐색 가드와 `this`에서 라우터에 접근하는 기존 방식을 대체할 수 있는 몇 가지 새로운 함수를 사용할 수 있습니다.
 
-## `setup` 내부에서 라우터 및 현재 경로에 접근하기 %{#accessing-the-router-and-current-route-inside-setup}%
+## `setup` 내부에서 라우터 및 현재 라우트에 접근하기 %{#accessing-the-router-and-current-route-inside-setup}%
 
 `setup` 내부에서는 `this`에 접근할 수 없기 때문에, `this.$router` 또는 `this.$route`에 접근할 수 없습니다. 접근하기 위해서는 `useRouter` 또는 `useRoute` 함수를 사용해야 합니다.
 
@@ -88,7 +88,7 @@ export default {
 }
 ```
 
-컴포지션 API 가드는 `<router-view>`로 렌더링된 모든 컴포넌트에서도 사용할 수 있으므로, 경로 컴포넌트 내에서만 사용해야 하는 것은 아닙니다.
+컴포지션 API 가드는 `<router-view>`로 렌더링된 모든 컴포넌트에서도 사용할 수 있으므로, 라우트 컴포넌트 내에서만 사용해야 하는 것은 아닙니다.
 
 ## `useLink`
 
@@ -109,7 +109,7 @@ export default {
 
   setup(props) {
     const {
-      // 허용된 경로(route) 객체
+      // 허용된 라우트(route) 객체
       route,
       // 링크에서 사용할 href
       href,

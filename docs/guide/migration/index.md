@@ -90,7 +90,7 @@ const routes = [
   // pathMatch는 매개변수의 이름입니다. 예를 들어, /not/found로 이동하면
   // { params: { pathMatch: ['not', 'found'] }}가 생성됩니다.
   // 이것은 마지막 * 덕분에 반복된 매개변수가 생성되며,
-  // 이것은 not-found 라우트를 직접 이름으로 사용하여 해당 경로로 직접 이동하는 경우에 필요합니다.
+  // 이것은 not-found 라우트를 직접 이름으로 사용하여 해당 라우트로 직접 이동하는 경우에 필요합니다.
   { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound },
   // 마지막 `*`을 생략하면 params 내의 `/` 문자가 해석될 때 인코딩됩니다.
   { path: '/:pathMatch(.*)', name: 'bad-not-found', component: NotFound },
@@ -236,9 +236,9 @@ router.currentRoute.value.matched.flatMap(record =>
 
 **이유**: 이 메서드는 SSR 시에만 사용되었으며 사용자가 한 줄로 처리할 수 있는 간단한 메서드였기 때문에 제거되었습니다.
 
-### 리다이렉트 레코드에서 특수 경로 사용 불가능 %{#Redirect-records-cannot-use-special-paths}%
+### 리다이렉트 레코드에서 특수 라우트 사용 불가능 %{#Redirect-records-cannot-use-special-paths}%
 
-이전에는 비공개로 설정된 기능으로 리다이렉트 레코드를 `/events/:id`와 같은 특수 경로로 설정할 수 있었고, 기존의 `id` 매개변수를 재사용할 수 있었습니다. 이제 이 기능은 더 이상 지원되지 않으며 두 가지 옵션이 있습니다:
+이전에는 비공개로 설정된 기능으로 리다이렉트 레코드를 `/events/:id`와 같은 특수 라우트로 설정할 수 있었고, 기존의 `id` 매개변수를 재사용할 수 있었습니다. 이제 이 기능은 더 이상 지원되지 않으며 두 가지 옵션이 있습니다:
 
 - 매개변수 없이 라우트의 이름을 사용하기: `redirect: { name: 'events' }`. 단, `:id` 매개변수가 선택적인 경우에는 작동하지 않습니다.
 - 함수를 사용하여 대상에 기반한 새 위치를 재생성하기: `redirect: to => ({ name: 'events', params: to.params })`

@@ -5,7 +5,7 @@ href="https://vueschool.io/lessons/scroll-behavior"
 title="Learn how to customize scroll behavior"
 />
 
-클라이언트 측 라우팅을 사용할 때, 새로운 경로로 이동하면 스크롤을 맨위로 이동하거나, 이전 페이지를 다시 로드하면 기록된 스크롤 위치로 이동하도록 구현할 수 있습니다. 또한 경로 탐색 시, 스크롤 동작을 원하는 대로 커스텀할 수 있습니다.
+클라이언트 측 라우팅을 사용할 때, 새로운 라우트로 이동하면 스크롤을 맨위로 이동하거나, 이전 페이지를 다시 로드하면 기록된 스크롤 위치로 이동하도록 구현할 수 있습니다. 또한 라우트 탐색 시, 스크롤 동작을 원하는 대로 커스텀할 수 있습니다.
 
 **참고: 이 기능은 브라우저가 `history.pushState`를 지원하는 경우에만 작동.**
 
@@ -21,7 +21,7 @@ const router = createRouter({
 })
 ```
 
-`scrollBehavior` 함수는 [네비게이션 가드](navigation-guards.md)처럼 경로 객체 `to`와 `from`을 인자로 받습니다. 세 번째 인자 `savedPosition`은 `popstate` 탐색(브라우저의 뒤로/앞으로 버튼에 의해 트리거됨)인 경우에만 사용할 수 있습니다.
+`scrollBehavior` 함수는 [네비게이션 가드](navigation-guards.md)처럼 라우트 객체 `to`와 `from`을 인자로 받습니다. 세 번째 인자 `savedPosition`은 `popstate` 탐색(브라우저의 뒤로/앞으로 버튼에 의해 트리거됨)인 경우에만 사용할 수 있습니다.
 
 이 함수는 [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions) 형식의 위치 객체를 반환할 수 있습니다:
 
