@@ -197,7 +197,28 @@ const routes = [
 ]
 ```
 
-[경로 메타 필드](./meta.md) 및 전역 탐색 가드를 사용하여 유사한 동작을 수행할 수 있습니다.
+[중첩 라우트](../essentials/nested-routes)를 사용할 때, 부모와 자식 라우트 모두 `beforeEnter`를 사용할 수 있습니다. 부모 라우트에 배치된 경우, 같은 부모를 공유하는 자식들 간에 이동할 때는 트리거되지 않습니다. 예를 들어:
+
+```js
+const routes = [
+  {
+    path: '/user',
+    beforeEnter() {
+      // ...
+    },
+    children: [
+      { path: 'list', component: UserList },
+      { path: 'details', component: UserDetails },
+    ],
+  },
+]
+```
+
+위 예제의 `beforeEnter`는 `/user/list`와 `/user/details` 간 이동할 때 호출되지 않습니다. 왜냐하면 그들은 같은 부모를 공유하기 때문입니다. 대신 `details` 라우트에 직접 `beforeEnter` 가드를 두면, 그 두 라우트 간 이동할 때 호출될 것입니다.
+
+::: tip
+[라우트 메타 필드](./meta)와 전역 탐색 가드를 사용하여 라우트별 가드와 유사한 동작을 달성할 수 있습니다.
+:::
 
 ## 컴포넌트 내부 가드 %{#in-component-guards}%
 
