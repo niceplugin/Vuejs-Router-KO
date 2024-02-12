@@ -26,7 +26,7 @@ const router = createRouter({
 
 ## HTML5 모드 %{#html5-mode}%
 
-HTML5 모드는 `createWebHashHistory()`를 사용하여 적용하며, 권장하는 모드입니다:
+HTML5 모드는 `createWebHistory()`를 사용하여 적용하며, 권장하는 모드입니다:
 
 ```js
 import { createRouter, createWebHistory } from 'vue-router'
