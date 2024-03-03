@@ -17,7 +17,8 @@ Vue + Vue Router로 사용해 싱글 페이지 앱을 만드는 것은 매우 �
   <p>
     <!-- 탐색을 위해 router-link 컴포넌트를 사용. -->
     <!-- `to`라는 prop으로 링크를 지정. -->
-    <!-- `<router-link>`는 `href` 속성이 있는 `<a>` 태그로 렌더링됨. -->
+    <!-- `<router-link>` 태그는 올바른 `href` 속성을 가진 -->
+    <!-- `<a>` 태그로 렌더링 될 것. -->
     <router-link to="/">Home</router-link>
     <router-link to="/about">About</router-link>
   </p>
@@ -57,7 +58,8 @@ const routes = [
 // 3. `routes`를 옵션으로 전달해 라우터 인스턴스를 생성.
 // 여기에 추가 옵션을 전달할 수 있지만, 지금은 간단하게 나타냄.
 const router = createRouter({
-  // 4. 사용할 히스토리 모드 정의. 여기서는 간단하게 해시 모드를 사용.
+  // 4. 사용할 히스토리 모드 정의.
+  // 여기서는 간단하게 해시 모드를 사용.
   history: createWebHashHistory(),
   routes, // `routes: routes`와 같음
 })
