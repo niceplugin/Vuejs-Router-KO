@@ -1,30 +1,78 @@
-# 라우트 컴포넌트에 props 전달하기 %{#Passing-Props-to-Route-Components}%
+# 라우트 컴포넌트에 프롭스 전달하기 %{#Passing-Props-to-Route-Components}%
 
 <VueSchoolLink
 href="https://vueschool.io/lessons/route-props"
-title="Learn how to pass props to route components"
+title="라우트 컴포넌트에 프롭스를 전달하는 방법 배우기"
 />
 
-컴포넌트에서 `$route`를 사용하면 특정 URL에서만 사용할 수 있으므로, 라우트와 긴밀하게 결합되고 컴포넌트의 유연성이 제한됩니다. 이것이 반드시 나쁜 것은 아니지만, `props` 옵션으로 이러한 작용을 분리할 수 있습니다.
+`$route` 또는 `useRoute()`를 컴포넌트에서 사용하면 라우트와의 강한 결합이 생기며 이는 컴포넌트가 특정 URL에서만 사용될 수 있게 제한합니다. 이것이 반드시 나쁜 것은 아니지만, `props` 옵션을 사용함으로써 이러한 동작을 분리할 수 있습니다.
 
-이 예제 코드는:
+이전 예제로 돌아가 봅시다:
 
-```js
-const User = {
-  template: '<div>사용자: {{ $route.params.id }}</div>'
-}
-const routes = [{ path: '/user/:id', component: User }]
+```vue
+<!-- User.vue -->
+<template>
+  <div>
+    User {{ $route.params.id }}
+  </div>
+</template>
 ```
 
-이렇게 바꿀 수 있습니다:
+다음과 함께 사용:
 
 ```js
-const User = {
-  // 라우트의 파라미터와 동일한 이름으로 prop을 추가해야 함.
-  props: ['id'],
-  template: '<div>사용자: {{ id }}</div>'
+import User from './User.vue'
+
+// 이것은 `createRouter`에 전달됩니다
+const routes = [
+  { path: '/users/:id', component: User },
+]
+```
+
+`User.vue`에서 `$route`에 대한 직접적인 의존성을 제거하려면 대신 prop을 선언할 수 있습니다:
+
+::: code-group
+
+```vue [Composition API]
+<!-- User.vue -->
+<script setup>
+defineProps({
+  id: String
+})
+</script>
+
+<template>
+  <div>
+    User {{ id }}
+  </div>
+</template>
+```
+
+```vue [Options API]
+<!-- User.vue -->
+<script>
+export default {
+  props: {
+    id: String
+  }
 }
-const routes = [{ path: '/user/:id', component: User, props: true }]
+</script>
+
+<template>
+  <div>
+    User {{ id }}
+  </div>
+</template>
+```
+
+:::
+
+그런 다음 `props: true`를 설정하여 `id` 매개변수를 prop으로 전달하도록 라우트를 구성할 수 있습니다:
+
+```js
+const routes = [
+  { path: '/user/:id', component: User, props: true }
+]
 ```
 
 이렇게 하면 어디에서나 컴포넌트를 더 쉽게 재사용하고 테스트할 수 있습니다.

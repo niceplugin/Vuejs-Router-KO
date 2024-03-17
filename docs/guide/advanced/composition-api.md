@@ -1,133 +1,121 @@
-# Vue Router와 컴포지션 API %{#vue-router-and-the-composition-api}%
+# Vue Router와 컴포지션 API %{#Vue-Router-and-the-Composition-API}%
 
 <VueSchoolLink
-href="https://vueschool.io/lessons/router-and-the-composition-api"
-title="Learn how to use Vue Router with the composition API"
+  href="https://vueschool.io/lessons/router-and-the-composition-api"
+  title="Vue Router와 컴포지션 API 사용법 배우기"
 />
 
-Vue 3에서는 `setup`과 [컴포지션 API](https://vuejs.kr/guide/extras/composition-api-faq.html)가 도입되었습니다. 따라서 컴포넌트 내부의 탐색 가드와 `this`에서 라우터에 접근하는 기존 방식을 대체할 수 있는 몇 가지 새로운 함수를 사용할 수 있습니다.
+Vue의 [컴포지션 API](https://vuejs.org/guide/extras/composition-api-faq.html) 도입은 새로운 가능성을 열었지만, Vue Router의 전체 잠재력을 활용하기 위해서는 몇 가지 새로운 함수를 사용하여 `this`에 대한 접근을 대체하고 컴포넌트 내 네비게이션 가드를 사용할 필요가 있습니다.
 
-## `setup` 내부에서 라우터 및 현재 라우트에 접근하기 %{#accessing-the-router-and-current-route-inside-setup}%
+## `setup` 내에서 라우터 및 현재 루트 접근 %{#Accessing-the-Router-and-current-Route-inside-setup}%
 
-`setup` 내부에서는 `this`에 접근할 수 없기 때문에, `this.$router` 또는 `this.$route`에 접근할 수 없습니다. 접근하기 위해서는 `useRouter` 또는 `useRoute` 함수를 사용해야 합니다.
+`setup` 내에서 `this`에 접근할 수 없기 때문에 `this.$router`나 `this.$route`에 직접 접근할 수 없습니다. 대신, `useRouter`와 `useRoute` 컴포저블을 사용합니다:
 
-```js
+```vue
+<script setup>
 import { useRouter, useRoute } from 'vue-router'
 
-export default {
-  setup() {
-    const router = useRouter()
-    const route = useRoute()
+const router = useRouter()
+const route = useRoute()
 
-    function pushWithQuery(query) {
-      router.push({
-        name: 'search',
-        query: {
-          ...route.query,
-          ...route,
-        },
-      })
-    }
-  },
+function pushWithQuery(query) {
+  router.push({
+    name: 'search',
+    query: {
+      ...route.query,
+      ...query,
+    },
+  })
 }
+</script>
 ```
 
-`route`는 반응형 객체이므로 해당 속성은 모두 감시할 수 있으므로, `route` 객체 전체를 감시하는 것은 피하는게 좋습니다. 대부분의 경우, 변경하려는 파라미터를 직접 감시하는 것이 좋습니다.
+`route` 객체는 반응형 객체입니다. 대부분의 경우, `route` 객체 전체를 감시하는 것은 **피해야 합니다**. 대신, 변경을 기대하는 속성들을 직접 감시할 수 있습니다:
 
-```js
+```vue
+<script setup>
 import { useRoute } from 'vue-router'
 import { ref, watch } from 'vue'
 
-export default {
-  setup() {
-    const route = useRoute()
-    const userData = ref()
+const route = useRoute()
+const userData = ref()
 
-    // 파라미터가 변경될 때 유저 정보를 가져오기.
-    watch(
-      () => route.params.id,
-      async newId => {
-        userData.value = await fetchUser(newId)
-      }
-    )
-  },
-}
+// 파라미터 변경 시 사용자 정보를 가져옵니다
+watch(
+  () => route.params.id,
+  async newId => {
+    userData.value = await fetchUser(newId)
+  }
+)
+</script>
 ```
 
-템플릿 내부에서는 여전히 `$router` 및 `$route`로 접근할 수 있으므로, `setup` 내부에서 `router` 및 `route`를 반환할 필요는 없습니다.
+템플릿에서는 여전히 `$router`와 `$route`에 접근할 수 있으므로, 템플릿에서만 이 객체들이 필요한 경우 `useRouter`나 `useRoute`를 사용할 필요가 없습니다.
 
-## 탐색 가드 %{#navigation-guards}%
+## 네비게이션 가드 %{#Navigation-Guards}%
 
-Vue Router는 업데이트 및 리브 가드를 컴포지션 API 메서드로 노출하므로, `setup` 함수에서 컴포넌트 내 탐색 가드를 계속 사용할 수 있습니다.
+Vue Router는 컴포지션 API 함수로 업데이트와 떠남 가드를 노출합니다:
 
-```js
+```vue
+<script setup>
 import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 import { ref } from 'vue'
 
-export default {
-  setup() {
-    // `this`에 접근 권한이 없으며, beforeRouteLeave 옵션과 동일
-    onBeforeRouteLeave((to, from) => {
-      const answer = window.confirm(
-        '정말 떠나시겠습니까? 저장되지 않은 변경 사항이 있습니다!'
-      )
-      // 탐색을 취소하고 같은 페이지에 머물기
-      if (!answer) return false
-    })
+// beforeRouteLeave 옵션과 같지만 `this`에 대한 접근이 없습니다
+onBeforeRouteLeave((to, from) => {
+  const answer = window.confirm(
+    '정말 페이지를 떠나시겠습니까? 저장되지 않은 변경사항이 있습니다!'
+  )
+  // 네비게이션을 취소하고 같은 페이지에 머뭅니다
+  if (!answer) return false
+})
 
-    const userData = ref()
+const userData = ref()
 
-    // `this`에 접근 권한이 없으며, beforeRouteUpdate 옵션과 동일
-    onBeforeRouteUpdate(async (to, from) => {
-      // 쿼리 또는 해시가 변경되었을 수 있으므로, ID가 변경된 경우에만 유저 정보를 가져오기.
-      if (to.params.id !== from.params.id) {
-        userData.value = await fetchUser(to.params.id)
-      }
-    })
-  },
-}
+// beforeRouteUpdate 옵션과 같지만 `this`에 대한 접근이 없습니다
+onBeforeRouteUpdate(async (to, from) => {
+  // id가 변경된 경우에만 사용자를 가져옵니다
+  if (to.params.id !== from.params.id) {
+    userData.value = await fetchUser(to.params.id)
+  }
+})
+</script>
 ```
 
-컴포지션 API 가드는 `<router-view>`로 렌더링된 모든 컴포넌트에서도 사용할 수 있으므로, 라우트 컴포넌트 내에서만 사용해야 하는 것은 아닙니다.
+컴포지션 API 가드는 `<router-view>`에 의해 렌더링된 모든 컴포넌트에서 사용할 수 있으며, 컴포넌트 내 가드처럼 라우트 컴포넌트에서 직접 사용할 필요는 없습니다.
 
-## `useLink`
+## `useLink` %{#useLink}%
 
-Vue 라우터는 RouterLink의 내부 동작을 컴포저블로 노출합니다. 이는 `RouterLink`의 props와 같은 반응 객체를 허용하고 low-level 속성을 노출하여 자신만의 `RouterLink` 컴포넌트를 구축하거나 사용자 지정 링크를 생성합니다:
+Vue Router는 RouterLink의 내부 동작을 컴포저블로 노출합니다. 이는 `RouterLink`의 props와 같은 반응형 객체를 받아들이며, 자신만의 `RouterLink` 컴포넌트를 구축하거나 사용자 정의 링크를 생성하기 위한 저수준 속성들을 노출합니다:
 
-```js
+```vue
+<script setup>
 import { RouterLink, useLink } from 'vue-router'
 import { computed } from 'vue'
 
-export default {
-  name: 'AppLink',
+const props = defineProps({
+  // TypeScript 사용 시 @ts-ignore 추가
+  ...RouterLink.props,
+  inactiveClass: String,
+})
 
-  props: {
-    // TypeScript를 사용한다면, @ts-ignore 추가가 필요함
-    ...RouterLink.props,
-    inactiveClass: String,
-  },
+const {
+  // 해결된 라우트 객체
+  route,
+  // 링크에서 사용할 href
+  href,
+  // 링크가 활성화되었는지 나타내는 불린 ref
+  isActive,
+  // 링크가 정확히 활성화되었는지 나타내는 불린 ref
+  isExactActive,
+  // 링크로 이동하는 함수
+  navigate
+} = useLink(props)
 
-  setup(props) {
-    const {
-      // 허용된 라우트(route) 객체
-      route,
-      // 링크에서 사용할 href
-      href,
-      // 링크가 활성 상태인지 나타내는 boolean 타입의 값 참조
-      isActive,
-      // 링크가 정확히 활성 상태인지 나타내는 boolean 타입의 값 참조
-      isExactActive,
-      // 링크로 이동하는 함수
-      navigate
-    } = useLink(props)
-
-    const isExternalLink = computed(
-      () => typeof props.to === 'string' && props.to.startsWith('http')
-    )
-
-    return { isExternalLink, href, navigate, isActive }
-  },
-}
+const isExternalLink = computed(
+  () => typeof props.to === 'string' && props.to.startsWith('http')
+)
+</script>
 ```
 
-RouterLink의 `v-slot`은 `useLink` 컴포저블과 동일한 속성에 대한 액세스를 제공합니다.
+RouterLink의 `v-slot`은 `useLink` 컴포저블과 동일한 속성에 접근할 수 있습니다.

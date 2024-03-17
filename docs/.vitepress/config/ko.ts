@@ -90,16 +90,16 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/route-matching-syntax.html',
             },
             {
+              text: '이름이 있는 라우트',
+              link: '/guide/essentials/named-routes.html',
+            },
+            {
               text: '중첩된 라우트',
               link: '/guide/essentials/nested-routes.html',
             },
             {
               text: '프로그래밍 방식 탐색',
               link: '/guide/essentials/navigation.html',
-            },
-            {
-              text: '이름이 있는 라우트',
-              link: '/guide/essentials/named-routes.html',
             },
             {
               text: '이름이 있는 뷰',

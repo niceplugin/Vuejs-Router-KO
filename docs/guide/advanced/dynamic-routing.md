@@ -30,7 +30,7 @@ router.addRoute({ path: '/about', component: About })
 
 ```js
 router.addRoute({ path: '/about', component: About })
-// router.currentRoute.value 대신 this.$route 또는 route = useRoute()를 사용할 수도 있음(setup 내에서).
+// this.$route 또는 useRoute()를 사용할 수도 있습니다.
 router.replace(router.currentRoute.value.fullPath)
 ```
 
