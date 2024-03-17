@@ -1,4 +1,4 @@
-# 라우트 메타 필드 %{#route-meta-fields}%
+# 라우트 메타 필드 %{#Route-Meta-Fields}%
 
 <VueSchoolLink
 href="https://vueschool.io/lessons/route-meta-fields"
@@ -38,7 +38,7 @@ const routes = [
 
 예를 들어 위처럼 구성된 라우트에서 `/posts/new`는 부모 라우트 레코드(`path: '/posts'`)와 자식 라우트 레코드(`path: 'new'`) 모두와 일치합니다.
 
-라우트와 일치하는 모든 라우트 레코드는 `$route` 객체의 속성 `matched`에서 배열로 노출됩니다. 모든 `meta` 필드를 확인하기 위해 해당 배열을 뒤져볼 수 있지만, Vue Router는 부모에서 자식으로 **모든 `meta`** 필드를 비재귀적 병합한 `$route.meta` 객체도 제공하므로, `meta`에 간단히 접근할 수 있습니다.
+모든 라우트에 의해 일치된 라우트 기록은 `route` 객체(그리고 네비게이션 가드의 라우트 객체)에 `route.matched` 배열로 노출됩니다. 해당 배열을 순회하여 모든 `meta` 필드를 확인할 수 있지만, Vue Router는 부모에서 자식으로의 **모든 `meta`** 필드의 비재귀적 병합인 `route.meta`를 제공합니다. 이는 단순히 다음과 같이 작성할 수 있음을 의미합니다:
 
 ```js
 router.beforeEach((to, from) => {
@@ -56,7 +56,7 @@ router.beforeEach((to, from) => {
 })
 ```
 
-## TypeScript
+## TypeScript %{#TypeScript}%
 
 `vue-router`에서 `RouteMeta` 인터페이스를 확장하여 메타 필드를 입력할 수 있습니다:
 

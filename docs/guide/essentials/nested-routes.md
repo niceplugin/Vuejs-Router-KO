@@ -22,16 +22,24 @@ Vue Router를 사용하는 경우, 중첩된 라우트 구성을 통해 이러�
 
 지난 장에서 만든 앱을 예로들면:
 
-```html
-<div id="app">
-  <router-view></router-view>
-</div>
+```vue
+<!-- App.vue -->
+<template>
+  <router-view />
+</template>
+```
+
+```vue
+<!-- User.vue -->
+<template>
+  <div>
+    User {{ $route.params.id }}
+  </div>
+</template>
 ```
 
 ```js
-const User = {
-  template: '<div>유저 {{ $route.params.id }}</div>',
-}
+import User from './User.vue'
 
 // 이것은 `createRouter`로 전달됨
 const routes = [{ path: '/user/:id', component: User }]
@@ -39,15 +47,14 @@ const routes = [{ path: '/user/:id', component: User }]
 
 여기서 `<router-view>`는 최상위 `router-view`입니다. 최상위 라우트와 일치하는 컴포넌트를 렌더링합니다. 마찬가지로 렌더링된 컴포넌트는 자체 중첩된 `<router-view>`를 포함할 수도 있습니다. 예를 들어 `User` 컴포넌트의 템플릿 내부에 `<router-view>`를 하나 추가하면:
 
-```js
-const User = {
-  template: `
-    <div class="user">
-      <h2>유저 {{ $route.params.id }}</h2>
-      <router-view></router-view>
-    </div>
-  `,
-}
+```vue
+<!-- User.vue -->
+<template>
+  <div class="user">
+    <h2>유저 {{ $route.params.id }}</h2>
+    <router-view />
+  </div>
+</template>
 ```
 
 이 중첩된 `router-view`에 컴포넌트를 렌더링하려면, `/user/:id` 라우트 내부의 모든 라우트에 `children` 옵션을 사용해야 합니다:

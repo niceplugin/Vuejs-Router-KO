@@ -8,9 +8,9 @@ title="Learn how to use named views"
 때로는 여러 뷰(view)를 중첩하지 않고, 동시에 표시해야 합니다(예: 사이드바와 메인 뷰가 있는 레이아웃). 이럴 때는 이름이 있는 뷰를 사용하면 유용합니다. "결과를 노출할 수단"(이하 아울렛)으로 하나의 뷰를 사용하는 것보다, 여러 개의 아울렛 뷰 각각에 이름을 지정해 사용하는 것입니다. 이름이 지정되지 않은 `<router-view>`는 기본 값으로 `default`라는 이름을 가집니다.
 
 ```vue-html
-<router-view class="view left-sidebar" name="LeftSidebar"></router-view>
-<router-view class="view main-content"></router-view>
-<router-view class="view right-sidebar" name="RightSidebar"></router-view>
+<router-view class="view left-sidebar" name="LeftSidebar" />
+<router-view class="view main-content" />
+<router-view class="view right-sidebar" name="RightSidebar" />
 ```
 
 뷰는 사용할 컴포넌트로 렌더링되므로,

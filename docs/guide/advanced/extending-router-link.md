@@ -1,15 +1,36 @@
-# RouterLink 확장하기 %{#extending-routerlink}%
+# RouterLink 확장하기 %{#Extending-RouterLink}%
 
 <VueSchoolLink
-href="https://vueschool.io/lessons/extending-router-link-for-external-urls"
-title="Learn how to extend router-link"
+  href="https://vueschool.io/lessons/extending-router-link-for-external-urls"
+  title="Learn how to extend router-link"
 />
 
 `<router-link>` 컴포넌트는 대부분의 기본 앱에 충분할 만큼의 `props`를 노출하지만, 가능한 모든 사용 사례를 다루지 않으며, 일부 고급 사례에서는 `v-slot`을 사용하게 될 것입니다. 대부분의 중대형 앱에서는 앱 전체에서 재사용하기 위해, 최소한 `<router-link>`의 커스텀 컴포넌트 한 개는 만들게 됩니다. 예를 들어 탐색 메뉴의 링크, 외부 링크 처리, `inactive-class`(비활성 클래스) 추가 등이 있습니다.
 
 RouterLink를 확장해 외부 링크를 처리하도록 하고, `AppLink.vue` 파일에 커스텀 `inactive-class`를 추가해 보겠습니다:
 
-```vue
+::: code-group
+
+```vue [Composition API]
+<script setup>
+import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
+
+defineOptions({
+  inheritAttrs: false,
+})
+
+const props = defineProps({
+  // TypeScript 를 사용하는 경우 @ts-ignore 를 추가하세요.
+  ...RouterLink.props,
+  inactiveClass: String,
+})
+
+const isExternalLink = computed(() => {
+  return typeof props.to === 'string' && props.to.startsWith('http')
+})
+</script>
+
 <template>
   <a v-if="isExternalLink" v-bind="$attrs" :href="to" target="_blank">
     <slot />
@@ -30,7 +51,9 @@ RouterLink를 확장해 외부 링크를 처리하도록 하고, `AppLink.vue` �
     </a>
   </router-link>
 </template>
+```
 
+```vue [Options API]
 <script>
 import { RouterLink } from 'vue-router'
 
@@ -39,7 +62,7 @@ export default {
   inheritAttrs: false,
 
   props: {
-    // TypeScript를 사용한다면, @ts-ignore 추가가 필요함
+    // TypeScript 를 사용하는 경우 @ts-ignore 를 추가하세요.
     ...RouterLink.props,
     inactiveClass: String,
   },
@@ -51,7 +74,30 @@ export default {
   },
 }
 </script>
+
+<template>
+  <a v-if="isExternalLink" v-bind="$attrs" :href="to" target="_blank">
+    <slot />
+  </a>
+  <router-link
+    v-else
+    v-bind="$props"
+    custom
+    v-slot="{ isActive, href, navigate }"
+  >
+    <a
+      v-bind="$attrs"
+      :href="href"
+      @click="navigate"
+      :class="isActive ? activeClass : inactiveClass"
+    >
+      <slot />
+    </a>
+  </router-link>
+</template>
 ```
+
+:::
 
 렌더링 함수를 사용하거나 `computed` 속성을 만드는 것을 선호하는 경우, [컴포지션 API](composition-api.md)에서 `useLink`를 사용할 수 있습니다:
 

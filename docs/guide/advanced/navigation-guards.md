@@ -232,9 +232,9 @@ const routes = [
 - `beforeRouteUpdate`
 - `beforeRouteLeave`
 
-```js
-const UserDetails = {
-  template: `...`,
+```vue
+<script>
+  export default {
   beforeRouteEnter(to, from) {
     // 이 컴포넌트를 렌더링하는 라우트가 결정되기 전에 호출됨.
     // 이 가드가 호출되는 시점에 컴포넌트 인스턴스는 아직 생성되지 않았으므로,
@@ -251,6 +251,7 @@ const UserDetails = {
     // `beforeRouteUpdate`처럼 `this`로 컴포넌트 인스턴스에 접근할 수 있음.
   },
 }
+</script>
 ```
 
 `beforeRouteEnter` 가드는 탐색이 결정되기 전에 호출되므로, 진입할 새로운 컴포넌트가 아직 생성되지 않아 **`this`에 접근할 수 없습니다**.
@@ -285,7 +286,7 @@ beforeRouteLeave (to, from) {
 
 ### 컴포지션 API 사용 %{#using-the-composition-api}%
 
-[컴포지션 API 및 `setup` 함수](https://vuejs.kr/api/composition-api-setup.html)를 사용하여 컴포넌트를 작성하는 경우, `onBeforeRouteUpdate` 및 `onBeforeRouteLeave` 가드를 추가할 수 있습니다. 참고: [가이드 - 컴포지션 API](composition-api.md#navigation-guards)
+Composition API를 사용하여 컴포넌트를 작성하는 경우, `onBeforeRouteUpdate`와 `onBeforeRouteLeave`를 각각 사용하여 가드를 추가할 수 있습니다. 자세한 내용은 [Composition API 섹션](./composition-api.md#navigation-guards)을 참조하십시오.
 
 ## 전체적인 탐색 흐름 %{#the-full-navigation-resolution-flow}%
 
@@ -301,7 +302,3 @@ beforeRouteLeave (to, from) {
 10. 전역 `afterEach` 훅 호출.
 11. DOM 업데이트가 트리거됨.
 12. 인스턴스화 된 인스턴스 내부 `beforeRouteEnter` 가드에서 전달된 `next` 콜백 호출.
-
-[//]: # (![Vue router flow]&#40;./images/vue-router-lifecycle.png&#41;)
-
-<!-- https://www.figma.com/file/KOQQRmhZs9qJtpOTfw8a1I/Vue-Router-Lifecycle-(ko-kr) -->
