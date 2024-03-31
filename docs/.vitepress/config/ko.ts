@@ -114,6 +114,10 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/passing-props.html',
             },
             {
+              text: 'Active links',
+              link: '/guide/essentials/active-links.html',
+            },
+            {
               text: '다양한 히스토리 모드',
               link: '/guide/essentials/history-mode.html',
             },
