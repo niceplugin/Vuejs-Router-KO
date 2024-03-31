@@ -52,7 +52,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           },
           {
             text: 'Vue.js 자격증',
-            link: 'https://certification.vuejs.org/?friend=VUEROUTER',
+            link: 'https://certificates.dev/vuejs/?friend=VUEROUTER&utm_source=router_vuejs&utm_medium=link&utm_campaign=router_vuejs_links&utm_content=navbar',
           },
         ],
       },
@@ -75,7 +75,6 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         },
         {
           text: '기초',
-          collapsible: false,
           items: [
             {
               text: '시작하기',
@@ -114,6 +113,10 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/passing-props.html',
             },
             {
+              text: 'Active links',
+              link: '/guide/essentials/active-links.html',
+            },
+            {
               text: '다양한 히스토리 모드',
               link: '/guide/essentials/history-mode.html',
             },
@@ -121,7 +124,6 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         },
         {
           text: '심화',
-          collapsible: false,
           items: [
             {
               text: '네비게이션 가드',
