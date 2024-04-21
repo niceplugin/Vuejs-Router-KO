@@ -75,4 +75,4 @@ const router = createRouter({
 })
 ```
 
-더 고급 사용자 정의 기술에 대해서는 [RouterLink 확장](../advanced/extending-router-link)을 참조하십시오.
+v-slot API를 사용한 보다 고급 사용자 정의 기법에 대해서는 [RouterLink 확장](../advanced/extending-router-link)를 참조하세요.
