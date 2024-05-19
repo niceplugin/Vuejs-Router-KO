@@ -15,7 +15,7 @@ const theme: Theme = {
     return h(DefaultTheme.Layout, null, {
       // 'home-features-after': () => h(HomeSponsors),
       'aside-ads-before': () => h(AsideSponsors),
-      'layout-top': () => h(VuejsdeConfBanner)
+      // 'layout-top': () => h(VuejsdeConfBanner)
     })
   },
 
