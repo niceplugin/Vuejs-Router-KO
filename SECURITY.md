@@ -1,5 +1,5 @@
-# 취약점 보고
+# Reporting a Vulnerability
 
-취약점을 보고하려면 security@vuejs.org로 이메일을 보내주세요.
+To report a vulnerability, please email security@vuejs.org.
 
-새로운 취약점 발견은 드물지만, 애플리케이션의 최대 보안을 위해 항상 최신 버전의 Vue와 공식 동반 라이브러리를 사용하는 것을 권장합니다.
+While the discovery of new vulnerabilities is rare, we also recommend always using the latest versions of Vue and its official companion libraries to ensure your application remains as secure as possible.

@@ -1,30 +1,33 @@
-# vue-router [![release candidate](https://img.shields.io/npm/v/vue-router.svg)](https://www.npmjs.com/package/vue-router) [![test](https://github.com/vuejs/router/actions/workflows/test.yml/badge.svg)](https://github.com/vuejs/router/actions/workflows/test.yml)
+# vue-router [![release candidate](https://img.shields.io/npm/v/vue-router.svg)](https://www.npmjs.com/package/vue-router) [![test](https://github.com/vuejs/router/actions/workflows/test.yml/badge.svg)](https://github.com/vuejs/router/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/vuejs/router/graph/badge.svg?token=azNM3FI0d1)](https://codecov.io/gh/vuejs/router)
 
-> 여기는 Vue Router 4 (Vue 3전용) 웹 페이지 한글화를 위해 포크한 저장소 입니다.
+> - 이 저장소는 Vue Router 4 (Vue 3용)입니다.
+> - Vue Router 3 (Vue 2용)은 [vuejs/vue-router](https://github.com/vuejs/vue-router)를 참조하세요.
 
-> 최신 Vitepress를 사용하여 웹 페이지를 생성하므로,
-  공식 사이트와 시각적으로 달라보일 수 있으나,
-  내용은 동일하게 유지됩니다.
+<h2 align="center">Vue Router 후원하기</h2>
+
+Vue Router는 Vue 생태계의 일부이며, MIT 라이선스의 오픈 소스 프로젝트입니다. 지속적인 개발은 전적으로 스폰서들의 지원 덕분에 가능해졌습니다. 스폰서가 되고 싶다면 다음을 고려해 주세요:
+
+- [GitHub에서 스폰서 되기](https://github.com/sponsors/posva)
+- [PayPal을 통한 일회성 기부](https://paypal.me/posva)
 
 ---
 
-웹 페이지 바로가기: [한글화 문서](https://router.vuejs.kr/)
+[한글문서](https://router.vuejs.kr)로 시작하세요.
 
-## 빠른시작
+## 빠른 시작
 
-- CDN: `<script src="https://unpkg.com/vue-router@4"></script>`
-- 브라우저에서 연습하기: [CodeSandbox](https://codesandbox.io/s/vue-router-4-reproduction-hb9lh)
+- CDN 사용: `<script src="https://unpkg.com/vue-router@4"></script>`
+- [CodeSandbox](https://codesandbox.io/s/vue-router-4-reproduction-hb9lh)에서 브라우저 플레이그라운드 사용
 - 기존 Vue 프로젝트에 추가:
+
   ```bash
   npm install vue-router@4
   ```
 
-## 브랜치 구조
+## Vue Router 3에서 변경된 사항
 
-- `main-korean`: 최신 한글화 문서 브랜치 입니다. 모든 번역 작업은 최종적으로 이곳으로 병합됩니다.
-- `main`: Fetch upstream으로 `vuejs/router`의 최신 원본 문서를 주기적으로 추적합니다.
-- 그외: 포크된 `vuejs/router`의 브랜치들 입니다.
+[이전 가이드](https://router.vuejs.kr/guide/migration/)를 참조하세요.
 
-## 마지막 확인일
+## 기여하기
 
-2023-04-25 00:26
+[기여 가이드](https://github.com/vuejs/router/blob/main/.github/contributing.md)를 참조하세요.
