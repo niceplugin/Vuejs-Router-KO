@@ -104,18 +104,18 @@ const routes = [
 ]
 ```
 
-이 예제의 작동 데모는 [여기](https://codesandbox.io/s/nested-views-vue-router-4-examples-hl326?initialpath=%2Fusers%2Feduardo)에서 확인할 수 있습니다.
+이 예제의 데모는 [여기](https://codesandbox.io/s/nested-views-vue-router-4-examples-hl326?initialpath=%2Fusers%2Feduardo)에서 확인할 수 있습니다.
 
-## 중첩된 이름이 있는 라우트 %{#Nested-Named-Routes}%
+## 중첩된 네임드 라우트 %{#Nested-Named-Routes}%
 
-[이름이 지정된 라우트](./named-routes.md)를 다룰 때, 일반적으로 **자식 라우트에 이름을 지정**합니다:
+[네임드 라우트](./named-routes.md)를 다룰 때, 일반적으로 **자식 라우트에 이름을 지정**합니다:
 
 ```js
 const routes = [
   {
     path: '/user/:id',
     component: User,
-    // 자식 라우트에만 이름이 있다는 점에 주목하세요.
+    // 자식만 네임드 라우트라는 점에 주목하세요.
     children: [{ path: '', name: 'user', component: UserHome }],
   },
 ]
@@ -123,7 +123,7 @@ const routes = [
 
 이렇게 하면 `/user/:id`로 이동할 때 항상 중첩된 라우트가 표시됩니다.
 
-어떤 상황에서는 중첩된 라우트로 이동하지 않고 이름이 지정된 라우트로만 이동하고 싶을 수 있습니다. 예를 들어, `/user/:id`로 이동하면서 중첩된 라우트를 표시하지 않으려는 경우입니다. 이 경우, 부모 라우트에도 이름을 지정할 수 있지만, **페이지를 새로고침하면 중첩된 자식 라우트가 항상 표시**된다는 점을 유의해야 합니다. 이는 이름이 지정된 라우트 대신 `/users/:id` 경로 탐색으로 간주되기 때문입니다:
+어떤 상황에서는 중첩된 라우트로 이동하지 않고 네임드 라우트로만 이동하고 싶을 수 있습니다. 예를 들어, `/user/:id`로 이동하면서 중첩된 라우트를 표시하지 않으려는 경우입니다. 이 경우, 부모 라우트에도 이름을 지정할 수 있지만, **페이지를 새로고침하면 중첩된 자식 라우트가 항상 표시**된다는 점을 유의해야 합니다. 이는 네임드 라우트 대신 `/users/:id` 경로 탐색으로 간주되기 때문입니다:
 
 ```js
 const routes = [

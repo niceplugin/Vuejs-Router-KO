@@ -1,4 +1,4 @@
-# 이름이 지정된 라우트 %{#Named-Routes}%
+# 네임드 라우트 %{#Named-Routes}%
 
 <VueSchoolLink v-if="false"
   href="https://vueschool.io/lessons/named-routes"
@@ -38,7 +38,7 @@ const routes = [
 
 이름은 모든 라우트에서 **고유해야 합니다**. 동일한 이름을 여러 라우트에 추가하면 마지막 라우터의 것만 유지합니다. 이에 대한 자세한 내용은 [동적 라우팅](../advanced/dynamic-routing#Removing-routes) 섹션에서 확인할 수 있습니다.
 
-Vue Router의 다른 여러 부분에서도 위치를 전달할 수 있습니다. 예를 들어, `router.push()` 및 `router.replace()` 메서드입니다. 이러한 메서드에 대해서는 [프로그래매틱 탐색](./navigation) 가이드에서 자세히 다룰 것입니다. `to` 속성과 마찬가지로, 이 메서드들도 `name`으로 위치를 전달하는 것을 지원합니다:
+Vue Router의 다른 여러 부분에서도 위치를 전달할 수 있습니다. 예를 들어, `router.push()` 및 `router.replace()` 메서드입니다. 이러한 메서드에 대해서는 [프로그래매틱 탐색](./navigation) 가이드에서 자세히 다룰 것입니다. `to` 프로퍼티와 마찬가지로, 이 메서드들도 `name`으로 위치를 전달하는 것을 지원합니다:
 
 ```js
 router.push({ name: 'profile', params: { username: 'erina' } })

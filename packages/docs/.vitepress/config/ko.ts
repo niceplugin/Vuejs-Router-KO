@@ -94,7 +94,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/route-matching-syntax.html',
             },
             {
-              text: '이름이 지정된 라우트',
+              text: '네임드 라우트',
               link: '/guide/essentials/named-routes.html',
             },
             {
@@ -106,11 +106,11 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
               link: '/guide/essentials/navigation.html',
             },
             {
-              text: '이름이 지정된 뷰(view)',
+              text: '네임드 뷰 (view)',
               link: '/guide/essentials/named-views.html',
             },
             {
-              text: '리디렉션 및 별칭',
+              text: '리다이렉션 및 별칭',
               link: '/guide/essentials/redirect-and-alias.html',
             },
             {

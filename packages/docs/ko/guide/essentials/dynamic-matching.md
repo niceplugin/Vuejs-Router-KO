@@ -19,7 +19,7 @@ const routes = [
 
 이제 `/users/johnny`와 `/users/jolyne` 같은 URL은 모두 동일한 라우트에 매핑됩니다.
 
-*파라미터*는 콜론 `:`으로 표시됩니다. 라우트가 매칭되면 해당 *파라미터*의 값은 모든 컴포넌트에서 `route.params`로 노출됩니다. 따라서 `User`의 템플릿을 다음과 같이 수정하여 현재 사용자 ID를 렌더링할 수 있습니다:
+*파라미터*는 콜론 `:`으로 표시됩니다. 라우트가 매칭되면 해당 *파라미터*의 값은 모든 컴포넌트에서 `route.params`로 노출됩니다. 따라서 `User`의 템플릿을 다음과 같이 수정하여 현재 유저 ID를 렌더링할 수 있습니다:
 
 ```vue
 <template>
@@ -39,7 +39,7 @@ const routes = [
 
 `route.params` 외에도 `route` 객체는 URL에 쿼리가 있는 경우 `route.query`, `route.hash` 등 유용한 정보를 제공합니다. 전체 세부 사항은 [API 문서](../../api/#RouteLocationNormalized)에서 확인할 수 있습니다.
 
-이 예제의 데모는 [여기](https://codesandbox.io/s/route-params-vue-router-examples-mlb14?from-embed&initialpath=%2Fusers%2Feduardo%2Fposts%2F1)에서 볼 수 있습니다.
+이 예제의 데모는 [여기](https://codesandbox.io/s/route-params-vue-router-examples-mlb14?from-embed&initialpath=%2Fusers%2Feduardo%2Fposts%2F1)에서 확인할 수 있습니다.
 
 <!-- <iframe
   src="https://codesandbox.io/embed//route-params-vue-router-examples-mlb14?fontsize=14&theme=light&view=preview&initialpath=%2Fusers%2Feduardo%2Fposts%2F1"
