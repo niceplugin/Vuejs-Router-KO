@@ -16,7 +16,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 
   themeConfig: {
     editLink: {
-      pattern: 'https://github.com/niceplugin/Vuejs-Router-KO/edit/main-korean/packages/docs/ko/:path',
+      pattern: 'https://github.com/vuejs/router/edit/main/packages/docs/:path',
       text: '이 페이지 편집 제안하기',
     },
 
@@ -183,7 +183,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         {
           items: [
             {
-              text: 'Vue 2에서 마이그레이션',
+              text: 'Vue 2에서 마이그레이션 <span class="VPBadge danger non-translate-badge-inline">영문</span>',
               link: '/guide/migration/index.html',
             },
           ],

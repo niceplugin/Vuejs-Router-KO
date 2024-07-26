@@ -5,8 +5,8 @@ sidebarDepth: 0
 # 프로그래매틱 탐색 %{#Programmatic-Navigation}%
 
 <VueSchoolLink v-if="false"
-  href="https://vueschool.io/lessons/vue-router-4-programmatic-navigation"
-  title="Learn how to navigate programmatically"
+href="https://vueschool.io/lessons/vue-router-4-programmatic-navigation"
+title="Learn how to navigate programmatically"
 />
 
 `<router-link>`를 사용하여 선언적으로 탐색을 위한 앵커 태그를 만드는 것 외에도, 라우터의 인스턴스 메서드를 사용하여 이를 프로그래매틱하게 수행할 수 있습니다.
@@ -90,16 +90,16 @@ title="Learn how to use Vue Router to go back"
 예제:
 
 ```js
-// 하나의 기록 앞으로 이동, `router.forward()`와 동일
+// 하나의 레코드 앞으로 이동, `router.forward()`와 동일
 router.go(1)
 
-// 하나의 기록 뒤로 이동, `router.back()`과 동일
+// 하나의 레코드 뒤로 이동, `router.back()`과 동일
 router.go(-1)
 
-// 3개의 기록 앞으로 이동
+// 3개의 레코드 앞으로 이동
 router.go(3)
 
-// 그만큼의 기록이 없으면 조용히 실패
+// 그만큼의 레코드이 없으면 조용히 실패
 router.go(-100)
 router.go(100)
 ```

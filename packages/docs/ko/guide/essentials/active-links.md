@@ -1,29 +1,29 @@
-# Active links
+# 활성화된 링크 %{#Active-links}%
 
-It's common for applications to have a navigation component that renders a list of RouterLink components. Within that list, we might want to style links to the currently active route differently from the others.
+애플리케이션에는 `RouterLink` 컴포넌트 리스트를 렌더링하는 네비게이션 컴포넌트가 있는 경우가 많습니다. 이 리스트 내에서 현재 활성화된 라우트 링크를 다른 링크와 다르게 스타일링하고 싶을 수 있습니다.
 
-The RouterLink component adds two CSS classes to active links, `router-link-active` and `router-link-exact-active`. To understand the difference between them, we first need to consider how Vue Router decides that a link is _active_.
+`RouterLink` 컴포넌트는 활성화된 링크에 `router-link-active`와 `router-link-exact-active`라는 두 개의 CSS 클래스를 추가합니다. 이 둘의 차이를 이해하려면 먼저 Vue Router가 링크를 *활성화됨*으로 판단하는 방식을 고려해야 합니다.
 
-## When are links active?
+## 링크는 언제 활성화 되나요? %{#When-are-links-active-}%
 
-A RouterLink is considered to be **_active_** if:
+`RouterLink`가 **_활성화됨_** 으로 간주되는 조건은 다음과 같습니다:
 
-1. It matches the same route record (i.e. configured route) as the current location.
-2. It has the same values for the `params` as the current location.
+1. 현재 위치와 동일한 라우트 레코드(즉, 구성된 라우트)가 매칭됩니다.
+2. 현재 위치와 `params`의 값이 동일합니다.
 
-If you're using [nested routes](./nested-routes), any links to ancestor routes will also be considered active if the relevant `params` match.
+[중첩된 라우트](./nested-routes)를 사용하는 경우, 관련 `params`가 일치하면 상위 라우트의 링크도 활성화된 것으로 간주됩니다.
 
-Other route properties, such as the [`query`](../../api/interfaces/RouteLocationBase.html#query), are not taken into account.
+[`query`](../../api/interfaces/RouteLocationBase.html#query) 같은 라우트의 다른 프로퍼티는 고려되지 않습니다.
 
-The path doesn't necessarily need to be a perfect match. For example, using an [`alias`](./redirect-and-alias#Alias) would still be considered a match, so long as it resolves to the same route record and `params`.
+경로가 반드시 완벽하게 일치할 필요는 없습니다. 예를 들어 [`alias`](./redirect-and-alias#Alias)를 사용하는 경우, 동일한 라우트 레코드와 `params`로 확인되기만 하면 매칭된 것으로 간주됩니다.
 
-If a route has a [`redirect`](./redirect-and-alias#Redirect), it won't be followed when checking whether a link is active.
+[`redirect`](./redirect-and-alias#Redirect)가 있는 라우트의 경우, 활성화된 링크가 되지 않습니다.
 
-## Exact active links
+## 정확히 활성화된 링크 %{#Exact-active-links}%
 
-An **_exact_** match does not include ancestor routes.
+**_정확한_** 매칭은 상위 라우트를 포함하지 않습니다.
 
-Let's imagine we have the following routes:
+다음과 같은 라우트가 있다고 가정해 보겠습니다:
 
 ```js
 const routes = [
@@ -40,7 +40,7 @@ const routes = [
 ]
 ```
 
-Then consider these two links:
+그런 다음 아래 두 링크를 살펴봅시다:
 
 ```vue-html
 <RouterLink to="/user/erina">
@@ -51,11 +51,11 @@ Then consider these two links:
 </RouterLink>
 ```
 
-If the current location path is `/user/erina/role/admin` then these would both be considered _active_, so the class `router-link-active` would be applied to both links. But only the second link would be considered _exact_, so only that second link would have the class `router-link-exact-active`.
+현재 위치 경로가 `/user/erina/role/admin`인 경우, 이 두 링크는 모두 *활성화된* 것으로 간주되어 `router-link-active` 클래스가 두 링크 모두에 적용됩니다. 그러나 두 번째 링크만 *정확한* 것으로 간주되어 `router-link-exact-active` 클래스는 두 번째 링크에만 적용됩니다.
 
-## Configuring the classes
+## 클래스 구성 %{#Configuring-the-classes}%
 
-The RouterLink component has two props, `activeClass` and `exactActiveClass`, that can be used to change the names of the classes that are applied:
+RouterLink 컴포넌트에는 `activeClass`와 `exactActiveClass`라는 두 개의 프로퍼티가 있는데, 이를 사용하여 적용되는 클래스의 이름을 변경할 수 있습니다:
 
 ```vue-html
 <RouterLink
@@ -65,7 +65,7 @@ The RouterLink component has two props, `activeClass` and `exactActiveClass`, th
 >
 ```
 
-The default class names can also be changed globally by passing the `linkActiveClass` and `linkExactActiveClass` options to `createRouter()`:
+기본 클래스명은 `createRouter()`에 `linkActiveClass` 및 `linkExactActiveClass` 옵션을 전달하여 전역적으로 변경할 수도 있습니다:
 
 ```js
 const router = createRouter({
@@ -75,4 +75,4 @@ const router = createRouter({
 })
 ```
 
-See [Extending RouterLink](../advanced/extending-router-link) for more advanced customization techniques using the `v-slot` API.
+더 고급 맞춤화 기술에 대해서는 `v-slot` API를 사용하는 [RouterLink 확장](../advanced/extending-router-link)을 참고하세요.

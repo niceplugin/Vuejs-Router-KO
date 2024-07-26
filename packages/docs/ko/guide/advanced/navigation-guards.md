@@ -1,80 +1,81 @@
-# Navigation Guards
+# 네비게이션 가드 %{#Navigation-Guards}%
 
-<VueSchoolLink
+<VueSchoolLink v-if="false"
   href="https://vueschool.io/lessons/route-guards"
   title="Learn how to add navigation guards"
 />
 
-As the name suggests, the navigation guards provided by Vue router are primarily used to guard navigations either by redirecting it or canceling it. There are a number of ways to hook into the route navigation process: globally, per-route, or in-component.
+이름에서 알 수 있듯이, Vue 라우터가 제공하는 네비게이션 가드는 주로 탐색을 리다이렉션하거나 취소하여 탐색을 보호하는 데 사용됩니다. 라우트 탐색 프로세스에서 훅을 거는 방법에는 "전역", "각 라우트별", "컴포넌트 내"가 있습니다.
 
-## Global Before Guards
+## 전역 비포 가드 %{#Global-Before-Guards}%
 
-You can register global before guards using `router.beforeEach`:
+전역 비포 가드는 `router.beforeEach`를 사용하여 등록할 수 있습니다:
 
 ```js
 const router = createRouter({ ... })
 
 router.beforeEach((to, from) => {
   // ...
-  // explicitly return false to cancel the navigation
+  // 탐색을 취소하려면 명시적으로 false를 반환합니다.
   return false
 })
 ```
 
-Global before guards are called in creation order, whenever a navigation is triggered. Guards may be resolved asynchronously, and the navigation is considered **pending** before all hooks have been resolved.
+탐색이 트리거되면 전역 비포 가드는 생성된 순서대로 호출됩니다. 가드는 비동기적으로 처리될 수 있으며, 모든 훅이 처리되기 전까지 탐색은 **대기 중**(pending)으로 간주됩니다.
 
-Every guard function receives two arguments:
+각 가드 함수는 두 개의 인자를 받습니다:
 
-- **`to`**: the target route location [in a normalized format](../../api/#RouteLocationNormalized) being navigated to.
-- **`from`**: the current route location [in a normalized format](../../api/#RouteLocationNormalized) being navigated away from.
+- **`to`**: 이동할 대상 라우트 위치 [정규화된 형식으로](../../api/#RouteLocationNormalized).
+- **`from`**: 현재 라우트 위치 [정규화된 형식으로](../../api/#RouteLocationNormalized).
 
-And can optionally return any of the following values:
+그리고 선택적으로 다음 값 중 하나를 반환할 수 있습니다:
 
-- `false`: cancel the current navigation. If the browser URL was changed (either manually by the user or via back button), it will be reset to that of the `from` route.
-- A [Route Location](../../api/#RouteLocationRaw): Redirect to a different location by passing a route location as if you were calling `router.push()`, which allows you to pass options like `replace: true` or `name: 'home'`. The current navigation is dropped and a new one is created with the same `from`.
+- `false`: 현재 탐색을 취소합니다. 브라우저 URL이 변경된 경우(유저가 수동으로 변경했거나 뒤로 가기 버튼을 통해 변경한 경우), `from` 라우트의 URL로 재설정됩니다.
+- [라우트 주소](../../api/#RouteLocationRaw): `router.push()`를 호출할 때처럼 라우트 위치를 전달하여 다른 위치로 리다이렉션합니다. 이 경우 `replace: true` 또는 `name: 'home'`과 같은 옵션을 전달할 수 있습니다. 현재 탐색을 중단하고 동일한 `from`으로 새 탐색을 생성합니다.
 
   ```js
   router.beforeEach(async (to, from) => {
     if (
-      // make sure the user is authenticated
+      // 인증된 유저인지 확인.
       !isAuthenticated &&
-      // ❗️ Avoid an infinite redirect
+      // ❗️ 무한 리디렉션 방지.
       to.name !== 'Login'
     ) {
-      // redirect the user to the login page
+      // 유저를 로그인 페이지로 리다이렉션.
       return { name: 'Login' }
     }
   })
   ```
 
-It's also possible to throw an `Error` if an unexpected situation was met. This will also cancel the navigation and call any callback registered via [`router.onError()`](../../api/interfaces/Router.md#onError).
+예상치 못한 상황이 발생하면 `Error`를 던질 수도 있습니다. 이 경우에도 탐색이 취소되며, [`router.onError()`](../../api/interfaces/Router.md#onError)를 통해 등록된 콜백이 호출됩니다.
 
-If nothing, `undefined` or `true` is returned, **the navigation is validated**, and the next navigation guard is called.
+아무것도 반환하지 않거나, `undefined` 또는 `true`를 반환하면 **탐색이 유효**하며, 다음 네비게이션 가드가 호출됩니다.
 
-All of the things above **work the same way with `async` functions** and Promises:
+위의 모든 사항은 **`async` 함수 및 Promise에서도 동일하게 작동**합니다:
 
 ```js
 router.beforeEach(async (to, from) => {
-  // canUserAccess() returns `true` or `false`
+  // canUserAccess()는 `true` 또는 `false`를 반환합니다.
   const canAccess = await canUserAccess(to)
   if (!canAccess) return '/login'
 })
 ```
 
-### Optional third argument `next`
+### 선택적 세 번째 인자 `next` %{#Optional-third-argument-next}%
 
 In previous versions of Vue Router, it was also possible to use a _third argument_ `next`, this was a common source of mistakes and went through an [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0037-router-return-guards.md#motivation) to remove it. However, it is still supported, meaning you can pass a third argument to any navigation guard. In that case, **you must call `next` exactly once** in any given pass through a navigation guard. It can appear more than once, but only if the logical paths have no overlap, otherwise the hook will never be resolved or produce errors. Here is **a bad example** of redirecting the user to `/login` if they are not authenticated:
+이전 버전의 Vue Router에서는 *세 번째 인자* `next`를 사용할 수 있었습니다. 이는 일반적인 실수의 원인이 되었고, 이를 제거하기 위한 [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0037-router-return-guards.md#motivation)가 진행되었습니다. 그러나 여전히 지원되므로 네비게이션 가드에서 세 번째 인자를 전달 받을 수 있습니다. 이 경우, **네비게이션 가드를 통과할 때 `next`를 정확히 한 번 호출해야 합니다**. `next`는 여러 번 나타날 수 있지만, 논리 경로가 중복되지 않는 경우에만 가능합니다. 그렇지 않으면 훅이 절대 해결되지 않거나 오류가 발생합니다. 다음은 유저가 인증되지 않은 경우 `/login`으로 리다이렉션하는 **잘못된 예제**가 있습니다:
 
 ```js
 // BAD
 router.beforeEach((to, from, next) => {
   if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
-  // if the user is not authenticated, `next` is called twice
+  // 사용자가 인증되지 않은 경우, `next`가 두 번 호출됩니다.
   next()
 })
 ```
 
-Here is the correct version:
+올바른 예제는 다음과 같습니다:
 
 ```js
 // GOOD
@@ -84,7 +85,7 @@ router.beforeEach((to, from, next) => {
 })
 ```
 
-## Global Resolve Guards
+## 전역 리졸브 가드 %{#Global-Resolve-Guards}%
 
 You can register a global guard with `router.beforeResolve`. This is similar to `router.beforeEach` because it triggers on **every navigation**, but resolve guards are called right before the navigation is confirmed, **after all in-component guards and async route components are resolved**. Here is an example that ensures the user has given access to the Camera for routes that [have defined a custom meta](./meta.md) property `requiresCamera`:
 
@@ -110,7 +111,7 @@ router.beforeResolve(async to => {
 
 <!-- TODO: how to combine with [`meta` fields](./meta.md) to create a [generic fetching mechanism](#TODO). -->
 
-## Global After Hooks
+## 전역 애프터 훅 %{#Global-After-Hooks}%
 
 You can also register global after hooks, however unlike guards, these hooks do not get a `next` function and cannot affect the navigation:
 
@@ -134,7 +135,7 @@ router.afterEach((to, from, failure) => {
 
 Learn more about navigation failures on [its guide](./navigation-failures.md).
 
-## Global injections within guards
+## 가드에 전역 종속성 제공 %{#Global-injections-within-guards}%
 
 Since Vue 3.3, it is possible to use `inject()` within navigation guards. This is useful for injecting global properties like the [pinia stores](https://pinia.vuejs.org). Anything that is provided with `app.provide()` is also accessible within `router.beforeEach()`, `router.beforeResolve()`, `router.afterEach()`:
 
@@ -152,7 +153,7 @@ router.beforeEach((to, from) => {
 })
 ```
 
-## Per-Route Guard
+## 라우트별 가드 %{#Per-Route-Guard}%
 
 You can define `beforeEnter` guards directly on a route's configuration object:
 
@@ -220,11 +221,11 @@ The `beforeEnter` in the example above won't be called when moving between `/use
 It is possible to achieve similar behavior to per-route guards by using [route meta fields](./meta) and global navigation guards.
 :::
 
-## In-Component Guards
+## 컴포넌트 내 가드 %{#In-Component-Guards}%
 
 Finally, you can directly define route navigation guards inside route components (the ones passed to the router configuration)
 
-### Using the Options API
+### Options API 사용하기 %{#Using-the-Options-API}%
 
 You can add the following options to route components:
 
@@ -284,11 +285,11 @@ beforeRouteLeave (to, from) {
 }
 ```
 
-### Using the Composition API
+### Composition API 사용하기 %{#Using-the-Composition-API}%
 
 If you are writing your component using the Composition API, you can add update and leave guards through `onBeforeRouteUpdate` and `onBeforeRouteLeave` respectively. Please refer to the [Composition API section](./composition-api.md#navigation-guards) for more details.
 
-## The Full Navigation Resolution Flow
+## 전체적인 탐색 처리 과정 %{#The-Full-Navigation-Resolution-Flow}%
 
 1. Navigation triggered.
 2. Call `beforeRouteLeave` guards in deactivated components.
