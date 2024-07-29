@@ -1,18 +1,18 @@
-# Data Fetching
+# 데이터 가져오기 %{#Data-Fetching}%
 
-Sometimes you need to fetch data from the server when a route is activated. For example, before rendering a user profile, you need to fetch the user's data from the server. We can achieve this in two different ways:
+라우트가 활성화될 때 서버에서 데이터를 가져와야 하는 경우가 있습니다. 예를 들어 유저 프로필을 렌더링하기 전에 서버에서 유저 데이터를 가져와야 합니다. 이를 달성하는 방법에는 두 가지가 있습니다:
 
-- **Fetching After Navigation**: perform the navigation first, and fetch data in the incoming component's lifecycle hook. Display a loading state while data is being fetched.
+- **탐색 후 데이터 가져오기**: 먼저 탐색을 수행한 다음, 새로 사용되는 컴포넌트의 생명주기 훅에서 데이터를 가져옵니다. 데이터를 가져오는 동안 로딩 상태를 표시합니다.
 
-- **Fetching Before Navigation**: Fetch data before navigation in the route enter guard, and perform the navigation after data has been fetched.
+- **탐색 전 데이터 가져오기**: 탐색 전에 라우트 엔터 가드에서 데이터를 가져오고, 데이터를 가져온 후에 탐색을 수행합니다.
 
-Technically, both are valid choices - it ultimately depends on the user experience you are aiming for.
+기술적으로 두 방법 모두 유효하며, 궁극적으로는 목표로 하는 사용자 경험(UX)에 따라 달라집니다.
 
-## Fetching After Navigation
+## 탐색 후 가져오기 %{#Fetching-After-Navigation}%
 
-When using this approach, we navigate and render the incoming component immediately, and fetch data in the component itself. It gives us the opportunity to display a loading state while the data is being fetched over the network, and we can also handle loading differently for each view.
+이 접근 방식은 즉시 탐색하고 새로 사용되는 컴포넌트를 렌더링하면, 컴포넌트 자체에서 데이터를 가져옵니다. 네트워크를 통해 데이터를 가져오는 동안 로딩 상태를 표시할 필요가 있으며, 각 뷰마다 로딩을 다르게 처리할 수도 있습니다.
 
-Let's assume we have a `Post` component that needs to fetch the data for a post based on `route.params.id`:
+`route.params.id`를 기반으로 게시물 데이터를 가져와야 하는 `Post` 컴포넌트가 있다고 가정해봅시다:
 
 ::: code-group
 
@@ -41,7 +41,7 @@ const loading = ref(false)
 const post = ref(null)
 const error = ref(null)
 
-// watch the params of the route to fetch the data again
+// 라우트의 파라미터를 감시하여 데이터를 다시 가져옵니다.
 watch(() => route.params.id, fetchData, { immediate: true })
 
 async function fetchData(id) {
@@ -49,7 +49,7 @@ async function fetchData(id) {
   loading.value = true
   
   try {
-    // replace `getPost` with your data fetching util / API wrapper
+    // `getPost`를 데이터를 가져오는 유틸리티나 API 래퍼로 변경하세요.
     post.value = await getPost(id)  
   } catch (err) {
     error.value = err.toString()
@@ -86,7 +86,7 @@ export default {
     }
   },
   created() {
-    // watch the params of the route to fetch the data again
+    // 라우트의 파라미터를 감시하여 데이터를 다시 가져옵니다.
     this.$watch(
       () => this.$route.params.id,
       this.fetchData,
@@ -101,7 +101,7 @@ export default {
       this.loading = true
 
       try {
-        // replace `getPost` with your data fetching util / API wrapper
+        // `getPost`를 데이터를 가져오는 유틸리티나 API 래퍼로 변경하세요.
         this.post = await getPost(id)
       } catch (err) {
         this.error = err.toString()
@@ -116,9 +116,9 @@ export default {
 
 :::
 
-## Fetching Before Navigation
+## 탐색 전 가져오기 %{#Fetching-Before-Navigation}%
 
-With this approach we fetch the data before actually navigating to the new route. We can perform the data fetching in the `beforeRouteEnter` guard in the incoming component, and only call `next` when the fetch is complete. The callback passed to `next` will be called **after the component is mounted**:
+이 접근 방식은 새로운 라우트로 탐색하기 전에 데이터를 가져옵니다. 새로 사용되는 컴포넌트의 `beforeRouteEnter` 가드에서 데이터 가져오기를 수행하고, 가져오기가 완료된 후에만 `next`를 호출할 수 있습니다. `next`에 전달된 콜백은 **컴포넌트가 마운트된 후** 호출됩니다:
 
 ```js
 export default {
@@ -131,15 +131,15 @@ export default {
   async beforeRouteEnter(to, from, next) {
     try {
       const post = await getPost(to.params.id)
-      // `setPost` is a method defined below
+      // `setPost`는 아래에 정의된 메서드입니다.
       next(vm => vm.setPost(post))
     } catch (err) {
-      // `setError` is a method defined below
+      // `setError`는 아래에 정의된 메서드입니다.
       next(vm => vm.setError(err))
     }
   },
-  // when route changes and this component is already rendered,
-  // the logic will be slightly different.
+  // 이 컴포넌트가 이미 렌더링 되어있고 라우트가 변경되는 경우,
+  // 로직이 약간 다릅니다.
   beforeRouteUpdate(to, from) {
     this.post = null
     getPost(to.params.id).then(this.setPost).catch(this.setError)
@@ -155,7 +155,7 @@ export default {
 }
 ```
 
-The user will stay on the previous view while the resource is being fetched for the incoming view. It is therefore recommended to display a progress bar or some kind of indicator while the data is being fetched. If the data fetch fails, it's also necessary to display some kind of global warning message.
+유저는 새로 사용되는 뷰의 리소스를 가져오는 동안 이전 뷰에 머물게 됩니다. 따라서 데이터를 가져오는 동안 로딩 상태를 표시하는 것이 좋습니다. 데이터 가져오기가 실패한 경우, 전역 경고 메시지를 표시하는 것도 필요합니다.
 
 <!-- ### Using Composition API -->
 

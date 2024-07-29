@@ -28,7 +28,7 @@ const fileName = computed<string>(() => {
     </p>
 
     <p>
-      <strong class="file-name">{{ fileName }}</strong> 파일은 아직 한글로 번역되지 않았습니다.
+      <strong class="file-name">{{ fileName }}</strong> 파일은 한글로 번역되지 않았습니다.
     </p>
   </div>
 </template>

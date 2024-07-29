@@ -25,20 +25,20 @@ router.beforeEach((to, from) => {
 
 각 가드 함수는 두 개의 인자를 받습니다:
 
-- **`to`**: 이동할 대상 라우트 위치 [정규화된 형식으로](../../api/#RouteLocationNormalized).
-- **`from`**: 현재 라우트 위치 [정규화된 형식으로](../../api/#RouteLocationNormalized).
+- **`to`**: 이동할 [정규화된 형식의](../../api/#RouteLocationNormalized) 라우트 로케이션 객체.
+- **`from`**: 현재 [정규화된 형식의](../../api/#RouteLocationNormalized) 라우트 로케이션 객체.
 
 그리고 선택적으로 다음 값 중 하나를 반환할 수 있습니다:
 
 - `false`: 현재 탐색을 취소합니다. 브라우저 URL이 변경된 경우(유저가 수동으로 변경했거나 뒤로 가기 버튼을 통해 변경한 경우), `from` 라우트의 URL로 재설정됩니다.
-- [라우트 주소](../../api/#RouteLocationRaw): `router.push()`를 호출할 때처럼 라우트 위치를 전달하여 다른 위치로 리다이렉션합니다. 이 경우 `replace: true` 또는 `name: 'home'`과 같은 옵션을 전달할 수 있습니다. 현재 탐색을 중단하고 동일한 `from`으로 새 탐색을 생성합니다.
+- [라우트 로케이션 객체](../../api/#RouteLocationRaw): `router.push()`를 호출할 때처럼 라우트 로케이션 객체를 전달하여 다른 위치로 리다이렉션합니다. 이 경우 `replace: true` 또는 `name: 'home'`과 같은 옵션을 전달할 수 있습니다. 현재 탐색을 중단하고 동일한 `from`으로 새 탐색을 생성합니다.
 
   ```js
   router.beforeEach(async (to, from) => {
     if (
       // 인증된 유저인지 확인.
       !isAuthenticated &&
-      // ❗️ 무한 리디렉션 방지.
+      // ❗️ 무한 리다이렉션 방지.
       to.name !== 'Login'
     ) {
       // 유저를 로그인 페이지로 리다이렉션.
@@ -237,7 +237,7 @@ const routes = [
 export default {
   beforeRouteEnter(to, from) {
     // 라우트가 이 컴포넌트를 렌더링하기 위해 확정되기 전에 호출됩니다.
-    // 이 가드가 호출될 때는 컴포넌트가 아직 생성되지 않았기 때문에 ,
+    // 이 가드가 호출될 때는 컴포넌트가 아직 생성되지 않았기 때문에,
     // `this`로 컴포넌트 인스턴스에 접근할 수 없습니다!
   },
   beforeRouteUpdate(to, from) {

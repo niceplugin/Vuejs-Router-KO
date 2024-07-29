@@ -1,6 +1,6 @@
-# RouterView slot
+# RouterView 슬롯 %{#RouterView-slot}%
 
-The RouterView component exposes a slot that can be used to render the route component:
+RouterView 컴포넌트는 라우트 컴포넌트를 렌더링하는 데 사용할 수 있는 슬롯을 노출합니다:
 
 ```vue-html
 <router-view v-slot="{ Component }">
@@ -8,11 +8,11 @@ The RouterView component exposes a slot that can be used to render the route com
 </router-view>
 ```
 
-The code above is equivalent to using `<router-view />` without the slot, but the slot provides extra flexibility when we want to work with other features.
+위의 코드는 슬롯 없이 `<router-view />`를 사용하는 것과 동일하지만, 슬롯은 다른 기능과 함께 작업할 때 추가적인 유연성을 제공합니다.
 
-## KeepAlive & Transition
+## KeepAlive & Transition %{#KeepAlive-Transition}%
 
-When working with the [KeepAlive](https://vuejs.org/guide/built-ins/keep-alive.html) component, we would usually want it to keep the route components alive, not the RouterView itself. We can achieve that by putting the KeepAlive inside the slot:
+[`<keep-alive>`](https://vuejs.org/guide/built-ins/keep-alive.html) 컴포넌트를 사용할 때, 보통 RouterView 자체가 아닌 라우트 컴포넌트를 유지하고 싶습니다. 이는 슬롯 안에 KeepAlive를 배치함으로써 구현할 수 있습니다:
 
 ```vue-html
 <router-view v-slot="{ Component }">
@@ -22,7 +22,7 @@ When working with the [KeepAlive](https://vuejs.org/guide/built-ins/keep-alive.h
 </router-view>
 ```
 
-Similarly, the slot allows us to use a [Transition](https://vuejs.org/guide/built-ins/transition.html) component to transition between route components:
+마찬가지로, 슬롯을 사용하여 라우트 컴포넌트 간 트랜지션을 위해 [`<transition>`](https://vuejs.org/guide/built-ins/transition.html) 컴포넌트를 사용할 수 있습니다:
 
 ```vue-html
 <router-view v-slot="{ Component }">
@@ -32,7 +32,7 @@ Similarly, the slot allows us to use a [Transition](https://vuejs.org/guide/buil
 </router-view>
 ```
 
-We can also use KeepAlive inside a Transition:
+`<transition>` 안에 `<keep-alive>`를 사용할 수도 있습니다:
 
 ```vue-html
 <router-view v-slot="{ Component }">
@@ -44,11 +44,11 @@ We can also use KeepAlive inside a Transition:
 </router-view>
 ```
 
-For more information about using RouterView with the Transition component, see the [Transitions](./transitions) guide.
+RouterView와 `<transition>` 컴포넌트를 사용하는 방법에 대한 자세한 내용은 [트랜지션](./transitions) 가이드를 참고하세요.
 
-## Passing props and slots
+## 프로퍼티와 슬롯 전달하기 %{#Passing-props-and-slots}%
 
-We can use the slot to pass props or slots to the route component:
+우리는 슬롯을 사용하여 라우트 컴포넌트에 프로퍼티 또는 슬롯을 전달할 수 있습니다:
 
 ```vue-html
 <router-view v-slot="{ Component }">
@@ -58,11 +58,11 @@ We can use the slot to pass props or slots to the route component:
 </router-view>
 ```
 
-In practice, this usually isn't something you would want to do, as the route components would **all need to use the same props and slots**. See [Passing Props to Route Components](../essentials/passing-props) for other ways to pass props.
+실제로 이렇게 하면 모든 라우트 컴포넌트가 **동일한 프로퍼티와 슬롯을 사용**하게 되므로, 일반적으로는 이렇게 하지 않습니다. 프로퍼티를 전달하는 다른 방법에 대해서는 [라우트 컴포넌트에 프로퍼티 전달](../essentials/passing-props) 가이드를 참고하세요.
 
-## Template refs
+## 템플릿 참조 %{#Template-refs}%
 
-Using the slot allows us to put a [template ref](https://vuejs.org/guide/essentials/template-refs.html) directly on the route component:
+슬롯을 사용하면 [템플릿 참조](https://vuejs.org/guide/essentials/template-refs.html)를 라우트 컴포넌트에 직접 넣을 수 있습니다:
 
 ```vue-html
 <router-view v-slot="{ Component }">
@@ -70,4 +70,4 @@ Using the slot allows us to put a [template ref](https://vuejs.org/guide/essenti
 </router-view>
 ```
 
-If we put the ref on the `<router-view>` instead then the ref would be populated with the RouterView instance, rather than the route component.
+ref를 `<router-view>`에 넣으면 ref는 라우트 컴포넌트가 아닌 RouterView 인스턴스가 됩니다.

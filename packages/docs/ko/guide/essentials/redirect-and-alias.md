@@ -27,8 +27,8 @@ const routes = [
     // /search/screens -> /search?q=screens
     path: '/search/:searchText',
     redirect: to => {
-      // 함수는 대상 라우트를 인자로 받습니다.
-      // 여기서 리다이렉션 경로/위치가 반환됩니다.
+      // 함수는 기존에 이동하려한 라우트를 인자로 받습니다.
+      // 여기서 리다이렉션 하려는 경로(문자열) 또는 위치(객체)를 반환합니다.
       return { path: '/search', query: { q: to.params.searchText } }
     },
   },

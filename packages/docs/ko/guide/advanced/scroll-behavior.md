@@ -1,22 +1,22 @@
-# Scroll Behavior
+# 스크롤 동작 %{#Scroll-Behavior}%
 
-<VueSchoolLink
+<VueSchoolLink v-if="false"
   href="https://vueschool.io/lessons/scroll-behavior"
   title="Learn how to customize scroll behavior"
 />
 
-When using client-side routing, we may want to scroll to top when navigating to a new route, or preserve the scrolling position of history entries just like real page reload does. Vue Router allows you to achieve these and even better, allows you to completely customize the scroll behavior on route navigation.
+프론트엔드 라우팅을 사용하는 경우, 새로운 라우트로 이동할 때 페이지를 맨 위로 스크롤하거나, 마치 페이지를 새로 고친 것처럼 이전의 스크롤 위치를 유지하고 싶을 수 있습니다. Vue Router는 이러한 작업을 수행할 수 있게 해주며, 라우트 탐색 시 페이지의 스크롤 동작을 사용자 정의할 수 있습니다.
 
-**Note: this feature only works if the browser supports `history.pushState`.**
+**참고: 이 기능은 브라우저가 `history.pushState`를 지원하는 경우에만 작동합니다.**
 
-When creating the router instance, you can provide the `scrollBehavior` function:
+라우터 인스턴스를 생성할 때 `scrollBehavior` 함수를 제공할 수 있습니다:
 
 ```js
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [...],
   scrollBehavior (to, from, savedPosition) {
-    // return desired position
+    // 원하는 위치로 돌아가기.
   }
 })
 ```
@@ -28,7 +28,7 @@ The function can return a [`ScrollToOptions`](https://developer.mozilla.org/en-U
 ```js
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
+    // 항상 최상단으로 스크롤.
     return { top: 0 }
   },
 })
@@ -96,7 +96,7 @@ const router = createRouter({
 })
 ```
 
-## Delaying the scroll
+## Delaying the scroll %{#Delaying-the-scroll}%
 
 Sometimes we need to wait a bit before scrolling in the page. For example, when dealing with transitions, we want to wait for the transition to finish before scrolling. To do this you can return a Promise that returns the desired position descriptor. Here is an example where we wait 500ms before scrolling:
 
