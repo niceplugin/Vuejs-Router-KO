@@ -21,9 +21,9 @@ const router = createRouter({
 })
 ```
 
-The `scrollBehavior` function receives the `to` and `from` route objects, like [Navigation Guards](./navigation-guards.md). The third argument, `savedPosition`, is only available if this is a `popstate` navigation (triggered by the browser's back/forward buttons).
+`scrollBehavior` 함수는 [네비게이션 가드](./navigation-guards.md) 처럼 `to`와 `from` 라우트 객체를 인자로 받습니다. 세 번째 인자인 `savedPosition`은 브라우저의 뒤로/앞으로 가기 버튼에 의해 트리거되는 `popstate` 탐색인 경우에만 사용할 수 있습니다.
 
-The function can return a [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions) position object:
+이 함수는 [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions) 위치 객체를 반환할 수 있습니다:
 
 ```js
 const router = createRouter({
@@ -34,26 +34,26 @@ const router = createRouter({
 })
 ```
 
-You can also pass a CSS selector or a DOM element via `el`. In that scenario, `top` and `left` will be treated as relative offsets to that element.
+CSS 셀렉터나 DOM 엘리먼트를 `el`로 전달할 수도 있습니다. 이 경우 `top`과 `left`는 해당 엘리먼트에 대한 상대적 오프셋으로 처리됩니다.
 
 ```js
 const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
-    // always scroll 10px above the element #main
+    // 항상 #main 엘리먼트 보다 10px 위로 스크롤하기.
     return {
-      // could also be
+      // 다음과 같이 작성할 수도 있습니다:
       // el: document.getElementById('main'),
       el: '#main',
-      // 10px above the element
+      // 엘리먼트 보다 10px 위로
       top: 10,
     }
   },
 })
 ```
 
-If a falsy value or an empty object is returned, no scrolling will happen.
+Falsy 값이나 빈 객체를 반환하면 스크롤이 발생하지 않습니다.
 
-Returning the `savedPosition` will result in a native-like behavior when navigating with back/forward buttons:
+`savedPosition`을 반환하면 뒤로/앞으로 가기 버튼으로 탐색할 때 네이티브와 같은 동작이 이루어집니다:
 
 ```js
 const router = createRouter({
@@ -67,7 +67,7 @@ const router = createRouter({
 })
 ```
 
-If you want to simulate the "scroll to anchor" behavior:
+"앵커로 스크롤" 동작을 시뮬레이션하려면 다음과 같이 할 수 있습니다:
 
 ```js
 const router = createRouter({
@@ -81,7 +81,7 @@ const router = createRouter({
 })
 ```
 
-If your browser supports [scroll behavior](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior), you can make it smooth:
+브라우저가 [scroll behavior](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior)를 지원하는 경우, 스크롤을 부드럽게 할 수 있습니다:
 
 ```js
 const router = createRouter({
@@ -96,9 +96,9 @@ const router = createRouter({
 })
 ```
 
-## Delaying the scroll %{#Delaying-the-scroll}%
+## 지연된 스크롤 %{#Delaying-the-scroll}%
 
-Sometimes we need to wait a bit before scrolling in the page. For example, when dealing with transitions, we want to wait for the transition to finish before scrolling. To do this you can return a Promise that returns the desired position descriptor. Here is an example where we wait 500ms before scrolling:
+페이지에서 스크롤하기 전에 잠시 기다려야 할 때가 있습니다. 예를 들어 트랜지션 작업을 처리할 때는 트랜지션이 완료되기를 기다렸다가 스크롤을 해야 합니다. 이를 위해 원하는 위치 객체를 반환하는 Promise를 반환할 수 있습니다. 여기 500ms 동안 기다린 후 스크롤하는 예제가 있습니다:
 
 ```js
 const router = createRouter({
@@ -112,4 +112,4 @@ const router = createRouter({
 })
 ```
 
-It's possible to hook this up with events from a page-level transition component to make the scroll behavior play nicely with your page transitions, but due to the possible variance and complexity in use cases, we simply provide this primitive to enable specific userland implementations.
+이것을 페이지 수준 트랜지션 컴포넌트의 이벤트와 연결하여 스크롤 동작이 페이지 트랜지션과 잘 맞아떨어지도록 할 수 있지만, 사용 사례의 다양성과 복잡성 때문에 개발자가 원하는 대로 구현할 수 있도록 이 기본 기능만 제공합니다.
