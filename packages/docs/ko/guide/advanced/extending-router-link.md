@@ -1,13 +1,13 @@
-# Extending RouterLink
+# RouterLink 확장 %{#Extending-RouterLink}%
 
-<VueSchoolLink
+<VueSchoolLink v-if="false"
   href="https://vueschool.io/lessons/extending-router-link-for-external-urls"
   title="Learn how to extend router-link"
 />
 
-The RouterLink component exposes enough `props` to suffice most basic applications but it doesn't try to cover every possible use case and you will likely find yourself using `v-slot` for some advanced cases. In most medium to large sized applications, it's worth creating one if not multiple custom RouterLink components to reuse them across your application. Some examples are Links in a Navigation Menu, handling external links, adding an `inactive-class`, etc.
+RouterLink 컴포넌트는 대부분의 기본 애플리케이션 요구를 충족하기에 충분한 `props`를 제공하지만, 모든 가능한 사용 사례를 다루지는 않으므로 일부 고급 사례에서는 `v-slot`을 사용하게 될 것입니다. 대부분의 중형에서 대형 애플리케이션에서는 애플리케이션 전체에서 재사용할 수 있는 하나 이상의 사용자 정의 RouterLink 컴포넌트를 만드는 것이 좋습니다. 예를 들어 내비게이션 메뉴의 링크, 외부 링크 처리, `inactive-class` 추가 등이 있습니다.
 
-Let's extend RouterLink to handle external links as well and adding a custom `inactive-class` in an `AppLink.vue` file:
+RouterLink를 확장하여 외부 링크를 처리하고 `inactive-class`를 추가하는 `AppLink.vue` 파일을 만들어 봅시다:
 
 ::: code-group
 
@@ -21,7 +21,7 @@ defineOptions({
 })
 
 const props = defineProps({
-  // add @ts-ignore if using TypeScript
+  // TypeScript 사용시 @ts-ignore 추가.
   ...RouterLink.props,
   inactiveClass: String,
 })
@@ -62,7 +62,7 @@ export default {
   inheritAttrs: false,
 
   props: {
-    // add @ts-ignore if using TypeScript
+    // TypeScript 사용시 @ts-ignore 추가.
     ...RouterLink.props,
     inactiveClass: String,
   },
@@ -99,7 +99,7 @@ export default {
 
 :::
 
-If you prefer using a render function or create `computed` properties, you can use the `useLink` from the [Composition API](./composition-api.md):
+렌더 함수 사용이나 `computed` 프로퍼티 생성을 선호하는 경우, [Composition API](./composition-api.md)의 `useLink`를 사용할 수 있습니다:
 
 ```js
 import { RouterLink, useLink } from 'vue-router'
@@ -108,23 +108,23 @@ export default {
   name: 'AppLink',
 
   props: {
-    // add @ts-ignore if using TypeScript
+    // TypeScript 사용시 @ts-ignore 추가.
     ...RouterLink.props,
     inactiveClass: String,
   },
 
   setup(props) {
-    // `props` contains `to` and any other prop that can be passed to <router-link>
+    // `props`는 <router-link>에 전달 가능한 `to` 포함 모든 프로퍼티들 입니다.
     const { navigate, href, route, isActive, isExactActive } = useLink(props)
 
-    // profit!
+    // ...
 
     return { isExternalLink }
   },
 }
 ```
 
-In practice, you might want to use your `AppLink` component for different parts of your application. e.g. using [Tailwind CSS](https://tailwindcss.com), you could create a `NavLink.vue` component with all the classes:
+실제로, `AppLink` 컴포넌트를 애플리케이션의 다양한 부분에 사용하고 싶을 수 있습니다. 예를 들어, [Tailwind CSS](https://tailwindcss.com)를 사용하여 모든 클래스를 포함하는 `NavLink.vue` 컴포넌트를 만들 수 있습니다:
 
 ```vue
 <template>

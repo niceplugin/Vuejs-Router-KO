@@ -138,7 +138,7 @@ const routes = [
 
 ## 부모 컴포넌트 생략하기 <Badge text="4.1+" /> %{#Omitting-parent-components-}%
 
-라우트 컴포넌트를 중첩할 필요 없이 라우트 간의 부모-자식 관계를 활용할 수도 있습니다. 이는 공통 경로 접두사가 있는 라우트를 그룹화하거나, [각 라우트별 네비게이션 가드](../advanced/navigation-guards#Per-Route-Guard) 또는 [라우트 메타 필드](../advanced/meta)와 같은 고급 기능을 사용할 때 유용합니다.
+라우트 컴포넌트를 중첩할 필요 없이 라우트 간의 부모-자식 관계를 활용할 수도 있습니다. 이는 공통 경로 접두사가 있는 라우트를 그룹화하거나, [각 라우트별 내비게이션 가드](../advanced/navigation-guards#Per-Route-Guard) 또는 [라우트 메타 필드](../advanced/meta)와 같은 고급 기능을 사용할 때 유용합니다.
 
 이를 위해 부모 라우트에서 `component` 및 `components` 옵션을 생략합니다:
 

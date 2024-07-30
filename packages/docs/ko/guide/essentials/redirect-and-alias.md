@@ -39,7 +39,7 @@ const routes = [
 ]
 ```
 
-참고로 **[네비게이션 가드](../advanced/navigation-guards.md)는 리다이렉션하는 라우트가 아닌 대상 라우트에만 적용됩니다**. 예를 들어 위의 예시에서 `/home` 라우트에 `beforeEnter` 가드를 추가해도 아무런 효과가 없습니다.
+참고로 **[내비게이션 가드](../advanced/navigation-guards.md)는 리다이렉션하는 라우트가 아닌 대상 라우트에만 적용됩니다**. 예를 들어 위의 예시에서 `/home` 라우트에 `beforeEnter` 가드를 추가해도 아무런 효과가 없습니다.
 
 `redirect`를 작성할 때는 직접적으로 도달하는 컴포넌트가 없으므로 `component` 옵션을 생략할 수 있습니다. 단, [중첩된 라우트](./nested-routes.md)의 경우는 예외입니다. 라우트 레코드에 `children`과 `redirect` 프로퍼티가 있는 경우 `component` 프로퍼티도 포함되어야 합니다.
 

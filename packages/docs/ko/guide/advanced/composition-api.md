@@ -5,7 +5,7 @@
   title="Learn how to use Vue Router with the Composition API"
 />
 
-Vue의 [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) 도입으로 새로운 가능성이 열렸지만, Vue Router의 잠재력을 최대한 활용하려면, `this`에 접근하는 것과 컴포넌트 내 네비게이션 가드를 대체하는 몇 가지 새로운 함수를 사용해야 합니다.
+Vue의 [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html) 도입으로 새로운 가능성이 열렸지만, Vue Router의 잠재력을 최대한 활용하려면, `this`에 접근하는 것과 컴포넌트 내 내비게이션 가드를 대체하는 몇 가지 새로운 함수를 사용해야 합니다.
 
 ## `setup`에서 라우터와 현재 라우트에 접근하기 %{#Accessing-the-Router-and-current-Route-inside-setup}%
 
@@ -52,7 +52,7 @@ watch(
 
 템플릿에서는 여전히 `$router`와 `$route`에 접근할 수 있으므로, 템플릿에서만 이러한 객체가 필요하다면 `useRouter`나 `useRoute`를 사용할 필요가 없습니다.
 
-## 네비게이션 가드 %{#Navigation-Guards}%
+## 내비게이션 가드 %{#Navigation-Guards}%
 
 Vue Router는 Composition API에서 업데이트 및 리브 가드를 함수로 제공합니다:
 

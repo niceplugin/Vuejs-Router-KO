@@ -1,11 +1,11 @@
-# 네비게이션 가드 %{#Navigation-Guards}%
+# 내비게이션 가드 %{#Navigation-Guards}%
 
 <VueSchoolLink v-if="false"
   href="https://vueschool.io/lessons/route-guards"
   title="Learn how to add navigation guards"
 />
 
-이름에서 알 수 있듯이, Vue 라우터가 제공하는 네비게이션 가드는 주로 탐색을 리다이렉션하거나 취소하여 탐색을 보호하는 데 사용됩니다. 라우트 탐색 프로세스에서 훅을 거는 방법에는 "전역", "각 라우트별", "컴포넌트 내"가 있습니다.
+이름에서 알 수 있듯이, Vue 라우터가 제공하는 내비게이션 가드는 주로 탐색을 리다이렉션하거나 취소하여 탐색을 보호하는 데 사용됩니다. 라우트 탐색 프로세스에서 훅을 거는 방법에는 "전역", "각 라우트별", "컴포넌트 내"가 있습니다.
 
 ## 전역 비포 가드 %{#Global-Before-Guards}%
 
@@ -49,7 +49,7 @@ router.beforeEach((to, from) => {
 
 예상치 못한 상황이 발생하면 `Error`를 던질 수도 있습니다. 이 경우에도 탐색이 취소되며, [`router.onError()`](../../api/interfaces/Router.md#onError)를 통해 등록된 콜백이 호출됩니다.
 
-아무것도 반환하지 않거나, `undefined` 또는 `true`를 반환하면 **탐색이 유효**하며, 다음 네비게이션 가드가 호출됩니다.
+아무것도 반환하지 않거나, `undefined` 또는 `true`를 반환하면 **탐색이 유효**하며, 다음 내비게이션 가드가 호출됩니다.
 
 위의 모든 사항은 **`async` 함수 및 Promise에서도 동일하게 작동**합니다:
 
@@ -63,7 +63,7 @@ router.beforeEach(async (to, from) => {
 
 ### 선택적 세 번째 인자 `next` %{#Optional-third-argument-next}%
 
-이전 버전의 Vue Router에서는 *세 번째 인자* `next`를 사용할 수 있었습니다. 이는 일반적인 실수의 원인이 되었고, 이를 제거하기 위한 [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0037-router-return-guards.md#motivation)가 진행되었습니다. 그러나 여전히 지원되므로 네비게이션 가드에서 세 번째 인자를 전달 받을 수 있습니다. 이 경우, **네비게이션 가드를 통과할 때 `next`를 정확히 한 번 호출해야 합니다**. `next`는 여러 번 나타날 수 있지만, 논리 경로가 중복되지 않는 경우에만 가능합니다. 그렇지 않으면 훅이 절대 해결되지 않거나 오류가 발생합니다. 다음은 유저가 인증되지 않은 경우 `/login`으로 리다이렉션하는 **잘못된 예제**가 있습니다:
+이전 버전의 Vue Router에서는 *세 번째 인자* `next`를 사용할 수 있었습니다. 이는 일반적인 실수의 원인이 되었고, 이를 제거하기 위한 [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0037-router-return-guards.md#motivation)가 진행되었습니다. 그러나 여전히 지원되므로 내비게이션 가드에서 세 번째 인자를 전달 받을 수 있습니다. 이 경우, **내비게이션 가드를 통과할 때 `next`를 정확히 한 번 호출해야 합니다**. `next`는 여러 번 나타날 수 있지만, 논리 경로가 중복되지 않는 경우에만 가능합니다. 그렇지 않으면 훅이 절대 해결되지 않거나 오류가 발생합니다. 다음은 유저가 인증되지 않은 경우 `/login`으로 리다이렉션하는 **잘못된 예제**가 있습니다:
 
 ```js
 // BAD
@@ -136,7 +136,7 @@ router.afterEach((to, from, failure) => {
 
 ## 가드에 전역 종속성 제공 %{#Global-injections-within-guards}%
 
-Vue 3.3부터 네비게이션 가드 내에서 `inject()`를 사용할 수 있습니다. 이는 [Pinia Store](https://pinia.vuejs.org)처럼 전역 프로퍼티를 종속성으로 제공하는 데 유용합니다. `app.provide()`로 제공된 모든 것은 `router.beforeEach()`, `router.beforeResolve()`, `router.afterEach()` 내에서도 접근할 수 있습니다:
+Vue 3.3부터 내비게이션 가드 내에서 `inject()`를 사용할 수 있습니다. 이는 [Pinia Store](https://pinia.vuejs.org)처럼 전역 프로퍼티를 종속성으로 제공하는 데 유용합니다. `app.provide()`로 제공된 모든 것은 `router.beforeEach()`, `router.beforeResolve()`, `router.afterEach()` 내에서도 접근할 수 있습니다:
 
 ```ts
 // main.ts
@@ -217,7 +217,7 @@ const routes = [
 위 예제에서 `beforeEnter`는 `/user/list`와 `/user/details` 간 이동 시 호출되지 않습니다. 두 라우트가 같은 부모를 공유하기 때문입니다. 대신 `details` 라우트에 직접 `beforeEnter` 가드를 정의하면, 두 라우트 간 이동 시 호출됩니다.
 
 ::: tip
-[라우트 메타 필드](./meta)와 전역 네비게이션 가드를 사용하여 라우트별 가드와 유사한 동작을 구현할 수 있습니다.
+[라우트 메타 필드](./meta)와 전역 내비게이션 가드를 사용하여 라우트별 가드와 유사한 동작을 구현할 수 있습니다.
 :::
 
 ## 컴포넌트 내 가드 %{#In-Component-Guards}%
@@ -244,7 +244,7 @@ export default {
     // 이 컴포넌트가 보여지고 있는 동안 라우트가 변경됬지만, 이 컴포넌트가 새로운 라우트에서 재사용 될 때.
     // 예를 들어, `/users/:id`라는 라우트에서 `/users/1`과 `/users/2` 사이를 이동할 때
     // `UserDetails` 컴포넌트 인스턴스가 재사용되며, 이 때 이 훅이 호출됩니다.
-    // 이 과정 동안 컴포넌트가 마운트되어 있기 때문에, 네비게이션 가드는 `this` 컴포넌트 인스턴스에 접근할 수 있습니다.
+    // 이 과정 동안 컴포넌트가 마운트되어 있기 때문에, 내비게이션 가드는 `this` 컴포넌트 인스턴스에 접근할 수 있습니다.
   },
   beforeRouteLeave(to, from) {
     // 이 컴포넌트가 보여지고 있는 동안 라우트가 벗어나려고 할 때 호출됩니다.

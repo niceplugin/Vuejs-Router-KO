@@ -95,7 +95,7 @@ export default {
 
 :::
 
-또는 탐색을 취소할 수도 있는 `beforeRouteUpdate` [네비게이션 가드](../advanced/navigation-guards.md)를 사용할 수 있습니다:
+또는 탐색을 취소할 수도 있는 `beforeRouteUpdate` [내비게이션 가드](../advanced/navigation-guards.md)를 사용할 수 있습니다:
 
 ::: code-group
 

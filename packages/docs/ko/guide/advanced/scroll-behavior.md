@@ -21,7 +21,7 @@ const router = createRouter({
 })
 ```
 
-`scrollBehavior` 함수는 [네비게이션 가드](./navigation-guards.md) 처럼 `to`와 `from` 라우트 객체를 인자로 받습니다. 세 번째 인자인 `savedPosition`은 브라우저의 뒤로/앞으로 가기 버튼에 의해 트리거되는 `popstate` 탐색인 경우에만 사용할 수 있습니다.
+`scrollBehavior` 함수는 [내비게이션 가드](./navigation-guards.md) 처럼 `to`와 `from` 라우트 객체를 인자로 받습니다. 세 번째 인자인 `savedPosition`은 브라우저의 뒤로/앞으로 가기 버튼에 의해 트리거되는 `popstate` 탐색인 경우에만 사용할 수 있습니다.
 
 이 함수는 [`ScrollToOptions`](https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions) 위치 객체를 반환할 수 있습니다:
 

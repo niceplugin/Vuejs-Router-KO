@@ -131,7 +131,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           text: '고급',
           items: [
             {
-              text: '네비게이션 가드',
+              text: '내비게이션 가드',
               link: '/guide/advanced/navigation-guards.html',
             },
             {
