@@ -1,5 +1,4 @@
 import { defineConfig, HeadConfig } from 'vitepress'
-import { zhSearch } from './zh'
 import { koSearch } from './ko'
 
 // TODO:
@@ -139,11 +138,6 @@ export const sharedConfig = defineConfig({
     footer: {
       copyright: 'Copyright © 2014-present Evan You, Eduardo San Martin Morote',
       message: 'Released under the MIT License.',
-    },
-
-    editLink: {
-      pattern: 'https://github.com/niceplugin/Vuejs-Router-KO/edit/main-korean/packages/docs/ko/:path',
-      text: '이 페이지 편집 제안하기',
     },
 
     search: {

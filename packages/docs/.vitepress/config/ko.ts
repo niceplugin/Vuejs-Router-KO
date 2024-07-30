@@ -16,7 +16,7 @@ export const koConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 
   themeConfig: {
     editLink: {
-      pattern: 'https://github.com/vuejs/router/edit/main/packages/docs/:path',
+      pattern: 'https://github.com/niceplugin/Vuejs-Router-KO/edit/main-korean/packages/docs/ko/:path',
       text: '이 페이지 편집 제안하기',
     },
 
